@@ -29,6 +29,9 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
+		Toolbar toolbar = new Toolbar();
+		add(toolbar,BorderLayout.NORTH);
+		
 		
 		StatusBar status = new StatusBar();
 		add(status, BorderLayout.SOUTH);
