@@ -6,6 +6,7 @@ public class InfSysSSluzbe {
 		
 		MainFrame main_frame = new MainFrame();
 		main_frame.setVisible(true);
+
 	
 	}
 }
