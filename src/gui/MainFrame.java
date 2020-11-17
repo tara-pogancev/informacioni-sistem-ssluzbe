@@ -3,6 +3,8 @@ package gui;
 
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 public class MainFrame extends JFrame{
@@ -19,8 +21,8 @@ public class MainFrame extends JFrame{
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 		
-		int windowHeight = (screenHeight /100) * 65;
-		int windowWidth = (screenWidth / 100) * 55;
+		int windowHeight = (screenHeight /100) * 75;
+		int windowWidth = (screenWidth / 100) * 75;
 		
 		setSize(windowWidth, windowHeight);
 		setTitle("Studentska služba");
@@ -28,6 +30,8 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		
 		
+		StatusBar status = new StatusBar();
+		add(status, BorderLayout.SOUTH);
 		
 	}
 
