@@ -1,0 +1,14 @@
+﻿Informacioni Sistem Studentske Službe
+ver: PRE-ALPHA
+
+
+Autori: Jelena Hrnjak, Tara Pogančev
+
+Aplikacija predstavlja jednostavnu simulaicju rada softvera Studentske službe Fakulteta tehničkih Nauka u Novom Sadu. Ista je implementirana upotrebpm Java programskog jezika, uz upotrebu Swing biblioteke. 
+
+
+Jelena Hrnjak: 
+Rođena u Bačkoj Topoli 21. avgusta 1999. godine, gde je završila Osnovnu školu "Nikola Tesla". Nakon osnovne, završila je Gimnaziju "Svetozar Marković" u Subotici, a trenutno je student Fakulteta tehničkih nauka u Novom Sadu, smera Računarstvo i automatika.
+
+Tara Pogančev:
+Rođena u Novom Sadu 3. februara 2000. godine. Odrasla u Bačkoj Palanci gde je završila Osnovnu školu "Sveti Sava", i Gimnaziju "20. oktobar", nakon čega je upisala Fakultet tehničkih nauka u Novom Sadu, gde trenutno i živi. Student treće godine, smera Računarstvo i Automatika.
