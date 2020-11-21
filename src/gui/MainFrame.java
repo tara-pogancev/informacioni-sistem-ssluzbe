@@ -40,6 +40,8 @@ public class MainFrame extends JFrame {
 		StatusBar status = new StatusBar();
 		add(status, BorderLayout.SOUTH);
 
+		CentralPanel centralPan = new CentralPanel();
+		add(centralPan, BorderLayout.CENTER);
 	}
 
 }

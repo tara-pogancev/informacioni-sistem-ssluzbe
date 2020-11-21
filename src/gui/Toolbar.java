@@ -16,7 +16,6 @@ import listeners.action.AddNewAction;
 import listeners.action.DeleteAction;
 import listeners.action.EditAction;
 
-
 public class Toolbar extends JToolBar {
 
 	/**
@@ -26,6 +25,8 @@ public class Toolbar extends JToolBar {
 
 	public Toolbar() {
 
+		//TODO: Urediti ivice ikonica
+		
 		// Orijentacija toolbar-a
 		super(SwingConstants.HORIZONTAL);
 		setFloatable(false);
