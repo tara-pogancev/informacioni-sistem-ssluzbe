@@ -4,8 +4,8 @@ public class InfSysSSluzbe {
 
 	public static void main(String[] args) {
 		
-		MainFrame main_frame = new MainFrame();
-		main_frame.setVisible(true);
+		MainFrame mainFrame = new MainFrame();
+		mainFrame.setVisible(true);
 
 	
 	}
