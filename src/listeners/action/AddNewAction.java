@@ -16,10 +16,10 @@ public class AddNewAction extends AbstractAction {
 	public AddNewAction() {
 
 		putValue(NAME, "New");
+//		putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 		putValue(SHORT_DESCRIPTION, "New");
-//		putValue(MNEMONIC_KEY, KeyEvent.VK_F);
 		putValue(SMALL_ICON, new ImageIcon("images/add.png"));
-		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.ALT_MASK + ActionEvent.SHIFT_MASK));
+		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 
 	}
 

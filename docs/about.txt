@@ -1,4 +1,4 @@
-﻿Informacioni Sistem Studentske Službe
+Informacioni Sistem Studentske Službe
 ver: PRE-ALPHA
 
 

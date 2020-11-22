@@ -7,10 +7,8 @@
 // https://www.baeldung.com/convert-file-to-input-stream
 // https://www.java-examples.com/create-custom-color-using-rgb-example
 
-package gui;
+package dialog;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,12 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.swing.*;
-import javax.swing.text.*;
 
-import gui.HelpDialog.CancelAction;
-
-import javax.swing.event.*;
-import javax.swing.GroupLayout.*;
 import javax.swing.border.Border;
 
 public class AboutDialog extends JFrame {
@@ -69,7 +62,7 @@ public class AboutDialog extends JFrame {
 		}
 		
         try {
-            text_area.read(new InputStreamReader(in), null);
+            text_area.read(new InputStreamReader(in, "UTF-8"), null);
         } catch (IOException e) {
             e.printStackTrace();
         }
