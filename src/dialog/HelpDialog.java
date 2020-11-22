@@ -7,7 +7,7 @@
 // https://www.baeldung.com/convert-file-to-input-stream
 // https://www.java-examples.com/create-custom-color-using-rgb-example
 
-package gui;
+package dialog;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -17,8 +17,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import javax.swing.*;
 import javax.swing.text.*;
+
+import java.nio.charset.StandardCharsets;
 
 import javax.swing.event.*;
 import javax.swing.GroupLayout.*;
@@ -111,6 +114,9 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		pack();
 		
 		//Inicijalizacija komponenti gotova
+		
+		//RAD SA TXT FAJLOM
+		
 	    File initialFile = new File("docs/help.txt");
 	    InputStream in = null;
 		try {
@@ -120,10 +126,11 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		}
 		
         try {
-            text_area.read(new InputStreamReader(in), null);
+            text_area.read(new InputStreamReader(in, "UTF-8"), null);
         } catch (IOException e) {
             e.printStackTrace();
         }
+		
 		
 		hilit = new DefaultHighlighter();
 		painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);

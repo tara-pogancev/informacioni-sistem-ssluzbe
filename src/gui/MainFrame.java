@@ -2,6 +2,8 @@
 package gui;
 
 import java.awt.Toolkit;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
@@ -42,6 +44,12 @@ public class MainFrame extends JFrame {
 
 		CentralPanel centralPan = new CentralPanel();
 		add(centralPan, BorderLayout.CENTER);
+		
+		//Ikonica programa
+		ImageIcon img = new ImageIcon("images/addressbook.png");
+		this.setIconImage(img.getImage());
+		
+		
 	}
 
 }

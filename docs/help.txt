@@ -13,4 +13,4 @@ Uputstvo za korišćenje aplikacije: Informacioni Sistem Studentske Službe
 
 	File: Alt + N
 	Edit: Alt + E
-	Help: Ačt + H
+	Help: Alt + H
