@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import listeners.action.AddNewAction;
 import listeners.action.DeleteAction;
@@ -22,6 +23,7 @@ public class MainMenu extends JMenuBar {
 	 * 
 	 */
 	private static final long serialVersionUID = -4905765460781590696L;
+	private static final String NAME = null;
 
 
 	public MainMenu() {
@@ -40,6 +42,9 @@ public class MainMenu extends JMenuBar {
 		HelpAction help_m = new HelpAction();
 		AboutAction about_m = new AboutAction();
 		
+		add_m.setName();
+		edit_m.setName();
+		delete_m.setName();
 		
 		//Mnemonici
 		file.setMnemonic(KeyEvent.VK_F);
@@ -48,7 +53,7 @@ public class MainMenu extends JMenuBar {
 
 
 		//Dodavanje elemenata
-		file.add(add_m);
+		file.add(add_m);	
 		file.addSeparator();
 		file.add(close_m);
 		

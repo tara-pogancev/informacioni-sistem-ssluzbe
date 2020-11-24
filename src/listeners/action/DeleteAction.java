@@ -16,16 +16,21 @@ public class DeleteAction extends AbstractAction {
 
 	public DeleteAction() {
 
-		putValue(NAME, "Delete");
+//		putValue(NAME, "Delete");
 //		putValue(MNEMONIC_KEY, KeyEvent.VK_E);
 		putValue(SHORT_DESCRIPTION, "Delete");
 		putValue(SMALL_ICON, new ImageIcon("images/trash-icon.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 	}
 
+	public void setName() {
+		putValue(NAME, "Delete");
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		 System.out.println("Action: Delete");
 	}
 
 }

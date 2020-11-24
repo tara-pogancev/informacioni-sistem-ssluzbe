@@ -15,17 +15,21 @@ public class EditAction extends AbstractAction {
 
 	public EditAction() {
 
-		putValue(NAME, "Edit");
+//		putValue(NAME, "Edit");
 //		putValue(MNEMONIC_KEY, KeyEvent.VK_E);
 		putValue(SHORT_DESCRIPTION, "Edit");
 		putValue(SMALL_ICON,new ImageIcon("images/edit.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 	}
+	
+	public void setName() {
+		putValue(NAME, "Edit");
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-
+		 System.out.println("Action: Edit");
 	}
 
 }
