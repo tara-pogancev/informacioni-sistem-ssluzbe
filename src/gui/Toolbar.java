@@ -1,8 +1,15 @@
 // #Toolbar
+//
+// Reference:
+// https://stackoverflow.com/questions/16303916/how-to-make-jtextfield-text-disappear-when-tabbed-into-netbeans
+// https://alvinalexander.com/java/java-action-abstractaction-actionlistener/
 
 package gui;
 
 import java.awt.Dimension;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -11,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import listeners.action.AddNewAction;
 import listeners.action.DeleteAction;
@@ -68,21 +76,36 @@ public class Toolbar extends JToolBar {
 		JButton search = new JButton();
 		search.setIcon(new ImageIcon("images/search-icon2.png"));
 		search.setToolTipText("Search");
-		search.setBorder(emptyBorder);
+		search.setBorder(new EmptyBorder(3, 3, 3, 3));
 		search.setOpaque(false);
-		search.setContentAreaFilled(false);
-		search.setBorderPainted(false);
+		search.setContentAreaFilled(true);
+		search.setFocusPainted(false);
+//		search.setBorderPainted(true);
 
 		// Kreiranje tekstualnog polja za pretragu
 		JTextField searchText = new JTextField("Search...", 15);
 		searchText.setMaximumSize(new Dimension(20, 20));
 		searchText.setToolTipText("Search...");
 		searchText.setName("searchText");
+		
+		//Listener zbog koga se ocisti poje za pretragu kada se fokusira
+		searchText.addFocusListener(new FocusListener(){
+
+		    @Override
+		    public void focusGained(FocusEvent e) {
+		    	searchText.setText(null); 
+		    }
+
+		    @Override
+		    public void focusLost(FocusEvent e) {
+		    	searchText.setText("Search..."); 
+		    }
+
+		});
 
 		// Dodavanje elemenata na toolbar
 		add(Box.createHorizontalStrut(5));
 		add(ana);
-//		add(addNew);
 		addSeparator();
 		add(ea);
 //		add(edit);
