@@ -7,15 +7,20 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -49,29 +54,23 @@ public class Toolbar extends JToolBar {
 		DeleteAction da = new DeleteAction();
 
 		// Kreiranje dugmadi
-//		JButton addNew = new JButton();
-//		addNew.setIcon(new ImageIcon("images/add.png"));
-//		addNew.setToolTipText("New");
-//		addNew.setBorder(emptyBorder);
-//		addNew.setOpaque(false);
-//		addNew.setContentAreaFilled(false);
-//		addNew.setBorderPainted(false);
-//
-//		JButton edit = new JButton();
-//		edit.setIcon(new ImageIcon("images/edit.png"));
-//		edit.setToolTipText("Edit");
-//		edit.setBorder(emptyBorder);
-//		edit.setOpaque(false);
-//		edit.setContentAreaFilled(false);
-//		edit.setBorderPainted(false);
-//
-//		JButton delete = new JButton();
-//		delete.setIcon(new ImageIcon("images/trash-icon.png"));
-//		delete.setToolTipText("Delete");
-//		delete.setBorder(emptyBorder);
-//		delete.setOpaque(false);
-//		delete.setContentAreaFilled(false);
-//		delete.setBorderPainted(false);
+		JButton addNew = new JButton(ana);
+		addNew.setBorder(new EmptyBorder(3,3,3,3));
+		addNew.setOpaque(false);
+		addNew.setContentAreaFilled(true);
+		addNew.setFocusPainted(false);
+
+		JButton edit = new JButton(ea);
+		edit.setBorder(emptyBorder);
+		edit.setOpaque(false);
+		edit.setContentAreaFilled(true);
+		edit.setFocusPainted(false);
+
+		JButton delete = new JButton(da);
+		delete.setBorder(emptyBorder);
+		delete.setOpaque(false);
+		delete.setContentAreaFilled(true);
+		delete.setFocusPainted(false);
 
 		JButton search = new JButton();
 		search.setIcon(new ImageIcon("images/search-icon2.png"));
@@ -80,7 +79,6 @@ public class Toolbar extends JToolBar {
 		search.setOpaque(false);
 		search.setContentAreaFilled(true);
 		search.setFocusPainted(false);
-//		search.setBorderPainted(true);
 
 		// Kreiranje tekstualnog polja za pretragu
 		JTextField searchText = new JTextField("Search...", 15);
@@ -88,7 +86,26 @@ public class Toolbar extends JToolBar {
 		searchText.setToolTipText("Search...");
 		searchText.setName("searchText");
 		
-		//Listener zbog koga se ocisti poje za pretragu kada se fokusira
+		//Precica za fokusiranje polja za pretragu
+		KeyStroke keyS = KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK);
+		searchText.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyS, "s");
+		searchText.getActionMap().put("s", new AbstractAction() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -8081595819862154746L;
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				searchText.requestFocus();
+				
+			}
+		});
+		
+		
+		//Listener zbog koga se ocisti polje za pretragu kada se fokusira
 		searchText.addFocusListener(new FocusListener(){
 
 		    @Override
@@ -105,13 +122,11 @@ public class Toolbar extends JToolBar {
 
 		// Dodavanje elemenata na toolbar
 		add(Box.createHorizontalStrut(5));
-		add(ana);
+		add(addNew);
 		addSeparator();
-		add(ea);
-//		add(edit);
+		add(edit);
 		addSeparator();
-		add(da);
-//		add(delete);
+		add(delete);
 		add(Box.createGlue());
 		add(searchText);
 		addSeparator();
