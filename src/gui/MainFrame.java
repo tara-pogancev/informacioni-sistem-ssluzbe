@@ -25,6 +25,10 @@ public class MainFrame extends JFrame {
 
 		int windowHeight = (screenHeight / 100) * 75;
 		int windowWidth = (screenWidth / 100) * 75;
+		
+		//ikonica programa
+		ImageIcon img = new ImageIcon("images/addressbook.png");
+		this.setIconImage(img.getImage());
 
 		setSize(windowWidth, windowHeight);
 		setTitle("Studentska služba");
@@ -44,11 +48,6 @@ public class MainFrame extends JFrame {
 
 		CentralPanel centralPan = new CentralPanel();
 		add(centralPan, BorderLayout.CENTER);
-		
-		//Ikonica programa
-		ImageIcon img = new ImageIcon("images/addressbook.png");
-		this.setIconImage(img.getImage());
-		
 		
 	}
 
