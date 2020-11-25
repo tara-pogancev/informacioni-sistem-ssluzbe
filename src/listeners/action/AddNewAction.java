@@ -25,7 +25,7 @@ public class AddNewAction extends AbstractAction {
 	}
 	
 	public void setName() {
-		putValue(NAME, "Name");
+		putValue(NAME, "New");
 	}
 
 	@Override

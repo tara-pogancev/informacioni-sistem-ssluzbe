@@ -2,12 +2,13 @@ Uputstvo za korišćenje aplikacije: Informacioni Sistem Studentske Službe
 
 1. Prečice na tastaturi
 
-	New: Alt + Shift + N
-	Close: Alt + Shift + X
+	New: Ctrl + N
+	Close: Ctrl + C
 	Edit: Ctrl + E
-	Delete: Ctrl + Del
-	Help: Ctrl + F1
+	Delete: Ctrl + D
+	Help: Alt + F1
 	About: Alt + A
+	Search: Ctrl + S
 	
 2. Mnemonici
 
