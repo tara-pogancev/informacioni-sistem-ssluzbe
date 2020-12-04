@@ -5,7 +5,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
-import javax.swing.border.EmptyBorder;
+
+import dialog.DodavanjeStudenta;
 
 public class AddNewAction extends AbstractAction {
 
@@ -32,6 +33,10 @@ public class AddNewAction extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		 System.out.println("Action: Add New");
+		 
+		 //TODO Napraviti switch-case koji u zavisnosti od aktivnog taba prikaze tacno dodavanje, trenunto je ovako zbog testiranja
+		 new DodavanjeStudenta().setVisible(true);
+		 
 	}
 
 }
