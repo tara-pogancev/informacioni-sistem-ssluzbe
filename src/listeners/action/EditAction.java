@@ -20,6 +20,7 @@ public class EditAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, "Edit");
 		putValue(SMALL_ICON,new ImageIcon("images/edit.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		putValue(MNEMONIC_KEY, KeyEvent.VK_E);
 	}
 	
 	public void setName() {

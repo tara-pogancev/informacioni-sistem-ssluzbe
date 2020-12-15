@@ -22,6 +22,7 @@ public class HelpAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, "Help and Instructions");
 		putValue(SMALL_ICON, new ImageIcon("images/alert.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F1, ActionEvent.ALT_MASK));
+		putValue(MNEMONIC_KEY, KeyEvent.VK_H);
 		
 	}
 

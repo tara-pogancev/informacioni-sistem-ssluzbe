@@ -22,6 +22,7 @@ public class AddNewAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, "New");
 		putValue(SMALL_ICON, new ImageIcon("images/add.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 		
 	}
 	
