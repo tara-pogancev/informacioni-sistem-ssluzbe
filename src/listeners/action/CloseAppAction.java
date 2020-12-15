@@ -26,6 +26,7 @@ public class CloseAppAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, "Close Application");
 		putValue(SMALL_ICON, new ImageIcon("images/delete.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		putValue(MNEMONIC_KEY, KeyEvent.VK_C);
 		
 	}
 

@@ -22,6 +22,7 @@ public class AboutAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, "About Application");
 		putValue(SMALL_ICON, new ImageIcon("images/information.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
+		putValue(MNEMONIC_KEY, KeyEvent.VK_A);
 		
 	}
 
