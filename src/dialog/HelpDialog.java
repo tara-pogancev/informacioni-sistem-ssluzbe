@@ -67,7 +67,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		scroll_pane = new JScrollPane(text_area);
 		
-		text.setText("Pretraži tekst:");
+		text.setText("Pretraï¿½i tekst:");
 		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -153,7 +153,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 
 		String s = entry.getText();
 		if (s.length() <= 0) {
-			message("Ništa za pretragu.");
+			message("Niï¿½ta za pretragu.");
 			return;
 		}
 
@@ -165,13 +165,13 @@ public class HelpDialog extends JFrame implements DocumentListener {
 				hilit.addHighlight(index, end, painter);
 				text_area.setCaretPosition(end);
 				entry.setBackground(entryBg);
-				message("'" + s + "' pronaðen. Pritisni ESC da završiš pretragu.");
+				message("'" + s + "' pronaÄ‘en. Pritisni ESC da zavrÅ¡iÅ¡ pretragu.");
 			} catch (BadLocationException e) {
 				e.printStackTrace();
 			}
 		} else {
 			entry.setBackground(ERROR_COLOR);
-			message("'" + s + "' nije pronaðen. Pritisni ESC da zapoèneš novu pretragu.");
+			message("'" + s + "' nije pronaÄ‘en. Pritisni ESC da zapoÄneÅ¡ novu pretragu.");
 		}
 
 	}
