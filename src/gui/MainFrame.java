@@ -19,7 +19,8 @@ public class MainFrame extends JFrame {
 	private Toolbar toolbar;
 	private MainMenu menu;
 	private StatusBar status;
-	private CentralPanel centralPan;
+	private TabbedPane tabbedPane;
+	
 	
 	// Singleton pattern
 	private static MainFrame instance = null;
@@ -50,13 +51,11 @@ public class MainFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
-
-		this.centralPan = new CentralPanel();
-		this.add(this.centralPan, BorderLayout.CENTER);
 		
 		this.createToolbar();
 		this.createMainMenu();
 		this.createStatusBar();
+		this.createTabbedPane();
 	}
 	
 	public static MainFrame getInstance() {
@@ -84,6 +83,14 @@ public class MainFrame extends JFrame {
 		
 		this.status = new StatusBar();
 		this.add(this.status, BorderLayout.SOUTH);
+		
+	}
+	
+	private void createTabbedPane() {
+		
+		this.tabbedPane = new TabbedPane();
+		this.add(this.tabbedPane, BorderLayout.CENTER);
+		
 		
 	}
 }
