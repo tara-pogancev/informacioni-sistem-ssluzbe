@@ -35,6 +35,7 @@ public class Toolbar extends JToolBar {
 	 * 
 	 */
 	private static final long serialVersionUID = -5707394191276063225L;
+	
 
 	public Toolbar() {
 

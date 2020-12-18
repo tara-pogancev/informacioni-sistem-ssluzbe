@@ -44,8 +44,8 @@ public class DodavanjeStudenta extends JDialog{
 		content.setBorder(padding_form);
 		
 		//Potrebni nizovi
-		String[] finansiranje = {"Budûet", "Samofinansiranje"};
-		String[] god_stud = {"I (prva)", "II (druga)", "III (treÊa)", "IV (Ëetvrta)"};
+		String[] finansiranje = {"Bud≈æet", "Samofinansiranje"};
+		String[] god_stud = {"I (prva)", "II (druga)", "III (treƒáa)", "IV (ƒåetvrta)"};
 		
 		//ELEMENTI FORME	
 		JLabel l1 = new JLabel("Ime*");
@@ -54,7 +54,7 @@ public class DodavanjeStudenta extends JDialog{
 		JLabel l2 = new JLabel("Prezime*");
 		JTextField t2 = new JTextField();
 		
-		JLabel l3 = new JLabel("Datum roenja*");
+		JLabel l3 = new JLabel("Datum roƒëenja*");
 		JTextField t3 = new JTextField();
 		
 		JLabel l4 = new JLabel("Adresa stanovanja*");
@@ -75,7 +75,7 @@ public class DodavanjeStudenta extends JDialog{
 		JLabel l9 = new JLabel("Trenutna godina studija*");
 		JComboBox<String> t9 = new JComboBox<String>(god_stud);
 		
-		JLabel l10 = new JLabel("NaËin finansiranja*");
+		JLabel l10 = new JLabel("Naƒçin finansiranja*");
 		JComboBox<String> t10 = new JComboBox<String>(finansiranje);
 		
 		//Dodavanje komponenti forme

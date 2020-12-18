@@ -32,7 +32,7 @@ public class StatusBar extends JPanel {
 
 		setBorder(BorderFactory.createCompoundBorder(new MatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY), new EmptyBorder(5, 10, 5, 10)));
 
-		JLabel name = new JLabel(" Studentska sluûba");
+		JLabel name = new JLabel(" Studentska slu≈æba");
 
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss | dd/MM/yyyy");
 		Date time = new Date(System.currentTimeMillis());

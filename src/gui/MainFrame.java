@@ -16,8 +16,21 @@ public class MainFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = -8026416994513756565L;
 
-	public MainFrame() {
-
+	private Toolbar toolbar;
+	private MainMenu menu;
+	private StatusBar status;
+	private CentralPanel centralPan;
+	
+	// Singleton pattern
+	private static MainFrame instance = null;
+	
+	private MainFrame() {
+		
+		initialise();
+	}
+	
+	private void initialise() {
+		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -31,24 +44,46 @@ public class MainFrame extends JFrame {
 		this.setIconImage(img.getImage());
 
 		setSize(windowWidth, windowHeight);
-		setTitle("Studentska sluûba");
+		setTitle("Studentska slu≈æba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// centriranje
 		setLocationRelativeTo(null);
+		setVisible(true);
 		
-		MainMenu menu = new MainMenu();
-		setJMenuBar(menu);
 
+		this.centralPan = new CentralPanel();
+		this.add(this.centralPan, BorderLayout.CENTER);
+		
+		this.createToolbar();
+		this.createMainMenu();
+		this.createStatusBar();
+	}
+	
+	public static MainFrame getInstance() {
+		if( instance == null) {
+			
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+	
+	private void createToolbar() {
+		
 		// kreiranje instance klase Toolbar
-		Toolbar toolbar = new Toolbar();
-		add(toolbar, BorderLayout.NORTH);
-
-		StatusBar status = new StatusBar();
-		add(status, BorderLayout.SOUTH);
-
-		CentralPanel centralPan = new CentralPanel();
-		add(centralPan, BorderLayout.CENTER);
+		this.toolbar = new Toolbar();
+		this.add(this.toolbar, BorderLayout.NORTH);
+	}
+	
+	private void createMainMenu() {
+		
+		this.menu = new MainMenu();
+		this.setJMenuBar(this.menu);
+	}
+	
+	private void createStatusBar() {
+		
+		this.status = new StatusBar();
+		this.add(this.status, BorderLayout.SOUTH);
 		
 	}
-
 }
