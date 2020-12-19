@@ -3,8 +3,8 @@ package model;
 
 public class Profesor {
 	
-	private String ime;
 	private String prezime;
+	private String ime;
 	private String datumRodjenja;
 	private String adresaStanovanja;
 	private String kontaktTelefon;
@@ -17,11 +17,12 @@ public class Profesor {
 	
 	public Profesor() {}
 	
-	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String emailAdresa, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		super();
-		this.ime = ime;
+		
 		this.prezime = prezime;
+		this.ime = ime;
 		this.datumRodjenja = datumRodjenja;
 		this.adresaStanovanja = adresaStanovanja;
 		this.kontaktTelefon = kontaktTelefon;
@@ -34,20 +35,20 @@ public class Profesor {
 		
 	}
 	
-	public String getIme() {
-		return ime;
-	}
-	
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-	
 	public String getPrezime() {
 		return prezime;
 	}
 	
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
+	}
+	
+	public String getIme() {
+		return ime;
+	}
+	
+	public void setIme(String ime) {
+		this.ime = ime;
 	}
 	
 	public String getDatumRodjenja() {
