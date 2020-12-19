@@ -35,6 +35,19 @@ public class Profesor {
 		
 	}
 	
+	public Profesor(String ime, String prezime, String titula, String zvanje) {
+		super();
+		
+		this.prezime = prezime;
+		this.ime = ime;
+		this.titula = titula;
+		this.zvanje = zvanje;
+		
+		
+	}
+	
+	
+	
 	public String getPrezime() {
 		return prezime;
 	}
