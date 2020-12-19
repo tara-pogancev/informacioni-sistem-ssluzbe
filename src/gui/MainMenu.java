@@ -5,17 +5,13 @@
 
 package gui;
 
-import listeners.action.*;
-
 import java.awt.event.KeyEvent;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import listeners.action.AddNewAction;
-import listeners.action.DeleteAction;
-import listeners.action.EditAction;
+import listeners.action.*;
 
 public class MainMenu extends JMenuBar {
 
