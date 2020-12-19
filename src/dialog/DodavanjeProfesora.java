@@ -1,7 +1,7 @@
+//#dodavanje_profesora
 package dialog;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -87,7 +87,7 @@ public class DodavanjeProfesora extends JDialog{
 		buttons.setLayout(new FlowLayout());
 		
 		JButton okBtn = new JButton("Potvrdi");
-		JButton cancelBtn = new JButton("Otkaži");
+		JButton cancelBtn = new JButton("Odustani");
 		
 		cancelBtn.addActionListener(new ActionListener() {
 			
@@ -101,9 +101,7 @@ public class DodavanjeProfesora extends JDialog{
 		
 		okBtn.addActionListener(e -> {
 			
-			//@Override
-			//public void actionPerformed(ActionEvent arg0) {
-				
+			
 				if(unosIme.getText().isEmpty() || unosPrz.getText().isEmpty() || 
 				   unosDat.getText().isEmpty() || unosAdr.getText().isEmpty() ||
 				   unosTel.getText().isEmpty() || unosEmail.getText().isEmpty() ||
@@ -117,7 +115,6 @@ public class DodavanjeProfesora extends JDialog{
 					dispose();
 				}
 				
-			//}
 		});
 		
 		buttons.add(okBtn);
