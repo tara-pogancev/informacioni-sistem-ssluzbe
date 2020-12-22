@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
 import listeners.action.*;
 
@@ -19,8 +18,6 @@ public class MainMenu extends JMenuBar {
 	 * 
 	 */
 	private static final long serialVersionUID = -4905765460781590696L;
-	private static final String NAME = null;
-
 
 	public MainMenu() {
 		

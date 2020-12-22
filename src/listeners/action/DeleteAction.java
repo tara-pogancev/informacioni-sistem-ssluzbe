@@ -6,6 +6,9 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import gui.MainFrame;
+import gui.TabbedPane;
+
 
 public class DeleteAction extends AbstractAction {
 
@@ -31,7 +34,19 @@ public class DeleteAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		 System.out.println("Action: Delete");
+		 //System.out.println("Action: Delete");
+		 
+		 TabbedPane temp =  MainFrame.getTabbedPane();
+		 int current_tab = temp.getSelectedIndex();
+		 
+		 switch (current_tab) {
+		 case 0: 	//new DodavanjeStudenta().setVisible(true);
+		 			break;
+		 case 1:	//new DodavanjeProfesora().setVisible(true);
+		 			break;
+		 case 2:   //..
+			 		break;
+		 }
 	}
 
 }
