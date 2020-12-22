@@ -13,5 +13,13 @@ Uputstvo za korišćenje aplikacije: Informacioni Sistem Studentske Službe
 2. Mnemonici
 
 	File: Alt + N
+	    New: Alt + N
+	    Close: Alt + C
+		
 	Edit: Alt + E
+	    Edit: Alt + E
+	    Delete: Alt + D
+		
 	Help: Alt + H
+	    Help: Alt + H
+	    About: Alt + A

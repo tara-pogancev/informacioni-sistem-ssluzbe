@@ -8,6 +8,8 @@ import javax.swing.KeyStroke;
 
 import dialog.DodavanjeProfesora;
 import dialog.DodavanjeStudenta;
+import gui.MainFrame;
+import gui.TabbedPane;
 
 public class AddNewAction extends AbstractAction {
 
@@ -34,12 +36,23 @@ public class AddNewAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		 System.out.println("Action: Add New");
+		// System.out.println("Action: Add New");
 		 
 		 //TODO Napraviti switch-case koji u zavisnosti od aktivnog taba prikaze tacno dodavanje, trenunto je ovako zbog testiranja
 		 //new DodavanjeStudenta().setVisible(true);
-		 new DodavanjeProfesora().setVisible(true);
 		 
+		 //TabbedPane temp = new TabbedPane();
+		 TabbedPane temp =  MainFrame.getTabbedPane();
+		 int current_tab = temp.getSelectedIndex();
+		 
+		 switch (current_tab) {
+		 case 0: 	new DodavanjeStudenta().setVisible(true);
+		 			break;
+		 case 1:	new DodavanjeProfesora().setVisible(true);
+		 			break;
+		 case 2:   //..
+			 		break;
+		 }
 	}
 
 }

@@ -19,7 +19,8 @@ public class MainFrame extends JFrame {
 	private Toolbar toolbar;
 	private MainMenu menu;
 	private StatusBar status;
-	private TabbedPane tabbedPane;
+	//Promenjeno na static public kako bismo mogli lako da mu pristupimo iz drugih klasa
+	private static TabbedPane tabbedPane;
 	
 	
 	// Singleton pattern
@@ -88,9 +89,13 @@ public class MainFrame extends JFrame {
 	
 	private void createTabbedPane() {
 		
-		this.tabbedPane = new TabbedPane();
-		this.add(this.tabbedPane, BorderLayout.CENTER);
-		
-		
+		MainFrame.tabbedPane = new TabbedPane();
+		this.add(MainFrame.tabbedPane, BorderLayout.CENTER);
+				
 	}
+	
+	public static TabbedPane getTabbedPane() {
+		return tabbedPane;
+	}
+
 }

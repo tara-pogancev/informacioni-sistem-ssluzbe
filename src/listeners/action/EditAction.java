@@ -6,6 +6,9 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import gui.MainFrame;
+import gui.TabbedPane;
+
 public class EditAction extends AbstractAction {
 
 	/**
@@ -30,7 +33,19 @@ public class EditAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		 System.out.println("Action: Edit");
+		// System.out.println("Action: Edit");
+		 
+		 TabbedPane temp =  MainFrame.getTabbedPane();
+		 int current_tab = temp.getSelectedIndex();
+		 
+		 switch (current_tab) {
+		 case 0: 	//new DodavanjeStudenta().setVisible(true);
+		 			break;
+		 case 1:	//new DodavanjeProfesora().setVisible(true);
+		 			break;
+		 case 2:   //..
+			 		break;
+		 }
 	}
 
 }

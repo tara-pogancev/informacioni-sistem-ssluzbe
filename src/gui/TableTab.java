@@ -3,12 +3,10 @@ package gui;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 import gui.TabbedPane.Entitet;
 import model.AbstractTableModelProfesori;
-import model.Predmet;
 
 public class TableTab extends JTable {
 
