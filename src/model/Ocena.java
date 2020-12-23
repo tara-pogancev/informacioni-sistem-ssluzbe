@@ -24,6 +24,7 @@ public class Ocena {
 		return ocena;
 	}
 	public void setOcena(int ocena) {
+		//Provera validnosti bice naknadno dodata
 		this.ocena = ocena;
 	}
 	public String getDatum() {
