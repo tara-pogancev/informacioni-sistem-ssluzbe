@@ -75,8 +75,9 @@ public class Student {
 	public void setTrenutnaGodina(int trenutnaGodina) {
 		this.trenutnaGodina = trenutnaGodina;
 	}
-	public Status getStatus() {
-		return status;
+	public String getStatus() {
+		if (this.status == Status.B) return "Budžet";
+		return "Samofinansiranje";
 	}
 	public void setStatus(Status status) {
 		this.status = status;
@@ -113,6 +114,7 @@ public class Student {
 		this.godinaUpisa = godinaUpisa;
 		this.trenutnaGodina = trenutnaGodina;
 		this.status = status;
+		this.prosek = 0;
 	}
 	
 	public Student(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,

@@ -1,11 +1,18 @@
 //#glavni_prozor
+//#prikaz_studenata
+// Referenca: JTableMVCSimple
 package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+
+import view.AbstractTableModelStudenti;
+import view.StudentiJTable;
 
 public class TabbedPane extends JTabbedPane {
 
@@ -13,39 +20,40 @@ public class TabbedPane extends JTabbedPane {
 	 * 
 	 */
 	private static final long serialVersionUID = 7566425700154666023L;
-	
-	enum Entitet { STUDENTI, PROFESORI, PREDMETI }
-	
+
+	enum Entitet {
+		STUDENTI, PROFESORI, PREDMETI
+	}
+
 	JPanel studPanel = new JPanel();
 	static TableTab studTable;
 	JPanel profPanel = new JPanel();
 	static TableTab profTable;
 	JPanel predmPanel = new JPanel();
 	static TableTab predmTable;
-	
+
 	public static Entitet ent = Entitet.STUDENTI;
+
 	
-	public TabbedPane(){
-	
-	
-	studPanel.setLayout(new BorderLayout());
-	studTable = new TableTab(Entitet.STUDENTI);
-	JScrollPane scrollPaneStud = new JScrollPane(studTable);
-	studPanel.add(scrollPaneStud, BorderLayout.CENTER);
-	add("Studenti",studPanel);
-	
-	profPanel.setLayout(new BorderLayout());
-	profTable = new TableTab(Entitet.STUDENTI);
-	JScrollPane scrollPaneProf = new JScrollPane(profTable);
-	profPanel.add(scrollPaneProf, BorderLayout.CENTER);
-	add("Profesori",profPanel);
-	
-	predmPanel.setLayout(new BorderLayout());
-	predmTable = new TableTab(Entitet.STUDENTI);
-	JScrollPane scrollPanePredm = new JScrollPane(predmTable);
-	predmPanel.add(scrollPanePredm, BorderLayout.CENTER);
-	add("Predmeti",predmPanel);
-	
+	private JTable tabelaStudenata = new StudentiJTable();
+
+
+	public TabbedPane() {
+
+		studTable = new TableTab(Entitet.STUDENTI);
+		JScrollPane scrollPaneStud = new JScrollPane(tabelaStudenata);
+		this.add("Studenti", scrollPaneStud);
+		
+		profTable = new TableTab(Entitet.STUDENTI);
+		JScrollPane scrollPaneProf = new JScrollPane(profTable);
+		this.add("Profesori", scrollPaneProf);
+
+		predmTable = new TableTab(Entitet.STUDENTI);
+		JScrollPane scrollPanePredm = new JScrollPane(predmTable);
+		this.add("Predmeti", predmPanel);
+
+	}
+
 //	addChangeListener((ChangeListener) new ChangeListener() {
 //		
 //		@Override
@@ -68,14 +76,16 @@ public class TabbedPane extends JTabbedPane {
 //			
 //			}
 //		}
-//	});
-//
-//	
-	}
-	
+//	}
 
 	public void addTab(String title, Component component) {
-		
-		super.addTab(title,null,component);
+		super.addTab(title, null, component);
+	}
+
+	// Ref: public void azurirajPrikaz(String akcija, int vrednost)
+	public void azurirajS() {
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
+		model.fireTableDataChanged();
+		validate();
 	}
 }

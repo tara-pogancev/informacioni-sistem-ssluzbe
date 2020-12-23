@@ -67,7 +67,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		scroll_pane = new JScrollPane(text_area);
 		
-		text.setText("Pretra�i tekst:");
+		text.setText("Pretraži tekst:");
 		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -153,7 +153,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 
 		String s = entry.getText();
 		if (s.length() <= 0) {
-			message("Ni�ta za pretragu.");
+			message("Ništa za pretragu.");
 			return;
 		}
 
