@@ -1,3 +1,4 @@
+// #prikaz_studenata
 //Reference: Projekat JTableMVCSimple
 package view;
 
@@ -19,6 +20,8 @@ public class StudentiJTable extends JTable {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.setAutoCreateRowSorter(true);
+		this.getTableHeader().setReorderingAllowed(false);
 		this.setModel(new AbstractTableModelStudenti());
 	}
 	

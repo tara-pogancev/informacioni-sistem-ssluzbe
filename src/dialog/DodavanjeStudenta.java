@@ -21,7 +21,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -30,8 +29,7 @@ import controller.StudentController;
 import model.Student;
 import model.Student.Status;
 
-
-public class DodavanjeStudenta extends JDialog implements KeyListener {
+public class DodavanjeStudenta extends JDialog {
 
 	/**
 	 * 
@@ -108,34 +106,74 @@ public class DodavanjeStudenta extends JDialog implements KeyListener {
 		content.add(l10);
 		content.add(t10);
 
-		//BUTTONS
+		// BUTTONS
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
-		
+
 		JButton accept = new JButton("Prihvati");
 		JButton decline = new JButton("Odustani");
-		
-		decline.addActionListener( e -> {this.dispose();});
+
+		accept.setEnabled(false);
+		decline.addActionListener(e -> {
+			this.dispose();
+		});
+
+		KeyListener l = new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
 				
-		accept.addActionListener(e -> {
-			if (!correctParams(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(),
-					t7.getText(), t8.getText())) 
-				JOptionPane.showMessageDialog(this, "Niste popunili sva neophodna pojla!", "Upozorenje", JOptionPane.WARNING_MESSAGE);
-			else {
-				
-				int godina_upisa_st = Integer.parseInt(t8.getText());
-				
-				int trenutna_godina = t9.getSelectedIndex() + 1;
-				
-				Status status_st = Status.B;
-				if (t10.getSelectedIndex() == 1) status_st = Status.S;
-				
-				Student s = new Student(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
-				StudentController.getInstance().addStudent(s);
-				
-				this.dispose();
 			}
-		
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				boolean check1 = Pattern.matches("[A-ZČĆŽĐŠ][A-ZČĆŽĐŠa-zšđčćž]+", t1.getText());
+				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠ][A-ZČĆŽĐŠa-zšđčćž]+", t2.getText());
+				boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3.getText());
+				boolean check4 = (t4.getText() != "");
+				boolean check5 = Pattern.matches("[0-9]+", t5.getText());
+				boolean check6 = (t6.getText() != "");
+				boolean check7 = Pattern.matches("[A-Z]{2,3}[0-9]{1,3}/20[0-9]{2,2}", t7.getText());
+				boolean check8 = Pattern.matches("[0-9]{4,4}", t8.getText());
+
+				if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8)				
+					accept.setEnabled(true);
+				else accept.setEnabled(false);
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				
+			}
+
+		};
+
+		// Dodavanje key listenera za sva polja
+		t1.addKeyListener(l);
+		t2.addKeyListener(l);
+		t3.addKeyListener(l);
+		t4.addKeyListener(l);
+		t5.addKeyListener(l);
+		t6.addKeyListener(l);
+		t7.addKeyListener(l);
+		t8.addKeyListener(l);
+
+		accept.addActionListener(e -> {
+				int godina_upisa_st = Integer.parseInt(t8.getText());
+
+				int trenutna_godina = t9.getSelectedIndex() + 1;
+
+				Status status_st = Status.B;
+				if (t10.getSelectedIndex() == 1)
+					status_st = Status.S;
+
+				Student s = new Student(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(),
+						t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
+				StudentController.getInstance().addStudent(s);
+
+				this.dispose();
+
 		});
 
 		buttons.add(accept);
@@ -147,39 +185,6 @@ public class DodavanjeStudenta extends JDialog implements KeyListener {
 		this.add(buttons, BorderLayout.SOUTH);
 		this.setLocationRelativeTo(null);
 		this.setModal(true);
-	}
-
-	private boolean correctParams(String t1, String t2, String t3, String t4, String t5, String t6, String t7,
-			String t8) {
-		
-		boolean check1 = Pattern.matches("[A-ZČĆŽĐŠ][A-ZČĆŽĐŠa-zŠĐČĆŽ]+", t1);
-		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠ][A-ZČĆŽĐŠa-zŠĐČĆŽ]+", t2);
-		boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3);
-		boolean check4 = (t4 != "");
-		boolean check5 = Pattern.matches("[0-9]+", t5);
-		boolean check6 = (t6 != "");
-		boolean check7 = Pattern.matches("[A-Z]{2,3}[0-9]{1,3}/20[0-9]{2,2}", t7);
-		boolean check8 = Pattern.matches("[0-9]{4,4}", t8);
-
-		return (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8);
-	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		
-		
 	}
 
 }
