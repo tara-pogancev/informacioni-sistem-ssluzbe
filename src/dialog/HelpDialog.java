@@ -21,8 +21,6 @@ import java.io.InputStreamReader;
 import javax.swing.*;
 import javax.swing.text.*;
 
-import java.nio.charset.StandardCharsets;
-
 import javax.swing.event.*;
 import javax.swing.GroupLayout.*;
 
@@ -117,7 +115,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		//RAD SA TXT FAJLOM
 		
-	    File initialFile = new File("docs/help.txt");
+	    File initialFile = new File("docs"+File.separator+"help.txt");
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);

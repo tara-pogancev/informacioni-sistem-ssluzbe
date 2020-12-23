@@ -53,7 +53,7 @@ public class AboutDialog extends JFrame {
 		pack();
 		
 		//Inicijalizacija komponenti gotova
-	    File initialFile = new File("docs/about.txt");
+	    File initialFile = new File("docs" + File.separator + "about.txt");
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);

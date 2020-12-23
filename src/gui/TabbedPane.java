@@ -3,7 +3,6 @@
 // Referenca: JTableMVCSimple
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.JPanel;
@@ -50,7 +49,7 @@ public class TabbedPane extends JTabbedPane {
 
 		predmTable = new TableTab(Entitet.STUDENTI);
 		JScrollPane scrollPanePredm = new JScrollPane(predmTable);
-		this.add("Predmeti", predmPanel);
+		this.add("Predmeti", scrollPanePredm);
 
 	}
 
