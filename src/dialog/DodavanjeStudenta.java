@@ -26,6 +26,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import controller.StudentController;
+import model.Student;
+import model.Student.Status;
+
 
 public class DodavanjeStudenta extends JDialog implements KeyListener {
 
@@ -104,29 +108,34 @@ public class DodavanjeStudenta extends JDialog implements KeyListener {
 		content.add(l10);
 		content.add(t10);
 
-		// BUTTONS
+		//BUTTONS
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
-
+		
 		JButton accept = new JButton("Prihvati");
 		JButton decline = new JButton("Odustani");
-
-		decline.addActionListener(e -> {
-			this.dispose();
-		});
-
-
+		
+		decline.addActionListener( e -> {this.dispose();});
+				
 		accept.addActionListener(e -> {
 			if (!correctParams(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(),
-					t7.getText(), t8.getText()))
-				JOptionPane.showMessageDialog(this, "Niste popunili sva neophodna pojla!", "Upozorenje",
-						JOptionPane.WARNING_MESSAGE);
+					t7.getText(), t8.getText())) 
+				JOptionPane.showMessageDialog(this, "Niste popunili sva neophodna pojla!", "Upozorenje", JOptionPane.WARNING_MESSAGE);
 			else {
-				System.out.println("Action: Dodavanje novog studenta");
-								
+				
+				int godina_upisa_st = Integer.parseInt(t8.getText());
+				
+				int trenutna_godina = t9.getSelectedIndex() + 1;
+				
+				Status status_st = Status.B;
+				if (t10.getSelectedIndex() == 1) status_st = Status.S;
+				
+				Student s = new Student(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
+				StudentController.getInstance().addStudent(s);
+				
 				this.dispose();
 			}
-
+		
 		});
 
 		buttons.add(accept);
