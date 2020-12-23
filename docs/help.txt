@@ -23,3 +23,15 @@ Uputstvo za korišćenje aplikacije: Informacioni Sistem Studentske Službe
 	Help: Alt + H
 	    Help: Alt + H
 	    About: Alt + A
+		
+3. Pregled baze podataka
+
+Izborom jednog od tabova, prikazuje se sadržaj studenata, profesora i predmeta respektivno. Klikom na jedno od polja zaglavlja, aktivira se sortiranje po datoj koloni. Ponovnim klikom na isto zaglavlje, menja se redosled.
+
+Izborom jedne od kolona, korisnici imaju priliku da za dat entitet vrše izmene, ili ga obrišu korišćenjem potrebne akcije.
+
+4. Dodavanje studenta
+
+Dodavanje studenta realizuje se izborom taba sa studente, a potom pokretanjem akcije "New" pronađenom u meniju ili toolbaru.
+U otovrenom prozoru potrebno je popuniti prazna polja validnim podacima, nakon čega će dodavanje biti omogućeno. 
+Primer validnog unosa: Ana, Kraljić, 5/7/1996, Jugoslovenske armije 88, 064789789, ana@gmail.com, RA32/2017, 2017
