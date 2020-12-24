@@ -30,7 +30,7 @@ public class DodavanjeProfesora extends JDialog{
 		this.setSize(450, 500);
 		
 		JPanel fields = new JPanel();
-		fields.setLayout(new GridLayout(10,2,5,10));
+		fields.setLayout(new GridLayout(10,2,5,10)); //hgap,vgap
 		fields.setBorder(BorderFactory.createEmptyBorder(25, 50, 10, 50));
 		
 		JLabel imeProf = new JLabel("Ime*");
