@@ -1,18 +1,23 @@
 package model;
 
+import java.util.List;
+
 public class Predmet {
+	
+	enum Semestar { LETNJI, ZIMSKI};
 	
 	private String sifraPredmeta;
 	private String nazivPredmeta;
-	private String semestar; //Mozda prebaciti u enum
+	private Semestar semestar; 
 	private int godinaIzvodjenja;
 	private Profesor predmetniProfesor;
 	private int ESPB;
-	//studenti
+	private List<Student> studentiPolozili;
+	private List<Student> studentiNisuPolozili;
 	
 	public Predmet() {}
 	
-	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, int godinaIzvodjenja, Profesor predmetniProfesor, int ESPB) {
+	public Predmet(String sifraPredmeta, String nazivPredmeta, Semestar semestar, int godinaIzvodjenja, Profesor predmetniProfesor, int ESPB) {
 		
 		super();
 		this.sifraPredmeta = sifraPredmeta;
@@ -24,6 +29,19 @@ public class Predmet {
 		
 	}
 	
+	public Predmet(String sifraPredmeta, String nazivPredmeta, Semestar semestar, int godinaIzvodjenja,
+			Profesor predmetniProfesor, int eSPB, List<Student> studentiPolozili, List<Student> studentiNisuPolozili) {
+		super();
+		this.sifraPredmeta = sifraPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
+		this.semestar = semestar;
+		this.godinaIzvodjenja = godinaIzvodjenja;
+		this.predmetniProfesor = predmetniProfesor;
+		ESPB = eSPB;
+		this.studentiPolozili = studentiPolozili;
+		this.studentiNisuPolozili = studentiNisuPolozili;
+	}
+
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
 	}
@@ -40,11 +58,11 @@ public class Predmet {
 		this.nazivPredmeta = nazivPredmeta;
 	}
 	
-	public String getSemestar() {
+	public Semestar getSemestar() {
 		return semestar;
 	}
 	
-	public void setSemestar(String semestar) {
+	public void setSemestar(Semestar semestar) {
 		this.semestar = semestar;
 	}
 	
@@ -72,4 +90,24 @@ public class Predmet {
 	public void setESPB(int ESPB) {
 		this.ESPB = ESPB;
 	}
+
+	public List<Student> getStudentiPolozili() {
+		return studentiPolozili;
+	}
+
+	public void setStudentiPolozili(List<Student> studentiPolozili) {
+		this.studentiPolozili = studentiPolozili;
+	}
+
+	public List<Student> getStudentiNisuPolozili() {
+		return studentiNisuPolozili;
+	}
+
+	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
+		this.studentiNisuPolozili = studentiNisuPolozili;
+	}
+
+	
+	
+	
 }
