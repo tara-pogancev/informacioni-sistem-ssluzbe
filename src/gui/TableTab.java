@@ -1,4 +1,4 @@
-//#prikaz_studenata
+//#prikaz_profesora
 package gui;
 
 import java.awt.Color;
@@ -22,8 +22,13 @@ public class TableTab extends JTable {
 			break;
 
 		case PROFESORI:
-			AbstractTableModelProfesori atmProfesori = new AbstractTableModelProfesori();
+			
+			this.setRowSelectionAllowed(true);
+			this.setColumnSelectionAllowed(true);
 			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			this.setAutoCreateRowSorter(true);
+			this.getTableHeader().setReorderingAllowed(false);
+			AbstractTableModelProfesori atmProfesori = new AbstractTableModelProfesori();
 			this.setModel(atmProfesori);
 			break;
 

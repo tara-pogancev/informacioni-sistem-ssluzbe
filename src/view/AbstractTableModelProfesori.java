@@ -10,13 +10,15 @@ public class AbstractTableModelProfesori extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 2369167269332597465L;
-	
+
+	public AbstractTableModelProfesori() {
+	}
 
 	@Override
 	public int getColumnCount() {
 		return BazaProfesora.getInstance().getColumnCount();
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		return BazaProfesora.getInstance().getColumnName(column);
