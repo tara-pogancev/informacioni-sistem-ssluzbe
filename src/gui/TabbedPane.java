@@ -33,49 +33,25 @@ public class TabbedPane extends JTabbedPane {
 
 	public static Entitet ent = Entitet.STUDENTI;
 
-	
 	private JTable tabelaStudenata = new StudentiJTable();
-
-
+	
 	public TabbedPane() {
 
 		studTable = new TableTab(Entitet.STUDENTI);
 		JScrollPane scrollPaneStud = new JScrollPane(tabelaStudenata);
 		this.add("Studenti", scrollPaneStud);
+
 		
-		profTable = new TableTab(Entitet.STUDENTI);
+		profTable = new TableTab(Entitet.PROFESORI);
 		JScrollPane scrollPaneProf = new JScrollPane(profTable);
 		this.add("Profesori", scrollPaneProf);
 
-		predmTable = new TableTab(Entitet.STUDENTI);
+		predmTable = new TableTab(Entitet.PREDMETI);
 		JScrollPane scrollPanePredm = new JScrollPane(predmTable);
 		this.add("Predmeti", scrollPanePredm);
 
 	}
 
-//	addChangeListener((ChangeListener) new ChangeListener() {
-//		
-//		@Override
-//		public void stateChanged(ChangeEvent arg0) {
-//			
-//			switch(getSelectedIndex())
-//			{
-//			
-//			case 0:
-//				ent = Entitet.STUDENTI;
-//				break;
-//			case 1:
-//				ent = Entitet.PROFESORI;
-//				break;
-//			case 2:
-//				ent = Entitet.PREDMETI;
-//				break;
-//			default:
-//				break;
-//			
-//			}
-//		}
-//	}
 
 	public void addTab(String title, Component component) {
 		super.addTab(title, null, component);
