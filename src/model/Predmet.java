@@ -4,9 +4,7 @@ import java.util.List;
 
 public class Predmet {
 
-	enum Semestar {
-		LETNJI, ZIMSKI
-	};
+	enum Semestar {LETNJI, ZIMSKI};
 
 	private String sifraPredmeta;
 	private String nazivPredmeta;

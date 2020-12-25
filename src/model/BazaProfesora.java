@@ -4,6 +4,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Profesor.Titula;
+import model.Profesor.Zvanje;
+
 public class BazaProfesora {
 
 	private static BazaProfesora instance = null;
@@ -33,9 +36,8 @@ public class BazaProfesora {
 	private void inicijalizacijaProfesora() {
 
 		this.profesori = new ArrayList<Profesor>();
-		profesori.add(new Profesor("Kristina", "Stojic", "dr", "Dekan"));
-		profesori.add(new Profesor("Đorđe", "Njegić", "dr", "Profesor"));
-		profesori.add(new Profesor("Jelena", "Hrnjak", "dr", "Profesor"));
+		profesori.add(new Profesor("Stojic","Kristina", "12/02/1999","Pericka 12","0653687596","krisstojic@gmail.com","Moja kancelarija 2","995876258",Titula.mr,Zvanje.asistent));
+		profesori.add(new Profesor("Njegić","Đorđe", "05/09/1999","Dositejeva 23","0658469586","djordjenjegic@gmail.com","Moja kancelarija 1","985632584",Titula.dr,Zvanje.redovniProfesor));
 
 	}
 
@@ -80,6 +82,11 @@ public class BazaProfesora {
 
 		}
 
+	}
+	
+	public void dodajProfesora(Profesor p) {
+		
+		this.profesori.add(p);
 	}
 
 }
