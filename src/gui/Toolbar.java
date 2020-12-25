@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -74,7 +75,7 @@ public class Toolbar extends JToolBar {
 		delete.setFocusPainted(false);
 
 		JButton search = new JButton();
-		search.setIcon(new ImageIcon("images/search-icon2.png"));
+		search.setIcon(new ImageIcon("images" + File.separator + "search-icon2.png"));
 		search.setToolTipText("Search");
 		search.setBorder(new EmptyBorder(3, 3, 3, 3));
 		search.setOpaque(false);
