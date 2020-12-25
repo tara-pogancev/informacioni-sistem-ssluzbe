@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
 import view.StudentiJTable;
 
@@ -62,5 +63,15 @@ public class TabbedPane extends JTabbedPane {
 		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+
+
+	public void azurirajProfesora() {
+		
+		AbstractTableModelProfesori atmProf = (AbstractTableModelProfesori) profTable.getModel();
+		atmProf.fireTableDataChanged();
+		validate();
+		
+		
 	}
 }
