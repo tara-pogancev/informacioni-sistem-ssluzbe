@@ -2,6 +2,8 @@ package listeners.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
+
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
@@ -23,7 +25,7 @@ public class AddNewAction extends AbstractAction {
 //		putValue(NAME, "Name");
 //		putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 		putValue(SHORT_DESCRIPTION, "New");
-		putValue(SMALL_ICON, new ImageIcon("images/add.png"));
+		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "add.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		putValue(MNEMONIC_KEY, KeyEvent.VK_N);
 		
