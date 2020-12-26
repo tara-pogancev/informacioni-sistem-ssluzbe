@@ -11,6 +11,8 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import listeners.action.MyWindowListener;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -57,6 +59,8 @@ public class MainFrame extends JFrame {
 		// centriranje
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		addWindowListener(new MyWindowListener());
 
 		this.createToolbar();
 		this.createMainMenu();
