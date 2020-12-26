@@ -1,12 +1,18 @@
 //#ocena
 package model;
 
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Ocena {
 
 	private Student student;
 	private Predmet predmet;
 	private int ocena;
-	private String datum;
+	private Date datum;
 	
 	public Student getStudent() {
 		return student;
@@ -28,18 +34,27 @@ public class Ocena {
 		this.ocena = ocena;
 	}
 	public String getDatum() {
-		return datum;
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(datum);
 	}
-	public void setDatum(String datum) {
+	public void setDatum(Date datum) {
 		this.datum = datum;
 	}
 	
-	public Ocena(Student student, Predmet predmet, int ocena, String datum) {
+	public Ocena(Student student, Predmet predmet, int ocena, String datum2) {
 		super();
 		this.student = student;
 		this.predmet = predmet;
 		this.ocena = ocena;
-		this.datum = datum;
+
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.datum = dateFormat.parse(datum2);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

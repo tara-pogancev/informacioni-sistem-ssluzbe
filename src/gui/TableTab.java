@@ -1,4 +1,6 @@
 //#prikaz_profesora
+
+//#prikaz_studenata
 package gui;
 
 import java.awt.Color;
@@ -9,6 +11,7 @@ import javax.swing.table.TableCellRenderer;
 
 import gui.TabbedPane.Entitet;
 import view.AbstractTableModelProfesori;
+import view.AbstractTableModelStudenti;
 
 public class TableTab extends JTable {
 
@@ -19,6 +22,13 @@ public class TableTab extends JTable {
 		switch (ent) {
 
 		case STUDENTI:
+
+			this.setRowSelectionAllowed(true);
+			this.setColumnSelectionAllowed(true);
+			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			this.setAutoCreateRowSorter(true);
+			this.getTableHeader().setReorderingAllowed(false);
+			this.setModel(new AbstractTableModelStudenti());
 			break;
 
 		case PROFESORI:

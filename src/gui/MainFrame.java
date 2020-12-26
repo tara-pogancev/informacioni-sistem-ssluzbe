@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.Toolkit;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -43,6 +44,7 @@ public class MainFrame extends JFrame {
 
 		// ikonica programa
 		ImageIcon img = new ImageIcon("images/addressbook.png");
+
 		this.setIconImage(img.getImage());
 
 		setSize(windowWidth, windowHeight);

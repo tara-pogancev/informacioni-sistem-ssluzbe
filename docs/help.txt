@@ -34,4 +34,9 @@ Izborom jedne od kolona, korisnici imaju priliku da za dat entitet vrše izmene,
 
 Dodavanje studenta realizuje se izborom taba sa studente, a potom pokretanjem akcije "New" pronađenom u meniju ili toolbaru.
 U otovrenom prozoru potrebno je popuniti prazna polja validnim podacima, nakon čega će dodavanje biti omogućeno. 
-Primer validnog unosa: Ana, Kraljić, 5/7/1996, Jugoslovenske armije 88, 064789789, ana@gmail.com, RA32/2017, 2017
+Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 064789789, ana@gmail.com, ra-32-2017, 2017
+
+5. Dodavanje profesora
+
+Dodavanje profesora, analogno dodavanju studenta, vrši se izborom kartice "Profesor", a potom pokretanjem akcije "New", putem menija, 
+toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata polja, dodavanje klikom na dugme biće omogućeno.
