@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Profesor {
 
@@ -23,6 +24,7 @@ public class Profesor {
 	private String brojLicneKarte;
 	private Titula titula;
 	private Zvanje zvanje;
+	private List<Predmet> predmeti;
 
 	public Profesor() {
 	}
@@ -48,6 +50,31 @@ public class Profesor {
 		this.zvanje = zvanje;
 	
 
+	}
+	
+	
+
+	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String emailAdresa, String adresaKancelarije, String brojLicneKarte, Titula titula, Zvanje zvanje,
+			List<Predmet> predmeti) {
+		super();
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		this.prezime = prezime;
+		this.ime = ime;
+		try {
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);	
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
+		this.emailAdresa = emailAdresa;
+		this.adresaKancelarije = adresaKancelarije;
+		this.brojLicneKarte = brojLicneKarte;
+		this.titula = titula;
+		this.zvanje = zvanje;
+		this.predmeti = predmeti;
 	}
 
 	public String getPrezime() {
@@ -174,7 +201,14 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 
-	
+	public List<Predmet> getPredmeti() {
+		return predmeti;
+	}
+
+	public void setPredmeti(List<Predmet> predmeti) {
+		this.predmeti = predmeti;
+	}
+
 	@Override
 	public String toString() {
 		
