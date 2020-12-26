@@ -155,7 +155,7 @@ public class DodavanjeStudenta extends JDialog {
 				boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3.getText());
 
 				boolean check4 = (!t4.getText().isEmpty());
-				boolean check5 = Pattern.matches("[0-9]+", t5.getText());
+				boolean check5 = Pattern.matches("[+]?[0-9]+", t5.getText());
 				boolean check6 = Pattern.matches("[a-z0-9.+-/_~]*[a-z0-9.+-/_~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
 						t6.getText());
 				// boolean check7 = (Pattern.matches("[A-Za-z]+[-/]?[0-9]+([-/]?[A-Za-z0-9])*",

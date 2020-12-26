@@ -34,7 +34,8 @@ public class CloseAppAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		int id = JOptionPane.showOptionDialog(null, "Are you sure you want to close this application?", "Close application?", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+		int id = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije?",
+				JOptionPane.YES_NO_OPTION);
 		if (id == JOptionPane.YES_OPTION)
 			System.exit(0);
 		
