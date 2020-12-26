@@ -127,7 +127,7 @@ public class Student {
 			e.printStackTrace();
 		}
 				
-		System.out.println(this.datumRodjenja);
+		//System.out.println(this.datumRodjenja);
 		
 		this.adresaStanovanja = adresaStanovanja;
 		this.kontaktTelefon = kontaktTelefon;
