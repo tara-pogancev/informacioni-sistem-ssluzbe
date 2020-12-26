@@ -8,11 +8,9 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
-import view.StudentiJTable;
 
 public class TabbedPane extends JTabbedPane {
 
@@ -31,17 +29,16 @@ public class TabbedPane extends JTabbedPane {
 	static TableTab profTable;
 	JPanel predmPanel = new JPanel();
 	static TableTab predmTable;
+	
+//	private JTable tabelaStudenata = new StudentiJTable();
 
 	public static Entitet ent = Entitet.STUDENTI;
-
-	private JTable tabelaStudenata = new StudentiJTable();
 	
 	public TabbedPane() {
 
 		studTable = new TableTab(Entitet.STUDENTI);
-		JScrollPane scrollPaneStud = new JScrollPane(tabelaStudenata);
+		JScrollPane scrollPaneStud = new JScrollPane(studTable);
 		this.add("Studenti", scrollPaneStud);
-
 		
 		profTable = new TableTab(Entitet.PROFESORI);
 		JScrollPane scrollPaneProf = new JScrollPane(profTable);
@@ -60,7 +57,7 @@ public class TabbedPane extends JTabbedPane {
 
 	// Ref: public void azurirajPrikaz(String akcija, int vrednost)
 	public void azurirajS() {
-		AbstractTableModelStudenti model = (AbstractTableModelStudenti) tabelaStudenata.getModel();
+		AbstractTableModelStudenti model = (AbstractTableModelStudenti) studTable.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}

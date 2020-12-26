@@ -260,7 +260,7 @@ public class DodavanjeStudenta extends JDialog {
 				ex.printStackTrace();
 			}
 
-			Student s = new Student(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(),
+			Student s = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(),
 					t7.getText(), godina_upisa_st, trenutna_godina, status_st);
 
 			if (!BazaStudenata.getInstance().isUnique(t7.getText())) {
