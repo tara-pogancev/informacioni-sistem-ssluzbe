@@ -4,10 +4,6 @@ package model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.util.Calendar;
-=======
->>>>>>> 72efc949d9cfe369de0606e7edaabcd079f0a257
 import java.util.Date;
 
 public class Profesor {

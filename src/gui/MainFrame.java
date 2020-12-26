@@ -2,7 +2,7 @@
 package gui;
 
 import java.awt.Toolkit;
-
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 		int windowWidth = (screenWidth / 100) * 75;
 
 		// ikonica programa
-		ImageIcon img = new ImageIcon("images/addressbook.png");
+		ImageIcon img = new ImageIcon("images" + File.separator + "addressbook.png");
 
 		this.setIconImage(img.getImage());
 

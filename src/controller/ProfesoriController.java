@@ -21,7 +21,7 @@ public class ProfesoriController {
 	public void dodajProfesora(Profesor p) {
 		
 		BazaProfesora.getInstance().dodajProfesora(p);
-		MainFrame.getInstance().getTabbedPane().azurirajProfesora();
+		MainFrame.getTabbedPane().azurirajProfesora();
 	}
 
 }

@@ -46,8 +46,6 @@ public class Toolbar extends JToolBar {
 		super(SwingConstants.HORIZONTAL);
 		setFloatable(false);
 
-		// Za ivice ikonica
-		Border emptyBorder = BorderFactory.createEmptyBorder();
 
 		// Akceleratori
 
@@ -63,13 +61,13 @@ public class Toolbar extends JToolBar {
 		addNew.setFocusPainted(false);
 
 		JButton edit = new JButton(ea);
-		edit.setBorder(emptyBorder);
+		edit.setBorder(new EmptyBorder(3,3,3,3));
 		edit.setOpaque(false);
 		edit.setContentAreaFilled(true);
 		edit.setFocusPainted(false);
 
 		JButton delete = new JButton(da);
-		delete.setBorder(emptyBorder);
+		delete.setBorder(new EmptyBorder(3,3,3,3));
 		delete.setOpaque(false);
 		delete.setContentAreaFilled(true);
 		delete.setFocusPainted(false);
