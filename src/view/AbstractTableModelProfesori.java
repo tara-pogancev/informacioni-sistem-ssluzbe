@@ -1,3 +1,7 @@
+//#prikaz_profesora
+//Reference
+//Projekat JTableMVCSimple
+
 package view;
 
 import javax.swing.table.AbstractTableModel;

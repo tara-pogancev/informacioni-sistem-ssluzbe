@@ -3,6 +3,10 @@
 // Reference:
 // https://stackoverflow.com/questions/16303916/how-to-make-jtextfield-text-disappear-when-tabbed-into-netbeans
 // https://alvinalexander.com/java/java-action-abstractaction-actionlistener/
+//
+// https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
+// Projekat Termin3 
+// https://docs.oracle.com/javase/8/docs/api/javax/swing/BorderFactory.html#createEmptyBorder-int-int-int-int-
 
 package gui;
 
@@ -14,7 +18,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,7 +26,6 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import listeners.action.AddNewAction;
@@ -40,7 +42,6 @@ public class Toolbar extends JToolBar {
 
 	public Toolbar() {
 
-		//TODO: Urediti ivice ikonica
 		
 		// Orijentacija toolbar-a
 		super(SwingConstants.HORIZONTAL);

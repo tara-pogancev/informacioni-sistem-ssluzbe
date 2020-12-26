@@ -1,6 +1,8 @@
 //#glavni_prozor
 //#prikaz_studenata
+//#prikaz_profesora
 // Referenca: JTableMVCSimple
+// Projekat JTableMVCSAdvanced
 package gui;
 
 import java.awt.Component;

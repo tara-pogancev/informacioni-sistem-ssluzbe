@@ -1,3 +1,7 @@
+//Reference:
+//Projekat JTableMVCSimple
+//Projekat MVCExample
+
 package controller;
 
 import gui.MainFrame;

@@ -1,4 +1,7 @@
 // #prikaz_profesora
+// Reference:
+// Projekat JTableMVCSimple
+
 package model;
 
 import java.util.ArrayList;

@@ -1,4 +1,8 @@
 // #glavni_prozor
+// Reference:
+// Projekat Termin3
+// Projekat Dogadjaji
+
 package gui;
 
 import java.awt.Toolkit;
@@ -60,6 +64,7 @@ public class MainFrame extends JFrame {
 		this.createTabbedPane();
 		validate();
 
+
 	}
 
 	public static MainFrame getInstance() {
@@ -100,5 +105,7 @@ public class MainFrame extends JFrame {
 	public static TabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
+	
+	
 
 }

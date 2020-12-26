@@ -1,4 +1,8 @@
 //#dodavanje_profesora
+//Reference:
+// Projekat JTablveMVCAdvanced
+// Projekat Dogadjaji
+
 package dialog;
 
 import java.awt.BorderLayout;

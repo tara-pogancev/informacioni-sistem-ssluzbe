@@ -1,4 +1,6 @@
 //#profesor
+//Reference:
+//Projekat MVCExample
 package model;
 
 import java.text.DateFormat;
@@ -25,15 +27,15 @@ public class Profesor {
 	public Profesor() {
 	}
 
-	public Profesor(String prezime, String ime, String datumRodjenjaS, String adresaStanovanja, String kontaktTelefon,
+	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String emailAdresa, String adresaKancelarije, String brojLicneKarte, Titula titula, Zvanje zvanje) {
 		super();
 
-		DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		this.prezime = prezime;
 		this.ime = ime;
 		try {
-			this.datumRodjenja = dateFormat.parse(datumRodjenjaS);	
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);	
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -64,9 +66,13 @@ public class Profesor {
 		this.ime = ime;
 	}
 
-	public String getDatumRodjenja() {
+	public Date getDatumRodjenja() {
+		return datumRodjenja;
+	}
+	
+	public String getDatumRodjenjaString() {
 		
-	    DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");  
+	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 	    return dateFormat.format(datumRodjenja);
 	}
 
@@ -172,7 +178,7 @@ public class Profesor {
 	@Override
 	public String toString() {
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");  
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 		System.out.println(ime + " " + prezime + " " + dateFormat.format(datumRodjenja) + " " + adresaStanovanja + " " + kontaktTelefon 
 				+ " " + emailAdresa + " " + adresaKancelarije + " " +  brojLicneKarte + " " + getTitula() + " " + getZvanje());
 		return super.toString();
