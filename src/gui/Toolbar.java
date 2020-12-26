@@ -14,7 +14,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,7 +22,6 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import listeners.action.AddNewAction;
@@ -47,7 +45,7 @@ public class Toolbar extends JToolBar {
 		setFloatable(false);
 
 		// Za ivice ikonica
-		Border emptyBorder = BorderFactory.createEmptyBorder();
+//		Border emptyBorder = BorderFactory.createEmptyBorder();
 
 		// Akceleratori
 
@@ -63,13 +61,13 @@ public class Toolbar extends JToolBar {
 		addNew.setFocusPainted(false);
 
 		JButton edit = new JButton(ea);
-		edit.setBorder(emptyBorder);
+		edit.setBorder(new EmptyBorder(3,3,3,3));
 		edit.setOpaque(false);
 		edit.setContentAreaFilled(true);
 		edit.setFocusPainted(false);
 
 		JButton delete = new JButton(da);
-		delete.setBorder(emptyBorder);
+		delete.setBorder(new EmptyBorder(3,3,3,3));
 		delete.setOpaque(false);
 		delete.setContentAreaFilled(true);
 		delete.setFocusPainted(false);

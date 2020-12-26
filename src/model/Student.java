@@ -1,6 +1,13 @@
 //#student
+// Reference:
+// https://www.tutorialspoint.com/java/java_date_time.htm
+
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Student {
@@ -9,7 +16,7 @@ public class Student {
 	
 	private String prezime;
 	private String ime;
-	private String datumRodjenja;
+	private Date datumRodjenja;
 	private String adresaStanovanja;
 	private String kontaktTelefon;
 	private String emailAdresa;
@@ -17,7 +24,7 @@ public class Student {
 	private int godinaUpisa;
 	private int trenutnaGodina;
 	private Status status;
-	private float prosek;
+	private double prosek;
 	private List<Ocena> ocene;
 	private List<Predmet> nepolozeniIspiti;
 	
@@ -33,10 +40,16 @@ public class Student {
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
-	public String getDatumRodjenja() {
+	public Date getDatumRodjenja() {
 		return datumRodjenja;
 	}
-	public void setDatumRodjenja(String datumRodjenja) {
+	
+	public String getDatumRodjenjaString() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		return dateFormat.format(datumRodjenja);
+	}
+	
+	public void setDatumRodjenja(Date datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 	public String getAdresaStanovanja() {
@@ -82,10 +95,10 @@ public class Student {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public float getProsek() {
+	public double getProsek() {
 		return prosek;
 	}
-	public void setProsek(float prosek) {
+	public void setProsek(double prosek) {
 		this.prosek = prosek;
 	}
 	public List<Ocena> getOcene() {
@@ -106,7 +119,16 @@ public class Student {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
-		this.datumRodjenja = datumRodjenja;
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+				
+		System.out.println(this.datumRodjenja);
+		
 		this.adresaStanovanja = adresaStanovanja;
 		this.kontaktTelefon = kontaktTelefon;
 		this.emailAdresa = emailAdresa;
@@ -118,12 +140,19 @@ public class Student {
 	}
 	
 	public Student(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodina, Status status, float prosek,
+			String emailAdresa, String brojIndeksa, int godinaUpisa, int trenutnaGodina, Status status, double prosek,
 			List<Ocena> ocene, List<Predmet> nepolozeniIspiti) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
-		this.datumRodjenja = datumRodjenja;
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		this.adresaStanovanja = adresaStanovanja;
 		this.kontaktTelefon = kontaktTelefon;
 		this.emailAdresa = emailAdresa;
