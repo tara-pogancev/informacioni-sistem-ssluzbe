@@ -1,5 +1,5 @@
 //#prikaz_profesora
-//#prikaz_studenta
+//#prikaz_studenata
 package gui;
 
 import java.awt.Color;

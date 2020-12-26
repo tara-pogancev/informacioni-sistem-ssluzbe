@@ -252,7 +252,7 @@ public class DodavanjeStudenta extends JDialog {
 			try {
 				datumRodjenja = dateFormat.parse(t3.getText());
 				if (datumRodjenja.compareTo(dateFormat.parse("1/1/2004")) > 0
-						|| datumRodjenja.compareTo(dateFormat.parse("31/12/1985")) < 0) {
+						|| datumRodjenja.compareTo(dateFormat.parse("31/12/1900")) < 0) {
 					rodjenje_bool = false;
 				}
 
