@@ -13,6 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -268,6 +272,7 @@ public class DodavanjeProfesora extends JDialog {
 				switch(zvanje.getSelectedIndex()) {
 				case 0:
 					zvanjeProfes = Zvanje.saradnikUNastavi;
+					break;
 				case 1:
 					zvanjeProfes = Zvanje.asistent;
 					break;
@@ -291,6 +296,24 @@ public class DodavanjeProfesora extends JDialog {
 					break;
 				}
 				
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				
+				Date datumRodjenja = null;
+				boolean ispravanDatum = true;
+				
+				try {
+					
+					datumRodjenja = dateFormat.parse(unosDat.getText());
+					
+					if (datumRodjenja.compareTo(dateFormat.parse("01/01/2002")) > 0) {
+
+						ispravanDatum= false;
+					}
+
+				} catch (ParseException ex) {
+					ex.printStackTrace();
+				}
+				
 				Profesor p = new Profesor(unosPrz.getText(),unosIme.getText(),unosDat.getText(),unosAdr.getText(),unosTel.getText(),unosEmail.getText()
 						,unosAdrK.getText(), unosBlc.getText(),titulaProf,zvanjeProfes);
 				
@@ -306,9 +329,13 @@ public class DodavanjeProfesora extends JDialog {
 
 				if(postoji) {
 					JOptionPane.showMessageDialog(null, "Profesor sa ovim brojem lične karte je već u sistemu!");
+				}else if(!ispravanDatum){
+					
+						JOptionPane.showMessageDialog(null, "Datum rođenja nije validan!");
+					
 				}else {
 					ProfesoriController.getInstance().dodajProfesora(p);
-					p.toString();
+					//p.toString();
 					this.dispose();
 				}
 				
