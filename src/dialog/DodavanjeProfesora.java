@@ -140,8 +140,8 @@ public class DodavanjeProfesora extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 			
-				boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠ][a-zšđčćž]+", unosIme.getText());
-				boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠ][a-zšđčćž]+", unosPrz.getText());
+				boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
+				boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
 				boolean proveraDat = Pattern.matches("(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})", unosDat.getText());
 				boolean proveraAdr = ( unosAdr.getText() != "");
 				boolean proveraTel = Pattern.matches("[+]?[0-9]+", unosTel.getText());
