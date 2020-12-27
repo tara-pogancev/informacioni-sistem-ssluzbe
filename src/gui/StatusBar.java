@@ -1,5 +1,4 @@
 // #status_bar
-
 // Reference:
 // https://www.javatpoint.com/java-simpledateformat
 // https://stackoverflow.com/questions/40706748/live-clock-in-java-application
