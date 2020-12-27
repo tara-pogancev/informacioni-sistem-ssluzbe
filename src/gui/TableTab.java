@@ -1,6 +1,6 @@
 //#prikaz_profesora
-
 //#prikaz_studenata
+
 package gui;
 
 import java.awt.Color;

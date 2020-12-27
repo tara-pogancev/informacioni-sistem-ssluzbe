@@ -1,5 +1,7 @@
 //#prikaz_studenata
+//
 //Reference: Projekat JTableMVCSimple
+
 package model;
 
 import java.util.ArrayList;

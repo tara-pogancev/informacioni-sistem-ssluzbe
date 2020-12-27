@@ -1,6 +1,6 @@
 //#izmena_studenta
 //#brisanje_studenta
-//#prikaz_studenta
+//#prikaz_studenata
 
 //Reference: Projekat JTableMVCSimple
 
