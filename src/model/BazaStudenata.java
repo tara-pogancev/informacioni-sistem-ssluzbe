@@ -133,4 +133,13 @@ public class BazaStudenata {
 	}
 
 	
+	public Student getByIdx(String index) {
+		for (Student s : studenti) {
+			if(s.getBrojIndeksa() == index) {
+				return s;
+			}
+		}
+		return null;
+	}
+	
 }

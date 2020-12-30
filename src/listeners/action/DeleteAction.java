@@ -9,7 +9,6 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
-import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
 
@@ -43,8 +42,13 @@ public class DeleteAction extends AbstractAction {
 		 TabbedPane temp =  MainFrame.getTabbedPane();
 		 int current_tab = temp.getSelectedIndex();
 		 
+		 //Provera da je bilo koji red izabran
+		 int sellected_row = temp.getSellectedTableIndex();
+		 if (sellected_row == -1)
+			 return;
+		 
 		 switch (current_tab) {
-		 case 0: 	StudentController.getInstance().izbrisiStudenta(MainFrame.getTabbedPane().getStudentIdx());
+		 case 0: 	//StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
 		 			break;
 		 case 1:	//...
 		 			break;

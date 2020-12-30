@@ -1,3 +1,5 @@
+//#izmena_studenta
+
 package listeners.action;
 
 import java.awt.event.ActionEvent;
@@ -8,6 +10,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialog.IzmenaStudenta;
 import gui.MainFrame;
 import gui.TabbedPane;
 
@@ -40,12 +43,17 @@ public class EditAction extends AbstractAction {
 		 TabbedPane temp =  MainFrame.getTabbedPane();
 		 int current_tab = temp.getSelectedIndex();
 		 
+		 //Provera da je bilo koji red izabran
+		 int sellected_row = temp.getSellectedTableIndex();
+		 if (sellected_row == -1)
+			 return;
+		 
 		 switch (current_tab) {
-		 case 0: 	//new DodavanjeStudenta().setVisible(true);
+		 case 0: 	new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
 		 			break;
-		 case 1:	//new DodavanjeProfesora().setVisible(true);
+		 case 1:	//...
 		 			break;
-		 case 2:   //..
+		 case 2:   //...
 			 		break;
 		 }
 	}
