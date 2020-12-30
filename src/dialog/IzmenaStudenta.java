@@ -19,9 +19,15 @@ public class IzmenaStudenta extends JDialog {
 	 */
 	private static final long serialVersionUID = 6768600238220813587L;
 		
-//	public static IzmenaStudenta close = return IzmenaStudenta;
+	public static IzmenaStudenta instance = null;
+	private static String current_idx = null;
 
-	public IzmenaStudenta(String idx) {
+	private IzmenaStudenta(String idx) {
+		current_idx = idx;
+		initialise(idx);
+	}
+	
+	public void initialise(String idx) {
 		
 		this.setTitle("Izmena studenta");
 		this.setResizable(false);
@@ -34,8 +40,28 @@ public class IzmenaStudenta extends JDialog {
 		this.setModal(true);
 	}
 	
+//	public IzmenaStudenta(String idx) {
+//		
+//		this.setTitle("Izmena studenta");
+//		this.setResizable(false);
+//		this.setSize(650, 550); // X, Y
+//		
+//		Student s = BazaStudenata.getInstance().getByIdx(idx);
+//		this.add(new StudentTabbedPane(s));
+//		
+//		this.setLocationRelativeTo(MainFrame.getInstance());
+//		this.setModal(true);
+//	}
+	
 	public void closeDialog() {
 		this.dispose();
 	}
 	
+	public static IzmenaStudenta getInstance(String idx) {
+		if (instance == null || !current_idx.equals(idx)) {
+			instance = new IzmenaStudenta(idx);
+		}
+		return instance;
+	}
+
 }

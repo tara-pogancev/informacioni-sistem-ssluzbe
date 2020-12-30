@@ -170,6 +170,32 @@ public class Student {
 		this.ocene = ocene;
 		this.nepolozeniIspiti = nepolozeniIspiti;
 	}
+	
+	public Student(Student s2) {
+		super();
+		this.prezime = s2.getPrezime();
+		this.ime = s2.getIme();
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.datumRodjenja = dateFormat.parse(s2.getDatumRodjenjaString());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+				
+		//System.out.println(this.datumRodjenja);
+		
+		this.adresaStanovanja = s2.getAdresaStanovanja();
+		this.kontaktTelefon = s2.getKontaktTelefon();
+		this.emailAdresa = s2.getEmailAdresa();
+		this.brojIndeksa = s2.getBrojIndeksa();
+		this.godinaUpisa = s2.getGodinaUpisa();
+		this.trenutnaGodina = s2.getTrenutnaGodina();
+		this.status = s2.getStatusEnum();
+		this.prosek = 0;
+	}
+	
+	
 	//TODO Odraditi metode za ispite
 	public void addOcena() {
 		
@@ -185,12 +211,9 @@ public class Student {
 				&& this.getAdresaStanovanja().equals(s2.getAdresaStanovanja()) && this.getEmailAdresa().equals(s2.getEmailAdresa())
 				&& this.getKontaktTelefon().equals(s2.getKontaktTelefon()) && this.getTrenutnaGodina() == s2.getTrenutnaGodina()
 				&& this.getStatus() == s2.getStatus() && this.getGodinaUpisa() == s2.getGodinaUpisa() && this.getDatumRodjenjaString().equals(s2.getDatumRodjenjaString())) {
-			System.out.println("JEDNAKI");
 			return true;	
 		}
-			
-		
-		System.out.println("NISU JEDNAKI");
+
 		
 		return false;
 	}

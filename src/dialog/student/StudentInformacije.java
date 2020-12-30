@@ -25,6 +25,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.StudentController;
+import dialog.IzmenaStudenta;
 import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
@@ -35,6 +36,8 @@ public class StudentInformacije extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 7231920207752882662L;
+	
+	private Student staro = null;
 
 	public StudentInformacije(Student s) {
 
@@ -48,6 +51,10 @@ public class StudentInformacije extends JPanel {
 		content.setLayout(new GridLayout(10, 2, 5, 10)); // row, col, hgap, vgap
 		content.setBorder(padding_form);
 
+		//Parent string
+		String parent_idx = s.getBrojIndeksa();
+		staro = new Student(s);
+		
 		// Potrebni nizovi
 		String[] finansiranje = { "Budžet", "Samofinansiranje" };
 		String[] god_stud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
@@ -132,9 +139,9 @@ public class StudentInformacije extends JPanel {
 		JButton decline = new JButton("Odustani");
 		accept.setEnabled(false);
 
-	//	decline.addActionListener(e -> {
-	//		IzmenaStudenta.;
-	//	});
+		decline.addActionListener(e -> {
+			IzmenaStudenta.getInstance(parent_idx).closeDialog();
+		});
 
 		
 		// KEY-LISTENER
@@ -155,10 +162,7 @@ public class StudentInformacije extends JPanel {
 				boolean check5 = Pattern.matches("[+]?[0-9]+", t5.getText());
 				boolean check6 = Pattern.matches("[a-z0-9.+-/_~]*[a-z0-9.+-/_~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
 						t6.getText());
-				// boolean check7 = (Pattern.matches("[A-Za-z]+[-/]?[0-9]+([-/]?[A-Za-z0-9])*",
-				// t7.getText())); //Vrlo generican unos (wip)
 				boolean check7 = (Pattern.matches("[a-z]{2,2}[-][0-9]{1,3}[-][0-9]{4,4}", t7.getText())); // Unos iz specifikacije
-
 				/*
 				 * Za ogranicenje unosa indeksa, ostavljena je originalna forma, ista kao u
 				 * specifikaciji iz razloga sto bi drugacija slobodna forma dovela do mogucnosti
@@ -168,18 +172,22 @@ public class StudentInformacije extends JPanel {
 				boolean check8 = Pattern.matches("[0-9]{4,4}", t8.getText());
 				
 				//NIJE DOZVOLJENO AKO PROMENA NEMA
-				Status status_st = Status.B;
-				if (t10.getSelectedIndex() == 1)
-					status_st = Status.S;
+
 				
-				int godina_upisa_st = Integer.parseInt(t8.getText());
-				int trenutna_godina = t9.getSelectedIndex() + 1;
-				
-				Student novo = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(),
-						t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
-				
-				if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && !novo.equals(s))
-					accept.setEnabled(true);
+				if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8) {
+					Status status_st = Status.B;
+					if (t10.getSelectedIndex() == 1)
+						status_st = Status.S;
+					
+					int godina_upisa_st = Integer.parseInt(t8.getText());
+					int trenutna_godina = t9.getSelectedIndex() + 1;
+					
+					Student novo = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(),
+							t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
+					if (novo.equals(staro)) {
+						accept.setEnabled(false);
+					} else	accept.setEnabled(true);
+				}					
 				else {
 					accept.setEnabled(false);
 				}
@@ -286,9 +294,13 @@ public class StudentInformacije extends JPanel {
 			}
 
 			else {
-
+				
+				staro = new Student(novo);
+				accept.setEnabled(false);
+				
 				StudentController.getInstance().izmeniStudenta(novo, s.getBrojIndeksa());
 				JOptionPane.showMessageDialog(null, "Student uspešno izmenjen!");
+				
 			}
 
 		});
