@@ -1,5 +1,6 @@
 //#prikaz_studenata
 //#brisanje_studenta
+//#sortiranje_studenata
 //
 //Reference: Projekat JTableMVCSimple
 
@@ -130,6 +131,6 @@ public class BazaStudenata {
 		
 		return true;
 	}
-	
+
 	
 }

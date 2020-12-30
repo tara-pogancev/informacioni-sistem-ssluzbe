@@ -37,6 +37,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.StudentController;
+import gui.MainFrame;
 import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
@@ -295,7 +296,7 @@ public class DodavanjeStudenta extends JDialog {
 
 		this.add(content, BorderLayout.CENTER);
 		this.add(buttons, BorderLayout.SOUTH);
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(MainFrame.getInstance());
 		this.setModal(true);
 	}
 

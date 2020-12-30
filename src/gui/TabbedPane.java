@@ -70,6 +70,11 @@ public class TabbedPane extends JTabbedPane {
 		 
 		return idx;
 	}
+	
+	public String getStudentIdx() {
+		String idx = (String) studTable.getValueAt(studTable.getSelectedRow(), 0);
+		return idx;		
+	}
 
 	public void addTab(String title, Component component) {
 		super.addTab(title, null, component);

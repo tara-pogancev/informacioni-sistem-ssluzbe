@@ -44,7 +44,7 @@ public class DeleteAction extends AbstractAction {
 		 int current_tab = temp.getSelectedIndex();
 		 
 		 switch (current_tab) {
-		 case 0: 	StudentController.getInstance().izbrisiStudenta(MainFrame.getTabbedPane().getSellectedTableIndex());
+		 case 0: 	StudentController.getInstance().izbrisiStudenta(MainFrame.getTabbedPane().getStudentIdx());
 		 			break;
 		 case 1:	//...
 		 			break;

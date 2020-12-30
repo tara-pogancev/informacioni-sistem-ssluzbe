@@ -1,6 +1,7 @@
 //#izmena_studenta
 //#brisanje_studenta
 //#prikaz_studenata
+//#sortiranje_studenata
 
 //Reference: Projekat JTableMVCSimple
 
@@ -30,19 +31,15 @@ public class StudentController {
 		
 	}
 	
-    public void izbrisiStudenta(int rowSelectedIndex) {
-    	if (rowSelectedIndex < 0) {
-			return;
-		}
-		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
+    public void izbrisiStudenta(String idx) {
 
 		int id = JOptionPane.showConfirmDialog(null,
-				"Da li ste sigurni da želite da obrišete studenta [" + student.getBrojIndeksa() + "]?",
+				"Da li ste sigurni da želite da obrišete studenta [" + idx + "]?",
 				"Brisanje studenta", JOptionPane.YES_NO_OPTION);
 
 		if (id == JOptionPane.YES_OPTION) {
 
-			BazaStudenata.getInstance().izbrisiStudenta(student.getBrojIndeksa());
+			BazaStudenata.getInstance().izbrisiStudenta(idx);
 			MainFrame.getTabbedPane().azurirajS();
 		}
     }
