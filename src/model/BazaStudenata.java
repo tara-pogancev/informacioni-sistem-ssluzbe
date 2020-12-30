@@ -55,8 +55,6 @@ public class BazaStudenata {
 		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, ocene, predmeti));
 		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, ocene, predmeti));
 		
-		
-
 	}
 	
 	public List<Student> getStudenti() {
@@ -114,14 +112,29 @@ public class BazaStudenata {
 		
 	}
 	
-	public void izmeniStudenta(Student s) {
-		//TODO implementirati
+	public void izmeniStudenta(Student novo, String idx) {
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa() == idx) {
+				
+				s.setIme(novo.getIme());
+				s.setPrezime(novo.getPrezime());
+				s.setDatumRodjenja(novo.getDatumRodjenja());
+				s.setAdresaStanovanja(novo.getAdresaStanovanja());
+				s.setKontaktTelefon(novo.getKontaktTelefon());
+				s.setEmailAdresa(novo.getEmailAdresa());
+				s.setBrojIndeksa(novo.getBrojIndeksa());
+				s.setGodinaUpisa(novo.getGodinaUpisa());
+				s.setTrenutnaGodina(novo.getTrenutnaGodina());
+				s.setStatus(novo.getStatusEnum());
+				
+				return;
+			}
+		}
 	
 	}
 
 	//Vraca TRUE ako je indeks jedinstven, a FALSE ako je vec u bazi
 	public boolean isUnique(String idx) {
-		
 		
 		for(Student s : studenti) {
 			if (s.getBrojIndeksa().equals(idx))

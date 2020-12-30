@@ -44,12 +44,9 @@ public class StudentController {
 		}
     }
 	
-	public void izmeniStudenta(int rowSelectedIndex) {
-		if (rowSelectedIndex < 0) {
-			return;
-		}
-		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
-		BazaStudenata.getInstance().izmeniStudenta(student);
+	public void izmeniStudenta(Student promene, String idx) {
+
+		BazaStudenata.getInstance().izmeniStudenta(promene, idx);
 
 		MainFrame.getTabbedPane().azurirajS();
 	}

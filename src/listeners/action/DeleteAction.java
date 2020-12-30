@@ -9,9 +9,9 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
-
 
 public class DeleteAction extends AbstractAction {
 
@@ -33,28 +33,29 @@ public class DeleteAction extends AbstractAction {
 	public void setName() {
 		putValue(NAME, "Delete");
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		 //System.out.println("Action: Delete");
-		 
-		 TabbedPane temp =  MainFrame.getTabbedPane();
-		 int current_tab = temp.getSelectedIndex();
-		 
-		 //Provera da je bilo koji red izabran
-		 int sellected_row = temp.getSellectedTableIndex();
-		 if (sellected_row == -1)
-			 return;
-		 
-		 switch (current_tab) {
-		 case 0: 	//StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
-		 			break;
-		 case 1:	//...
-		 			break;
-		 case 2:   //...
-			 		break;
-		 }
+		// System.out.println("Action: Delete");
+
+		TabbedPane temp = MainFrame.getTabbedPane();
+		int current_tab = temp.getSelectedIndex();
+
+		// Provera da je bilo koji red izabran
+		int sellected_row = MainFrame.getTabbedPane().getSellectedTableRow();
+		
+		if (sellected_row != -1) 
+			switch (current_tab) {
+			case 0: 
+				StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
+				break;
+			case 1: // ...
+				break;
+			case 2: // ...
+				break;
+			}
+		
 	}
 
 }

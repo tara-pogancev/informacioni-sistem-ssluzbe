@@ -52,7 +52,7 @@ public class TabbedPane extends JTabbedPane {
 
 	}
 
-	public int getSellectedTableIndex() {
+	public int getSellectedTableRow() {
 		
 		 TabbedPane temp =  MainFrame.getTabbedPane();
 		 int current_tab = temp.getSelectedIndex();

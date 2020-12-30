@@ -285,6 +285,7 @@ public class DodavanjeStudenta extends JDialog {
 
 				StudentController.getInstance().addStudent(s);
 				this.dispose();
+				JOptionPane.showMessageDialog(null, "Student uspešno dodat!");
 			}
 
 		});

@@ -44,18 +44,18 @@ public class EditAction extends AbstractAction {
 		 int current_tab = temp.getSelectedIndex();
 		 
 		 //Provera da je bilo koji red izabran
-		 int sellected_row = temp.getSellectedTableIndex();
-		 if (sellected_row == -1)
-			 return;
-		 
-		 switch (current_tab) {
-		 case 0: 	new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
-		 			break;
-		 case 1:	//...
-		 			break;
-		 case 2:   //...
-			 		break;
-		 }
+		int sellected_row = temp.getSellectedTableRow();
+			if (sellected_row != -1)
+				switch (current_tab) {
+				case 0:
+				//	new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
+					new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
+					break;
+				case 1: // ...
+					break;
+				case 2: // ...
+					break;
+				}
 	}
 
 }

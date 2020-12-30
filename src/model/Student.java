@@ -92,9 +92,15 @@ public class Student {
 		if (this.status == Status.B) return "Budžet";
 		return "Samofinansiranje";
 	}
+	
+	public Status getStatusEnum() {
+		return this.status;
+	}
+	
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
 	public double getProsek() {
 		return prosek;
 	}
@@ -170,8 +176,23 @@ public class Student {
 	}
 	
 	public void addPredmet() {
-		
 	}
 	
+	//Metoda koja poredi 2 studenta, i vraca TRUE ako su jednaki po osnovnim stavkama
+	public boolean equals(Student s2) {
+		
+		if (this.getIme().equals(s2.getIme()) && this.getPrezime().equals(s2.getPrezime()) && this.getBrojIndeksa().equals(s2.getBrojIndeksa())
+				&& this.getAdresaStanovanja().equals(s2.getAdresaStanovanja()) && this.getEmailAdresa().equals(s2.getEmailAdresa())
+				&& this.getKontaktTelefon().equals(s2.getKontaktTelefon()) && this.getTrenutnaGodina() == s2.getTrenutnaGodina()
+				&& this.getStatus() == s2.getStatus() && this.getGodinaUpisa() == s2.getGodinaUpisa() && this.getDatumRodjenjaString().equals(s2.getDatumRodjenjaString())) {
+			System.out.println("JEDNAKI");
+			return true;	
+		}
+			
+		
+		System.out.println("NISU JEDNAKI");
+		
+		return false;
+	}
 	
 }
