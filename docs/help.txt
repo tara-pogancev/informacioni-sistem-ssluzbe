@@ -40,3 +40,7 @@ Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 06478
 
 Dodavanje profesora, analogno dodavanju studenta, vrši se izborom kartice "Profesor", a potom pokretanjem akcije "New", putem menija, 
 toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata polja, dodavanje klikom na dugme biće omogućeno.
+
+6. Brisanje studenta
+
+Brisanje studenata vrši se selekcijom studenta iz table klikom na željeni red. Potom, pozvati akciju brisanja putem toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D), i potvrditi brisanje izabranog studenta u dijalogu. 

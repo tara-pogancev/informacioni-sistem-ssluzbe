@@ -1,4 +1,5 @@
 //#prikaz_studenata
+//#brisanje_studenta
 //
 //Reference: Projekat JTableMVCSimple
 

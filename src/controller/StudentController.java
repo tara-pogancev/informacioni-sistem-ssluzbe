@@ -6,6 +6,8 @@
 
 package controller;
 
+import javax.swing.JOptionPane;
+
 import gui.MainFrame;
 import model.BazaStudenata;
 import model.Student;
@@ -32,9 +34,17 @@ public class StudentController {
     	if (rowSelectedIndex < 0) {
 			return;
 		}
-    	Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
-		BazaStudenata.getInstance().izbrisiStudenta(student.getBrojIndeksa());
-		MainFrame.getTabbedPane().azurirajS();
+		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
+
+		int id = JOptionPane.showConfirmDialog(null,
+				"Da li ste sigurni da želite da obrišete studenta [" + student.getBrojIndeksa() + "]?",
+				"Brisanje studenta", JOptionPane.YES_NO_OPTION);
+
+		if (id == JOptionPane.YES_OPTION) {
+
+			BazaStudenata.getInstance().izbrisiStudenta(student.getBrojIndeksa());
+			MainFrame.getTabbedPane().azurirajS();
+		}
     }
 	
 	public void izmeniStudenta(int rowSelectedIndex) {

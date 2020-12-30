@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
 
@@ -53,6 +52,24 @@ public class TabbedPane extends JTabbedPane {
 
 	}
 
+	public int getSellectedTableIndex() {
+		
+		 TabbedPane temp =  MainFrame.getTabbedPane();
+		 int current_tab = temp.getSelectedIndex();
+		 int idx = 0;
+		 
+		 //TODO: Popuniti za profesora i predmete
+		 switch (current_tab) {
+		 case 0: 	idx = studTable.getSelectedRow();
+		 			break;
+		 case 1:	//...
+		 			break;
+		 case 2:   	//...
+			 		break;
+		 }
+		 
+		return idx;
+	}
 
 	public void addTab(String title, Component component) {
 		super.addTab(title, null, component);
