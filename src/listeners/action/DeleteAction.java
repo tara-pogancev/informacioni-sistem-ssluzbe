@@ -1,4 +1,5 @@
 //#brisanje_studenta
+//#brisanje_profesora
 package listeners.action;
 
 import java.awt.event.ActionEvent;

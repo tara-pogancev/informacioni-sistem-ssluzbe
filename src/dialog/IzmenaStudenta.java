@@ -31,7 +31,7 @@ public class IzmenaStudenta extends JDialog {
 		
 		this.setTitle("Izmena studenta");
 		this.setResizable(false);
-		this.setSize(650, 550); // X, Y
+		this.setSize(700, 550); // X, Y
 		
 		Student s = BazaStudenata.getInstance().getByIdx(idx);
 		this.add(new StudentTabbedPane(s));

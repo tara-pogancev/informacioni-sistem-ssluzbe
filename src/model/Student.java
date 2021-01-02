@@ -1,4 +1,6 @@
 //#student
+// #prikaz_polozenih_ispita
+//
 // Reference:
 // https://www.tutorialspoint.com/java/java_date_time.htm
 
@@ -25,6 +27,7 @@ public class Student {
 	private int trenutnaGodina;
 	private Status status;
 	private double prosek;
+	private int espb;
 	private List<Ocena> ocene;
 	private List<Predmet> nepolozeniIspiti;
 	
@@ -82,6 +85,19 @@ public class Student {
 	public void setGodinaUpisa(int godinaUpisa) {
 		this.godinaUpisa = godinaUpisa;
 	}
+	public int getEspb() {
+		return espb;
+	}
+	public void setEsbp() {
+		
+		int bodovi = 0;
+		
+		for (Ocena o : this.ocene) {
+			bodovi+= o.getPredmet().getESPB();
+		}
+		
+		this.espb = bodovi;
+	}
 	public int getTrenutnaGodina() {
 		return trenutnaGodina;
 	}
@@ -96,17 +112,26 @@ public class Student {
 	public Status getStatusEnum() {
 		return this.status;
 	}
-	
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
 	public double getProsek() {
 		return prosek;
 	}
 	public void setProsek(double prosek) {
 		this.prosek = prosek;
 	}
+	
+	public void refreshProsek() {
+		double prosek = 0;
+		
+		for (Ocena o : this.ocene) {
+			prosek+= o.getOcena();
+		}
+		
+		this.prosek = prosek/(this.ocene.size());
+	}
+	
 	public List<Ocena> getOcene() {
 		return ocene;
 	}
@@ -197,8 +222,11 @@ public class Student {
 	
 	
 	//TODO Odraditi metode za ispite
-	public void addOcena() {
-		
+	public void addOcena(Ocena o) {
+		//Temp zbog testiranja
+		ocene.add(o);
+		this.refreshProsek();
+		this.setEsbp();
 	}
 	
 	public void addPredmet() {

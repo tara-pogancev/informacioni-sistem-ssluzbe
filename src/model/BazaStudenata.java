@@ -6,6 +6,7 @@
 
 package model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +92,9 @@ public class BazaStudenata {
 		case 4:
 			return student.getStatus();
 		case 5:
-			return Double.toString(student.getProsek());
+			DecimalFormat df = new DecimalFormat("#.##");
+			String pr = df.format(student.getProsek());			
+			return pr;
 		case 6:
 		default:
 			return null;
