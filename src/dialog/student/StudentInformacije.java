@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,14 +40,14 @@ public class StudentInformacije extends JPanel {
 	private static final long serialVersionUID = 7231920207752882662L;
 	
 	private Student staro = null;
+	final Color ERROR_COLOR = new Color(237, 121, 121);
+	Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
 
 	public StudentInformacije(Student s) {
 
 		Border padding_form = BorderFactory.createEmptyBorder(30, 90, 10, 90); // North, West, South, East
 		Border padding_buttons = BorderFactory.createEmptyBorder(20, 10, 30, 20);
 
-		final Color ERROR_COLOR = new Color(237, 121, 121);
-		Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
 		// Unos forme
 		JPanel content = new JPanel();
 		content.setLayout(new GridLayout(10, 2, 5, 10)); // row, col, hgap, vgap
@@ -108,6 +110,9 @@ public class StudentInformacije extends JPanel {
 			t10.setSelectedIndex(1);
 			break;
 		}
+		
+		
+		initData(staro, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 
 		// Dodavanje komponenti forme
 		content.add(l1);
@@ -140,11 +145,11 @@ public class StudentInformacije extends JPanel {
 		accept.setEnabled(false);
 
 		decline.addActionListener(e -> {
+			initData(staro, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 			IzmenaStudenta.getInstance(parent_idx).closeDialog();
 		});
 
-		
-		// KEY-LISTENER
+		// KEY-LISTENERS
 		KeyListener l = new KeyListener() {
 
 			@Override
@@ -154,87 +159,7 @@ public class StudentInformacije extends JPanel {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				boolean check1 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t1.getText());
-				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
-				boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3.getText());
-
-				boolean check4 = (!t4.getText().isEmpty());
-				boolean check5 = Pattern.matches("[+]?[0-9]+", t5.getText());
-				boolean check6 = Pattern.matches("[a-z0-9.+-/_~]*[a-z0-9.+-/_~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
-						t6.getText());
-				boolean check7 = (Pattern.matches("[a-z]{2,2}[-][0-9]{1,3}[-][0-9]{4,4}", t7.getText())); // Unos iz specifikacije
-				/*
-				 * Za ogranicenje unosa indeksa, ostavljena je originalna forma, ista kao u
-				 * specifikaciji iz razloga sto bi drugacija slobodna forma dovela do mogucnosti
-				 * unosa nevalidnih indeksa, ili dozvolila veliku raznolikost formata koji
-				 * odgovaraju. Po potrebi je moguce prosiriti prihvatanje dodatnih formata.
-				 */
-				boolean check8 = Pattern.matches("[0-9]{4,4}", t8.getText());
-				
-				//NIJE DOZVOLJENO AKO PROMENA NEMA
-
-				
-				if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8) {
-					Status status_st = Status.B;
-					if (t10.getSelectedIndex() == 1)
-						status_st = Status.S;
-					
-					int godina_upisa_st = Integer.parseInt(t8.getText());
-					int trenutna_godina = t9.getSelectedIndex() + 1;
-					
-					Student novo = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(),
-							t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
-					if (novo.equals(staro)) {
-						accept.setEnabled(false);
-					} else	accept.setEnabled(true);
-				}					
-				else {
-					accept.setEnabled(false);
-				}
-
-				// CRVENITI DEO KOJI NIJE DOBRO UKUCAN
-				if (check1 || t1.getText().isEmpty()) {
-					t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t1.setBorder(incorrect_input);
-				}
-
-				if (check2 || t2.getText().isEmpty()) {
-					t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t2.setBorder(incorrect_input);
-				}
-
-				if (check3 || t3.getText().isEmpty()) {
-					t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t3.setBorder(incorrect_input);
-				}
-
-				if (check5 || t5.getText().isEmpty()) {
-					t5.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t5.setBorder(incorrect_input);
-				}
-
-				if (check6 || t6.getText().isEmpty()) {
-					t6.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t6.setBorder(incorrect_input);
-				}
-
-				if (check7 || t7.getText().isEmpty()) {
-					t7.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t7.setBorder(incorrect_input);
-				}
-
-				if (check8 || t8.getText().isEmpty()) {
-					t8.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t8.setBorder(incorrect_input);
-				}
-
+				validate(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, accept);
 			}
 
 			@Override
@@ -242,6 +167,34 @@ public class StudentInformacije extends JPanel {
 
 			}
 
+		};
+		
+		MouseListener m = new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				validate(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, accept);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				validate(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, accept);
+			}
+			
 		};
 
 		// Dodavanje key listenera za sva polja
@@ -253,6 +206,7 @@ public class StudentInformacije extends JPanel {
 		t6.addKeyListener(l);
 		t7.addKeyListener(l);
 		t8.addKeyListener(l);
+		this.addMouseListener(m);
 
 		accept.addActionListener(e -> {
 
@@ -305,6 +259,7 @@ public class StudentInformacije extends JPanel {
 
 		});
 
+		
 		buttons.add(accept);
 		buttons.add(Box.createHorizontalStrut(10));
 		buttons.add(decline);
@@ -314,6 +269,114 @@ public class StudentInformacije extends JPanel {
 		this.add(content);
 		this.add(buttons);
 
+	}
+	
+	private void initData (Student s, JTextField t1, JTextField t2, JTextField t3, JTextField t4, JTextField t5, JTextField t6, 
+			JTextField t7, JTextField t8, JComboBox<String> t9, JComboBox<String> t10) {
+		
+		t1.setText(s.getIme());
+		t2.setText(s.getPrezime());
+		t3.setText(s.getDatumRodjenjaString());
+		t4.setText(s.getAdresaStanovanja());
+		t5.setText(s.getKontaktTelefon());
+		t6.setText(s.getEmailAdresa());
+		t7.setText(s.getBrojIndeksa());
+		t8.setText(Integer.toString(s.getGodinaUpisa()));
+		t9.setSelectedIndex(s.getTrenutnaGodina() - 1);
+		
+		switch (s.getStatus()) {
+		case "Budžet":
+			t10.setSelectedIndex(0);
+			break;
+		case "Samofinansiranje":
+			t10.setSelectedIndex(1);
+			break;
+		}
+			
+		
+	}
+	
+	private void validate (JTextField t1, JTextField t2, JTextField t3, JTextField t4, JTextField t5, JTextField t6, JTextField t7, JTextField t8, JComboBox<String> t9, JComboBox<String> t10, JButton accept) {
+		
+		boolean check1 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t1.getText());
+		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
+		boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3.getText());
+
+		boolean check4 = (!t4.getText().isEmpty());
+		boolean check5 = Pattern.matches("[+]?[0-9]+", t5.getText());
+		boolean check6 = Pattern.matches("[a-z0-9.+-/_~]*[a-z0-9.+-/_~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
+				t6.getText());
+		boolean check7 = (Pattern.matches("[a-z]{2,2}[-][0-9]{1,3}[-][0-9]{4,4}", t7.getText())); // Unos iz specifikacije
+		/*
+		 * Za ogranicenje unosa indeksa, ostavljena je originalna forma, ista kao u
+		 * specifikaciji iz razloga sto bi drugacija slobodna forma dovela do mogucnosti
+		 * unosa nevalidnih indeksa, ili dozvolila veliku raznolikost formata koji
+		 * odgovaraju. Po potrebi je moguce prosiriti prihvatanje dodatnih formata.
+		 */
+		boolean check8 = Pattern.matches("[0-9]{4,4}", t8.getText());
+		
+		//NIJE DOZVOLJENO AKO PROMENA NEMA
+		if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8) {
+			Status status_st = Status.B;
+			if (t10.getSelectedIndex() == 1)
+				status_st = Status.S;
+			
+			int godina_upisa_st = Integer.parseInt(t8.getText());
+			int trenutna_godina = t9.getSelectedIndex() + 1;
+			
+			Student novo = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(),
+					t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
+			if (novo.equals(staro)) {
+				accept.setEnabled(false);
+			} else	accept.setEnabled(true);
+		}					
+		else {
+			accept.setEnabled(false);
+		}
+
+		// CRVENITI DEO KOJI NIJE DOBRO UKUCAN
+		if (check1 || t1.getText().isEmpty()) {
+			t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t1.setBorder(incorrect_input);
+		}
+
+		if (check2 || t2.getText().isEmpty()) {
+			t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t2.setBorder(incorrect_input);
+		}
+
+		if (check3 || t3.getText().isEmpty()) {
+			t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t3.setBorder(incorrect_input);
+		}
+
+		if (check5 || t5.getText().isEmpty()) {
+			t5.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t5.setBorder(incorrect_input);
+		}
+
+		if (check6 || t6.getText().isEmpty()) {
+			t6.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t6.setBorder(incorrect_input);
+		}
+
+		if (check7 || t7.getText().isEmpty()) {
+			t7.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t7.setBorder(incorrect_input);
+		}
+
+		if (check8 || t8.getText().isEmpty()) {
+			t8.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t8.setBorder(incorrect_input);
+		}
+		
 	}
 
 }

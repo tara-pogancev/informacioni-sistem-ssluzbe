@@ -58,6 +58,9 @@ Brisanje profesora vrši se u kartici "Profesori", biranjem profesora, a potom k
 
 10. Dodavanje predmenta
 
+Dodavanje predmeta izvodi se u kartici "Predmeti", klikom na dugme "+" u toolbar-u, ili izborom ekvivalentne akcije "New" iz glavnog menija. Potom, potrebno je popuniti data polja, koja će se crveniti u slučaju pogrešno unetih vrednosti. Prelaskom miša preko polja za kucanje, prikazan je jedan od pravilnih unosa.
+Primer validnog unosa: E212, Matematička analiza 1, 9
+
 11. Izmena predmeta
 
 12.  Brisanje predmeta

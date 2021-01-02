@@ -36,6 +36,7 @@ public class IzmenaStudenta extends JDialog {
 		Student s = BazaStudenata.getInstance().getByIdx(idx);
 		this.add(new StudentTabbedPane(s));
 		
+	//	this.setDefaultCloseOperation(IzmenaStudenta.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(MainFrame.getInstance());
 		this.setModal(true);
 	}
@@ -45,10 +46,13 @@ public class IzmenaStudenta extends JDialog {
 	}
 	
 	public static IzmenaStudenta getInstance(String idx) {
-		if (instance == null || !current_idx.equals(idx)) {
+		
+		if (instance == null || !current_idx.equals(idx))
 			instance = new IzmenaStudenta(idx);
-		}
+
 		return instance;
 	}
+	
+	
 
 }
