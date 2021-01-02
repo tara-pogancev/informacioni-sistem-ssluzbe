@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
 import controller.PredmetiController;
+import controller.ProfesoriController;
 import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
@@ -51,7 +52,8 @@ public class DeleteAction extends AbstractAction {
 			case 0: 
 				StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
 				break;
-			case 1: // ...
+			case 1:
+				ProfesoriController.getInstance().izbrisiProfesora(temp.getIzabraniProfesor());
 				break;
 			case 2: 
 				PredmetiController.getInstance().izbrisiPredmet(temp.getIzabraniPredmet());

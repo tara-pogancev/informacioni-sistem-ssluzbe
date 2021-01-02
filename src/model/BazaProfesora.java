@@ -1,4 +1,5 @@
 // #prikaz_profesora
+//#brisanje_profesora
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -143,5 +144,13 @@ public class BazaProfesora {
 		return povratna;
 	}
 
+	public void izbrisiProfesora(String brlk) {
+		for (Profesor p : profesori) {
+			if (p.getBrojLicneKarte() == brlk) {
+				profesori.remove(p);
+				break;
+			}
+		}
+	}
 
 }

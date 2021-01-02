@@ -81,6 +81,7 @@ public class TabbedPane extends JTabbedPane {
 		return idx;		
 	}
 	
+	//TODO: Napraviti tako da funkcija vraca profesora nezavisno od sortiranja
 	public Profesor getIzabraniProfesor() {
 		
 		if(profTable.getSelectedRow() < 0) {

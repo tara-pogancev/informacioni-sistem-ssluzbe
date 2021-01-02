@@ -36,23 +36,30 @@ Dodavanje studenta realizuje se izborom taba sa studente, a potom pokretanjem ak
 U otovrenom prozoru potrebno je popuniti prazna polja validnim podacima, nakon čega će dodavanje biti omogućeno. 
 Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 064789789, ana@gmail.com, ra-32-2017, 2017
 
-5. Dodavanje profesora
+5. Izmena studenta
 
-Dodavanje profesora, analogno dodavanju studenta, vrši se izborom kartice "Profesor", a potom pokretanjem akcije "New", putem menija, 
-toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata polja, dodavanje klikom na dugme biće omogućeno.
+Izmena studenta obavlja se izborom studenta iz tabele, a potom odabirom opcije "Edit". U novootvorenom prozoru, u tabu "Informacije", možete promeniti bilo koje od navedenih polja. Ukoliko su sva unesena polja validna, klikom na dugme "Prihvati" promene će biti sačuvane i ažurirane u tabeli, i imate mogućnost daljih izmena istog studenta. Klikom na dugme "Otkaži", nesačuvane promene će biti poništene.
 
 6. Brisanje studenta
 
 Brisanje studenata vrši se selekcijom studenta iz table klikom na željeni red. Potom, pozvati akciju brisanja putem toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D), i potvrditi brisanje izabranog studenta u dijalogu. 
 
-7. Izmena studenta
+7. Dodavanje profesora
 
-Izmena studenta obavlja se izborom studenta iz tabele, a potom odabirom opcije "Edit". U novootvorenom prozoru, u tabu "Informacije", možete promeniti bilo koje od navedenih polja. Ukoliko su sva unesena polja validna, klikom na dugme "Prihvati" promene će biti sačuvane i ažurirane u tabeli, i imate mogućnost daljih izmena istog studenta. Klikom na dugme "Otkaži", nesačuvane promene će biti poništene.
+Dodavanje profesora, analogno dodavanju studenta, vrši se izborom kartice "Profesor", a potom pokretanjem akcije "New", putem menija, 
+toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata polja, dodavanje klikom na dugme biće omogućeno.
 
-8. 
+8. Izmena profesora
 
-9. Izmena profesora
 
-10.  Brisanje predmeta
+9. Brisanje profesora
+
+Brisanje profesora vrši se u kartici "Profesori", biranjem profesora, a potom klikom na ikonicu kantice za brisanje, ili korišćenjem mnemonika/akceleratora/stavke u meniju analognih brisanju studenta ili predmeta. Nakon potvrđivanja brisanja profesora, isti će biti uklonjen iz baze.  
+
+10. Dodavanje predmenta
+
+11. Izmena predmeta
+
+12.  Brisanje predmeta
 
 Brisanje predmeta se vrši klikom na tab 'Predmeti', zatim selekcijom predmeta iz tabele predmeta klikom na željeni red. Potom, pozvati akciju brisanja pomoću dugmeta iz toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D). Zatim potvriti izborom opcije 'YES' u dijalogu za potvrdu brisanja.

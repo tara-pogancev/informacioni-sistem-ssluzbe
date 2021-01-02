@@ -1,8 +1,11 @@
+//#brisanje_profesora
 //Reference:
 //Projekat JTableMVCSimple
 //Projekat MVCExample
 
 package controller;
+
+import javax.swing.JOptionPane;
 
 import gui.MainFrame;
 import model.BazaProfesora;
@@ -32,6 +35,19 @@ public class ProfesoriController {
 		
 		BazaProfesora.getInstance().izmenaProfesora(izmene, brojLicneKarte);
 		MainFrame.getTabbedPane().azurirajProfesora();
+	}
+	
+	public void izbrisiProfesora(Profesor p) {
+		
+		int id = JOptionPane.showConfirmDialog(null,
+				"Da li ste sigurni da želite da obrišete profesora [" + p.getIme() + " " + p.getPrezime() + "]?",
+				"Brisanje profesora", JOptionPane.YES_NO_OPTION);
+
+		if (id == JOptionPane.YES_OPTION) {
+
+			BazaProfesora.getInstance().izbrisiProfesora(p.getBrojLicneKarte());
+			MainFrame.getTabbedPane().azurirajProfesora();
+		}
 	}
 
 }
