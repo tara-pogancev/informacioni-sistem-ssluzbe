@@ -1,4 +1,5 @@
 /* #brisanje_predmeta
+ * #dodavanje_predmeta
 	Reference:
 	Projekat JTableMVCSimple
 */
@@ -38,7 +39,11 @@ public class PredmetiController {
 			MainFrame.getTabbedPane().azurirajPredmet();
 			
 		}
-
+	}
+	
+	public void dodajPredmet(Predmet p) {
+		BazaPredmeta.getInstance().dodajPredmet(p);
+		MainFrame.getTabbedPane().azurirajPredmet();
 		
 	}
 

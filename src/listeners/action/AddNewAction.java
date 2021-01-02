@@ -1,4 +1,5 @@
 //#dodavanje_studenta
+//#dodavanje_predmeta
 package listeners.action;
 
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialog.DodavanjePredmeta;
 import dialog.DodavanjeProfesora;
 import dialog.DodavanjeStudenta;
 import gui.MainFrame;
@@ -48,7 +50,7 @@ public class AddNewAction extends AbstractAction {
 		 			break;
 		 case 1:	new DodavanjeProfesora().setVisible(true);
 		 			break;
-		 case 2:   //..
+		 case 2:   	new DodavanjePredmeta().setVisible(true);
 			 		break;
 		 }
 	}

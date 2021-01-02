@@ -1,4 +1,5 @@
 // #prikaz_predmeta
+// #dodavanje_predmeta
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -97,6 +98,11 @@ public class BazaPredmeta {
 		}
 	}
 	
+	public void dodajPredmet(Predmet p) {
+		this.predmeti.add(p);
+	}
+	
+	
 	public void izbrisiPredmet(String sifra) {
 		
 		for(Predmet p : predmeti) {
@@ -106,4 +112,18 @@ public class BazaPredmeta {
 			}
 		}
 	}
+	
+	//Vraca TRUE ako predmet ima jedinstvenu sifru, ili FALSE ako nema
+	public boolean isUnique(String p) {
+		
+		for(Predmet predmet : predmeti) {
+			if (predmet.getSifraPredmeta().equals(p))
+				return false;
+		}
+		return true;
+		
+	}
+	
+	
+	
 }

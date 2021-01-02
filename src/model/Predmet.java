@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Predmet {
 
-	enum Semestar {
+	public enum Semestar {
 		LETNJI, ZIMSKI
 	};
 
