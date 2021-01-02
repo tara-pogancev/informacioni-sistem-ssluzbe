@@ -12,7 +12,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import model.BazaPredmeta;
+import model.BazaProfesora;
 import model.Predmet;
+import model.Profesor;
 import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
@@ -77,6 +79,18 @@ public class TabbedPane extends JTabbedPane {
 	public String getStudentIdx() {
 		String idx = (String) studTable.getValueAt(studTable.getSelectedRow(), 0);
 		return idx;		
+	}
+	
+	public Profesor getIzabraniProfesor() {
+		
+		if(profTable.getSelectedRow() < 0) {
+			
+			return null;
+
+		}
+		
+		Profesor p = BazaProfesora.getInstance().getRow(profTable.getSelectedRow());
+		return p;
 	}
 	
 	public Predmet getIzabraniPredmet() {

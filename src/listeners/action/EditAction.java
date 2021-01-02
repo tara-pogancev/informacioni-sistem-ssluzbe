@@ -10,9 +10,11 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialog.IzmenaProfesora;
 import dialog.IzmenaStudenta;
 import gui.MainFrame;
 import gui.TabbedPane;
+import model.Profesor;
 
 public class EditAction extends AbstractAction {
 
@@ -51,7 +53,15 @@ public class EditAction extends AbstractAction {
 //					new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
 					IzmenaStudenta.getInstance(temp.getStudentIdx()).setVisible(true);
 					break;
-				case 1: // ...
+				case 1: 
+					
+					Profesor p = temp.getIzabraniProfesor();
+					
+					if(p != null) {
+						IzmenaProfesora izmenaProf = new IzmenaProfesora(p);
+						izmenaProf.setVisible(true);
+					}
+					
 					break;
 				case 2: // ...
 					break;
