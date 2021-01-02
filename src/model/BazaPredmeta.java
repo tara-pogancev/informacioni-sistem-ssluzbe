@@ -1,5 +1,6 @@
 // #prikaz_predmeta
 // #dodavanje_predmeta
+// #izmena_predmeta
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -121,6 +122,25 @@ public class BazaPredmeta {
 				return false;
 		}
 		return true;
+		
+	}
+	
+	public void izmeniPredmet (Predmet promene, String sifra) {
+		for (Predmet p : predmeti) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				
+				p.setESPB(promene.getESPB());
+				p.setNazivPredmeta(promene.getNazivPredmeta());
+				p.setGodinaIzvodjenja(promene.getGodinaIzvodjenja());
+				p.setSemestar(p.getSemestarE());
+				p.setSifraPredmeta(promene.getSifraPredmeta());
+				
+				//TODO: Profesor
+				
+				
+			}
+			
+		}
 		
 	}
 	

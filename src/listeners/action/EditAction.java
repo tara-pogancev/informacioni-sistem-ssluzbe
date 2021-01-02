@@ -1,4 +1,5 @@
 //#izmena_studenta
+//#izmena_predmeta
 
 package listeners.action;
 
@@ -10,6 +11,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import dialog.IzmenaPredmeta;
 import dialog.IzmenaProfesora;
 import dialog.IzmenaStudenta;
 import gui.MainFrame;
@@ -61,7 +63,8 @@ public class EditAction extends AbstractAction {
 					}
 					
 					break;
-				case 2: // ...
+				case 2:
+					new IzmenaPredmeta(temp.getIzabraniPredmet()).setVisible(true);
 					break;
 				}
 	}

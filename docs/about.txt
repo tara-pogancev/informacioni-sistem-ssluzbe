@@ -1,5 +1,5 @@
 Informacioni Sistem Studentske Službe
-ver: ALPHA
+ver: 1.0
 
 
 Autori: Jelena Hrnjak, Tara Pogančev

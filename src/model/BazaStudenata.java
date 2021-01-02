@@ -30,12 +30,12 @@ public class BazaStudenata {
 		initStudente();
 		
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("INDEX");
-		this.kolone.add("IME");
-		this.kolone.add("PREZIME");
-		this.kolone.add("GODINA STUDIJA");
-		this.kolone.add("STATUS");
-		this.kolone.add("PROSEK");
+		this.kolone.add("Index");
+		this.kolone.add("Ime");
+		this.kolone.add("Prezime");
+		this.kolone.add("Godina studija");
+		this.kolone.add("Status");
+		this.kolone.add("Prosek");
 		
 	}
 
