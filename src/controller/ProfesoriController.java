@@ -28,4 +28,10 @@ public class ProfesoriController {
 		MainFrame.getTabbedPane().azurirajProfesora();
 	}
 
+	public void izmeniProfesora(Profesor izmene, String brojLicneKarte) {
+		
+		BazaProfesora.getInstance().izmenaProfesora(izmene, brojLicneKarte);
+		MainFrame.getTabbedPane().azurirajProfesora();
+	}
+
 }

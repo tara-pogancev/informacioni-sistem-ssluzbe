@@ -139,15 +139,21 @@ public class DodavanjeProfesora extends JDialog {
 			
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-			
+
 				boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
 				boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
-				boolean proveraDat = Pattern.matches("(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})", unosDat.getText());
-				boolean proveraAdr = ( unosAdr.getText() != "");
+				boolean proveraDat = Pattern.matches(
+						"(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})",
+						unosDat.getText());
+				boolean proveraAdr = (unosAdr.getText() != "");
 				boolean proveraTel = Pattern.matches("[+]?[0-9]+", unosTel.getText());
-				boolean proveraEmail = Pattern.matches("[a-z0-9.!#$%&’*+-/=?^_`{|}~]*[a-z0-9!#$%&’*+-/=?^_`{|}~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?", unosEmail.getText());
-				boolean proveraAdrK = ( unosAdrK.getText() != "");
-				boolean proveraBlc = Pattern.matches("[0-9A-Za-z]+", unosBlc.getText()); //nisu samo brojevi zbog profesora koji nisu iz Srbije
+				boolean proveraEmail = Pattern.matches(
+						"[a-z0-9.!#$%&’*+-/=?^_`{|}~]*[a-z0-9!#$%&’*+-/=?^_`{|}~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
+						unosEmail.getText());
+				boolean proveraAdrK = (unosAdrK.getText() != "");
+				boolean proveraBlc = Pattern.matches("[0-9A-Za-z]+", unosBlc.getText()); // nisu samo brojevi zbog
+																							// profesora koji nisu iz
+																							// Srbije
 				
 
 				if(proveraIme && proveraPrz && proveraDat && proveraAdr && proveraTel && proveraEmail && proveraAdrK && proveraBlc)
@@ -317,15 +323,7 @@ public class DodavanjeProfesora extends JDialog {
 				Profesor p = new Profesor(unosPrz.getText(),unosIme.getText(),unosDat.getText(),unosAdr.getText(),unosTel.getText(),unosEmail.getText()
 						,unosAdrK.getText(), unosBlc.getText(),titulaProf,zvanjeProfes);
 				
-				boolean postoji = false;
-				
-				for(int i = 0; i < BazaProfesora.getInstance().getProfesori().size();i++) {
-				
-						if((p.getBrojLicneKarte().equals(BazaProfesora.getInstance().getProfesori().get(i).getBrojLicneKarte()))) {
-							
-							postoji = true;
-						}
-				}
+				boolean postoji = BazaProfesora.getInstance().proveraJedinstvenostiBlc(unosBlc.getText());
 
 				if(postoji) {
 					JOptionPane.showMessageDialog(null, "Profesor sa ovim brojem lične karte je već u sistemu!");

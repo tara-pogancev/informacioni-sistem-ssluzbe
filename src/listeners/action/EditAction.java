@@ -58,8 +58,7 @@ public class EditAction extends AbstractAction {
 					Profesor p = temp.getIzabraniProfesor();
 					
 					if(p != null) {
-						IzmenaProfesora izmenaProf = new IzmenaProfesora(p);
-						izmenaProf.setVisible(true);
+						IzmenaProfesora.getInstance(temp.getIzabraniProfesor()).setVisible(true);
 					}
 					
 					break;

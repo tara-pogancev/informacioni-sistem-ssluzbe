@@ -11,9 +11,15 @@ import java.util.List;
 
 public class Profesor {
 
-	public enum Titula {BSc,MSc, mr, dr, profDr, diplIng, prof};
-	public enum Zvanje {saradnikUNastavi, asistent, asistentSaDoktoratom, docent,
-						redovniProfesor, vanredniProfesor,profesorEmeritus,istrazivacPripravnik};
+	public enum Titula {
+		BSc, MSc, mr, dr, profDr, diplIng, prof
+	};
+
+	public enum Zvanje {
+		saradnikUNastavi, asistent, asistentSaDoktoratom, docent, redovniProfesor, vanredniProfesor, profesorEmeritus,
+		istrazivacPripravnik
+	};
+
 	private String prezime;
 	private String ime;
 	private Date datumRodjenja;
@@ -37,7 +43,7 @@ public class Profesor {
 		this.prezime = prezime;
 		this.ime = ime;
 		try {
-			this.datumRodjenja = dateFormat.parse(datumRodjenja);	
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -48,11 +54,8 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-	
 
 	}
-	
-	
 
 	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String emailAdresa, String adresaKancelarije, String brojLicneKarte, Titula titula, Zvanje zvanje,
@@ -63,7 +66,7 @@ public class Profesor {
 		this.prezime = prezime;
 		this.ime = ime;
 		try {
-			this.datumRodjenja = dateFormat.parse(datumRodjenja);	
+			this.datumRodjenja = dateFormat.parse(datumRodjenja);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -75,6 +78,28 @@ public class Profesor {
 		this.titula = titula;
 		this.zvanje = zvanje;
 		this.predmeti = predmeti;
+	}
+
+	public Profesor(Profesor p) {
+
+		super();
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		this.prezime = p.getPrezime();
+		this.ime = p.getIme();
+		try {
+			this.datumRodjenja = dateFormat.parse(p.getDatumRodjenjaString());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		this.adresaStanovanja = p.getAdresaStanovanja();
+		this.kontaktTelefon = p.getKontaktTelefon();
+		this.emailAdresa = p.getEmailAdresa();
+		this.adresaKancelarije = p.getAdresaKancelarije();
+		this.brojLicneKarte = p.getBrojLicneKarte();
+		this.titula = p.getTitulaE();
+		this.zvanje = p.getZvanjeE();
+
 	}
 
 	public String getPrezime() {
@@ -96,11 +121,11 @@ public class Profesor {
 	public Date getDatumRodjenja() {
 		return datumRodjenja;
 	}
-	
+
 	public String getDatumRodjenjaString() {
-		
-	    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-	    return dateFormat.format(datumRodjenja);
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(datumRodjenja);
 	}
 
 	public void setDatumRodjenja(Date datumRodjenja) {
@@ -147,11 +172,10 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 	}
 
-
 	public String getTitula() {
 
-		switch(titula) {
-		
+		switch (titula) {
+
 		case BSc:
 			return "BSc";
 		case MSc:
@@ -166,8 +190,12 @@ public class Profesor {
 			return "dip. inž.";
 		default:
 			return "prof.";
-		
+
 		}
+	}
+
+	public Titula getTitulaE() {
+		return titula;
 	}
 
 	public void setTitula(Titula titula) {
@@ -175,9 +203,9 @@ public class Profesor {
 	}
 
 	public String getZvanje() {
-		
-		switch(zvanje) {
-		
+
+		switch (zvanje) {
+
 		case saradnikUNastavi:
 			return "saradnik u nastavi";
 		case asistent:
@@ -197,6 +225,10 @@ public class Profesor {
 		}
 	}
 
+	public Zvanje getZvanjeE() {
+		return zvanje;
+	}
+
 	public void setZvanje(Zvanje zvanje) {
 		this.zvanje = zvanje;
 	}
@@ -211,11 +243,25 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-		System.out.println(ime + " " + prezime + " " + dateFormat.format(datumRodjenja) + " " + adresaStanovanja + " " + kontaktTelefon 
-				+ " " + emailAdresa + " " + adresaKancelarije + " " +  brojLicneKarte + " " + getTitula() + " " + getZvanje());
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println(ime + " " + prezime + " " + dateFormat.format(datumRodjenja) + " " + adresaStanovanja + " "
+				+ kontaktTelefon + " " + emailAdresa + " " + adresaKancelarije + " " + brojLicneKarte + " "
+				+ getTitula() + " " + getZvanje());
 		return super.toString();
 	}
-	
+
+
+	public boolean equals(Profesor p) {
+		
+		if (this.getPrezime().equals(p.getPrezime()) && this.getIme().equals(p.getIme()) && this.getDatumRodjenjaString().equals(p.getDatumRodjenjaString()) && this.getAdresaStanovanja().equals(p.getAdresaStanovanja())
+				&& this.getKontaktTelefon().equals(p.getKontaktTelefon())  && this.getEmailAdresa().equals(p.getEmailAdresa()) && this.getAdresaKancelarije().equals(p.getAdresaKancelarije())
+				&& this.getBrojLicneKarte().equals(p.getBrojLicneKarte()) && this.getTitulaE().equals(p.getTitulaE()) && this.getZvanjeE().equals(p.getZvanjeE())) {
+			return true;	
+		}
+
+		
+		return false;
+	}
+
 }

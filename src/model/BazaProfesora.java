@@ -93,5 +93,55 @@ public class BazaProfesora {
 		
 		this.profesori.add(p);
 	}
+	
+	public void izmenaProfesora(Profesor izmenjen, String blc) {
+
+		for (Profesor p : profesori) {
+
+			if (p.getBrojLicneKarte() == blc) {
+
+				p.setPrezime(izmenjen.getPrezime());
+				p.setIme(izmenjen.getIme());
+				p.setDatumRodjenja(izmenjen.getDatumRodjenja());
+				p.setAdresaStanovanja(izmenjen.getAdresaStanovanja());
+				p.setKontaktTelefon(izmenjen.getKontaktTelefon());
+				p.setEmailAdresa(izmenjen.getEmailAdresa());
+				p.setAdresaKancelarije(izmenjen.getAdresaKancelarije());
+				p.setBrojLicneKarte(izmenjen.getBrojLicneKarte());
+				p.setTitula(izmenjen.getTitulaE());
+				p.setZvanje(izmenjen.getZvanjeE());
+				return;
+
+			}
+
+		}
+
+	}
+
+	public Profesor nadjiBlc(String blc) {
+		
+		for(Profesor p : profesori) {
+			
+			if(p.getBrojLicneKarte() == blc ) {
+				return p;
+			}
+		}
+		return null;
+	}
+
+	public boolean proveraJedinstvenostiBlc(String blc) {
+		
+		Boolean povratna = true;
+		
+		for(Profesor p : profesori) {
+			
+			if(p.getBrojLicneKarte().equals(blc)) {
+				povratna = false;
+			}
+		}
+		
+		return povratna;
+	}
+
 
 }
