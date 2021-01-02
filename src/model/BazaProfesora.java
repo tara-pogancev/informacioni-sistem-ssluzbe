@@ -47,15 +47,15 @@ public class BazaProfesora {
 	}
 
 
+	public List<Profesor> getProfesori() {
+		return profesori;
+	}
+	
 	public void setProfesori(List<Profesor> profesori) {
 		this.profesori = profesori;
 	}
 
-	public List<Profesor> getProfesori() {
-		return profesori;
-	}
 
-	
 	public int getColumnCount() {
 		return 4;
 	}

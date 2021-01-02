@@ -8,7 +8,9 @@ import java.util.List;
 
 public class Predmet {
 
-	enum Semestar {LETNJI, ZIMSKI};
+	enum Semestar {
+		LETNJI, ZIMSKI
+	};
 
 	private String sifraPredmeta;
 	private String nazivPredmeta;
@@ -64,7 +66,16 @@ public class Predmet {
 		this.nazivPredmeta = nazivPredmeta;
 	}
 
-	public Semestar getSemestar() {
+	public String getSemestar() {
+
+		if (semestar == Semestar.LETNJI) {
+			return "Letnji";
+		}
+
+		return "Zimski";
+	}
+
+	public Semestar getSemestarE() {
 		return semestar;
 	}
 

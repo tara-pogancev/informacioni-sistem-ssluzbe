@@ -10,6 +10,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 import gui.TabbedPane.Entitet;
+import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
 
@@ -32,7 +33,7 @@ public class TableTab extends JTable {
 			break;
 
 		case PROFESORI:
-			
+
 			this.setRowSelectionAllowed(true);
 			this.setColumnSelectionAllowed(true);
 			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -43,6 +44,14 @@ public class TableTab extends JTable {
 			break;
 
 		case PREDMETI:
+
+			this.setRowSelectionAllowed(true);
+			this.setColumnSelectionAllowed(true);
+			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			this.setAutoCreateRowSorter(true);
+			this.getTableHeader().setReorderingAllowed(false);
+			AbstractTableModelPredmeti atmPredmeti = new AbstractTableModelPredmeti();
+			this.setModel(atmPredmeti);
 			break;
 
 		}
