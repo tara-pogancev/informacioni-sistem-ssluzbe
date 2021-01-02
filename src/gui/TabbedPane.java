@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import model.BazaPredmeta;
+import model.Predmet;
+import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
 
@@ -75,6 +78,18 @@ public class TabbedPane extends JTabbedPane {
 		String idx = (String) studTable.getValueAt(studTable.getSelectedRow(), 0);
 		return idx;		
 	}
+	
+	public Predmet getIzabraniPredmet() {
+		
+		if(predmTable.getSelectedRow() < 0) {
+			
+			return null;
+
+		}
+		
+		Predmet p = BazaPredmeta.getInstance().getRow(predmTable.getSelectedRow());
+		return p;
+	}
 
 	public void addTab(String title, Component component) {
 		super.addTab(title, null, component);
@@ -94,6 +109,14 @@ public class TabbedPane extends JTabbedPane {
 		atmProf.fireTableDataChanged();
 		validate();
 		
+		
+	}
+
+	public void azurirajPredmet() {
+		
+		AbstractTableModelPredmeti atmPredmet = (AbstractTableModelPredmeti) predmTable.getModel();
+		atmPredmet.fireTableDataChanged();
+		validate();
 		
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import controller.PredmetiController;
 import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
@@ -52,7 +53,8 @@ public class DeleteAction extends AbstractAction {
 				break;
 			case 1: // ...
 				break;
-			case 2: // ...
+			case 2: 
+				PredmetiController.getInstance().izbrisiPredmet(temp.getIzabraniPredmet());
 				break;
 			}
 		

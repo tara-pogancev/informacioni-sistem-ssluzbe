@@ -48,3 +48,11 @@ Brisanje studenata vrši se selekcijom studenta iz table klikom na željeni red.
 7. Izmena studenta
 
 Izmena studenta obavlja se izborom studenta iz tabele, a potom odabirom opcije "Edit". U novootvorenom prozoru, u tabu "Informacije", možete promeniti bilo koje od navedenih polja. Ukoliko su sva unesena polja validna, klikom na dugme "Prihvati" promene će biti sačuvane i ažurirane u tabeli, i imate mogućnost daljih izmena istog studenta. Klikom na dugme "Otkaži", nesačuvane promene će biti poništene.
+
+8. 
+
+9. Izmena profesora
+
+10.  Brisanje predmeta
+
+Brisanje predmeta se vrši klikom na tab 'Predmeti', zatim selekcijom predmeta iz tabele predmeta klikom na željeni red. Potom, pozvati akciju brisanja pomoću dugmeta iz toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D). Zatim potvriti izborom opcije 'YES' u dijalogu za potvrdu brisanja.

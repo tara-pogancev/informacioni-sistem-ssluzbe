@@ -96,4 +96,14 @@ public class BazaPredmeta {
 
 		}
 	}
+	
+	public void izbrisiPredmet(String sifra) {
+		
+		for(Predmet p : predmeti) {
+			if(p.getSifraPredmeta().equals(sifra)) {
+				predmeti.remove(p);
+				break;
+			}
+		}
+	}
 }
