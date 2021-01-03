@@ -76,3 +76,15 @@ Brisanje predmeta se vrši klikom na tab 'Predmeti', zatim selekcijom predmeta i
 13. Pretraga studenata
 
 Pretraga studenata vrši se u okviru izabrane kartice "Studenti". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti minimalno jednu reč, a maksimalno tri. Sve ostale biće zanemarene. Prva reč se odnosi na prezime, druga na ime, a treća na broj indeksa; ukoliko se unesene reči nalaze u okviru svog respektivnog polja, svi studenti koji zadovoljavaju kriterijume biće ispisani.
+
+Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
+
+
+
+
+
+
+
+
+
+

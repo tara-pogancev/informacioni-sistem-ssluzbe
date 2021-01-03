@@ -149,13 +149,13 @@ public class HelpDialog extends JFrame implements DocumentListener {
 	public void search() {
 		hilit.removeAllHighlights();
 
-		String s = entry.getText();
+		String s = entry.getText().toUpperCase();
 		if (s.length() <= 0) {
 			message("Ništa za pretragu.");
 			return;
 		}
 
-		String content = text_area.getText();
+		String content = text_area.getText().toUpperCase();
 		int index = content.indexOf(s, 0);
 		if (index >= 0) { // match found
 			try {
