@@ -39,9 +39,12 @@ public class ProfesoriController {
 	
 	public void izbrisiProfesora(Profesor p) {
 		
-		int id = JOptionPane.showConfirmDialog(null,
+		Object[] choices = {"Da", "Ne"};
+		Object defaultChoice = choices[0];
+		
+		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
 				"Da li ste sigurni da želite da obrišete profesora [" + p.getIme() + " " + p.getPrezime() + "]?",
-				"Brisanje profesora", JOptionPane.YES_NO_OPTION);
+				"Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 
 		if (id == JOptionPane.YES_OPTION) {
 

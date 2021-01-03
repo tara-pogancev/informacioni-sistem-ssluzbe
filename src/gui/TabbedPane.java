@@ -99,7 +99,6 @@ public class TabbedPane extends JTabbedPane {
 		if(predmTable.getSelectedRow() < 0) {
 			
 			return null;
-
 		}
 		
 		Predmet p = BazaPredmeta.getInstance().getRow(predmTable.getSelectedRow());

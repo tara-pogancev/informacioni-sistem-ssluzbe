@@ -1,12 +1,13 @@
 //#prikaz_polozenih_ispita
+//#ponistavanje_ocene
 package view;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import model.BazaStudenata;
 import model.Ocena;
-import model.Student;
 
 public class AbstractTableModelOcene extends AbstractTableModel{
 
@@ -18,8 +19,8 @@ public class AbstractTableModelOcene extends AbstractTableModel{
 	private List<Ocena> ocene = null;
 	private String[] columnNames = {"Šifra predmeta", "Naziv predmeta", "ESPB", "Ocena", "Datum"};
 	
-	public AbstractTableModelOcene (Student s) {
-		ocene = s.getOcene();
+	public AbstractTableModelOcene (String idx) {
+		ocene = BazaStudenata.getInstance().getByIdx(idx).getOcene();
 	}
 	
     @Override

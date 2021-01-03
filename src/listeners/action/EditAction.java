@@ -16,6 +16,7 @@ import dialog.IzmenaProfesora;
 import dialog.IzmenaStudenta;
 import gui.MainFrame;
 import gui.TabbedPane;
+import model.Predmet;
 import model.Profesor;
 
 public class EditAction extends AbstractAction {
@@ -64,7 +65,11 @@ public class EditAction extends AbstractAction {
 					
 					break;
 				case 2:
-					new IzmenaPredmeta(temp.getIzabraniPredmet()).setVisible(true);
+					Predmet predmet = temp.getIzabraniPredmet();
+					
+					if(predmet != null)
+						new IzmenaPredmeta(temp.getIzabraniPredmet()).setVisible(true);
+					
 					break;
 				}
 	}

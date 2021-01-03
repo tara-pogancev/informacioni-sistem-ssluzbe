@@ -1,6 +1,7 @@
 //#prikaz_studenata
 //#brisanje_studenta
 //#sortiranje_studenata
+//#ponistavanje_ocene
 //
 //Reference: Projekat JTableMVCSimple
 
@@ -156,6 +157,45 @@ public class BazaStudenata {
 			}
 		}
 		return null;
+	}
+	
+	//Ponistavanje ocene
+	public void ponistiOcenu(Student student, Predmet p) {
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa().equals(student.getBrojIndeksa()))
+				for (Ocena o : s.getOcene()) {
+					if (o.getPredmet().getSifraPredmeta().equals(p.getSifraPredmeta())) {
+						s.getOcene().remove(o);
+						s.refreshProsek();
+						s.refreshEsbp();
+						s.getNepolozeniIspiti().add(p);
+			}
+		}
+		}
+	}
+	
+	//Dodavanje inicijalnih ocena radi implementacije ponistavanja ocene
+	public void initOcene(Student s) {
+		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
+		
+		Ocena o1 = new Ocena(s, predmeti.get(1), 6, "12/02/2018");
+		Ocena o2 = new Ocena(s, predmeti.get(2), 8, "03/04/2019");
+		Ocena o3 = new Ocena(s, predmeti.get(3), 9, "30/01/2020");
+		Ocena o4 = new Ocena(s, predmeti.get(0), 7, "31/01/2016");
+		
+		for (Student student : studenti) {
+			if (student.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+				student.getOcene().add(o1);
+				student.getOcene().add(o2);
+				student.getOcene().add(o3);
+				student.getOcene().add(o4);
+				
+				student.refreshEsbp();
+				student.refreshProsek();
+				
+			}
+		}
+		
 	}
 	
 }

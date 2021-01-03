@@ -270,22 +270,22 @@ public class DodavanjeStudenta extends JDialog {
 					t7.getText(), godina_upisa_st, trenutna_godina, status_st);
 
 			if (!BazaStudenata.getInstance().isUnique(t7.getText())) {
-				JOptionPane.showMessageDialog(null, "Student sa ovim brojem indeksa je već u sistemu!");
+				JOptionPane.showMessageDialog(this, "Student sa ovim brojem indeksa je već u sistemu!");
 			}
 
 			else if (godina_upisa_st < 2000 || godina_upisa_st > 2025) {
-				JOptionPane.showMessageDialog(null, "Godina upisa nije validna!");
+				JOptionPane.showMessageDialog(this, "Godina upisa nije validna!");
 			}
 
 			else if (!rodjenje_bool) {
-				JOptionPane.showMessageDialog(null, "Datum rođenja nije validan!");
+				JOptionPane.showMessageDialog(this, "Datum rođenja nije validan!");
 			}
 			
 			else {
 
 				StudentController.getInstance().addStudent(s);
 				this.dispose();
-				JOptionPane.showMessageDialog(null, "Student uspešno dodat!");
+				JOptionPane.showMessageDialog(this, "Student uspešno dodat!");
 			}
 
 		});

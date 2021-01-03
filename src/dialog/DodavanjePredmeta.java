@@ -164,18 +164,18 @@ public class DodavanjePredmeta extends JDialog {
 			Predmet p = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText())) {
-				JOptionPane.showMessageDialog(null, "Predmet sa ovom šifrom je već u sistemu!");
+				JOptionPane.showMessageDialog(this, "Predmet sa ovom šifrom je već u sistemu!");
 			}
 
 			else if (espb < 1 || espb > 20) {
-				JOptionPane.showMessageDialog(null, "Broj ESPB bodova nije validan!");
+				JOptionPane.showMessageDialog(this, "Broj ESPB bodova nije validan!");
 			}
 
 			else {
 
 				PredmetiController.getInstance().dodajPredmet(p);
 				this.dispose();
-				JOptionPane.showMessageDialog(null, "Predmet uspešno dodat!");
+				JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
 			}
 
 		});

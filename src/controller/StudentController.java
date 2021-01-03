@@ -2,6 +2,7 @@
 //#brisanje_studenta
 //#prikaz_studenata
 //#sortiranje_studenata
+//#ponistavanje_ocene
 
 //Reference: Projekat JTableMVCSimple
 
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import gui.MainFrame;
 import model.BazaStudenata;
+import model.Predmet;
 import model.Student;
 public class StudentController {
 
@@ -33,9 +35,12 @@ public class StudentController {
 	
     public void izbrisiStudenta(String idx) {
 
-		int id = JOptionPane.showConfirmDialog(null,
+		Object[] choices = {"Da", "Ne"};
+		Object defaultChoice = choices[0];
+		
+		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
 				"Da li ste sigurni da želite da obrišete studenta [" + idx + "]?",
-				"Brisanje studenta", JOptionPane.YES_NO_OPTION);
+				"Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 
 		if (id == JOptionPane.YES_OPTION) {
 
@@ -51,5 +56,20 @@ public class StudentController {
 		MainFrame.getTabbedPane().azurirajS();
 	}
 	
+	public void ponistiOcenu(Student student, Predmet p) {
+		
+		BazaStudenata.getInstance().ponistiOcenu(student, p);
+		
+		MainFrame.getTabbedPane().azurirajS();
+		
+	}
+	
+	public void initOcene(Student student) {
+		
+		BazaStudenata.getInstance().initOcene(student);
+		
+		MainFrame.getTabbedPane().azurirajS();
+		
+	}
 	
 }

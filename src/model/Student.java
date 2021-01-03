@@ -1,5 +1,6 @@
-//#student
+// #student
 // #prikaz_polozenih_ispita
+// #ponistavanje_ocene
 //
 // Reference:
 // https://www.tutorialspoint.com/java/java_date_time.htm
@@ -88,7 +89,10 @@ public class Student {
 	public int getEspb() {
 		return espb;
 	}
-	public void setEsbp() {
+	public void setEspb(int espb) {
+		this.espb = espb;
+	}
+	public void refreshEsbp() {
 		
 		int bodovi = 0;
 		
@@ -220,18 +224,7 @@ public class Student {
 		this.prosek = 0;
 	}
 	
-	
-	//TODO Odraditi metode za ispite
-	public void addOcena(Ocena o) {
-		//Temp zbog testiranja
-		ocene.add(o);
-		this.refreshProsek();
-		this.setEsbp();
-	}
-	
-	public void addPredmet() {
-	}
-	
+
 	//Metoda koja poredi 2 studenta, i vraca TRUE ako su jednaki po osnovnim stavkama
 	public boolean equals(Student s2) {
 		

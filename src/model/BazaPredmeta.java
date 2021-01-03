@@ -1,6 +1,8 @@
 // #prikaz_predmeta
 // #dodavanje_predmeta
 // #izmena_predmeta
+// #ponistavanje_ocene
+//
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -137,13 +139,21 @@ public class BazaPredmeta {
 				
 				//TODO: Profesor
 				
-				
 			}
-			
 		}
-		
 	}
 	
+	public Predmet findById(String sifra) {
+		for (Predmet p : predmeti) {
+			if (p.getSifraPredmeta().equals(sifra)) {
+
+				return p;
+
+			}
+		}
+		return null;
+
+	}
 	
 	
 }
