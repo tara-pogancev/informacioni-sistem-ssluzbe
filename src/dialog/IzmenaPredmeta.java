@@ -1,19 +1,28 @@
-//#izmena_predmeta
+// #izmena_predmeta
+// #dodavanje_profesora_na_predmet
+//
+// Reference: 
+// https://stackoverflow.com/questions/16257125/creating-square-buttons-in-swing
+
 
 package dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -25,10 +34,12 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.PredmetiController;
+import dialog.predmet.odaberiProfesora;
 import gui.MainFrame;
 import model.BazaPredmeta;
 import model.Predmet;
 import model.Predmet.Semestar;
+import model.Profesor;
 
 public class IzmenaPredmeta extends JDialog {
 
@@ -36,6 +47,8 @@ public class IzmenaPredmeta extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 5786169429923291047L;
+	
+	private Profesor noviProfesor = null;
 
 	final Color ERROR_COLOR = new Color(237, 121, 121);
 	Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
@@ -43,7 +56,7 @@ public class IzmenaPredmeta extends JDialog {
 	public IzmenaPredmeta(Predmet p) {
 		this.setTitle("Izmena predmeta");
 		this.setResizable(false);
-		this.setSize(450, 350); // X, Y
+		this.setSize(550, 350); // X, Y
 
 		Border padding_form = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
 		Border padding_buttons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
@@ -85,6 +98,36 @@ public class IzmenaPredmeta extends JDialog {
 		JLabel l5 = new JLabel("Godina studija*");
 		JComboBox<String> t5 = new JComboBox<String>(god_stud);
 		t5.setSelectedIndex(p.getGodinaIzvodjenja() - 1);
+		
+		//DODAVANJE PROFESORA KOMPONENTE	
+		noviProfesor = p.getPredmetniProfesor();
+		
+		JLabel l6 = new JLabel("Profesor*");
+		JTextField t6 = new JTextField("");
+		t6.setEditable(false);
+		
+		if (p.getPredmetniProfesor() != null) t6.setText(p.getPredmetniProfesor().getIme()+" "+p.getPredmetniProfesor().getPrezime());
+		
+		String imep_staro = t6.getText();
+		
+		JButton add = new JButton();
+		add.setIcon(new ImageIcon("images" + File.separator + "add.png"));
+		add.setPreferredSize(new Dimension(25, 25));
+		add.setFocusPainted(false);
+		JButton rm = new JButton();
+		rm.setIcon(new ImageIcon("images" + File.separator + "remove.png"));
+		rm.setPreferredSize(new Dimension(25, 25));
+		rm.setFocusPainted(false);
+		
+		JPanel profesor = new JPanel();
+		profesor.setLayout(new BoxLayout(profesor, BoxLayout.X_AXIS));
+		profesor.add(t6);
+		profesor.add(Box.createRigidArea(new Dimension(8, 0)));
+		profesor.add(add);
+		profesor.add(Box.createRigidArea(new Dimension(8, 0)));
+		profesor.add(rm);
+		
+		dodavanjeProfesora(add, rm, t6);
 
 		// Dodavanje komponenti forme
 		content.add(l1);
@@ -97,6 +140,8 @@ public class IzmenaPredmeta extends JDialog {
 		content.add(t4);
 		content.add(l5);
 		content.add(t5);
+		content.add(l6);
+		content.add(profesor);
 
 		// BUTTONS
 		JPanel buttons = new JPanel();
@@ -109,7 +154,28 @@ public class IzmenaPredmeta extends JDialog {
 		decline.addActionListener(e -> {
 			this.dispose();
 		});
-
+		
+		//Akcije dugmica
+		add.addActionListener(e -> {
+			
+			new odaberiProfesora().setVisible(true);
+			if (BazaPredmeta.getInstance().getTemp_profesor() != null) {
+				noviProfesor = BazaPredmeta.getInstance().getTemp_profesor();
+				t6.setText(noviProfesor.getIme() + " " + noviProfesor.getPrezime());
+			}
+			dodavanjeProfesora(add, rm, t6);
+			validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+			
+		});
+		
+		rm.addActionListener(e -> {
+			
+			//TODO: #uklanjanje_profesora_sa_predmeta
+			
+		});
+		
+		
+		
 		KeyListener l = new KeyListener() {
 
 			@Override
@@ -119,50 +185,8 @@ public class IzmenaPredmeta extends JDialog {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
-				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
-				boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
-
-				if (check1 && check2 && check3) {
-					int espb = Integer.parseInt(t3.getText());
-
-					int godina = t5.getSelectedIndex() + 1;
-
-					Semestar sem = Semestar.ZIMSKI;
-					if (t4.getSelectedIndex() == 1)
-						sem = Semestar.LETNJI;
-
-				Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
-				
-				if (!isChanged(temp, p))
-					accept.setEnabled(false);
-				else	accept.setEnabled(true);
-				} 
-				else {
-
-					accept.setEnabled(false);
-				}
-
-				// CRVENITI DEO KOJI NIJE DOBRO UKUCAN
-
-				if (check1 || t1.getText().isEmpty()) {
-					t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t1.setBorder(incorrect_input);
-				}
-
-				if (check2 || t2.getText().isEmpty()) {
-					t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t2.setBorder(incorrect_input);
-				}
-
-				if (check3 || t3.getText().isEmpty()) {
-					t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t3.setBorder(incorrect_input);
-				}
-
+				dodavanjeProfesora(add, rm, t6);
+				validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
 			}
 
 			@Override
@@ -176,49 +200,8 @@ public class IzmenaPredmeta extends JDialog {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
-				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
-				boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
-
-				if (check1 && check2 && check3) {
-					int espb = Integer.parseInt(t3.getText());
-
-					int godina = t5.getSelectedIndex() + 1;
-
-					Semestar sem = Semestar.ZIMSKI;
-					if (t4.getSelectedIndex() == 1)
-						sem = Semestar.LETNJI;
-
-				Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
-				
-				if (!isChanged(temp, p))
-					accept.setEnabled(false);
-				else	accept.setEnabled(true);
-				} 
-				else {
-
-					accept.setEnabled(false);
-				}
-
-				// CRVENITI DEO KOJI NIJE DOBRO UKUCAN
-
-				if (check1 || t1.getText().isEmpty()) {
-					t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t1.setBorder(incorrect_input);
-				}
-
-				if (check2 || t2.getText().isEmpty()) {
-					t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t2.setBorder(incorrect_input);
-				}
-
-				if (check3 || t3.getText().isEmpty()) {
-					t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-				} else {
-					t3.setBorder(incorrect_input);
-				}
+				dodavanjeProfesora(add, rm, t6);
+				validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
 			}
 
 			@Override
@@ -258,7 +241,7 @@ public class IzmenaPredmeta extends JDialog {
 			if (t4.getSelectedIndex() == 1)
 				sem = Semestar.LETNJI;
 
-			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
+			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem, godina, noviProfesor, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText()) && !p.getSifraPredmeta().equals(t1.getText())) {
 				JOptionPane.showMessageDialog(this, "Predmet sa ovom šifrom je već u sistemu!");
@@ -301,5 +284,72 @@ public class IzmenaPredmeta extends JDialog {
 		
 	}
 	
+	private void validate(JTextField t1, JTextField t2, JTextField t3, JComboBox<String> t4, JComboBox<String> t5, JTextField t6, JButton accept, Predmet p, String imep_staro) {
+		
+		boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
+		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
+		boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
+
+		if (check1 && check2 && check3) {
+			int espb = Integer.parseInt(t3.getText());
+
+			int godina = t5.getSelectedIndex() + 1;
+
+			Semestar sem = Semestar.ZIMSKI;
+			if (t4.getSelectedIndex() == 1)
+				sem = Semestar.LETNJI;
+
+		Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
+		String imep_novo = t6.getText();
+		
+		if (!isChanged(temp, p) && imep_novo.equals(imep_staro))
+			accept.setEnabled(false);
+		else	accept.setEnabled(true);
+		} 
+		else {
+
+			accept.setEnabled(false);
+		}
+
+		// CRVENITI DEO KOJI NIJE DOBRO UKUCAN
+
+		if (check1 || t1.getText().isEmpty()) {
+			t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t1.setBorder(incorrect_input);
+		}
+
+		if (check2 || t2.getText().isEmpty()) {
+			t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t2.setBorder(incorrect_input);
+		}
+
+		if (check3 || t3.getText().isEmpty()) {
+			t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+		} else {
+			t3.setBorder(incorrect_input);
+		}
+		
+	}
+	
+	private void dodavanjeProfesora (JButton add, JButton remove, JTextField t) {
+		
+		if (!t.getText().isEmpty()) {
+			
+			// 1. PROFESOR NE POSTOJI
+			
+			add.setEnabled(false);
+			remove.setEnabled(true);
+			
+		} else {
+			
+			// 2. PROFESOR POSOTJI
+			
+			add.setEnabled(true);
+			remove.setEnabled(false);
+			
+		}
+	}
 	
 }

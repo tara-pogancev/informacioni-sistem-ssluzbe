@@ -67,6 +67,8 @@ Primer validnog unosa: E212, Matematička analiza 1, 9
 
 Promena predmeta vrši se iz kartice "Predmeti", odabirom akcije "Edit". U novootvorenom prozoru moguće je uneti izmene predmeta, potvrditi ih ukoliko su validne, ili iste poništiti izlaskom iz prozorčića ili klikom na dugme "Odustani".
 
+Izmena profesora na predmetu vrši se klikom na dugme "+" (za dodavanje), ili "-" za brisanje profesora sa predmeta. Ukoliko ni jedan profesor nije dodeljen predmetu, korisnik će imati mogućnost izbora iz liste svih profesora iz baze. Nakon napravljenih izmena, iste je potreno potvrditi.
+
 12.  Brisanje predmeta
 
 Brisanje predmeta se vrši klikom na tab 'Predmeti', zatim selekcijom predmeta iz tabele predmeta klikom na željeni red. Potom, pozvati akciju brisanja pomoću dugmeta iz toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D). Zatim potvriti izborom opcije 'YES' u dijalogu za potvrdu brisanja.

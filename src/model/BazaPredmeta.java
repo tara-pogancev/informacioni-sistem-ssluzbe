@@ -2,6 +2,7 @@
 // #dodavanje_predmeta
 // #izmena_predmeta
 // #ponistavanje_ocene
+// #dodavanje_profesora_na_predmet
 //
 // Reference:
 // Projekat JTableMVCSimple
@@ -25,6 +26,7 @@ public class BazaPredmeta {
 		return instance;
 	}
 
+	private Profesor temp_profesor;		//Polje radi pravilne izmene profesora
 	private List<Predmet> predmeti;
 	private List<String> kolone;
 
@@ -53,7 +55,7 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("MA2", "Matematička analiza 2", Semestar.ZIMSKI, 2, profesori.get(0), 9, polozili,
 				nisuPolozili));
 		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesori.get(1), 6, polozili, nisuPolozili));
-		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, profesori.get(2), 9, polozili, nisuPolozili));
+		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
 		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(3), 8, polozili,
 				nisuPolozili));
 	}
@@ -138,7 +140,7 @@ public class BazaPredmeta {
 				p.setSifraPredmeta(promene.getSifraPredmeta());
 				
 				//TODO: Profesor
-				
+				p.setPredmetniProfesor(promene.getPredmetniProfesor());
 			}
 		}
 	}
@@ -153,6 +155,14 @@ public class BazaPredmeta {
 		}
 		return null;
 
+	}
+
+	public Profesor getTemp_profesor() {
+		return temp_profesor;
+	}
+
+	public void setTemp_profesor(Profesor temp_profesor) {
+		this.temp_profesor = temp_profesor;
 	}
 	
 	
