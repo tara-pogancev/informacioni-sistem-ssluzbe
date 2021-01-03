@@ -15,11 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
-import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -31,6 +29,7 @@ import javax.swing.border.EmptyBorder;
 import listeners.action.AddNewAction;
 import listeners.action.DeleteAction;
 import listeners.action.EditAction;
+import listeners.action.SearchAction;
 
 public class Toolbar extends JToolBar {
 
@@ -38,7 +37,8 @@ public class Toolbar extends JToolBar {
 	 * 
 	 */
 	private static final long serialVersionUID = -5707394191276063225L;
-	
+
+	public static JTextField searchText;
 
 	public Toolbar() {
 
@@ -53,6 +53,7 @@ public class Toolbar extends JToolBar {
 		AddNewAction ana = new AddNewAction();
 		EditAction ea = new EditAction();
 		DeleteAction da = new DeleteAction();
+		SearchAction sr = new SearchAction();
 
 		// Kreiranje dugmadi
 		JButton addNew = new JButton(ana);
@@ -73,16 +74,16 @@ public class Toolbar extends JToolBar {
 		delete.setContentAreaFilled(true);
 		delete.setFocusPainted(false);
 
-		JButton search = new JButton();
-		search.setIcon(new ImageIcon("images" + File.separator + "search-icon2.png"));
-		search.setToolTipText("Search");
+		JButton search = new JButton(sr);
+//		search.setIcon(new ImageIcon("images" + File.separator + "search-icon2.png"));
+//		search.setToolTipText("Search");
 		search.setBorder(new EmptyBorder(3, 3, 3, 3));
 		search.setOpaque(false);
 		search.setContentAreaFilled(true);
 		search.setFocusPainted(false);
 
 		// Kreiranje tekstualnog polja za pretragu
-		JTextField searchText = new JTextField("Search...", 15);
+		searchText = new JTextField("Search...", 15);
 		searchText.setMaximumSize(new Dimension(20, 20));
 		searchText.setToolTipText("Search...");
 		searchText.setName("searchText");
@@ -116,7 +117,8 @@ public class Toolbar extends JToolBar {
 
 		    @Override
 		    public void focusLost(FocusEvent e) {
-		    	searchText.setText("Search..."); 
+		    	if (searchText.getText().isEmpty())
+		    		searchText.setText("Search..."); 
 		    }
 
 		});
@@ -137,4 +139,9 @@ public class Toolbar extends JToolBar {
 		validate();
 	}
 
+	public static String getSearchText() {
+		return searchText.getText();
+	}
+	
+	
 }

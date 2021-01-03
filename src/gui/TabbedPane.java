@@ -10,6 +10,7 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.table.TableRowSorter;
 
 import model.BazaPredmeta;
 import model.BazaProfesora;
@@ -133,4 +134,13 @@ public class TabbedPane extends JTabbedPane {
 		validate();
 		
 	}
+	
+	//Pretraga
+	public void setFilterS(TableRowSorter<AbstractTableModelStudenti> sorter) {
+		
+		studTable.setRowSorter(sorter);
+		
+	}
+
+	
 }
