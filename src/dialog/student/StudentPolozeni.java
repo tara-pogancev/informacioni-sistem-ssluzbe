@@ -36,11 +36,11 @@ public class StudentPolozeni extends JPanel {
 	private static final long serialVersionUID = -6876346602333553775L;
 
 	JTable polozeni_predmeti = new JTable();
+	private String idx;
 	
 	public StudentPolozeni(Student s) {
 		
-		//INIT OCENE
-		StudentController.getInstance().initOcene(s);
+		 idx = s.getBrojIndeksa();
 
 		Border padding_panel = BorderFactory.createEmptyBorder(30, 30, 10, 30); // North, West, South, East
 		Border padding_elements = BorderFactory.createEmptyBorder(0, 0, 15, 0); // North, West, South, East
@@ -55,9 +55,9 @@ public class StudentPolozeni extends JPanel {
 		
 		
 		//Tabela polozenih predmeta
-		polozeni_predmeti.setModel(new AbstractTableModelOcene(s.getBrojIndeksa()));
+		polozeni_predmeti.setModel(new AbstractTableModelOcene(idx));
 		polozeni_predmeti.getTableHeader().setReorderingAllowed(false);
-		//polozeni_predmeti.setAutoCreateRowSorter(true);
+		polozeni_predmeti.setAutoCreateRowSorter(true);
 		polozeni_predmeti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		polozeni_predmeti.setColumnSelectionAllowed(false);
 		polozeni_predmeti.setRowSelectionAllowed(true);
@@ -66,6 +66,7 @@ public class StudentPolozeni extends JPanel {
 		polozeni_predmeti.getColumnModel().getColumn(1).setPreferredWidth(180);
 		
 		JScrollPane scrollPane = new JScrollPane(polozeni_predmeti);
+		azuriraj();
 		
 		//Paneli
 		JPanel p1 = new JPanel ();
@@ -97,19 +98,18 @@ public class StudentPolozeni extends JPanel {
 				Object[] choices = {"Da", "Ne"};
 				Object defaultChoice = choices[0];
 				
-				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da poništite ocenu?", "Poništavanje ocene",
+				String sifra = (String) polozeni_predmeti.getValueAt(polozeni_predmeti.getSelectedRow(), 0);
+				Predmet p = BazaPredmeta.getInstance().findById(sifra);
+			
+				
+				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da poništite ocenu ["+ sifra +"]?", "Poništavanje ocene",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 				if (id == JOptionPane.YES_OPTION) {
-				
-					String sifra = (String) polozeni_predmeti.getValueAt(polozeni_predmeti.getSelectedRow(), 0);
-					System.out.println(sifra);
-					Predmet p = BazaPredmeta.getInstance().findById(sifra);
-					
-					System.out.println(p.getNazivPredmeta());
-				
-					StudentController.getInstance().ponistiOcenu(s, p);
+
+					StudentController.getInstance().ponistiOcenu(idx, p);
 					
 					azuriraj();
+
 					String pr_updated = df.format(s.getProsek());
 					prosek.setText("Prosečna ocena:     " + pr_updated);
 					espb.setText("Ukupno ESPB:     " + s.getEspb());

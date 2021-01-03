@@ -1,4 +1,3 @@
-//#izmena_studenta
 package dialog.student;
 
 import java.awt.Color;
@@ -27,7 +26,6 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.StudentController;
-import dialog.IzmenaStudenta;
 import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
@@ -54,7 +52,6 @@ public class StudentInformacije extends JPanel {
 		content.setBorder(padding_form);
 
 		//Parent string
-		String parent_idx = s.getBrojIndeksa();
 		staro = new Student(s);
 		
 		// Potrebni nizovi
@@ -146,7 +143,8 @@ public class StudentInformacije extends JPanel {
 
 		decline.addActionListener(e -> {
 			initData(staro, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
-			IzmenaStudenta.getInstance(parent_idx).closeDialog();
+			validate(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, accept);
+			JOptionPane.showMessageDialog(this, "Poslednje izmene poništene!");
 		});
 
 		// KEY-LISTENERS
@@ -236,15 +234,15 @@ public class StudentInformacije extends JPanel {
 					t6.getText(), t7.getText(), godina_upisa_st, trenutna_godina, status_st);
 
 			if (!BazaStudenata.getInstance().isUnique(t7.getText()) && !s.getBrojIndeksa().equals( t7.getText())) {
-				JOptionPane.showMessageDialog(null, "Student sa ovim brojem indeksa je već u sistemu!");
+				JOptionPane.showMessageDialog(this, "Student sa ovim brojem indeksa je već u sistemu!");
 			}
 
 			else if (godina_upisa_st < 2000 || godina_upisa_st > 2025) {
-				JOptionPane.showMessageDialog(null, "Godina upisa nije validna!");
+				JOptionPane.showMessageDialog(this, "Godina upisa nije validna!");
 			}
 
 			else if (!rodjenje_bool) {
-				JOptionPane.showMessageDialog(null, "Datum rođenja nije validan!");
+				JOptionPane.showMessageDialog(this, "Datum rođenja nije validan!");
 			}
 
 			else {
@@ -253,7 +251,7 @@ public class StudentInformacije extends JPanel {
 				accept.setEnabled(false);
 				
 				StudentController.getInstance().izmeniStudenta(novo, s.getBrojIndeksa());
-				JOptionPane.showMessageDialog(null, "Student uspešno izmenjen!");
+				JOptionPane.showMessageDialog(this, "Student uspešno izmenjen!");
 				
 			}
 

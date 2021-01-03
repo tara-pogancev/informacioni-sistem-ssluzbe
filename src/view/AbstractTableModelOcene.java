@@ -2,6 +2,7 @@
 //#ponistavanje_ocene
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -11,12 +12,13 @@ import model.Ocena;
 
 public class AbstractTableModelOcene extends AbstractTableModel{
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3997656591847752563L;
-
-	private List<Ocena> ocene = null;
+	private static final long serialVersionUID = 7087621529336960708L;
+	
+	private List<Ocena> ocene = new ArrayList<Ocena>();
 	private String[] columnNames = {"Šifra predmeta", "Naziv predmeta", "ESPB", "Ocena", "Datum"};
 	
 	public AbstractTableModelOcene (String idx) {
@@ -57,7 +59,6 @@ public class AbstractTableModelOcene extends AbstractTableModel{
 		case 4:
 			return temp.getDatum();
 		}
-		
 		return null;
 	}
 
@@ -74,7 +75,6 @@ public class AbstractTableModelOcene extends AbstractTableModel{
 	               return Integer.class;
 	             case 4:
 	               return String.class;
-
 	             }
 	             return null;
 	      }

@@ -53,7 +53,8 @@ public class EditAction extends AbstractAction {
 			if (sellected_row != -1)
 				switch (current_tab) {
 				case 0:
-					IzmenaStudenta.getInstance(temp.getStudentIdx()).setVisible(true);
+					//IzmenaStudenta.getInstance(temp.getStudentIdx()).setVisible(true);
+					new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
 					break;
 				case 1: 
 					

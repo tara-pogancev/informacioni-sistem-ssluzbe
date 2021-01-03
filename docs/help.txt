@@ -40,9 +40,11 @@ Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 06478
 
 Izmena studenta obavlja se izborom studenta iz tabele, a potom odabirom opcije "Edit". U novootvorenom prozoru, u tabu "Informacije", možete promeniti bilo koje od navedenih polja. Ukoliko su sva unesena polja validna, klikom na dugme "Prihvati" promene će biti sačuvane i ažurirane u tabeli, i imate mogućnost daljih izmena istog studenta. Klikom na dugme "Otkaži", nesačuvane promene će biti poništene.
 
+U kratici prozora za izmene studenta, nalazi se spisak položenih predmeta, kao i ukupan broj osvojenih ESPB bodova i prosek. Odabirom ocene, ista se može poništiti klikom na dugme "Poništi ocenu".
+
 6. Brisanje studenta
 
-Brisanje studenata vrši se selekcijom studenta iz table klikom na željeni red. Potom, pozvati akciju brisanja putem toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D), i potvrditi brisanje izabranog studenta u dijalogu. 
+Brisanje studenata vrši se selekcijom studenta iz table klikom na željeni red. Potom, pozvati akciju brisanja putem toolbar-a, menija, mnemonika ili akceleratora (Ctrl + D), i potvrditi brisanje izabranog studenta u dijalogu. Za vraćanje podataka na stanje pre izmena, potrebno je kliknuti dugme "Odustani", nakon čega korisnik može dalje da upravlja izmenama istog studenta.
 
 7. Dodavanje profesora
 

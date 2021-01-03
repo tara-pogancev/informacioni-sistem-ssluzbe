@@ -56,7 +56,7 @@ public class StudentController {
 		MainFrame.getTabbedPane().azurirajS();
 	}
 	
-	public void ponistiOcenu(Student student, Predmet p) {
+	public void ponistiOcenu(String student, Predmet p) {
 		
 		BazaStudenata.getInstance().ponistiOcenu(student, p);
 		
@@ -64,7 +64,7 @@ public class StudentController {
 		
 	}
 	
-	public void initOcene(Student student) {
+	public void initOcene(String student) {
 		
 		BazaStudenata.getInstance().initOcene(student);
 		

@@ -92,7 +92,7 @@ public class Student {
 	public void setEspb(int espb) {
 		this.espb = espb;
 	}
-	public void refreshEsbp() {
+	public void refreshEspb() {
 		
 		int bodovi = 0;
 		
@@ -133,7 +133,10 @@ public class Student {
 			prosek+= o.getOcena();
 		}
 		
-		this.prosek = prosek/(this.ocene.size());
+		if (prosek == 0) 
+			this.prosek = 0;
+		else
+			this.prosek = prosek/(this.ocene.size());
 	}
 	
 	public List<Ocena> getOcene() {

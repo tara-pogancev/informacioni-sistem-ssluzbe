@@ -261,11 +261,11 @@ public class IzmenaPredmeta extends JDialog {
 			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText()) && !p.getSifraPredmeta().equals(t1.getText())) {
-				JOptionPane.showMessageDialog(null, "Predmet sa ovom šifrom je već u sistemu!");
+				JOptionPane.showMessageDialog(this, "Predmet sa ovom šifrom je već u sistemu!");
 			}
 
 			else if (espb < 1 || espb > 20) {
-				JOptionPane.showMessageDialog(null, "Broj ESPB bodova nije validan!");
+				JOptionPane.showMessageDialog(this, "Broj ESPB bodova nije validan!");
 			}
 
 			else {
@@ -273,7 +273,7 @@ public class IzmenaPredmeta extends JDialog {
 				//TODO: registar promene
 				
 				PredmetiController.getInstance().izmeniPredmet(novo, p.getSifraPredmeta());
-				JOptionPane.showMessageDialog(null, "Predmet uspešno izmenjen!");
+				JOptionPane.showMessageDialog(this, "Predmet uspešno izmenjen!");
 				accept.setEnabled(false);
 			}
 

@@ -2,6 +2,7 @@
 //#brisanje_studenta
 //#sortiranje_studenata
 //#ponistavanje_ocene
+//#prikaz_polozenih_ispita
 //
 //Reference: Projekat JTableMVCSimple
 
@@ -46,16 +47,15 @@ public class BazaStudenata {
 
 		//Dodavnje studenata radi privremenog prikaza
 		
-		List<Ocena> ocene = new ArrayList<Ocena>();
 		List<Predmet> predmeti = new ArrayList<Predmet>();
 		
-		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20",			 "0632485463", "ssofija@gmail.com", "ra-71-2017", 2017, 4, Status.B, 8.62, ocene, predmeti));
-		studenti.add(new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a",	 "0628421458", "filipm@uns.ac.rs", "it-135-2017", 2017, 4, Status.S, 6.23, ocene, predmeti));
-		studenti.add(new Student("Brkić", "Milica", "17/01/1997", "Banatska 48",			 "0612549683", "mmmilicaa@gmail.com", "in-4-2016", 2016, 4, Status.B, 8.89, ocene, predmeti));
-		studenti.add(new Student("Popov", "Vojin", "08/02/1999", "Dr Đorđa Jovanovića 158",	 "0601156584", "popov.vojin@gmail.com", "sq-26-2018", 2018, 3, Status.S, 7.42, ocene, predmeti));
-		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840", "kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, ocene, predmeti));
-		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, ocene, predmeti));
-		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, ocene, predmeti));
+		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20",			 "0632485463", "ssofija@gmail.com", "ra-71-2017", 2017, 4, Status.B, 8.62, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a",	 "0628421458", "filipm@uns.ac.rs", "it-135-2017", 2017, 4, Status.S, 6.23, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Brkić", "Milica", "17/01/1997", "Banatska 48",			 "0612549683", "mmmilicaa@gmail.com", "in-4-2016", 2016, 4, Status.B, 8.89, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Popov", "Vojin", "08/02/1999", "Dr Đorđa Jovanovića 158",	 "0601156584", "popov.vojin@gmail.com", "sq-26-2018", 2018, 3, Status.S, 7.42, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840", "kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, new ArrayList<Ocena>(), predmeti));
 		
 	}
 	
@@ -152,7 +152,7 @@ public class BazaStudenata {
 	
 	public Student getByIdx(String index) {
 		for (Student s : studenti) {
-			if(s.getBrojIndeksa() == index) {
+			if(s.getBrojIndeksa().equals(index)) {
 				return s;
 			}
 		}
@@ -160,42 +160,56 @@ public class BazaStudenata {
 	}
 	
 	//Ponistavanje ocene
-	public void ponistiOcenu(Student student, Predmet p) {
+	public void ponistiOcenu(String student, Predmet p) {
 		for (Student s : studenti) {
-			if (s.getBrojIndeksa().equals(student.getBrojIndeksa()))
+			if (s.getBrojIndeksa().equals(student))
 				for (Ocena o : s.getOcene()) {
 					if (o.getPredmet().getSifraPredmeta().equals(p.getSifraPredmeta())) {
 						s.getOcene().remove(o);
 						s.refreshProsek();
-						s.refreshEsbp();
+						s.refreshEspb();
 						s.getNepolozeniIspiti().add(p);
+						
+						return;
 			}
 		}
 		}
 	}
 	
 	//Dodavanje inicijalnih ocena radi implementacije ponistavanja ocene
-	public void initOcene(Student s) {
+	public void initOcene(String idx) {
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
-		
-		Ocena o1 = new Ocena(s, predmeti.get(1), 6, "12/02/2018");
-		Ocena o2 = new Ocena(s, predmeti.get(2), 8, "03/04/2019");
-		Ocena o3 = new Ocena(s, predmeti.get(3), 9, "30/01/2020");
-		Ocena o4 = new Ocena(s, predmeti.get(0), 7, "31/01/2016");
-		
+
 		for (Student student : studenti) {
-			if (student.getBrojIndeksa().equals(s.getBrojIndeksa())) {
+			if (student.getBrojIndeksa() == (idx)) {
+				
+				Ocena o1 = new Ocena(student, predmeti.get(1), 6, "12/02/2018");
+				Ocena o2 = new Ocena(student, predmeti.get(2), 8, "03/04/2019");
+				Ocena o3 = new Ocena(student, predmeti.get(3), 9, "30/01/2020");
+				Ocena o4 = new Ocena(student, predmeti.get(0), 7, "31/01/2016");
+								
 				student.getOcene().add(o1);
 				student.getOcene().add(o2);
 				student.getOcene().add(o3);
 				student.getOcene().add(o4);
 				
-				student.refreshEsbp();
+				student.refreshEspb();
 				student.refreshProsek();
-				
+			
+				return;
 			}
 		}
+
+	}
+	
+	//Pomocna metoda za debagovanje
+	public void ispisOcena(String idx) {
 		
+		for (Student student : studenti) {
+		System.out.print("\n\n---"+student.getBrojIndeksa()+"  =?  " + idx + "---\n");
+		for (Ocena o : student.getOcene()) 
+			System.out.print(o.getPredmet().getNazivPredmeta()+"  ");
+		}
 	}
 	
 }
