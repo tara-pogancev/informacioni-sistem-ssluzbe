@@ -115,7 +115,7 @@ public class ProfesorInformacije extends JPanel {
 			titula.setSelectedIndex(4);
 			break;
 		default:
-			titula.setSelectedIndex(6);
+			titula.setSelectedIndex(5);
 			break;
 		}
 		fields.add(titProf);
@@ -419,7 +419,7 @@ public class ProfesorInformacije extends JPanel {
 
 			boolean postoji = BazaProfesora.getInstance().proveraJedinstvenostiBlc(unosBlc.getText());
 
-			if (!postoji && !p.getBrojLicneKarte().equals(unosBlc.getText())) {
+			if (postoji && !p.getBrojLicneKarte().equals(unosBlc.getText())) {
 				JOptionPane.showMessageDialog(null, "Profesor sa ovim brojem lične karte je već u sistemu!");
 			} else if (!ispravanDatum) {
 

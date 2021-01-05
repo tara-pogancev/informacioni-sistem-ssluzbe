@@ -145,12 +145,12 @@ public class BazaProfesora {
 
 	public boolean proveraJedinstvenostiBlc(String blc) {
 
-		Boolean povratna = true;
+		Boolean povratna = false;
 
 		for (Profesor p : profesori) {
 
 			if (p.getBrojLicneKarte().equals(blc)) {
-				povratna = false;
+				povratna = true;
 			}
 		}
 
