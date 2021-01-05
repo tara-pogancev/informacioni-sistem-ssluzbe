@@ -9,6 +9,10 @@
 
 package model;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,6 +166,33 @@ public class BazaPredmeta {
 
 	public void setTemp_profesor(Profesor temp_profesor) {
 		this.temp_profesor = temp_profesor;
+	}
+
+	public void saveDataPredmet() throws IOException {
+
+		ObjectOutputStream oos = null;
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("predmeti.txt"));
+
+		try {
+			oos = new ObjectOutputStream(bos);
+
+			for (Predmet p : predmeti) {
+				oos.writeObject(p);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

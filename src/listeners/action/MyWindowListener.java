@@ -3,12 +3,16 @@ package listeners.action;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import gui.MainFrame;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 
 public class MyWindowListener implements WindowListener {
 
@@ -37,6 +41,16 @@ public class MyWindowListener implements WindowListener {
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 		if (izbor == JOptionPane.YES_OPTION) {
+
+			try {
+				
+				BazaStudenata.getInstance().saveDataStudent();
+				BazaProfesora.getInstance().saveDataProfesor();
+				BazaPredmeta.getInstance().saveDataPredmet();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		} else {

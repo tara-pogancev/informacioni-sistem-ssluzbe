@@ -3,13 +3,20 @@
 //Projekat MVCExample
 package model;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Profesor {
+public class Profesor implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9111551716255474498L;
+
 
 	public enum Titula {
 		BSc, MSc, mr, dr, profDr, prof

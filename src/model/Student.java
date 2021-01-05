@@ -1,19 +1,27 @@
 // #student
 // #prikaz_polozenih_ispita
 // #ponistavanje_ocene
+// #prikaz_nepolozenih_ispita
 //
 // Reference:
 // https://www.tutorialspoint.com/java/java_date_time.htm
 
 package model;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7576389372149905001L;
+
 
 	public enum Status {B, S};
 	

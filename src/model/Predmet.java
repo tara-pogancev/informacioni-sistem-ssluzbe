@@ -4,9 +4,15 @@
 
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Predmet {
+public class Predmet implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3796665093730540570L;
 
 	public enum Semestar {
 		LETNJI, ZIMSKI
@@ -122,4 +128,6 @@ public class Predmet {
 	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
+	
+	
 }
