@@ -14,8 +14,10 @@ import javax.swing.table.TableRowSorter;
 
 import model.BazaPredmeta;
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
@@ -37,9 +39,6 @@ public class TabbedPane extends JTabbedPane {
 	static TableTab profTable;
 	JPanel predmPanel = new JPanel();
 	static TableTab predmTable;
-	
-//	private JTable tabelaStudenata = new StudentiJTable();
-
 	public static Entitet ent = Entitet.STUDENTI;
 	
 	public TabbedPane() {
@@ -140,6 +139,17 @@ public class TabbedPane extends JTabbedPane {
 		
 		studTable.setRowSorter(sorter);
 		
+	}
+
+	public Student getIzabraniStudent() {
+		
+		if(studTable.getSelectedRow() < 0) {
+			
+			return null;
+		}
+		
+		Student s = BazaStudenata.getInstance().getRow(studTable.getSelectedRow());
+		return s;
 	}
 
 	

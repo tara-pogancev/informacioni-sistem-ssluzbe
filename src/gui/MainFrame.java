@@ -26,8 +26,7 @@ public class MainFrame extends JFrame {
 	private Toolbar toolbar;
 	private MainMenu menu;
 	private StatusBar status;
-	// Promenjeno na static public kako bismo mogli lako da mu pristupimo iz drugih
-	// klasa
+	
 	private static TabbedPane tabbedPane;
 
 	// Singleton pattern

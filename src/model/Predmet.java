@@ -122,5 +122,4 @@ public class Predmet {
 	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
-
 }

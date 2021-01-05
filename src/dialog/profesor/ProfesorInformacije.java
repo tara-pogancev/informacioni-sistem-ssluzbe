@@ -89,13 +89,13 @@ public class ProfesorInformacije extends JPanel {
 		fields.add(adrKanc);
 		fields.add(unosAdrK);
 
-		JLabel blcProf = new JLabel("Broj lične karte*");
+		JLabel blcProf = new JLabel("Broj lične karte*");
 		JTextField unosBlc = new JTextField(p.getBrojLicneKarte());
 		unosBlc.setToolTipText("Primer: 996582369");
 		fields.add(blcProf);
 		fields.add(unosBlc);
 
-		String[] titule = { "BSc", "MSc", "mr", "dr", "prof. dr", "dipl. inž.", "prof." };
+		String[] titule = { "BSc", "MSc", "mr", "dr", "prof. dr", "prof." };
 		JLabel titProf = new JLabel("Titula*");
 		JComboBox<String> titula = new JComboBox<>(titule);
 		switch (p.getTitula()) {
@@ -113,9 +113,6 @@ public class ProfesorInformacije extends JPanel {
 			break;
 		case "prof. dr":
 			titula.setSelectedIndex(4);
-			break;
-		case "dipl. inž.":
-			titula.setSelectedIndex(5);
 			break;
 		default:
 			titula.setSelectedIndex(6);
@@ -216,9 +213,6 @@ public class ProfesorInformacije extends JPanel {
 						break;
 					case 4:
 						titulaP = Titula.profDr;
-						break;
-					case 5:
-						titulaP = Titula.diplIng;
 						break;
 					default:
 						titulaP = Titula.prof;
@@ -365,9 +359,6 @@ public class ProfesorInformacije extends JPanel {
 				break;
 			case 4:
 				titulaProf = Titula.profDr;
-				break;
-			case 5:
-				titulaProf = Titula.diplIng;
 				break;
 			default:
 				titulaProf = Titula.prof;

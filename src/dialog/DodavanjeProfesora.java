@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesoriController;
+import gui.MainFrame;
 import model.BazaProfesora;
 import model.Profesor;
 import model.Profesor.Titula;
@@ -101,7 +102,7 @@ public class DodavanjeProfesora extends JDialog {
 		fields.add(blcProf);
 		fields.add(unosBlc);
 
-		String[] titule = {"BSc", "MSc", "mr","dr","prof. dr","dipl. inž.","prof."};
+		String[] titule = {"BSc", "MSc", "mr","dr","prof. dr","prof."};
 		JLabel titProf = new JLabel("Titula*");
 		JComboBox<String> titula = new JComboBox<>(titule);
 		fields.add(titProf);
@@ -263,9 +264,6 @@ public class DodavanjeProfesora extends JDialog {
 				case 4:
 					titulaProf = Titula.profDr;
 					break;
-				case 5:
-					titulaProf = Titula.diplIng;
-					break;
 				default:
 					titulaProf = Titula.prof;
 					break;
@@ -346,7 +344,7 @@ public class DodavanjeProfesora extends JDialog {
 
 		this.add(fields, BorderLayout.CENTER);
 		this.add(buttons, BorderLayout.SOUTH);
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(MainFrame.getInstance());
 		this.setModal(true);
 
 	}

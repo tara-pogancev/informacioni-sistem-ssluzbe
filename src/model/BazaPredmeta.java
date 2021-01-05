@@ -26,7 +26,7 @@ public class BazaPredmeta {
 		return instance;
 	}
 
-	private Profesor temp_profesor;		//Polje radi pravilne izmene profesora
+	private Profesor temp_profesor; // Polje radi pravilne izmene profesora
 	private List<Predmet> predmeti;
 	private List<String> kolone;
 
@@ -58,6 +58,7 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
 		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(3), 8, polozili,
 				nisuPolozili));
+		predmeti.add(new Predmet("E225", "Operativni sistemi", Semestar.LETNJI, 2, null, 8, polozili, nisuPolozili));
 	}
 
 	public List<Predmet> getPredmeti() {
@@ -80,11 +81,10 @@ public class BazaPredmeta {
 		return this.predmeti.get(rowIndex);
 	}
 
-
 	public String getValueAt(int row, int column) {
-		
+
 		Predmet predmet = this.predmeti.get(row);
-		
+
 		switch (column) {
 
 		case 0:
@@ -102,49 +102,48 @@ public class BazaPredmeta {
 
 		}
 	}
-	
+
 	public void dodajPredmet(Predmet p) {
 		this.predmeti.add(p);
 	}
-	
-	
+
 	public void izbrisiPredmet(String sifra) {
-		
-		for(Predmet p : predmeti) {
-			if(p.getSifraPredmeta().equals(sifra)) {
+
+		for (Predmet p : predmeti) {
+			if (p.getSifraPredmeta().equals(sifra)) {
 				predmeti.remove(p);
 				break;
 			}
 		}
 	}
-	
-	//Vraca TRUE ako predmet ima jedinstvenu sifru, ili FALSE ako nema
+
+	// Vraca TRUE ako predmet ima jedinstvenu sifru, ili FALSE ako nema
 	public boolean isUnique(String p) {
-		
-		for(Predmet predmet : predmeti) {
+
+		for (Predmet predmet : predmeti) {
 			if (predmet.getSifraPredmeta().equals(p))
 				return false;
 		}
 		return true;
-		
+
 	}
-	
-	public void izmeniPredmet (Predmet promene, String sifra) {
+
+	public void izmeniPredmet(Predmet promene, String sifra) {
 		for (Predmet p : predmeti) {
-			if(p.getSifraPredmeta().equals(sifra)) {
-				
+			if (p.getSifraPredmeta().equals(sifra)) {
+
 				p.setESPB(promene.getESPB());
 				p.setNazivPredmeta(promene.getNazivPredmeta());
 				p.setGodinaIzvodjenja(promene.getGodinaIzvodjenja());
 				p.setSemestar(p.getSemestarE());
 				p.setSifraPredmeta(promene.getSifraPredmeta());
-				
-				//TODO: Profesor
+
+				// TODO: Profesor
 				p.setPredmetniProfesor(promene.getPredmetniProfesor());
 			}
 		}
 	}
-	
+
 	public Predmet findById(String sifra) {
 		for (Predmet p : predmeti) {
 			if (p.getSifraPredmeta().equals(sifra)) {
@@ -164,6 +163,5 @@ public class BazaPredmeta {
 	public void setTemp_profesor(Profesor temp_profesor) {
 		this.temp_profesor = temp_profesor;
 	}
-	
-	
+
 }

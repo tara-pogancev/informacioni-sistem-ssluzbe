@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+import gui.MainFrame;
+
 public class MyWindowListener implements WindowListener {
 
 	@Override
@@ -24,18 +26,21 @@ public class MyWindowListener implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent arg0) {
-		
-		JFrame frame=(JFrame) arg0.getComponent();
-		
-		int izbor=JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije?",
-				JOptionPane.YES_NO_OPTION);
-		
-		if(izbor==JOptionPane.YES_OPTION) {
-			
+
+		JFrame frame = (JFrame) arg0.getComponent();
+
+		Object[] opcije = { "Da", "Ne" };
+		Object defaultChoice = opcije[0];
+
+		int izbor = JOptionPane.showOptionDialog(MainFrame.getInstance(),
+				"Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije?",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
+
+		if (izbor == JOptionPane.YES_OPTION) {
+
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		}
-		else {
-			
+		} else {
+
 			frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		}
 

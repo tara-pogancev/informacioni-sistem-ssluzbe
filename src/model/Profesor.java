@@ -12,7 +12,7 @@ import java.util.List;
 public class Profesor {
 
 	public enum Titula {
-		BSc, MSc, mr, dr, profDr, diplIng, prof
+		BSc, MSc, mr, dr, profDr, prof
 	};
 
 	public enum Zvanje {
@@ -186,8 +186,6 @@ public class Profesor {
 			return "dr";
 		case profDr:
 			return "prof. dr";
-		case diplIng:
-			return "dip. inž.";
 		default:
 			return "prof.";
 

@@ -4,6 +4,7 @@
 
 package view;
 
+
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaPredmeta;
@@ -14,9 +15,9 @@ public class AbstractTableModelPredmeti extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8454002200965331257L;
-	
-	public AbstractTableModelPredmeti() {}
 
+	public AbstractTableModelPredmeti() {}
+	
 	@Override
 	public int getColumnCount() {
 		return BazaPredmeta.getInstance().getColumnCount();

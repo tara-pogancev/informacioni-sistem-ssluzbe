@@ -12,6 +12,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Predmet.Semestar;
 import model.Student.Status;
 
 public class BazaStudenata {
@@ -48,6 +49,9 @@ public class BazaStudenata {
 		//Dodavnje studenata radi privremenog prikaza
 		
 		List<Predmet> predmeti = new ArrayList<Predmet>();
+		Predmet p = new Predmet("E225","Operativni sistemi",Semestar.LETNJI,2,null, 8);
+		predmeti.add(p);
+	
 		
 		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20",			 "0632485463", "ssofija@gmail.com", "ra-71-2017", 2017, 4, Status.B, 8.62, new ArrayList<Ocena>(), predmeti));
 		studenti.add(new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a",	 "0628421458", "filipm@uns.ac.rs", "it-135-2017", 2017, 4, Status.S, 6.23, new ArrayList<Ocena>(), predmeti));
@@ -56,6 +60,8 @@ public class BazaStudenata {
 		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840", "kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, new ArrayList<Ocena>(), predmeti));
 		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, new ArrayList<Ocena>(), predmeti));
 		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, new ArrayList<Ocena>(), predmeti));
+
+		
 		
 	}
 	

@@ -30,29 +30,34 @@ public class PredmetiController {
 
 	public void izbrisiPredmet(Predmet p) {
 
-		int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet sa šifrom \"" + p.getSifraPredmeta() + "\"?",
-				"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
-		
-		if(potvrda == JOptionPane.YES_OPTION) {
-			
+		Object[] izbor = { "Da", "Ne" };
+		Object defaultChoice = izbor[0];
+
+		int potvrda = JOptionPane.showOptionDialog(MainFrame.getInstance(),
+				"Da li ste sigurni da želite da obrišete predmet sa šifrom \"" + p.getSifraPredmeta() + "\"?",
+				"Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
+				defaultChoice);
+
+		if (potvrda == JOptionPane.YES_OPTION) {
+
 			BazaPredmeta.getInstance().izbrisiPredmet(p.getSifraPredmeta());
 
 			MainFrame.getTabbedPane().azurirajPredmet();
-			
+
 		}
 	}
-	
+
 	public void dodajPredmet(Predmet p) {
 		BazaPredmeta.getInstance().dodajPredmet(p);
 		MainFrame.getTabbedPane().azurirajPredmet();
-		
+
 	}
-	
+
 	public void izmeniPredmet(Predmet promene, String sifra) {
-		
+
 		BazaPredmeta.getInstance().izmeniPredmet(promene, sifra);
 		MainFrame.getTabbedPane().azurirajPredmet();
-		
+
 	}
 
 }
