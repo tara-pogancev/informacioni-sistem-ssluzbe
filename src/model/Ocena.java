@@ -3,13 +3,19 @@
 package model;
 
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Ocena {
+public class Ocena implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7773093462347925332L;
+	
 	private Student student;
 	private Predmet predmet;
 	private int ocena;
