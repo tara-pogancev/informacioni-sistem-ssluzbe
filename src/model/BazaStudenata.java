@@ -245,7 +245,7 @@ public class BazaStudenata {
 	public void saveDataStudent() throws IOException {
 
 		ObjectOutputStream oos = null;
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("Studenti.txt"));
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("studenti.txt"));
 
 		try {
 			oos = new ObjectOutputStream(bos);

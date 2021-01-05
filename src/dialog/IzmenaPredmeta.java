@@ -1,9 +1,9 @@
 // #izmena_predmeta
 // #dodavanje_profesora_na_predmet
+// #uklanjanje_profesora_sa_predmeta
 //
 // Reference: 
 // https://stackoverflow.com/questions/16257125/creating-square-buttons-in-swing
-
 
 package dialog;
 
@@ -47,13 +47,14 @@ public class IzmenaPredmeta extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 5786169429923291047L;
-	
+
 	private Profesor noviProfesor = null;
 
 	final Color ERROR_COLOR = new Color(237, 121, 121);
 	Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
-	
+
 	public IzmenaPredmeta(Predmet p) {
+
 		this.setTitle("Izmena predmeta");
 		this.setResizable(false);
 		this.setSize(550, 350); // X, Y
@@ -85,9 +86,9 @@ public class IzmenaPredmeta extends JDialog {
 
 		JLabel l4 = new JLabel("Semestar*");
 		JComboBox<String> t4 = new JComboBox<String>(semestar);
-		
+
 		switch (p.getSemestarE()) {
-		case LETNJI: 
+		case LETNJI:
 			t4.setSelectedIndex(1);
 			break;
 		case ZIMSKI:
@@ -98,18 +99,19 @@ public class IzmenaPredmeta extends JDialog {
 		JLabel l5 = new JLabel("Godina studija*");
 		JComboBox<String> t5 = new JComboBox<String>(god_stud);
 		t5.setSelectedIndex(p.getGodinaIzvodjenja() - 1);
-		
-		//DODAVANJE PROFESORA KOMPONENTE	
+
+		// DODAVANJE PROFESORA KOMPONENTE
 		noviProfesor = p.getPredmetniProfesor();
-		
+
 		JLabel l6 = new JLabel("Profesor*");
 		JTextField t6 = new JTextField("");
 		t6.setEditable(false);
-		
-		if (p.getPredmetniProfesor() != null) t6.setText(p.getPredmetniProfesor().getIme()+" "+p.getPredmetniProfesor().getPrezime());
-		
+
+		if (p.getPredmetniProfesor() != null)
+			t6.setText(p.getPredmetniProfesor().getIme() + " " + p.getPredmetniProfesor().getPrezime());
+
 		String imep_staro = t6.getText();
-		
+
 		JButton add = new JButton();
 		add.setIcon(new ImageIcon("images" + File.separator + "add.png"));
 		add.setPreferredSize(new Dimension(25, 25));
@@ -118,7 +120,7 @@ public class IzmenaPredmeta extends JDialog {
 		rm.setIcon(new ImageIcon("images" + File.separator + "remove.png"));
 		rm.setPreferredSize(new Dimension(25, 25));
 		rm.setFocusPainted(false);
-		
+
 		JPanel profesor = new JPanel();
 		profesor.setLayout(new BoxLayout(profesor, BoxLayout.X_AXIS));
 		profesor.add(t6);
@@ -126,7 +128,7 @@ public class IzmenaPredmeta extends JDialog {
 		profesor.add(add);
 		profesor.add(Box.createRigidArea(new Dimension(8, 0)));
 		profesor.add(rm);
-		
+
 		dodavanjeProfesora(add, rm, t6);
 
 		// Dodavanje komponenti forme
@@ -154,28 +156,48 @@ public class IzmenaPredmeta extends JDialog {
 		decline.addActionListener(e -> {
 			this.dispose();
 		});
-		
-		//Akcije dugmica
+
+		// Akcije dugmica
 		add.addActionListener(e -> {
-			
+
 			new odaberiProfesora().setVisible(true);
 			if (BazaPredmeta.getInstance().getTemp_profesor() != null) {
 				noviProfesor = BazaPredmeta.getInstance().getTemp_profesor();
+				System.out.println(noviProfesor.getIme());
 				t6.setText(noviProfesor.getIme() + " " + noviProfesor.getPrezime());
 			}
 			dodavanjeProfesora(add, rm, t6);
 			validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
-			
+
 		});
-		
+
 		rm.addActionListener(e -> {
-			
-			//TODO: #uklanjanje_profesora_sa_predmeta
-			
+
+			Object[] izbor = { "Da", "Ne" };
+			Object defaultChoice = izbor[0];
+
+			int potvrda = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da uklonite profesora?",
+					"Ukloni profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
+					defaultChoice);
+
+			if (potvrda == JOptionPane.YES_OPTION) {
+
+				noviProfesor = null;
+				t6.setText("");
+
+				//BazaProfesora.getInstance().ukloniPredmet(noviProfesor.getBrojLicneKarte(), t1.getText());
+
+//				for (Predmet prProf : noviProfesor.getPredmeti()) {
+//
+//					System.out.println(prProf.getNazivPredmeta());
+//				}
+			}
+
+			dodavanjeProfesora(add, rm, t6);
+			validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+
 		});
-		
-		
-		
+
 		KeyListener l = new KeyListener() {
 
 			@Override
@@ -195,7 +217,7 @@ public class IzmenaPredmeta extends JDialog {
 			}
 
 		};
-		
+
 		MouseListener m = new MouseListener() {
 
 			@Override
@@ -219,8 +241,7 @@ public class IzmenaPredmeta extends JDialog {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 			}
-			
-			
+
 		};
 
 		// Dodavanje key listenera za sva polja
@@ -253,8 +274,8 @@ public class IzmenaPredmeta extends JDialog {
 
 			else {
 
-				//TODO: registar promene
-				
+				// TODO: registar promene
+
 				PredmetiController.getInstance().izmeniPredmet(novo, p.getSifraPredmeta());
 				JOptionPane.showMessageDialog(this, "Predmet uspešno izmenjen!");
 				accept.setEnabled(false);
@@ -272,20 +293,23 @@ public class IzmenaPredmeta extends JDialog {
 		this.setLocationRelativeTo(MainFrame.getInstance());
 		this.setModal(true);
 	}
-	
-	//Vraca TRUE ako su postojale promene u odnosu na otvaranje prozora ili prihvatanje izmene, ili FALSE ukoliko nisu
+
+	// Vraca TRUE ako su postojale promene u odnosu na otvaranje prozora ili
+	// prihvatanje izmene, ili FALSE ukoliko nisu
 	private Boolean isChanged(Predmet p1, Predmet p2) {
-		
-		if (p1.getESPB() == p2.getESPB() && p1.getSifraPredmeta().equals(p2.getSifraPredmeta()) && p1.getNazivPredmeta().equals(p2.getNazivPredmeta())
+
+		if (p1.getESPB() == p2.getESPB() && p1.getSifraPredmeta().equals(p2.getSifraPredmeta())
+				&& p1.getNazivPredmeta().equals(p2.getNazivPredmeta())
 				&& p1.getGodinaIzvodjenja() == p2.getGodinaIzvodjenja() && p1.getSemestar().equals(p2.getSemestar()))
 			return false;
-		
+
 		return true;
-		
+
 	}
-	
-	private void validate(JTextField t1, JTextField t2, JTextField t3, JComboBox<String> t4, JComboBox<String> t5, JTextField t6, JButton accept, Predmet p, String imep_staro) {
-		
+
+	private void validate(JTextField t1, JTextField t2, JTextField t3, JComboBox<String> t4, JComboBox<String> t5,
+			JTextField t6, JButton accept, Predmet p, String imep_staro) {
+
 		boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
 		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
 		boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
@@ -299,14 +323,14 @@ public class IzmenaPredmeta extends JDialog {
 			if (t4.getSelectedIndex() == 1)
 				sem = Semestar.LETNJI;
 
-		Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
-		String imep_novo = t6.getText();
-		
-		if (!isChanged(temp, p) && imep_novo.equals(imep_staro))
-			accept.setEnabled(false);
-		else	accept.setEnabled(true);
-		} 
-		else {
+			Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
+			String imep_novo = t6.getText();
+
+			if (!isChanged(temp, p) && imep_novo.equals(imep_staro))
+				accept.setEnabled(false);
+			else
+				accept.setEnabled(true);
+		} else {
 
 			accept.setEnabled(false);
 		}
@@ -330,26 +354,26 @@ public class IzmenaPredmeta extends JDialog {
 		} else {
 			t3.setBorder(incorrect_input);
 		}
-		
+
 	}
-	
-	private void dodavanjeProfesora (JButton add, JButton remove, JTextField t) {
-		
+
+	private void dodavanjeProfesora(JButton add, JButton remove, JTextField t) {
+
 		if (!t.getText().isEmpty()) {
-			
+
 			// 1. PROFESOR NE POSTOJI
-			
+
 			add.setEnabled(false);
 			remove.setEnabled(true);
-			
+
 		} else {
-			
+
 			// 2. PROFESOR POSOTJI
-			
+
 			add.setEnabled(true);
 			remove.setEnabled(false);
-			
+
 		}
 	}
-	
+
 }
