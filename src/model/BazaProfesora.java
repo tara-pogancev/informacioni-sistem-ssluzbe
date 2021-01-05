@@ -2,6 +2,8 @@
 //#brisanje_profesora
 // #dodavanje_profesora
 // #izmena_profesora
+// #profesor_predaje_predmete
+
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -170,24 +172,19 @@ public class BazaProfesora {
 
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
 
-		for (Profesor p : profesori) {
-			if (p.getBrojLicneKarte().equals(blc)) {
+		Profesor prof = nadjiBlc(blc);
 
-				p.getPredmeti().add(predmeti.get(1));
-				p.getPredmeti().add(predmeti.get(3));
+			for (Predmet p : predmeti) {
 
-				if (blc.equals("995876258")) {
-					
-					p.getPredmeti().add(predmeti.get(0));
+				if (p.getPredmetniProfesor() != null && p.getPredmetniProfesor().getBrojLicneKarte().equals(blc)) {
+
+					prof.getPredmeti().add(p);
+
 				}
-				
-				return;
 			}
-			
-
-		}
+		
 	}
-	
+
 	public void saveDataProfesor() throws IOException {
 
 		ObjectOutputStream oos = null;

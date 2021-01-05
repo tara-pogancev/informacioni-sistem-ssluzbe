@@ -60,7 +60,7 @@ public class BazaPredmeta {
 				nisuPolozili));
 		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesori.get(1), 6, polozili, nisuPolozili));
 		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
-		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(3), 8, polozili,
+		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(0), 8, polozili,
 				nisuPolozili));
 		predmeti.add(new Predmet("E225", "Operativni sistemi", Semestar.LETNJI, 2, null, 8, polozili, nisuPolozili));
 	}

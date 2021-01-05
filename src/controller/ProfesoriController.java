@@ -1,6 +1,7 @@
 // #dodavanje_profesora
 // #izmena_profesora
 //#brisanje_profesora
+// #profesor_predaje_predmete
 //Reference:
 //Projekat JTableMVCSimple
 //Projekat MVCExample
