@@ -1,3 +1,6 @@
+// #izmena_profesora
+//#profesor_predaje_predmete
+
 package dialog.profesor;
 
 import javax.swing.JPanel;

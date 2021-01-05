@@ -1,3 +1,5 @@
+// #dodavanje_profesora
+// #izmena_profesora
 //#brisanje_profesora
 //Reference:
 //Projekat JTableMVCSimple
@@ -51,6 +53,13 @@ public class ProfesoriController {
 			BazaProfesora.getInstance().izbrisiProfesora(p.getBrojLicneKarte());
 			MainFrame.getTabbedPane().azurirajProfesora();
 		}
+	}
+	
+	public void initPredmet(String blc) {
+		
+		BazaProfesora.getInstance().initPredmeti(blc);
+		MainFrame.getTabbedPane().azurirajProfesora();
+		
 	}
 
 }

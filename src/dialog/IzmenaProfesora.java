@@ -1,7 +1,11 @@
+// #izmena_profesora
+// #profesor_predaje_predmete
+
 package dialog;
 
 import javax.swing.JDialog;
 
+import controller.ProfesoriController;
 import dialog.profesor.ProfesorTabbedPane;
 import gui.MainFrame;
 import model.Profesor;
@@ -19,10 +23,8 @@ public class IzmenaProfesora extends JDialog {
 	private IzmenaProfesora(Profesor p) {
 		
 		trenutniBlc = p.getBrojLicneKarte();
-		initialise(p);
-	}
-	
-	public void initialise(Profesor p) {
+		
+		ProfesoriController.getInstance().initPredmet(trenutniBlc);
 		
 		this.setTitle("Izmena profesora");
 		this.setResizable(false);
