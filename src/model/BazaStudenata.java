@@ -3,6 +3,7 @@
 //#sortiranje_studenata
 //#ponistavanje_ocene
 //#prikaz_polozenih_ispita
+//#prikaz_nepolozenih_ispita
 //
 //Reference: Projekat JTableMVCSimple
 
@@ -12,7 +13,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Predmet.Semestar;
 import model.Student.Status;
 
 public class BazaStudenata {
@@ -48,18 +48,13 @@ public class BazaStudenata {
 
 		//Dodavnje studenata radi privremenog prikaza
 		
-		List<Predmet> predmeti = new ArrayList<Predmet>();
-		Predmet p = new Predmet("E225","Operativni sistemi",Semestar.LETNJI,2,null, 8);
-		predmeti.add(p);
-	
-		
-		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20",			 "0632485463", "ssofija@gmail.com", "ra-71-2017", 2017, 4, Status.B, 8.62, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a",	 "0628421458", "filipm@uns.ac.rs", "it-135-2017", 2017, 4, Status.S, 6.23, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Brkić", "Milica", "17/01/1997", "Banatska 48",			 "0612549683", "mmmilicaa@gmail.com", "in-4-2016", 2016, 4, Status.B, 8.89, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Popov", "Vojin", "08/02/1999", "Dr Đorđa Jovanovića 158",	 "0601156584", "popov.vojin@gmail.com", "sq-26-2018", 2018, 3, Status.S, 7.42, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840", "kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, new ArrayList<Ocena>(), predmeti));
-		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, new ArrayList<Ocena>(), predmeti));
+		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20",			 "0632485463", "ssofija@gmail.com", "ra-71-2017", 2017, 4, Status.B, 8.62, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
+		studenti.add(new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a",	 "0628421458", "filipm@uns.ac.rs", "it-135-2017", 2017, 4, Status.S, 6.23, new ArrayList<Ocena>(),new ArrayList<Predmet>()));
+		studenti.add(new Student("Brkić", "Milica", "17/01/1997", "Banatska 48",			 "0612549683", "mmmilicaa@gmail.com", "in-4-2016", 2016, 4, Status.B, 8.89, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
+		studenti.add(new Student("Popov", "Vojin", "08/02/1999", "Dr Đorđa Jovanovića 158",	 "0601156584", "popov.vojin@gmail.com", "sq-26-2018", 2018, 3, Status.S, 7.42, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
+		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840", "kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
+		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844", "cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
+		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81",	 "0634445688", "ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
 
 		
 		
@@ -192,12 +187,12 @@ public class BazaStudenata {
 				Ocena o1 = new Ocena(student, predmeti.get(1), 6, "12/02/2018");
 				Ocena o2 = new Ocena(student, predmeti.get(2), 8, "03/04/2019");
 				Ocena o3 = new Ocena(student, predmeti.get(3), 9, "30/01/2020");
-				Ocena o4 = new Ocena(student, predmeti.get(0), 7, "31/01/2016");
+				//Ocena o4 = new Ocena(student, predmeti.get(0), 7, "31/01/2016");
 								
 				student.getOcene().add(o1);
 				student.getOcene().add(o2);
 				student.getOcene().add(o3);
-				student.getOcene().add(o4);
+				//student.getOcene().add(o4);
 				
 				student.refreshEspb();
 				student.refreshProsek();
@@ -216,6 +211,23 @@ public class BazaStudenata {
 		for (Ocena o : student.getOcene()) 
 			System.out.print(o.getPredmet().getNazivPredmeta()+"  ");
 		}
+	}
+
+	public void initPredmeti(String idx) {
+		
+		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
+
+		for (Student student : studenti) {
+			if (student.getBrojIndeksa() == (idx)) {
+		
+				student.getNepolozeniIspiti().add(predmeti.get(4));
+				student.getNepolozeniIspiti().add(predmeti.get(0));
+				
+				return;
+			}
+		}
+
+		
 	}
 	
 }

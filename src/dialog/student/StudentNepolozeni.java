@@ -60,6 +60,8 @@ public class StudentNepolozeni extends JPanel {
 		nepolozeniIspiti.setColumnSelectionAllowed(false);
 		nepolozeniIspiti.setRowSelectionAllowed(true);
 		
+		nepolozeniIspiti.getColumnModel().getColumn(1).setPreferredWidth(120);
+		
 		JScrollPane scrollPane = new JScrollPane(nepolozeniIspiti);
 		azurirajPrikaz();
 		

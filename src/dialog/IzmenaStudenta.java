@@ -23,6 +23,7 @@ public class IzmenaStudenta extends JDialog {
 	public IzmenaStudenta(String idx) {
 		//INIT OCENE
 		StudentController.getInstance().initOcene(idx);
+		StudentController.getInstance().initPredmet(idx);
 		
 		this.setTitle("Izmena studenta");
 		this.setResizable(false);

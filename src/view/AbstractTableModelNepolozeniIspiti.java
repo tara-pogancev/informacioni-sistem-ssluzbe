@@ -6,7 +6,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.BazaNepolozenihIspita;
+import model.BazaPredmeta;
+import model.BazaStudenata;
 import model.Predmet;
 
 
@@ -21,31 +22,45 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 	
 	public AbstractTableModelNepolozeniIspiti(String idx) {
 		
-		predmeti = BazaNepolozenihIspita.getInstance().getNepolozeni(idx);
+		predmeti = BazaStudenata.getInstance().getByIdx(idx).getNepolozeniIspiti();
 	}
 	
 	
 	@Override
 	public int getColumnCount() {
-		return BazaNepolozenihIspita.getInstance().getColumnCount();
+		return BazaPredmeta.getInstance().getColumnCount();
 	}
 
 	@Override
 	public String getColumnName(int column) {
-		return BazaNepolozenihIspita.getInstance().getColumnName(column);
+		return BazaPredmeta.getInstance().getColumnName(column);
 	}
 	
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return BazaNepolozenihIspita.getInstance().getValueAt(rowIndex, columnIndex);
+		Predmet p = predmeti.get(rowIndex);
+		
+		switch(columnIndex) {
+		case 0:
+			return p.getSifraPredmeta();
+		case 1:
+			return p.getNazivPredmeta();
+		case 2:
+			return p.getESPB();
+		case 3:
+			return p.getGodinaIzvodjenja();
+		case 4:
+			return p.getSemestar();
+		}
+		
+		return null;
 	}
 
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return predmeti.size();
 	}
 
 }

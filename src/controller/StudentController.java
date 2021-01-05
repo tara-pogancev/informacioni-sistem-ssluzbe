@@ -3,7 +3,7 @@
 //#prikaz_studenata
 //#sortiranje_studenata
 //#ponistavanje_ocene
-
+//#prikaz_nepolozenih_ispita
 //Reference: Projekat JTableMVCSimple
 
 package controller;
@@ -71,5 +71,14 @@ public class StudentController {
 		MainFrame.getTabbedPane().azurirajS();
 		
 	}
+	
+	public void initPredmet(String idx) {
+		
+		BazaStudenata.getInstance().initPredmeti(idx);
+		MainFrame.getTabbedPane().azurirajS();
+		
+	}
+	
+	
 	
 }
