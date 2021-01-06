@@ -1,3 +1,5 @@
+// #deserijalizacija
+
 package main;
 
 import java.io.BufferedInputStream;
@@ -37,8 +39,6 @@ public class InfSysSSluzbe {
 			e.printStackTrace();
 		}
 
-		
-		
 		
 		MainFrame.getInstance();
 

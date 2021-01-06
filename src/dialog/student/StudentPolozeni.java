@@ -35,15 +35,15 @@ public class StudentPolozeni extends JPanel {
 	 */
 	private static final long serialVersionUID = -6876346602333553775L;
 
-	JTable polozeni_predmeti = new JTable();
+	JTable polozeniPredmeti = new JTable();
 	private String idx;
 	
 	public StudentPolozeni(Student s) {
 		
 		 idx = s.getBrojIndeksa();
 
-		Border padding_panel = BorderFactory.createEmptyBorder(30, 30, 10, 30); // North, West, South, East
-		Border padding_elements = BorderFactory.createEmptyBorder(0, 0, 15, 0); // North, West, South, East
+		Border paddingPanel = BorderFactory.createEmptyBorder(30, 30, 10, 30); // North, West, South, East
+		Border paddingElements = BorderFactory.createEmptyBorder(0, 0, 15, 0); // North, West, South, East
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		//Elementi
@@ -55,34 +55,34 @@ public class StudentPolozeni extends JPanel {
 		
 		
 		//Tabela polozenih predmeta
-		polozeni_predmeti.setModel(new AbstractTableModelOcene(idx));
-		polozeni_predmeti.getTableHeader().setReorderingAllowed(false);
-		polozeni_predmeti.setAutoCreateRowSorter(true);
-		polozeni_predmeti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		polozeni_predmeti.setColumnSelectionAllowed(false);
-		polozeni_predmeti.setRowSelectionAllowed(true);
+		polozeniPredmeti.setModel(new AbstractTableModelOcene(idx));
+		polozeniPredmeti.getTableHeader().setReorderingAllowed(false);
+		polozeniPredmeti.setAutoCreateRowSorter(true);
+		polozeniPredmeti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		polozeniPredmeti.setColumnSelectionAllowed(false);
+		polozeniPredmeti.setRowSelectionAllowed(true);
 		
-		polozeni_predmeti.getColumnModel().getColumn(0).setPreferredWidth(80);
-		polozeni_predmeti.getColumnModel().getColumn(1).setPreferredWidth(180);
+		polozeniPredmeti.getColumnModel().getColumn(0).setPreferredWidth(80);
+		polozeniPredmeti.getColumnModel().getColumn(1).setPreferredWidth(180);
 		
-		JScrollPane scrollPane = new JScrollPane(polozeni_predmeti);
+		JScrollPane scrollPane = new JScrollPane(polozeniPredmeti);
 		azuriraj();
 		
 		//Paneli
 		JPanel p1 = new JPanel ();
-		p1.setBorder(padding_elements);
+		p1.setBorder(paddingElements);
 		p1.setLayout(new BoxLayout(p1, BoxLayout.X_AXIS));
 		p1.add(ponisti);
 		p1.add(Box.createHorizontalGlue());
 		
 		JPanel p2 = new JPanel ();
-		p2.setBorder(padding_elements);
+		p2.setBorder(paddingElements);
 		p2.setLayout(new BoxLayout(p2, BoxLayout.X_AXIS));
 		p2.add(Box.createHorizontalGlue());
 		
 		JPanel stavke = new JPanel();
 		stavke.setLayout(new BoxLayout(stavke, BoxLayout.Y_AXIS));
-		stavke.setBorder(padding_panel);
+		stavke.setBorder(paddingPanel);
 		prosek.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		espb.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		stavke.add(prosek);
@@ -93,12 +93,12 @@ public class StudentPolozeni extends JPanel {
 		
 		ponisti.addActionListener(e -> {
 			
-			if (polozeni_predmeti.getSelectedRow() > -1) {
+			if (polozeniPredmeti.getSelectedRow() > -1) {
 				
 				Object[] choices = {"Da", "Ne"};
 				Object defaultChoice = choices[0];
 				
-				String sifra = (String) polozeni_predmeti.getValueAt(polozeni_predmeti.getSelectedRow(), 0);
+				String sifra = (String) polozeniPredmeti.getValueAt(polozeniPredmeti.getSelectedRow(), 0);
 				Predmet p = BazaPredmeta.getInstance().findById(sifra);
 			
 				
@@ -110,15 +110,15 @@ public class StudentPolozeni extends JPanel {
 					
 					azuriraj();
 
-					String pr_updated = df.format(s.getProsek());
-					prosek.setText("Prosečna ocena:     " + pr_updated);
+					String prUpdated = df.format(s.getProsek());
+					prosek.setText("Prosečna ocena:     " + prUpdated);
 					espb.setText("Ukupno ESPB:     " + s.getEspb());
 					
 				}
 			}
 		});
 		
-		this.setBorder(padding_panel);
+		this.setBorder(paddingPanel);
 		this.add(p1);
 		this.add(scrollPane);
 		this.add(p2);
@@ -127,7 +127,7 @@ public class StudentPolozeni extends JPanel {
 	
 	private void azuriraj() {
 		
-		AbstractTableModelOcene atmOcene = (AbstractTableModelOcene) polozeni_predmeti.getModel();
+		AbstractTableModelOcene atmOcene = (AbstractTableModelOcene) polozeniPredmeti.getModel();
 		atmOcene.fireTableDataChanged();
 		validate();
 	}

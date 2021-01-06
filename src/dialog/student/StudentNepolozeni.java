@@ -1,4 +1,5 @@
-//#prikaz_nepolozenih_ispita
+// #prikaz_nepolozenih_ispita
+// #dodavanje_predmeta_studentu
 
 package dialog.student;
 
@@ -25,12 +26,10 @@ public class StudentNepolozeni extends JPanel {
 	
 	JTable nepolozeniIspiti = new JTable();
 	String idx;
-	
 
 	public StudentNepolozeni(Student s) {
 		
 		idx = s.getBrojIndeksa();
-		
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -59,9 +58,18 @@ public class StudentNepolozeni extends JPanel {
 		nepolozeniIspiti.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		nepolozeniIspiti.setColumnSelectionAllowed(false);
 		nepolozeniIspiti.setRowSelectionAllowed(true);
-		
+		nepolozeniIspiti.setColumnSelectionAllowed(false);
+		nepolozeniIspiti.getTableHeader().setReorderingAllowed(false);
 		nepolozeniIspiti.getColumnModel().getColumn(1).setPreferredWidth(120);
 		
+		dodaj.addActionListener( e-> {
+			
+			new DodajPredmetStudentu(s.getBrojIndeksa()).setVisible(true);
+			azurirajPrikaz();
+			
+		});
+		
+				
 		JScrollPane scrollPane = new JScrollPane(nepolozeniIspiti);
 		azurirajPrikaz();
 		
@@ -78,5 +86,6 @@ public class StudentNepolozeni extends JPanel {
 		validate();
 		
 	}
+
 	
 }

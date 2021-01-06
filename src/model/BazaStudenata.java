@@ -256,4 +256,14 @@ public class BazaStudenata {
 		}
 
 	}
+
+	public void dodajPredmet(String student, Predmet p) {
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa().equals(student)) {
+				s.getNepolozeniIspiti().add(p);
+				return;
+			}
+
+		}
+	}
 }

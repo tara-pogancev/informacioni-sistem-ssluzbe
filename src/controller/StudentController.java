@@ -64,6 +64,14 @@ public class StudentController {
 		
 	}
 	
+	public void dodajPredmet(String student, Predmet p) {
+		
+		BazaStudenata.getInstance().dodajPredmet(student, p);
+		
+		MainFrame.getTabbedPane().azurirajS();
+		
+	}
+	
 	public void initOcene(String student) {
 		
 		BazaStudenata.getInstance().initOcene(student);
