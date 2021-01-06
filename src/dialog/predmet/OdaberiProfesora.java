@@ -22,14 +22,14 @@ import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Profesor;
 
-public class odaberiProfesora extends JDialog{
+public class OdaberiProfesora extends JDialog{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4747005924640984439L;
 
-	public odaberiProfesora() {
+	public OdaberiProfesora() {
 		this.setTitle("Odaberi profesora");
 		this.setResizable(false);
 		this.setSize(300, 375);	// X, Y

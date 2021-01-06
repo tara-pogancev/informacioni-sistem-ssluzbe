@@ -4,6 +4,7 @@
 // #ponistavanje_ocene
 // #dodavanje_profesora_na_predmet
 // #sortiranje_predmeta
+// #deserijalizacija
 //
 // Reference:
 // Projekat JTableMVCSimple
@@ -11,13 +12,13 @@
 package model;
 
 import java.io.BufferedOutputStream;
+import java.io.EOFException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Predmet.Semestar;
 
 public class BazaPredmeta {
 
@@ -31,13 +32,13 @@ public class BazaPredmeta {
 		return instance;
 	}
 
-	private Profesor temp_profesor; // Polje radi pravilne izmene profesora
+	private Profesor tempProfesor; // Polje radi pravilne izmene profesora
 	private List<Predmet> predmeti;
 	private List<String> kolone;
 
 	private BazaPredmeta() {
-
-		inicijalizacijaPredmeta();
+		
+		this.predmeti = new ArrayList<Predmet>();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Šifra predmeta");
@@ -48,23 +49,23 @@ public class BazaPredmeta {
 
 	}
 
-	private void inicijalizacijaPredmeta() {
-
-		this.predmeti = new ArrayList<Predmet>();
-
-		// privremeni profesori i studenti
-		List<Profesor> profesori = BazaProfesora.getInstance().getProfesori();
-		List<Student> nisuPolozili = new ArrayList<Student>();
-		List<Student> polozili = new ArrayList<Student>();
-
-		predmeti.add(new Predmet("MA2", "Matematička analiza 2", Semestar.ZIMSKI, 2, profesori.get(0), 9, polozili,
-				nisuPolozili));
-		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesori.get(1), 6, polozili, nisuPolozili));
-		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
-		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(0), 8, polozili,
-				nisuPolozili));
-		predmeti.add(new Predmet("E225", "Operativni sistemi", Semestar.LETNJI, 2, null, 8, polozili, nisuPolozili));
-	}
+//	private void inicijalizacijaPredmeta() {
+//
+//		this.predmeti = new ArrayList<Predmet>();
+//
+//		// privremeni profesori i studenti
+//		List<Profesor> profesori = BazaProfesora.getInstance().getProfesori();
+//		List<Student> nisuPolozili = new ArrayList<Student>();
+//		List<Student> polozili = new ArrayList<Student>();
+//
+//		predmeti.add(new Predmet("MA2", "Matematička analiza 2", Semestar.ZIMSKI, 2, profesori.get(0), 9, polozili,
+//				nisuPolozili));
+//		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesori.get(1), 6, polozili, nisuPolozili));
+//		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
+//		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(0), 8, polozili,
+//				nisuPolozili));
+//		predmeti.add(new Predmet("E225", "Operativni sistemi", Semestar.LETNJI, 2, null, 8, polozili, nisuPolozili));
+//	}
 
 	public List<Predmet> getPredmeti() {
 		return predmeti;
@@ -162,11 +163,11 @@ public class BazaPredmeta {
 	}
 
 	public Profesor getTemp_profesor() {
-		return temp_profesor;
+		return tempProfesor;
 	}
 
-	public void setTemp_profesor(Profesor temp_profesor) {
-		this.temp_profesor = temp_profesor;
+	public void setTemp_profesor(Profesor tempProfesor) {
+		this.tempProfesor = tempProfesor;
 	}
 
 	public void saveDataPredmet() throws IOException {
@@ -194,6 +195,20 @@ public class BazaPredmeta {
 				}
 			}
 		}
+	}
+	
+	
+	public void readDataPredmet(ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+		Predmet p = null;
+
+		try {
+			while ((p = (Predmet) in.readObject()) != null)
+				predmeti.add(p);
+		} catch (EOFException e) {
+			in.close();
+		}
+
 	}
 
 }

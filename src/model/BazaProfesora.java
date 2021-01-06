@@ -1,24 +1,24 @@
 // #prikaz_profesora
-//#brisanje_profesora
+// #brisanje_profesora
 // #dodavanje_profesora
 // #izmena_profesora
 // #profesor_predaje_predmete
 // #dodavanje_predmeta_profesoru
 // #sortiranje_profesora
+// #deserijalizacija
 // Reference:
 // Projekat JTableMVCSimple
 
 package model;
 
 import java.io.BufferedOutputStream;
+import java.io.EOFException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Profesor.Titula;
-import model.Profesor.Zvanje;
 
 public class BazaProfesora {
 
@@ -36,8 +36,8 @@ public class BazaProfesora {
 	private List<String> kolone;
 
 	private BazaProfesora() {
-
-		inicijalizacijaProfesora();
+		
+		this.profesori = new ArrayList<Profesor>();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Ime");
@@ -47,24 +47,24 @@ public class BazaProfesora {
 		this.kolone.add("Blc");
 	}
 
-	private void inicijalizacijaProfesora() {
-
-		this.profesori = new ArrayList<Profesor>();
-		profesori.add(
-				new Profesor("Stojić", "Kristina", "12/02/1999", "Pericka 12", "0653687596", "krisstojic@gmail.com",
-						"Moja kancelarija 2", "995876258", Titula.mr, Zvanje.asistent, new ArrayList<Predmet>()));
-		profesori.add(new Profesor("Njegić", "Đorđe", "05/09/1999", "Dositejeva 23", "0658469586",
-				"djordjenjegic@gmail.com", "Moja kancelarija 1", "985632584", Titula.dr, Zvanje.redovniProfesor,
-				new ArrayList<Predmet>()));
-		profesori.add(new Profesor("Marković", "Predrag", "07/08/1985", "Kućanska 12", "+381638596958",
-				"pedjica@uns.ac.rs", "Moja kancelarija 5", "965236985", Titula.profDr, Zvanje.profesorEmeritus,
-				new ArrayList<Predmet>()));
-		profesori.add(new Profesor("Anđelić", "Stevan", "25/12/1959", "Rimska 2", "0635985632", "andjeo.steva@yahoo.rs",
-				"Moja kancelarija 4", "TT522587", Titula.BSc, Zvanje.docent, new ArrayList<Predmet>()));
-		profesori.add(new Profesor("Vladić", "Marija", "12/10/1991", "Vladareva 15", "+381635269658",
-				"marijavlada12@gmail.rs", "Moja kancelarija 9", "9965852AM", Titula.prof, Zvanje.saradnikUNastavi,
-				new ArrayList<Predmet>()));
-	}
+//	private void inicijalizacijaProfesora() {
+//
+//		this.profesori = new ArrayList<Profesor>();
+//		profesori.add(
+//				new Profesor("Stojić", "Kristina", "12/02/1999", "Pericka 12", "0653687596", "krisstojic@gmail.com",
+//						"Moja kancelarija 2", "995876258", Titula.mr, Zvanje.asistent, new ArrayList<Predmet>()));
+//		profesori.add(new Profesor("Njegić", "Đorđe", "05/09/1999", "Dositejeva 23", "0658469586",
+//				"djordjenjegic@gmail.com", "Moja kancelarija 1", "985632584", Titula.dr, Zvanje.redovniProfesor,
+//				new ArrayList<Predmet>()));
+//		profesori.add(new Profesor("Marković", "Predrag", "07/08/1985", "Kućanska 12", "+381638596958",
+//				"pedjica@uns.ac.rs", "Moja kancelarija 5", "965236985", Titula.profDr, Zvanje.profesorEmeritus,
+//				new ArrayList<Predmet>()));
+//		profesori.add(new Profesor("Anđelić", "Stevan", "25/12/1959", "Rimska 2", "0635985632", "andjeo.steva@yahoo.rs",
+//				"Moja kancelarija 4", "TT522587", Titula.BSc, Zvanje.docent, new ArrayList<Predmet>()));
+//		profesori.add(new Profesor("Vladić", "Marija", "12/10/1991", "Vladareva 15", "+381635269658",
+//				"marijavlada12@gmail.rs", "Moja kancelarija 9", "9965852AM", Titula.prof, Zvanje.saradnikUNastavi,
+//				new ArrayList<Predmet>()));
+//	}
 
 	public List<Profesor> getProfesori() {
 		return profesori;
@@ -254,4 +254,20 @@ public class BazaProfesora {
 		}
 		
 	}
+	
+	
+	public void readDataProfesor(ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+		Profesor p = null;
+
+		try {
+			while ((p = (Profesor) in.readObject()) != null)
+				profesori.add(p);
+		} catch (EOFException e) {
+			in.close();
+		}
+
+	}
+	
+	
 }

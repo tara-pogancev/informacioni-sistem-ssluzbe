@@ -1,23 +1,24 @@
-//#prikaz_studenata
-//#brisanje_studenta
-//#sortiranje_studenata
-//#ponistavanje_ocene
-//#prikaz_polozenih_ispita
-//#prikaz_nepolozenih_ispita
+// #prikaz_studenata
+// #brisanje_studenta
+// #sortiranje_studenata
+// #ponistavanje_ocene
+// #prikaz_polozenih_ispita
+// #prikaz_nepolozenih_ispita
+// #deserijalizacija
 //
-//Reference: Projekat JTableMVCSimple
+// Reference: Projekat JTableMVCSimple
 
 package model;
 
 import java.io.BufferedOutputStream;
+import java.io.EOFException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Student.Status;
 
 public class BazaStudenata {
 
@@ -34,8 +35,9 @@ public class BazaStudenata {
 	private List<String> kolone;
 
 	private BazaStudenata() {
+		
 
-		initStudente();
+		this.studenti = new ArrayList<Student>();
 
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Index");
@@ -46,34 +48,7 @@ public class BazaStudenata {
 		this.kolone.add("Prosek");
 
 	}
-
-	private void initStudente() {
-		this.studenti = new ArrayList<Student>();
-
-		// Dodavnje studenata radi privremenog prikaza
-
-		studenti.add(new Student("Stojić", "Sofija", "18/05/1998", "Šekspirova 20", "0632485463", "ssofija@gmail.com",
-				"ra-71-2017", 2017, 4, Status.B, 8.62, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
-		studenti.add(
-				new Student("Marković", "Filip", "20/02/1998", "Trifuna Dimića 14a", "0628421458", "filipm@uns.ac.rs",
-						"it-135-2017", 2017, 4, Status.S, 6.23, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
-		studenti.add(new Student("Brkić", "Milica", "17/01/1997", "Banatska 48", "0612549683", "mmmilicaa@gmail.com",
-				"in-4-2016", 2016, 4, Status.B, 8.89, new ArrayList<Ocena>(), new ArrayList<Predmet>()));
-		studenti.add(new Student("Popov", "Vojin", "08/02/1999", "Dr Đorđa Jovanovića 158", "0601156584",
-				"popov.vojin@gmail.com", "sq-26-2018", 2018, 3, Status.S, 7.42, new ArrayList<Ocena>(),
-				new ArrayList<Predmet>()));
-		studenti.add(new Student("Kovačević", "Žarko", "17/08/1999", "Hajduk Veljkova 14/2", "0624546840",
-				"kzarko99@yahoo.com", "gr-141-2018", 2018, 3, Status.S, 7.62, new ArrayList<Ocena>(),
-				new ArrayList<Predmet>()));
-		studenti.add(new Student("Preić", "Ceca", "15/03/2000", "Bulevar cara Lazara 55/35", "0644564844",
-				"cecaceca@gmail.com", "mp-223-2019", 2019, 2, Status.B, 9.63, new ArrayList<Ocena>(),
-				new ArrayList<Predmet>()));
-		studenti.add(new Student("Andrejević", "Ankica", "03/06/2001", "Jozefa Marčoka 81", "0634445688",
-				"ankicaa@uns.ac.rs", "pr-37-2020", 2020, 1, Status.B, 9.82, new ArrayList<Ocena>(),
-				new ArrayList<Predmet>()));
-
-	}
-
+	
 	public List<Student> getStudenti() {
 		return studenti;
 	}
@@ -245,7 +220,7 @@ public class BazaStudenata {
 	public void saveDataStudent() throws IOException {
 
 		ObjectOutputStream oos = null;
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("studenti.txt"));
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("Studenti.txt"));
 
 		try {
 			oos = new ObjectOutputStream(bos);
@@ -267,5 +242,18 @@ public class BazaStudenata {
 				}
 			}
 		}
+	}
+	
+	public void readDataStudent(ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+		Student s = null;
+
+		try {
+			while ((s = (Student) in.readObject()) != null)
+				studenti.add(s);
+		} catch (EOFException e) {
+			in.close();
+		}
+
 	}
 }

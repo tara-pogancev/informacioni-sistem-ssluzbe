@@ -54,14 +54,13 @@ public class EditAction extends AbstractAction {
 		if (sellected_row != -1)
 			switch (current_tab) {
 			case 0:
-				// IzmenaStudenta.getInstance(temp.getStudentIdx()).setVisible(true);
 				new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
 				break;
+				
 			case 1:
-
-				// new IzmenaProfesora(temp.getProfesorBlc()).setVisible(true);
 				new IzmenaProfesora(temp.getProfesorBlc()).setVisible(true);
 				break;
+				
 			case 2:
 
 				Predmet p = BazaPredmeta.getInstance().findById(temp.getPredmetSifra());

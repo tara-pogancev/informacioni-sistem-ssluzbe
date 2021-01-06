@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -183,6 +184,9 @@ public class Student implements Serializable {
 		this.trenutnaGodina = trenutnaGodina;
 		this.status = status;
 		this.prosek = 0;
+		
+		this.ocene = new ArrayList<Ocena>();
+		this.nepolozeniIspiti = new ArrayList<Predmet>();
 	}
 	
 	public Student(String prezime, String ime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
@@ -209,6 +213,10 @@ public class Student implements Serializable {
 		this.prosek = prosek;
 		this.ocene = ocene;
 		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+	
+	public Student() {
+		
 	}
 	
 	public Student(Student s2) {

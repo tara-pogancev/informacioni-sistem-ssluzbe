@@ -34,7 +34,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.PredmetiController;
-import dialog.predmet.odaberiProfesora;
+import dialog.predmet.OdaberiProfesora;
 import gui.MainFrame;
 import model.BazaPredmeta;
 import model.Predmet;
@@ -160,7 +160,7 @@ public class IzmenaPredmeta extends JDialog {
 		// Akcije dugmica
 		add.addActionListener(e -> {
 
-			new odaberiProfesora().setVisible(true);
+			new OdaberiProfesora().setVisible(true);
 			if (BazaPredmeta.getInstance().getTemp_profesor() != null) {
 				noviProfesor = BazaPredmeta.getInstance().getTemp_profesor();
 				t6.setText(noviProfesor.getIme() + " " + noviProfesor.getPrezime());

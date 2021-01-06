@@ -1,4 +1,4 @@
-//#glavni_prozor
+// #glavni_prozor
 package listeners.action;
 
 import java.awt.event.WindowEvent;
@@ -81,7 +81,6 @@ public class MyWindowListener implements WindowListener {
 	@Override
 	public void windowOpened(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
