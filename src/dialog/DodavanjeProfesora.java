@@ -332,6 +332,7 @@ public class DodavanjeProfesora extends JDialog {
 				}else {
 					ProfesoriController.getInstance().dodajProfesora(p);
 					//p.toString();
+					JOptionPane.showMessageDialog(null, "Dodavanje profesora uspešno izvršeno!");
 					this.dispose();
 				}
 				

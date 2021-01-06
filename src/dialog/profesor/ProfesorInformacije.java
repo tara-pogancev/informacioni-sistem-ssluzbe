@@ -1,3 +1,5 @@
+// #izmena_profesora
+
 package dialog.profesor;
 
 import java.awt.BorderLayout;
@@ -6,6 +8,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +27,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesoriController;
-import dialog.IzmenaProfesora;
 import model.BazaProfesora;
 import model.Profesor;
 import model.Profesor.Titula;
@@ -50,50 +53,34 @@ public class ProfesorInformacije extends JPanel {
 		JLabel imeProf = new JLabel("Ime*");
 		JTextField unosIme = new JTextField(p.getIme());
 		unosIme.setToolTipText("Primer: Marko");
-		fields.add(imeProf);
-		fields.add(unosIme);
 
 		JLabel przProf = new JLabel("Prezime*");
 		JTextField unosPrz = new JTextField(p.getPrezime());
 		unosPrz.setToolTipText("Primer: Marković");
-		fields.add(przProf);
-		fields.add(unosPrz);
 
 		JLabel datProf = new JLabel("Datum rođenja*");
 		JTextField unosDat = new JTextField(p.getDatumRodjenjaString());
 		unosDat.setToolTipText("Primer: 13/05/1999");
-		fields.add(datProf);
-		fields.add(unosDat);
 
 		JLabel adrProf = new JLabel("Adresa stanovanja*");
 		JTextField unosAdr = new JTextField(p.getAdresaStanovanja());
 		unosAdr.setToolTipText("Primer: Maršala Tita 43, Bačka Topola");
-		fields.add(adrProf);
-		fields.add(unosAdr);
 
 		JLabel telProf = new JLabel("Kontakt telefon*");
 		JTextField unosTel = new JTextField(p.getKontaktTelefon());
 		unosTel.setToolTipText("Primer: +381659684596");
-		fields.add(telProf);
-		fields.add(unosTel);
 
 		JLabel emailProf = new JLabel("E-mail*");
 		JTextField unosEmail = new JTextField(p.getEmailAdresa());
 		unosEmail.setToolTipText("Primer: marko.markovic@uns.ac.rs");
-		fields.add(emailProf);
-		fields.add(unosEmail);
 
 		JLabel adrKanc = new JLabel("Adresa kancelarije*");
 		JTextField unosAdrK = new JTextField(p.getAdresaKancelarije());
 		unosAdrK.setToolTipText("Primer: GraniÄarska 20, Novi Sad");
-		fields.add(adrKanc);
-		fields.add(unosAdrK);
 
 		JLabel blcProf = new JLabel("Broj lične karte*");
 		JTextField unosBlc = new JTextField(p.getBrojLicneKarte());
 		unosBlc.setToolTipText("Primer: 996582369");
-		fields.add(blcProf);
-		fields.add(unosBlc);
 
 		String[] titule = { "BSc", "MSc", "mr", "dr", "prof. dr", "prof." };
 		JLabel titProf = new JLabel("Titula*");
@@ -118,8 +105,6 @@ public class ProfesorInformacije extends JPanel {
 			titula.setSelectedIndex(5);
 			break;
 		}
-		fields.add(titProf);
-		fields.add(titula);
 
 		String[] zvanja = { "saradnik u nastavi", "asistent", "asistent sa doktoratom", "docent", "redovni profesor",
 				"vanredni profesor", "profesor emeritus", "istrazivac pripravnik" };
@@ -151,6 +136,27 @@ public class ProfesorInformacije extends JPanel {
 			zvanje.setSelectedIndex(7);
 			break;
 		}
+		
+		inicijaliacija(bezIzmena, unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje);
+		
+		fields.add(imeProf);
+		fields.add(unosIme);
+		fields.add(przProf);
+		fields.add(unosPrz);
+		fields.add(datProf);
+		fields.add(unosDat);
+		fields.add(adrProf);
+		fields.add(unosAdr);
+		fields.add(telProf);
+		fields.add(unosTel);
+		fields.add(emailProf);
+		fields.add(unosEmail);
+		fields.add(adrKanc);
+		fields.add(unosAdrK);
+		fields.add(blcProf);
+		fields.add(unosBlc);
+		fields.add(titProf);
+		fields.add(titula);
 		fields.add(zvanjeProf);
 		fields.add(zvanje);
 
@@ -164,7 +170,9 @@ public class ProfesorInformacije extends JPanel {
 
 		cancelBtn.addActionListener(e -> {
 
-			IzmenaProfesora.getInstance(bezIzmena).zatvoriDijalog();
+			inicijaliacija(bezIzmena, unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje);
+			validacija(unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje, okBtn);
+			JOptionPane.showMessageDialog(this, "Poslednje izmene poništene!");
 
 		});
 
@@ -176,154 +184,7 @@ public class ProfesorInformacije extends JPanel {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-
-
-				boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
-				boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
-				boolean proveraDat = Pattern.matches(
-						"(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})",
-						unosDat.getText());
-				boolean proveraAdr = (unosAdr.getText() != "");
-				boolean proveraTel = Pattern.matches("[+]?[0-9]+", unosTel.getText());
-				boolean proveraEmail = Pattern.matches(
-						"[a-z0-9.!#$%&’*+-/=?^_`{|}~]*[a-z0-9!#$%&’*+-/=?^_`{|}~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
-						unosEmail.getText());
-				boolean proveraAdrK = (unosAdrK.getText() != "");
-				boolean proveraBlc = Pattern.matches("[0-9A-Za-z]+", unosBlc.getText()); // nisu samo brojevi zbog
-																							// profesora koji nisu iz
-																							// Srbije
-
-				if (proveraIme && proveraPrz && proveraDat && proveraAdr && proveraTel && proveraEmail && proveraAdrK
-						&& proveraBlc) {
-
-					Titula titulaP = null;
-
-					switch (titula.getSelectedIndex()) {
-					case 0:
-						titulaP = Titula.BSc;
-						break;
-					case 1:
-						titulaP = Titula.MSc;
-						break;
-					case 2:
-						titulaP = Titula.mr;
-						break;
-					case 3:
-						titulaP = Titula.dr;
-						break;
-					case 4:
-						titulaP = Titula.profDr;
-						break;
-					default:
-						titulaP = Titula.prof;
-						break;
-
-					}
-
-					Zvanje zvanjeP = null;
-
-					switch (zvanje.getSelectedIndex()) {
-					case 0:
-						zvanjeP = Zvanje.saradnikUNastavi;
-						break;
-					case 1:
-						zvanjeP = Zvanje.asistent;
-						break;
-					case 2:
-						zvanjeP = Zvanje.asistentSaDoktoratom;
-						break;
-					case 3:
-						zvanjeP = Zvanje.docent;
-						break;
-					case 4:
-						zvanjeP = Zvanje.redovniProfesor;
-						break;
-					case 5:
-						zvanjeP = Zvanje.vanredniProfesor;
-						break;
-					case 6:
-						zvanjeP = Zvanje.profesorEmeritus;
-						break;
-					default:
-						zvanjeP = Zvanje.istrazivacPripravnik;
-						break;
-					}
-
-					Profesor izmenjen = new Profesor(unosPrz.getText(), unosIme.getText(), unosDat.getText(),
-							unosAdr.getText(), unosTel.getText(), unosEmail.getText(), unosAdrK.getText(),
-							unosBlc.getText(), titulaP, zvanjeP);
-
-					if (izmenjen.equals(bezIzmena)) {
-						
-						okBtn.setEnabled(false);
-					} else {
-						okBtn.setEnabled(true);
-					}
-				} else {
-					okBtn.setEnabled(false);
-				}
-
-				if (proveraIme || unosIme.getText().isEmpty()) {
-					unosIme.setBackground(Color.WHITE);
-					unosIme.setForeground(Color.BLACK);
-				} else {
-					unosIme.setBackground(Color.RED);
-					unosIme.setForeground(Color.WHITE);
-				}
-
-				if (proveraPrz || unosPrz.getText().isEmpty()) {
-					unosPrz.setBackground(Color.WHITE);
-					unosPrz.setForeground(Color.BLACK);
-				} else {
-					unosPrz.setBackground(Color.RED);
-					unosPrz.setForeground(Color.WHITE);
-				}
-				if (proveraDat || unosDat.getText().isEmpty()) {
-					unosDat.setBackground(Color.WHITE);
-					unosDat.setForeground(Color.BLACK);
-				} else {
-					unosDat.setBackground(Color.RED);
-					unosDat.setForeground(Color.WHITE);
-				}
-
-				if (proveraAdr || unosAdr.getText().isEmpty()) {
-					unosAdr.setBackground(Color.WHITE);
-					unosAdr.setForeground(Color.BLACK);
-				} else {
-					unosAdr.setBackground(Color.RED);
-					unosAdr.setForeground(Color.WHITE);
-				}
-				if (proveraTel || unosTel.getText().isEmpty()) {
-					unosTel.setBackground(Color.WHITE);
-					unosTel.setForeground(Color.BLACK);
-				} else {
-					unosTel.setBackground(Color.RED);
-					unosTel.setForeground(Color.WHITE);
-				}
-
-				if (proveraEmail || unosEmail.getText().isEmpty()) {
-					unosEmail.setBackground(Color.WHITE);
-					unosEmail.setForeground(Color.BLACK);
-				} else {
-					unosEmail.setBackground(Color.RED);
-					unosEmail.setForeground(Color.WHITE);
-				}
-				if (proveraAdrK || unosAdrK.getText().isEmpty()) {
-					unosAdrK.setBackground(Color.WHITE);
-					unosAdrK.setForeground(Color.BLACK);
-				} else {
-					unosAdrK.setBackground(Color.RED);
-					unosAdrK.setForeground(Color.WHITE);
-				}
-
-				if (proveraBlc || unosBlc.getText().isEmpty()) {
-					unosBlc.setBackground(Color.WHITE);
-					unosBlc.setForeground(Color.BLACK);
-				} else {
-					unosBlc.setBackground(Color.RED);
-					unosBlc.setForeground(Color.WHITE);
-				}
-
+				validacija(unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje, okBtn);
 			}
 
 			@Override
@@ -340,6 +201,32 @@ public class ProfesorInformacije extends JPanel {
 		unosAdrK.addKeyListener(provera);
 		unosBlc.addKeyListener(provera);
 
+		MouseListener m = new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				validacija(unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje, okBtn);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+
+			@Override
+			public void mouseExited(MouseEvent e) {}
+
+			@Override
+			public void mousePressed(MouseEvent e) {}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				validacija(unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje, okBtn);
+			}
+			
+			
+		};
+		
+		this.addMouseListener(m);
+		
 		okBtn.addActionListener(e -> {
 
 			Titula titulaProf = null;
@@ -447,4 +334,215 @@ public class ProfesorInformacije extends JPanel {
 
 	}
 
+	private void inicijaliacija(Profesor p, JTextField t1, JTextField t2, JTextField t3, JTextField t4, JTextField t5,
+			JTextField t6, JTextField t7, JTextField t8, JComboBox<String> t9, JComboBox<String> t10) {
+
+		t1.setText(p.getIme());
+		t2.setText(p.getPrezime());
+		t3.setText(p.getDatumRodjenjaString());
+		t4.setText(p.getAdresaStanovanja());
+		t5.setText(p.getKontaktTelefon());
+		t6.setText(p.getEmailAdresa());
+		t7.setText(p.getAdresaKancelarije());
+		t8.setText(p.getBrojLicneKarte());
+
+		switch (p.getTitula()) {
+		case "BSc":
+			t9.setSelectedIndex(0);
+			break;
+		case "MSc":
+			t9.setSelectedIndex(1);
+			break;
+		case "mr":
+			t9.setSelectedIndex(2);
+			break;
+		case "dr":
+			t9.setSelectedIndex(3);
+			break;
+		case "prof. dr":
+			t9.setSelectedIndex(4);
+			break;
+		default:
+			t9.setSelectedIndex(5);
+			break;
+		}
+
+		switch (p.getZvanje()) {
+		case "saradnik u nastavi":
+			t10.setSelectedIndex(0);
+			break;
+		case "asistent":
+			t10.setSelectedIndex(1);
+			break;
+		case "asistent sa doktoratom":
+			t10.setSelectedIndex(2);
+			break;
+		case "docent":
+			t10.setSelectedIndex(3);
+			break;
+		case "redovni profesor":
+			t10.setSelectedIndex(4);
+			break;
+		case "vanredni profesor":
+			t10.setSelectedIndex(5);
+			break;
+		case "profesor emeritius":
+			t10.setSelectedIndex(6);
+			break;
+		default:
+			t10.setSelectedIndex(7);
+			break;
+		}
+
+	}
+
+	private void validacija(JTextField unosIme, JTextField unosPrz, JTextField unosDat, JTextField unosAdr,
+			JTextField unosTel, JTextField unosEmail, JTextField unosAdrK, JTextField unosBlc, JComboBox<String> titula,
+			JComboBox<String> zvanje, JButton okBtn) {
+
+		boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
+		boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
+		boolean proveraDat = Pattern.matches(
+				"(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})",
+				unosDat.getText());
+		boolean proveraAdr = (unosAdr.getText() != "");
+		boolean proveraTel = Pattern.matches("[+]?[0-9]+", unosTel.getText());
+		boolean proveraEmail = Pattern.matches(
+				"[a-z0-9.!#$%&’*+-/=?^_`{|}~]*[a-z0-9!#$%&’*+-/=?^_`{|}~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
+				unosEmail.getText());
+		boolean proveraAdrK = (unosAdrK.getText() != "");
+		boolean proveraBlc = Pattern.matches("[0-9A-Za-z]+", unosBlc.getText()); // nisu samo brojevi zbog
+																					// profesora koji nisu iz
+																					// Srbije
+
+		if (proveraIme && proveraPrz && proveraDat && proveraAdr && proveraTel && proveraEmail && proveraAdrK
+				&& proveraBlc) {
+
+			Titula titulaP = null;
+
+			switch (titula.getSelectedIndex()) {
+			case 0:
+				titulaP = Titula.BSc;
+				break;
+			case 1:
+				titulaP = Titula.MSc;
+				break;
+			case 2:
+				titulaP = Titula.mr;
+				break;
+			case 3:
+				titulaP = Titula.dr;
+				break;
+			case 4:
+				titulaP = Titula.profDr;
+				break;
+			default:
+				titulaP = Titula.prof;
+				break;
+
+			}
+
+			Zvanje zvanjeP = null;
+
+			switch (zvanje.getSelectedIndex()) {
+			case 0:
+				zvanjeP = Zvanje.saradnikUNastavi;
+				break;
+			case 1:
+				zvanjeP = Zvanje.asistent;
+				break;
+			case 2:
+				zvanjeP = Zvanje.asistentSaDoktoratom;
+				break;
+			case 3:
+				zvanjeP = Zvanje.docent;
+				break;
+			case 4:
+				zvanjeP = Zvanje.redovniProfesor;
+				break;
+			case 5:
+				zvanjeP = Zvanje.vanredniProfesor;
+				break;
+			case 6:
+				zvanjeP = Zvanje.profesorEmeritus;
+				break;
+			default:
+				zvanjeP = Zvanje.istrazivacPripravnik;
+				break;
+			}
+
+			Profesor izmenjen = new Profesor(unosPrz.getText(), unosIme.getText(), unosDat.getText(), unosAdr.getText(),
+					unosTel.getText(), unosEmail.getText(), unosAdrK.getText(), unosBlc.getText(), titulaP, zvanjeP);
+
+			if (izmenjen.equals(bezIzmena)) {
+
+				okBtn.setEnabled(false);
+			} else {
+				okBtn.setEnabled(true);
+			}
+		} else {
+			okBtn.setEnabled(false);
+		}
+
+		if (proveraIme || unosIme.getText().isEmpty()) {
+			unosIme.setBackground(Color.WHITE);
+			unosIme.setForeground(Color.BLACK);
+		} else {
+			unosIme.setBackground(Color.RED);
+			unosIme.setForeground(Color.WHITE);
+		}
+
+		if (proveraPrz || unosPrz.getText().isEmpty()) {
+			unosPrz.setBackground(Color.WHITE);
+			unosPrz.setForeground(Color.BLACK);
+		} else {
+			unosPrz.setBackground(Color.RED);
+			unosPrz.setForeground(Color.WHITE);
+		}
+		if (proveraDat || unosDat.getText().isEmpty()) {
+			unosDat.setBackground(Color.WHITE);
+			unosDat.setForeground(Color.BLACK);
+		} else {
+			unosDat.setBackground(Color.RED);
+			unosDat.setForeground(Color.WHITE);
+		}
+
+		if (proveraAdr || unosAdr.getText().isEmpty()) {
+			unosAdr.setBackground(Color.WHITE);
+			unosAdr.setForeground(Color.BLACK);
+		} else {
+			unosAdr.setBackground(Color.RED);
+			unosAdr.setForeground(Color.WHITE);
+		}
+		if (proveraTel || unosTel.getText().isEmpty()) {
+			unosTel.setBackground(Color.WHITE);
+			unosTel.setForeground(Color.BLACK);
+		} else {
+			unosTel.setBackground(Color.RED);
+			unosTel.setForeground(Color.WHITE);
+		}
+
+		if (proveraEmail || unosEmail.getText().isEmpty()) {
+			unosEmail.setBackground(Color.WHITE);
+			unosEmail.setForeground(Color.BLACK);
+		} else {
+			unosEmail.setBackground(Color.RED);
+			unosEmail.setForeground(Color.WHITE);
+		}
+		if (proveraAdrK || unosAdrK.getText().isEmpty()) {
+			unosAdrK.setBackground(Color.WHITE);
+			unosAdrK.setForeground(Color.BLACK);
+		} else {
+			unosAdrK.setBackground(Color.RED);
+			unosAdrK.setForeground(Color.WHITE);
+		}
+
+		if (proveraBlc || unosBlc.getText().isEmpty()) {
+			unosBlc.setBackground(Color.WHITE);
+			unosBlc.setForeground(Color.BLACK);
+		} else {
+			unosBlc.setBackground(Color.RED);
+			unosBlc.setForeground(Color.WHITE);
+		}
+	}
 }

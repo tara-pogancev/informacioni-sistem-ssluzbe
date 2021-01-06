@@ -53,6 +53,8 @@ toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata
 
 8. Izmena profesora
 
+Izmena profesora se vrši klikom na tab 'Profesori', zatim selecijom profesora iz tabele profesora klikom na red u kom se nalazi profesor za kog se vrše izmene. Potom, pozvati akciju izmene, odnosno 'Edit', na jedan od gore navedenih načina. U tabu 'Informacije' prikazaće se polja u kojim se nalaze trenutne informacije o profesoru. Moguće je izmeniti vrednosti svih polja. Pritiskom na dugme 'Prihvati', promene će biti sačuvane ukoliko su sva polja validno popunjena. Pritiskom dugmeta 'Otkaži', sve promene će biti otkazane. 
+U tabu 'Predmeti', prikazani su predmeti koje profesor predaje(ukoliko postoje). Pritiskom na dugme 'Dodaj predmet' moguće je izabrati predmet koji će profesor početi da predaje, dok izborom predmeta iz tabele i pritiskom na dugme 'Ukloni predmet', profesor prestaje da predaje izabrani predmet.
 
 9. Brisanje profesora
 
