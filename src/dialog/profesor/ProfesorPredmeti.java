@@ -1,4 +1,6 @@
 // #profesor_predaje_predmete
+// #dodavanje_predmeta_profesoru
+
 package dialog.profesor;
 
 import java.awt.Dimension;
@@ -54,6 +56,11 @@ public class ProfesorPredmeti extends JPanel {
 		predmeti.setRowSelectionAllowed(true);
 		
 		predmeti.getColumnModel().getColumn(1).setPreferredWidth(120);
+		
+		dodaj.addActionListener(e -> {
+			
+			new DodajPredmet(blc).setVisible(true);
+		});
 		
 		JScrollPane scrollPane = new JScrollPane(predmeti);
 		azurirajPrikaz();
