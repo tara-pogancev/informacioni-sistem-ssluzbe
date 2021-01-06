@@ -16,7 +16,6 @@ import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
 import model.Predmet;
-import model.Profesor;
 
 public class DeleteAction extends AbstractAction {
 
@@ -56,10 +55,7 @@ public class DeleteAction extends AbstractAction {
 				StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
 				break;
 			case 1:
-				Profesor p = temp.getIzabraniProfesor();
-				
-				if (p != null) 
-					ProfesoriController.getInstance().izbrisiProfesora(temp.getIzabraniProfesor());
+				ProfesoriController.getInstance().izbrisiProfesora(temp.getProfesorBlc());
 				break;
 			case 2: 
 				Predmet predmet = temp.getIzabraniPredmet();

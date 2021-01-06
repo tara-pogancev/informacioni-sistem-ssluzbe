@@ -3,6 +3,7 @@
 // #izmena_profesora
 //#brisanje_profesora
 // #profesor_predaje_predmete
+// #sortiranje_profesora
 //Reference:
 //Projekat JTableMVCSimple
 //Projekat MVCExample
@@ -41,10 +42,12 @@ public class ProfesoriController {
 		MainFrame.getTabbedPane().azurirajProfesora();
 	}
 	
-	public void izbrisiProfesora(Profesor p) {
+	public void izbrisiProfesora(String blc) {
 		
 		Object[] choices = {"Da", "Ne"};
 		Object defaultChoice = choices[0];
+		
+		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
 		
 		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
 				"Da li ste sigurni da želite da obrišete profesora [" + p.getIme() + " " + p.getPrezime() + "]?",
@@ -52,7 +55,7 @@ public class ProfesoriController {
 
 		if (id == JOptionPane.YES_OPTION) {
 
-			BazaProfesora.getInstance().izbrisiProfesora(p.getBrojLicneKarte());
+			BazaProfesora.getInstance().izbrisiProfesora(blc);
 			MainFrame.getTabbedPane().azurirajProfesora();
 		}
 	}

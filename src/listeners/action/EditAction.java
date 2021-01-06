@@ -17,7 +17,6 @@ import dialog.IzmenaStudenta;
 import gui.MainFrame;
 import gui.TabbedPane;
 import model.Predmet;
-import model.Profesor;
 
 public class EditAction extends AbstractAction {
 
@@ -58,12 +57,8 @@ public class EditAction extends AbstractAction {
 					break;
 				case 1: 
 					
-					Profesor p = temp.getIzabraniProfesor();
-					
-					if(p != null) {
-					 //new IzmenaProfesora(temp.getIzabraniProfesor()).setVisible(true);
-						IzmenaProfesora.getInstance(temp.getIzabraniProfesor().getBrojLicneKarte()).setVisible(true);
-					}
+//					 //new IzmenaProfesora(temp.getProfesorBlc()).setVisible(true);
+					IzmenaProfesora.getInstance(temp.getProfesorBlc()).setVisible(true);
 					
 					break;
 				case 2:

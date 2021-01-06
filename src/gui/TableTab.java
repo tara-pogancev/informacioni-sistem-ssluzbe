@@ -1,5 +1,7 @@
 //#prikaz_profesora
 //#prikaz_studenata
+//#prikaz_predmeta
+//#sortiranje_profesora
 
 package gui;
 
@@ -41,6 +43,9 @@ public class TableTab extends JTable {
 			this.getTableHeader().setReorderingAllowed(false);
 			AbstractTableModelProfesori atmProfesori = new AbstractTableModelProfesori();
 			this.setModel(atmProfesori);
+			this.getColumn("Blc").setMinWidth(0);
+			this.getColumn("Blc").setMaxWidth(0);
+			this.getColumn("Blc").setWidth(0);
 			break;
 
 		case PREDMETI:

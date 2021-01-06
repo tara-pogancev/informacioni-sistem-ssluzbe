@@ -15,11 +15,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.TableRowSorter;
 
 import model.BazaPredmeta;
-import model.BazaProfesora;
-import model.BazaStudenata;
 import model.Predmet;
-import model.Profesor;
-import model.Student;
 import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
@@ -83,18 +79,12 @@ public class TabbedPane extends JTabbedPane {
 		return idx;		
 	}
 	
-	//TODO: Napraviti tako da funkcija vraca profesora nezavisno od sortiranja
-	public Profesor getIzabraniProfesor() {
+	public String getProfesorBlc() {
 		
-		if(profTable.getSelectedRow() < 0) {
-			
-			return null;
-
-		}
-		
-		Profesor p = BazaProfesora.getInstance().getRow(profTable.getSelectedRow());
-		return p;
+		String blc = (String) profTable.getValueAt(profTable.getSelectedRow(),4);
+		return blc;
 	}
+
 	
 	public Predmet getIzabraniPredmet() {
 		
@@ -117,14 +107,12 @@ public class TabbedPane extends JTabbedPane {
 		model.fireTableDataChanged();
 		validate();
 	}
-
-
+	
 	public void azurirajProfesora() {
 		
 		AbstractTableModelProfesori atmProf = (AbstractTableModelProfesori) profTable.getModel();
 		atmProf.fireTableDataChanged();
 		validate();
-		
 		
 	}
 
@@ -152,17 +140,4 @@ public class TabbedPane extends JTabbedPane {
 		
 		profTable.setRowSorter(sorter);
 	}
-
-	public Student getIzabraniStudent() {
-		
-		if(studTable.getSelectedRow() < 0) {
-			
-			return null;
-		}
-		
-		Student s = BazaStudenata.getInstance().getRow(studTable.getSelectedRow());
-		return s;
-	}
-
-	
 }

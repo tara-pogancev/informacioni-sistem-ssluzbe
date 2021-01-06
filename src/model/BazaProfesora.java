@@ -4,7 +4,7 @@
 // #izmena_profesora
 // #profesor_predaje_predmete
 // #dodavanje_predmeta_profesoru
-
+// #sortiranje_profesora
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -44,6 +44,7 @@ public class BazaProfesora {
 		this.kolone.add("Prezime");
 		this.kolone.add("Titula");
 		this.kolone.add("Zvanje");
+		this.kolone.add("Blc");
 	}
 
 	private void inicijalizacijaProfesora() {
@@ -74,7 +75,7 @@ public class BazaProfesora {
 	}
 
 	public int getColumnCount() {
-		return 4;
+		return 5;
 	}
 
 	public String getColumnName(int index) {
@@ -99,6 +100,8 @@ public class BazaProfesora {
 			return profesor.getTitula();
 		case 3:
 			return profesor.getZvanje();
+		case 4:
+			return profesor.getBrojLicneKarte();
 		default:
 			return null;
 
