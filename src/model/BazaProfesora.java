@@ -164,8 +164,19 @@ public class BazaProfesora {
 	}
 
 	public void izbrisiProfesora(String brlk) {
+		
+		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
+		
 		for (Profesor p : profesori) {
 			if (p.getBrojLicneKarte() == brlk) {
+				
+				for (Predmet predmet : predmeti) {
+				if (predmet.getPredmetniProfesor() != null)
+					if (predmet.getPredmetniProfesor().getBrojLicneKarte().equals(brlk)) {
+						predmet.setPredmetniProfesor(null);
+					}
+				}
+				
 				profesori.remove(p);
 				break;
 			}

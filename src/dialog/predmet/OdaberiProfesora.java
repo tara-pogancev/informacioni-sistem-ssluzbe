@@ -57,6 +57,9 @@ public class OdaberiProfesora extends JDialog{
 		JList<String> list = new JList<String>(model);
 		list.setSelectedIndex(0);
 		
+		if (profesori.size() == 0) 
+			accept.setEnabled(false);
+		
 		accept.addActionListener( e -> {
 			
 			int idx = list.getSelectedIndex();

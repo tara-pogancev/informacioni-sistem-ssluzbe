@@ -77,13 +77,13 @@ public class TabbedPane extends JTabbedPane {
 	
 	public String getProfesorBlc() {
 		
-		String blc = (String) profTable.getValueAt(profTable.getSelectedRow(),4);
+		String blc = (String) profTable.getValueAt(profTable.getSelectedRow(), 4);
 		return blc;
 	}
 
 	public String getPredmetSifra() {
 		
-		String sifra = (String) predmTable.getValueAt(predmTable.getSelectedRow(),0);
+		String sifra = (String) predmTable.getValueAt(predmTable.getSelectedRow(), 0);
 		return sifra;
 	}
 
