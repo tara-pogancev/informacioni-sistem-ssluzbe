@@ -140,6 +140,11 @@ public class TabbedPane extends JTabbedPane {
 		studTable.setRowSorter(sorter);
 		
 	}
+	
+	public void setFilterPredmet(TableRowSorter<AbstractTableModelPredmeti> sorter) {
+		
+		predmTable.setRowSorter(sorter);
+	}
 
 	public Student getIzabraniStudent() {
 		

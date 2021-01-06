@@ -13,6 +13,7 @@ import javax.swing.KeyStroke;
 import gui.MainFrame;
 import gui.TabbedPane;
 import gui.Toolbar;
+import view.PretragaPredmeta;
 import view.StudentFilter;
 
 public class SearchAction extends AbstractAction {
@@ -52,7 +53,15 @@ public class SearchAction extends AbstractAction {
 			// TODO: Sortiranje profesora
 			break;
 		case 2: 
-			// TODO: Sortiranje predmeta
+			//Pretraga predmeta
+			
+			if (search != null && !search.equals("Search...")) {
+				PretragaPredmeta pretragaPredm = new PretragaPredmeta(search);
+				MainFrame.getTabbedPane().setFilterPredmet(pretragaPredm);
+			} else {
+				MainFrame.getTabbedPane().setFilterPredmet(null);
+			}
+			
 			break;
 		}
 		

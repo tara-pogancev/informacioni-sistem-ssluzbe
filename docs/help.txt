@@ -81,6 +81,16 @@ Pretraga studenata vrši se u okviru izabrane kartice "Studenti". U polje za pre
 
 Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
 
+14. Pretraga profesora
+
+15. Pretraga predmeta
+
+Pretraga predmeta vrši se u okviru izabrane kartice "Predmeti". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti pun ili delimičan naziv predmeta. Klikom na lupu pored polja za pretradu biće prikazani svi predmeti čija imena zadovoljavaju kriterijume pretrage.
+Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
+
+
+
+
 
 
 
