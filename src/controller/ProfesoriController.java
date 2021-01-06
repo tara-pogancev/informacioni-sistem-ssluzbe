@@ -1,4 +1,5 @@
 // #dodavanje_profesora
+// #dodavane_predmeta_profesoru
 // #izmena_profesora
 //#brisanje_profesora
 // #profesor_predaje_predmete
@@ -62,5 +63,13 @@ public class ProfesoriController {
 		MainFrame.getTabbedPane().azurirajProfesora();
 		
 	}
+	
+	public void dodajPredmet(String blc, String sifra) {
+
+		BazaProfesora.getInstance().dodajPredmet(blc,sifra);
+		
+		MainFrame.getTabbedPane().azurirajProfesora();
+		
+	} 
 
 }

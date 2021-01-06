@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Predmet;
 
@@ -22,6 +23,14 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 	public AbstractTableModelPredmetiProfesora(String blc) {
 		
 		predmeti = BazaProfesora.getInstance().nadjiBlc(blc).getPredmeti();
+	}
+	
+	public void dodajPredmet(String sifra) {
+		
+		Predmet p = BazaPredmeta.getInstance().findById(sifra);
+		
+		predmeti.add(p);
+		
 	}
 	
 	@Override

@@ -3,6 +3,7 @@
 // #dodavanje_profesora
 // #izmena_profesora
 // #profesor_predaje_predmete
+// #dodavanje_predmeta_profesoru
 
 // Reference:
 // Projekat JTableMVCSimple
@@ -174,15 +175,15 @@ public class BazaProfesora {
 
 		Profesor prof = nadjiBlc(blc);
 
-			for (Predmet p : predmeti) {
+		for (Predmet p : predmeti) {
 
-				if (p.getPredmetniProfesor() != null && p.getPredmetniProfesor().getBrojLicneKarte().equals(blc)) {
+			if (p.getPredmetniProfesor() != null && p.getPredmetniProfesor().getBrojLicneKarte().equals(blc)) {
 
-					prof.getPredmeti().add(p);
+				prof.getPredmeti().add(p);
 
-				}
 			}
-		
+		}
+
 	}
 
 	public void saveDataProfesor() throws IOException {
@@ -207,6 +208,25 @@ public class BazaProfesora {
 				} catch (Exception e) {
 
 					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public void dodajPredmet(String blc, String sifra) {
+
+		for (Profesor p : profesori) {
+
+			if (p.getBrojLicneKarte().equals(blc)) {
+
+				for (Predmet prProf : p.getPredmeti()) {
+
+					if (prProf.getSifraPredmeta().equals(sifra)) {
+
+						p.getPredmeti().add(prProf);
+
+						return;
+					}
 				}
 			}
 		}

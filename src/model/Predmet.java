@@ -56,6 +56,21 @@ public class Predmet implements Serializable {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
 
+	public Predmet(Predmet p) {
+
+		super();
+
+		this.sifraPredmeta = p.getSifraPredmeta();
+		this.nazivPredmeta = p.getNazivPredmeta();
+		this.semestar = p.getSemestarE();
+		this.godinaIzvodjenja = p.getGodinaIzvodjenja();
+		this.predmetniProfesor = p.getPredmetniProfesor();
+		ESPB = p.getESPB();
+		this.studentiPolozili = p.getStudentiPolozili();
+		this.studentiNisuPolozili = p.getStudentiNisuPolozili();
+
+	}
+
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
 	}
@@ -104,6 +119,7 @@ public class Predmet implements Serializable {
 	public void setPredmetniProfesor(Profesor predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
 	}
+	
 
 	public int getESPB() {
 		return ESPB;
@@ -128,6 +144,5 @@ public class Predmet implements Serializable {
 	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
-	
-	
+
 }

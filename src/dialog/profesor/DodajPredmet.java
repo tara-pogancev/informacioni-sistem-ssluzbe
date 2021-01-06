@@ -15,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import controller.ProfesoriController;
 import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Predmet;
@@ -26,6 +27,8 @@ public class DodajPredmet extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 5698936362275579254L;
+
+	Predmet dodat = null;
 
 	public DodajPredmet(String blc) {
 
@@ -41,7 +44,6 @@ public class DodajPredmet extends JDialog {
 
 		List<Predmet> sviPredmeti = BazaPredmeta.getInstance().getPredmeti();
 		List<Predmet> profNePredaje = new ArrayList<Predmet>();
-		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
 
 		for (Predmet pr : sviPredmeti) {
 
@@ -77,6 +79,22 @@ public class DodajPredmet extends JDialog {
 		buttons.add(Box.createHorizontalStrut(10));
 		buttons.add(odustani);
 
+		// Profesor kom se dodaje predmet
+		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
+
+		potvrdi.addActionListener(e -> {
+
+			int indeksIzabranog = lista.getSelectedIndex();
+
+			dodat = new Predmet(profNePredaje.get(indeksIzabranog));
+
+			ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
+
+			BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
+
+			this.dispose();
+		});
+
 		odustani.addActionListener(e -> {
 
 			this.dispose();
@@ -90,6 +108,11 @@ public class DodajPredmet extends JDialog {
 
 		this.setLocationRelativeTo(rootPane);
 		this.setModal(true);
+	}
+
+	public Predmet getDodatPredmet() {
+
+		return dodat;
 	}
 
 }

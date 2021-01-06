@@ -163,7 +163,6 @@ public class IzmenaPredmeta extends JDialog {
 			new odaberiProfesora().setVisible(true);
 			if (BazaPredmeta.getInstance().getTemp_profesor() != null) {
 				noviProfesor = BazaPredmeta.getInstance().getTemp_profesor();
-				System.out.println(noviProfesor.getIme());
 				t6.setText(noviProfesor.getIme() + " " + noviProfesor.getPrezime());
 			}
 			dodavanjeProfesora(add, rm, t6);
@@ -184,13 +183,6 @@ public class IzmenaPredmeta extends JDialog {
 
 				noviProfesor = null;
 				t6.setText("");
-
-				//BazaProfesora.getInstance().ukloniPredmet(noviProfesor.getBrojLicneKarte(), t1.getText());
-
-//				for (Predmet prProf : noviProfesor.getPredmeti()) {
-//
-//					System.out.println(prProf.getNazivPredmeta());
-//				}
 			}
 
 			dodavanjeProfesora(add, rm, t6);
