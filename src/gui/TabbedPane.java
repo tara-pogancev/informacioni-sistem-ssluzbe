@@ -1,6 +1,8 @@
 //#glavni_prozor
 //#prikaz_studenata
 //#prikaz_profesora
+// #pretraga_profesora
+// #pretraga_predmeta
 // Referenca: JTableMVCSimple
 // Projekat JTableMVCSAdvanced
 package gui;
@@ -67,9 +69,9 @@ public class TabbedPane extends JTabbedPane {
 		 switch (current_tab) {
 		 case 0: 	idx = studTable.getSelectedRow();
 		 			break;
-		 case 1:	//...
+		 case 1:	idx = profTable.getSelectedRow();
 		 			break;
-		 case 2:   	//...
+		 case 2:   	idx = predmTable.getSelectedRow();
 			 		break;
 		 }
 		 
@@ -144,6 +146,11 @@ public class TabbedPane extends JTabbedPane {
 	public void setFilterPredmet(TableRowSorter<AbstractTableModelPredmeti> sorter) {
 		
 		predmTable.setRowSorter(sorter);
+	}
+	
+	public void setFilterProfesor(TableRowSorter<AbstractTableModelProfesori> sorter) {
+		
+		profTable.setRowSorter(sorter);
 	}
 
 	public Student getIzabraniStudent() {

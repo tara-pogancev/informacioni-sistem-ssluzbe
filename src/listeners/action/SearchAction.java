@@ -1,4 +1,6 @@
 // #pretraga_studenata
+// #pretraga_profesora
+// #pretraga_predmeta
 
 package listeners.action;
 
@@ -14,6 +16,7 @@ import gui.MainFrame;
 import gui.TabbedPane;
 import gui.Toolbar;
 import view.PretragaPredmeta;
+import view.PretragaProfesora;
 import view.StudentFilter;
 
 public class SearchAction extends AbstractAction {
@@ -50,10 +53,16 @@ public class SearchAction extends AbstractAction {
 			
 			break;
 		case 1:
-			// TODO: Sortiranje profesora
+			
+			if (search != null && !search.equals("Search...")) {
+				PretragaProfesora pretragaProf = new PretragaProfesora(search);
+				MainFrame.getTabbedPane().setFilterProfesor(pretragaProf);
+			} else {
+				MainFrame.getTabbedPane().setFilterProfesor(null);
+			}
+			
 			break;
 		case 2: 
-			//Pretraga predmeta
 			
 			if (search != null && !search.equals("Search...")) {
 				PretragaPredmeta pretragaPredm = new PretragaPredmeta(search);

@@ -49,7 +49,7 @@ public class BazaProfesora {
 
 		this.profesori = new ArrayList<Profesor>();
 		profesori.add(
-				new Profesor("Stojic", "Kristina", "12/02/1999", "Pericka 12", "0653687596", "krisstojic@gmail.com",
+				new Profesor("Stojić", "Kristina", "12/02/1999", "Pericka 12", "0653687596", "krisstojic@gmail.com",
 						"Moja kancelarija 2", "995876258", Titula.mr, Zvanje.asistent, new ArrayList<Predmet>()));
 		profesori.add(new Profesor("Njegić", "Đorđe", "05/09/1999", "Dositejeva 23", "0658469586",
 				"djordjenjegic@gmail.com", "Moja kancelarija 1", "985632584", Titula.dr, Zvanje.redovniProfesor,

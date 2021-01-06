@@ -83,9 +83,12 @@ Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prert
 
 14. Pretraga profesora
 
+Pretraga profesora se vrši u okviru izabrane kartice "Profesori". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti pun ili delimičan naziv prezimena ili prezimena i imena. Klikom na lupu pored polja za pretradu biće prikazani svi profesori čija prezimena i imena zadovoljavaju kriterijume pretrage.
+Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
+
 15. Pretraga predmeta
 
-Pretraga predmeta vrši se u okviru izabrane kartice "Predmeti". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti pun ili delimičan naziv predmeta. Klikom na lupu pored polja za pretradu biće prikazani svi predmeti čija imena zadovoljavaju kriterijume pretrage.
+Pretraga predmeta se vrši u okviru izabrane kartice "Predmeti". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti pun ili delimičan naziv predmeta. Klikom na lupu pored polja za pretradu biće prikazani svi predmeti čija imena zadovoljavaju kriterijume pretrage.
 Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
 
 
