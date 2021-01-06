@@ -1,5 +1,6 @@
 //#brisanje_studenta
 //#brisanje_profesora
+//#brisanje_predmeta
 package listeners.action;
 
 import java.awt.event.ActionEvent;
@@ -15,7 +16,6 @@ import controller.ProfesoriController;
 import controller.StudentController;
 import gui.MainFrame;
 import gui.TabbedPane;
-import model.Predmet;
 
 public class DeleteAction extends AbstractAction {
 
@@ -40,32 +40,27 @@ public class DeleteAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		// System.out.println("Action: Delete");
 
 		TabbedPane temp = MainFrame.getTabbedPane();
 		int current_tab = temp.getSelectedIndex();
 
 		// Provera da je bilo koji red izabran
 		int sellected_row = MainFrame.getTabbedPane().getSellectedTableRow();
-		
-		if (sellected_row != -1) 
+
+		if (sellected_row != -1)
 			switch (current_tab) {
-			case 0: 
+			case 0:
 				StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
 				break;
 			case 1:
 				ProfesoriController.getInstance().izbrisiProfesora(temp.getProfesorBlc());
 				break;
-			case 2: 
-				Predmet predmet = temp.getIzabraniPredmet();
-				
-				if(predmet != null)
-					PredmetiController.getInstance().izbrisiPredmet(temp.getIzabraniPredmet());
-				
+			case 2:
+
+				PredmetiController.getInstance().izbrisiPredmet(temp.getPredmetSifra());
 				break;
 			}
-		
+
 	}
 
 }

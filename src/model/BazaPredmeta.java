@@ -3,6 +3,7 @@
 // #izmena_predmeta
 // #ponistavanje_ocene
 // #dodavanje_profesora_na_predmet
+// #sortiranje_predmeta
 //
 // Reference:
 // Projekat JTableMVCSimple

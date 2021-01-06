@@ -1,6 +1,7 @@
 /* #brisanje_predmeta
  * #dodavanje_predmeta
  * #izmena_predmeta
+ * #sortiranje_predmeta
 	Reference:
 	Projekat JTableMVCSimple
 */
@@ -28,19 +29,19 @@ public class PredmetiController {
 	private PredmetiController() {
 	}
 
-	public void izbrisiPredmet(Predmet p) {
+	public void izbrisiPredmet(String sifra) {
 
 		Object[] izbor = { "Da", "Ne" };
 		Object defaultChoice = izbor[0];
 
 		int potvrda = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da obrišete predmet sa šifrom \"" + p.getSifraPredmeta() + "\"?",
+				"Da li ste sigurni da želite da obrišete predmet sa šifrom \"" + sifra + "\"?",
 				"Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
 				defaultChoice);
 
 		if (potvrda == JOptionPane.YES_OPTION) {
 
-			BazaPredmeta.getInstance().izbrisiPredmet(p.getSifraPredmeta());
+			BazaPredmeta.getInstance().izbrisiPredmet(sifra);
 
 			MainFrame.getTabbedPane().azurirajPredmet();
 

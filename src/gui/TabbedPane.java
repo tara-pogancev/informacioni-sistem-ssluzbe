@@ -13,9 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.table.TableRowSorter;
-
-import model.BazaPredmeta;
-import model.Predmet;
 import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
@@ -61,7 +58,6 @@ public class TabbedPane extends JTabbedPane {
 		 int current_tab = temp.getSelectedIndex();
 		 int idx = 0;
 		 
-		 //TODO: Popuniti za profesora i predmete
 		 switch (current_tab) {
 		 case 0: 	idx = studTable.getSelectedRow();
 		 			break;
@@ -85,16 +81,10 @@ public class TabbedPane extends JTabbedPane {
 		return blc;
 	}
 
-	
-	public Predmet getIzabraniPredmet() {
+	public String getPredmetSifra() {
 		
-		if(predmTable.getSelectedRow() < 0) {
-			
-			return null;
-		}
-		
-		Predmet p = BazaPredmeta.getInstance().getRow(predmTable.getSelectedRow());
-		return p;
+		String sifra = (String) predmTable.getValueAt(predmTable.getSelectedRow(),0);
+		return sifra;
 	}
 
 	public void addTab(String title, Component component) {

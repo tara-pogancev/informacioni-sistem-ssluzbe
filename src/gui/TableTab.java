@@ -1,6 +1,8 @@
 //#prikaz_profesora
 //#prikaz_studenata
 //#prikaz_predmeta
+// #sortiranje_predmeta
+// #sortiranje_profesora
 //#sortiranje_profesora
 
 package gui;
