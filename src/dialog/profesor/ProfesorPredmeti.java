@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
-import dialog.IzmenaProfesora;
+
 import model.Profesor;
 import view.AbstractTableModelPredmetiProfesora;
 
@@ -63,7 +63,6 @@ public class ProfesorPredmeti extends JPanel {
 
 			DodajPredmet dp = new DodajPredmet(blc);
 			dp.setVisible(true);
-			IzmenaProfesora.getInstance(blc).zatvoriDijalog();
 			JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
 		});
 

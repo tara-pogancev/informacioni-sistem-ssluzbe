@@ -60,8 +60,7 @@ public class EditAction extends AbstractAction {
 			case 1:
 
 				// new IzmenaProfesora(temp.getProfesorBlc()).setVisible(true);
-				IzmenaProfesora.getInstance(temp.getProfesorBlc()).setVisible(true);
-
+				new IzmenaProfesora(temp.getProfesorBlc()).setVisible(true);
 				break;
 			case 2:
 

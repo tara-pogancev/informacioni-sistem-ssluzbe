@@ -18,22 +18,16 @@ public class IzmenaProfesora extends JDialog {
 	 */
 	private static final long serialVersionUID = 6546302963399565722L;
 
-	public static IzmenaProfesora instance = null;
-	private static String trenutniBlc = null;
 	
-	private IzmenaProfesora(Profesor p) {
-
-		trenutniBlc = p.getBrojLicneKarte();
-		initialise(p);
-	}
-	
-	public void initialise(Profesor p) {
+	public IzmenaProfesora(String blc) {
 		
-		ProfesoriController.getInstance().initPredmet(p.getBrojLicneKarte());
+		ProfesoriController.getInstance().initPredmet(blc);
 		
 		this.setTitle("Izmena profesora");
 		this.setResizable(false);
 		this.setSize(650, 500);
+		
+		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
 		
 		this.add(new ProfesorTabbedPane(p));
 		
@@ -42,19 +36,5 @@ public class IzmenaProfesora extends JDialog {
 		
 	}
 	
-	
-	public void zatvoriDijalog() {
-
-		this.dispose();
-	}
-	
-	public static IzmenaProfesora getInstance(String blc) {
-
-		if(instance == null || !trenutniBlc.equals(blc)) {
-			instance = new IzmenaProfesora(BazaProfesora.getInstance().nadjiBlc(blc));
-		}
-
-		return instance;
-	}
 	
 }
