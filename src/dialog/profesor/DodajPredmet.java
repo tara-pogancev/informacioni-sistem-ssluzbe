@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -47,7 +48,7 @@ public class DodajPredmet extends JDialog {
 
 		for (Predmet pr : sviPredmeti) {
 
-			if (pr.getPredmetniProfesor() == null) {
+			if (pr.getPredmetniProfesor() == null || !pr.getPredmetniProfesor().getBrojLicneKarte().equals(blc)) {
 
 				profNePredaje.add(pr);
 			}
@@ -88,11 +89,38 @@ public class DodajPredmet extends JDialog {
 
 			dodat = new Predmet(profNePredaje.get(indeksIzabranog));
 
-			ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
+			if (dodat.getPredmetniProfesor() != null) {
 
-			BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
+				Object[] izbor = { "Da", "Ne" };
+				Object defaultChoice = izbor[0];
 
-			this.dispose();
+				int potvrda = JOptionPane.showOptionDialog(rootPane,
+						"Na ovom predmetu već predaje profesor " + dodat.getPredmetniProfesor().getIme() + " "
+								+ dodat.getPredmetniProfesor().getPrezime()
+								+ ". Da li ste sigurni da želite da promenite profesora predmetu sa šifrom \""
+								+ dodat.getSifraPredmeta() + "\"?",
+						"Dodavanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
+						defaultChoice);
+
+				if (potvrda == JOptionPane.YES_OPTION) {
+
+					ProfesoriController.getInstance().ukloniPredmet(dodat.getPredmetniProfesor().getBrojLicneKarte(),
+							dodat.getSifraPredmeta());
+					ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
+					BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
+					JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+					this.dispose();
+
+				}
+			} else {
+
+				ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
+				BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
+				JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+				this.dispose();
+			}
+
+			
 		});
 
 		odustani.addActionListener(e -> {

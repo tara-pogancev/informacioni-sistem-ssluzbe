@@ -234,4 +234,24 @@ public class BazaProfesora {
 			}
 		}
 	}
+
+	public void ukloniPredmet(String blc, String sifra) {
+
+		for (Profesor p : profesori) {
+
+			if (p.getBrojLicneKarte().equals(blc)) {
+
+				for (Predmet prProf : p.getPredmeti()) {
+
+					if (prProf.getSifraPredmeta().equals(sifra)) {
+
+						p.getPredmeti().remove(prProf);
+
+						return;
+					}
+				}
+			}
+		}
+		
+	}
 }

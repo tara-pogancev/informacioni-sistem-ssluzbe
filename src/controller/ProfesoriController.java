@@ -17,41 +17,43 @@ import model.BazaProfesora;
 import model.Profesor;
 
 public class ProfesoriController {
-	
+
 	private static ProfesoriController instance = null;
-	
+
 	public static ProfesoriController getInstance() {
-		
-		if(instance == null) {
+
+		if (instance == null) {
 			instance = new ProfesoriController();
 		}
 		return instance;
 	}
-	
-	private ProfesoriController() {}
-	
+
+	private ProfesoriController() {
+	}
+
 	public void dodajProfesora(Profesor p) {
-		
+
 		BazaProfesora.getInstance().dodajProfesora(p);
 		MainFrame.getTabbedPane().azurirajProfesora();
 	}
 
 	public void izmeniProfesora(Profesor izmene, String brojLicneKarte) {
-		
+
 		BazaProfesora.getInstance().izmenaProfesora(izmene, brojLicneKarte);
 		MainFrame.getTabbedPane().azurirajProfesora();
 	}
-	
+
 	public void izbrisiProfesora(String blc) {
-		
-		Object[] choices = {"Da", "Ne"};
+
+		Object[] choices = { "Da", "Ne" };
 		Object defaultChoice = choices[0];
-		
+
 		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
-		
+
 		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
 				"Da li ste sigurni da želite da obrišete profesora [" + p.getIme() + " " + p.getPrezime() + "]?",
-				"Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
+				"Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices,
+				defaultChoice);
 
 		if (id == JOptionPane.YES_OPTION) {
 
@@ -59,20 +61,28 @@ public class ProfesoriController {
 			MainFrame.getTabbedPane().azurirajProfesora();
 		}
 	}
-	
+
 	public void initPredmet(String blc) {
-		
+
 		BazaProfesora.getInstance().initPredmeti(blc);
 		MainFrame.getTabbedPane().azurirajProfesora();
-		
+
 	}
-	
+
 	public void dodajPredmet(String blc, String sifra) {
 
-		BazaProfesora.getInstance().dodajPredmet(blc,sifra);
-		
+		BazaProfesora.getInstance().dodajPredmet(blc, sifra);
+
 		MainFrame.getTabbedPane().azurirajProfesora();
-		
-	} 
+
+	}
+
+	public void ukloniPredmet(String brojLicneKarte, String sifraPredmeta) {
+
+		BazaProfesora.getInstance().ukloniPredmet(brojLicneKarte, sifraPredmeta);
+
+		MainFrame.getTabbedPane().azurirajProfesora();
+
+	}
 
 }
