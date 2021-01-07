@@ -166,23 +166,6 @@ public class BazaProfesora {
 		}
 	}
 
-	public void initPredmeti(String blc) {
-
-		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
-
-		Profesor prof = nadjiBlc(blc);
-
-		for (Predmet p : predmeti) {
-
-			if (p.getPredmetniProfesor() != null && p.getPredmetniProfesor().getBrojLicneKarte().equals(blc)) {
-
-				prof.getPredmeti().add(p);
-
-			}
-		}
-
-	}
-
 	public void saveDataProfesor() throws IOException {
 
 		ObjectOutputStream oos = null;

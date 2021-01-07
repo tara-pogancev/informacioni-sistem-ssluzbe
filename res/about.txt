@@ -1,5 +1,5 @@
 Informacioni Sistem Studentske Službe
-ver: 1.0
+ver: 1.2
 
 
 Autori: Jelena Hrnjak, Tara Pogančev

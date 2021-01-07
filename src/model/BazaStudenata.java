@@ -188,34 +188,6 @@ public class BazaStudenata {
 	}
 
 	
-	
-	
-	// Dodavanje inicijalnih ocena radi implementacije ponistavanja ocene
-	public void initOcene(String idx) {
-		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
-
-		for (Student student : studenti) {
-			if (student.getBrojIndeksa() == (idx)) {
-
-				Ocena o1 = new Ocena(student, predmeti.get(1), 6, "12/02/2018");
-				Ocena o2 = new Ocena(student, predmeti.get(2), 8, "03/04/2019");
-				Ocena o3 = new Ocena(student, predmeti.get(3), 9, "30/01/2020");
-				// Ocena o4 = new Ocena(student, predmeti.get(0), 7, "31/01/2016");
-
-				student.getOcene().add(o1);
-				student.getOcene().add(o2);
-				student.getOcene().add(o3);
-				// student.getOcene().add(o4);
-
-				student.refreshEspb();
-				student.refreshProsek();
-
-				return;
-			}
-		}
-
-	}
-
 	// Pomocna metoda za debagovanje
 	public void ispisOcena(String idx) {
 
@@ -224,22 +196,6 @@ public class BazaStudenata {
 			for (Ocena o : student.getOcene())
 				System.out.print(o.getPredmet().getNazivPredmeta() + "  ");
 		}
-	}
-
-	public void initPredmeti(String idx) {
-
-		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
-
-		for (Student student : studenti) {
-			if (student.getBrojIndeksa() == (idx)) {
-
-				student.getNepolozeniIspiti().add(predmeti.get(4));
-				student.getNepolozeniIspiti().add(predmeti.get(0));
-
-				return;
-			}
-		}
-
 	}
 
 	public void saveDataStudent() throws IOException {

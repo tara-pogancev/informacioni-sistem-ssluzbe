@@ -63,13 +63,6 @@ public class ProfesoriController {
 		}
 	}
 
-	public void initPredmet(String blc) {
-
-		BazaProfesora.getInstance().initPredmeti(blc);
-		MainFrame.getTabbedPane().azurirajProfesora();
-
-	}
-
 	public void dodajPredmet(String blc, String sifra) {
 
 		BazaProfesora.getInstance().dodajPredmet(blc, sifra);

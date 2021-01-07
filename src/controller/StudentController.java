@@ -80,21 +80,6 @@ public class StudentController {
 		
 	}
 	
-	public void initOcene(String student) {
-		
-		BazaStudenata.getInstance().initOcene(student);
-		
-		MainFrame.getTabbedPane().azurirajS();
-		
-	}
-	
-	public void initPredmet(String idx) {
-		
-		BazaStudenata.getInstance().initPredmeti(idx);
-		MainFrame.getTabbedPane().azurirajS();
-		
-	}
-	
 	
 	
 }

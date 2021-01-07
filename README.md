@@ -10,6 +10,8 @@ Neke od dodatnih funkcionalnosti aplikaicje jesu prikaz položenih ispita, poni�
 
 Za lakše rukovođenje podacima, realizovan je i GUI (_graphical user interface_), kako bi korisnicima omogućio intuitivnu navigaciju kroz tabele i funkcionalnosti.
 
+Uputstva za korišćenje aplikacije nalaze se u glavnom meniju (_Help->Help_).
+
 ## Implementacija
 Aplikacija implementirana upotrebom **Java** programskog jezika, u razvojnom okruženju [Eclipse](https://www.eclipse.org/). Grafička korisnička sprega razvijena je upotrebom **Swing** biblioteke. Korišćene reference navedene su dokumentaciji, kao i u samom kodu aplikacije (respektivno delu kod na koga se referenca odnosi).   
 

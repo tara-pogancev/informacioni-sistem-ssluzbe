@@ -40,7 +40,9 @@ Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 06478
 
 Izmena studenta obavlja se izborom studenta iz tabele, a potom odabirom opcije "Edit". U novootvorenom prozoru, u tabu "Informacije", možete promeniti bilo koje od navedenih polja. Ukoliko su sva unesena polja validna, klikom na dugme "Prihvati" promene će biti sačuvane i ažurirane u tabeli, i imate mogućnost daljih izmena istog studenta. Klikom na dugme "Otkaži", nesačuvane promene će biti poništene.
 
-U kratici prozora za izmene studenta, nalazi se spisak položenih predmeta, kao i ukupan broj osvojenih ESPB bodova i prosek. Odabirom ocene, ista se može poništiti klikom na dugme "Poništi ocenu".
+U kratici prozora za izmene studenta "Položeni", nalazi se spisak položenih predmeta, kao i ukupan broj osvojenih ESPB bodova i prosek. Odabirom ocene, ista se može poništiti klikom na dugme "Poništi ocenu".
+
+Kartica za nepoložene predmete predmete prikazuje listu predmeta koje student pohađa, ali još uvek nije položio. Klikom na dugme "Dodaj", moguće je dodati validan predmet na listu. Isti se može ukloniti dugmetom "Ukloni". Polaganje predmeta vrši se odabirom trećeg dugmeta "Polaganje", gde korisnik unosi ocenu koja se potom prenosi u položene predmete, ažurirajući prosek i tabelu studenata.
 
 6. Brisanje studenta
 
@@ -53,8 +55,8 @@ toolbara, akceleratora, ili mnemonika. Nakon unosa validnih informacija u zadata
 
 8. Izmena profesora
 
-Izmena profesora se vrši klikom na tab 'Profesori', zatim selecijom profesora iz tabele profesora klikom na red u kom se nalazi profesor za kog se vrše izmene. Potom, pozvati akciju izmene, odnosno 'Edit', na jedan od gore navedenih načina. U tabu 'Informacije' prikazaće se polja u kojim se nalaze trenutne informacije o profesoru. Moguće je izmeniti vrednosti svih polja. Pritiskom na dugme 'Prihvati', promene će biti sačuvane ukoliko su sva polja validno popunjena. Pritiskom dugmeta 'Otkaži', sve promene će biti otkazane. 
-U tabu 'Predmeti', prikazani su predmeti koje profesor predaje(ukoliko postoje). Pritiskom na dugme 'Dodaj predmet' moguće je izabrati predmet koji će profesor početi da predaje, dok izborom predmeta iz tabele i pritiskom na dugme 'Ukloni predmet', profesor prestaje da predaje izabrani predmet.
+Izmena profesora se vrši klikom na tab "Profesori", zatim selecijom profesora iz tabele profesora klikom na red u kom se nalazi profesor za kog se vrše izmene. Potom, pozvati akciju izmene, odnosno "Edit", na jedan od gore navedenih načina. U tabu "Informacije" prikazaće se polja u kojim se nalaze trenutne informacije o profesoru. Moguće je izmeniti vrednosti svih polja. Pritiskom na dugme "Prihvati", promene će biti sačuvane ukoliko su sva polja validno popunjena. Pritiskom dugmeta "Otkaži", sve promene će biti otkazane. 
+U tabu "Predmeti", prikazani su predmeti koje profesor predaje(ukoliko postoje). Pritiskom na dugme "Dodaj predmet" moguće je izabrati predmet koji će profesor početi da predaje, dok izborom predmeta iz tabele i pritiskom na dugme "Ukloni predmet", profesor prestaje da predaje izabrani predmet, i slobodno radno mesto datog predmeta se čisti.
 
 9. Brisanje profesora
 
@@ -90,16 +92,4 @@ Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prert
 
 Pretraga predmeta se vrši u okviru izabrane kartice "Predmeti". U polje za pretragu u gornjem desnom uglu glavnog prozora potrebno je uneti pun ili delimičan naziv predmeta. Klikom na lupu pored polja za pretradu biće prikazani svi predmeti čija imena zadovoljavaju kriterijume pretrage.
 Za poništavanje unesenog filtera, potrebno je ponovo kliknuti na polje za prertagu, kako bi se isto ispraznilo, a zatim ponovo pokrenuti pretragu.
-
-
-
-
-
-
-
-
-
-
-
-
 

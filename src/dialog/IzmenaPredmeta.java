@@ -34,6 +34,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.PredmetiController;
+import controller.ProfesoriController;
 import dialog.predmet.OdaberiProfesora;
 import gui.MainFrame;
 import model.BazaPredmeta;
@@ -266,8 +267,22 @@ public class IzmenaPredmeta extends JDialog {
 
 			else {
 
-				// TODO: registar promene
+				if (noviProfesor != null) {
+					ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
+					
+					if (p.getPredmetniProfesor() != null) {
+						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
+					}
+				}
+				
+				if (noviProfesor == null && p.getPredmetniProfesor() != null) {
 
+						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
+
+				} 
+				
+			
+				
 				PredmetiController.getInstance().izmeniPredmet(novo, p.getSifraPredmeta());
 				JOptionPane.showMessageDialog(this, "Predmet uspešno izmenjen!");
 				accept.setEnabled(false);
