@@ -35,8 +35,8 @@ public class StatusBar extends JPanel {
 
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss | dd/MM/yyyy");
 		Date time = new Date(System.currentTimeMillis());
-		JLabel current_time = new JLabel(formatter.format(time));
-		current_time.setAlignmentX(Component.LEFT_ALIGNMENT);
+		JLabel currentTime = new JLabel(formatter.format(time));
+		currentTime.setAlignmentX(Component.LEFT_ALIGNMENT);
 //
 		Runnable runnable = new Runnable() {
 
@@ -46,7 +46,7 @@ public class StatusBar extends JPanel {
 
 					Date time = new Date(System.currentTimeMillis());
 					String dateString = new String(formatter.format(time));
-					current_time.setText(dateString);
+					currentTime.setText(dateString);
 
 					try {
 						Thread.sleep(1000);
@@ -64,7 +64,7 @@ public class StatusBar extends JPanel {
 		
 		add(name);
 		add(Box.createHorizontalGlue());	
-		add(current_time);
+		add(currentTime);
 
 	}
 

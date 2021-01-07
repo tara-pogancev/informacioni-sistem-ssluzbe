@@ -6,6 +6,8 @@
 // #dodavanje_predmeta_profesoru
 // #sortiranje_profesora
 // #deserijalizacija
+// #uklanjanje_predmeta_sa_profesora
+//
 // Reference:
 // Projekat JTableMVCSimple
 
@@ -46,25 +48,6 @@ public class BazaProfesora {
 		this.kolone.add("Zvanje");
 		this.kolone.add("Blc");
 	}
-
-//	private void inicijalizacijaProfesora() {
-//
-//		this.profesori = new ArrayList<Profesor>();
-//		profesori.add(
-//				new Profesor("Stojić", "Kristina", "12/02/1999", "Pericka 12", "0653687596", "krisstojic@gmail.com",
-//						"Moja kancelarija 2", "995876258", Titula.mr, Zvanje.asistent, new ArrayList<Predmet>()));
-//		profesori.add(new Profesor("Njegić", "Đorđe", "05/09/1999", "Dositejeva 23", "0658469586",
-//				"djordjenjegic@gmail.com", "Moja kancelarija 1", "985632584", Titula.dr, Zvanje.redovniProfesor,
-//				new ArrayList<Predmet>()));
-//		profesori.add(new Profesor("Marković", "Predrag", "07/08/1985", "Kućanska 12", "+381638596958",
-//				"pedjica@uns.ac.rs", "Moja kancelarija 5", "965236985", Titula.profDr, Zvanje.profesorEmeritus,
-//				new ArrayList<Predmet>()));
-//		profesori.add(new Profesor("Anđelić", "Stevan", "25/12/1959", "Rimska 2", "0635985632", "andjeo.steva@yahoo.rs",
-//				"Moja kancelarija 4", "TT522587", Titula.BSc, Zvanje.docent, new ArrayList<Predmet>()));
-//		profesori.add(new Profesor("Vladić", "Marija", "12/10/1991", "Vladareva 15", "+381635269658",
-//				"marijavlada12@gmail.rs", "Moja kancelarija 9", "9965852AM", Titula.prof, Zvanje.saradnikUNastavi,
-//				new ArrayList<Predmet>()));
-//	}
 
 	public List<Profesor> getProfesori() {
 		return profesori;
@@ -252,11 +235,13 @@ public class BazaProfesora {
 
 			if (p.getBrojLicneKarte().equals(blc)) {
 
+				int i = 0;
+				
 				for (Predmet prProf : p.getPredmeti()) {
 
 					if (prProf.getSifraPredmeta().equals(sifra)) {
 
-						p.getPredmeti().remove(prProf);
+						p.getPredmeti().remove(i);
 
 						return;
 					}

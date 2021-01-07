@@ -1,4 +1,5 @@
 // #profesor_predaje_predmete
+// #uklanjanje_predmeta_sa_profesora
 // #dodavanje_predmeta_profesoru
 
 package dialog.profesor;
@@ -9,12 +10,14 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
-
+import controller.ProfesoriController;
+import model.BazaPredmeta;
 import model.Profesor;
 import view.AbstractTableModelPredmetiProfesora;
 
@@ -62,7 +65,32 @@ public class ProfesorPredmeti extends JPanel {
 
 			DodajPredmet dp = new DodajPredmet(blc);
 			dp.setVisible(true);
+			azurirajPrikaz();
+			
 		});
+		
+		ukloni.addActionListener(e -> {
+
+			if (predmeti.getSelectedRow() != -1) {
+
+				Object[] choices = { "Da", "Ne" };
+				Object defaultChoice = choices[0];
+
+				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da uklonite predmet?",
+						"Uklanjanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices,
+						defaultChoice);
+				if (id == JOptionPane.YES_OPTION) {
+
+					String idPredmeta = (String) predmeti.getValueAt(predmeti.getSelectedRow(), 0);
+					BazaPredmeta.getInstance().findById(idPredmeta).setPredmetniProfesor(null);
+					ProfesoriController.getInstance().ukloniPredmet(p.getBrojLicneKarte(), idPredmeta);
+					
+					azurirajPrikaz();
+
+				}
+			}
+		});
+		
 
 		JScrollPane scrollPane = new JScrollPane(predmeti);
 		azurirajPrikaz();

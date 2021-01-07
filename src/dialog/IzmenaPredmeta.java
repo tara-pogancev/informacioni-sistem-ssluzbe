@@ -51,7 +51,7 @@ public class IzmenaPredmeta extends JDialog {
 	private Profesor noviProfesor = null;
 
 	final Color ERROR_COLOR = new Color(237, 121, 121);
-	Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
+	Border incorrectInput = BorderFactory.createLineBorder(ERROR_COLOR, 2);
 
 	public IzmenaPredmeta(Predmet p) {
 
@@ -59,17 +59,17 @@ public class IzmenaPredmeta extends JDialog {
 		this.setResizable(false);
 		this.setSize(550, 350); // X, Y
 
-		Border padding_form = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
-		Border padding_buttons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
+		Border paddingForm = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
+		Border paddingButtons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
 
 		// Unos forme
 		JPanel content = new JPanel();
 		content.setLayout(new GridLayout(6, 2, 5, 10)); // row, col, hgap, vgap
-		content.setBorder(padding_form);
+		content.setBorder(paddingForm);
 
 		// Potrebni nizovi
 		String[] semestar = { "Zimski", "Letnji" };
-		String[] god_stud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
+		String[] godStud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
 
 		// ELEMENTI FORME
 		JLabel l1 = new JLabel("Šifra*");
@@ -97,7 +97,7 @@ public class IzmenaPredmeta extends JDialog {
 		}
 
 		JLabel l5 = new JLabel("Godina studija*");
-		JComboBox<String> t5 = new JComboBox<String>(god_stud);
+		JComboBox<String> t5 = new JComboBox<String>(godStud);
 		t5.setSelectedIndex(p.getGodinaIzvodjenja() - 1);
 
 		// DODAVANJE PROFESORA KOMPONENTE
@@ -110,7 +110,7 @@ public class IzmenaPredmeta extends JDialog {
 		if (p.getPredmetniProfesor() != null)
 			t6.setText(p.getPredmetniProfesor().getIme() + " " + p.getPredmetniProfesor().getPrezime());
 
-		String imep_staro = t6.getText();
+		String imepStaro = t6.getText();
 
 		JButton add = new JButton();
 		add.setIcon(new ImageIcon("images" + File.separator + "add.png"));
@@ -161,12 +161,12 @@ public class IzmenaPredmeta extends JDialog {
 		add.addActionListener(e -> {
 
 			new OdaberiProfesora().setVisible(true);
-			if (BazaPredmeta.getInstance().getTemp_profesor() != null) {
-				noviProfesor = BazaPredmeta.getInstance().getTemp_profesor();
+			if (BazaPredmeta.getInstance().getTempProfesor() != null) {
+				noviProfesor = BazaPredmeta.getInstance().getTempProfesor();
 				t6.setText(noviProfesor.getIme() + " " + noviProfesor.getPrezime());
 			}
 			dodavanjeProfesora(add, rm, t6);
-			validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+			validate(t1, t2, t3, t4, t5, t6, accept, p, imepStaro);
 
 		});
 
@@ -186,7 +186,7 @@ public class IzmenaPredmeta extends JDialog {
 			}
 
 			dodavanjeProfesora(add, rm, t6);
-			validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+			validate(t1, t2, t3, t4, t5, t6, accept, p, imepStaro);
 
 		});
 
@@ -200,7 +200,7 @@ public class IzmenaPredmeta extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				dodavanjeProfesora(add, rm, t6);
-				validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+				validate(t1, t2, t3, t4, t5, t6, accept, p, imepStaro);
 			}
 
 			@Override
@@ -215,7 +215,7 @@ public class IzmenaPredmeta extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dodavanjeProfesora(add, rm, t6);
-				validate(t1, t2, t3, t4, t5, t6, accept, p, imep_staro);
+				validate(t1, t2, t3, t4, t5, t6, accept, p, imepStaro);
 			}
 
 			@Override
@@ -278,7 +278,7 @@ public class IzmenaPredmeta extends JDialog {
 		buttons.add(accept);
 		buttons.add(Box.createHorizontalStrut(10));
 		buttons.add(decline);
-		buttons.setBorder(padding_buttons);
+		buttons.setBorder(paddingButtons);
 
 		this.add(content, BorderLayout.CENTER);
 		this.add(buttons, BorderLayout.SOUTH);
@@ -300,7 +300,7 @@ public class IzmenaPredmeta extends JDialog {
 	}
 
 	private void validate(JTextField t1, JTextField t2, JTextField t3, JComboBox<String> t4, JComboBox<String> t5,
-			JTextField t6, JButton accept, Predmet p, String imep_staro) {
+			JTextField t6, JButton accept, Predmet p, String imepStaro) {
 
 		boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
 		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
@@ -316,9 +316,9 @@ public class IzmenaPredmeta extends JDialog {
 				sem = Semestar.LETNJI;
 
 			Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
-			String imep_novo = t6.getText();
+			String imepNovo = t6.getText();
 
-			if (!isChanged(temp, p) && imep_novo.equals(imep_staro))
+			if (!isChanged(temp, p) && imepNovo.equals(imepStaro))
 				accept.setEnabled(false);
 			else
 				accept.setEnabled(true);
@@ -332,19 +332,19 @@ public class IzmenaPredmeta extends JDialog {
 		if (check1 || t1.getText().isEmpty()) {
 			t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 		} else {
-			t1.setBorder(incorrect_input);
+			t1.setBorder(incorrectInput);
 		}
 
 		if (check2 || t2.getText().isEmpty()) {
 			t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 		} else {
-			t2.setBorder(incorrect_input);
+			t2.setBorder(incorrectInput);
 		}
 
 		if (check3 || t3.getText().isEmpty()) {
 			t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 		} else {
-			t3.setBorder(incorrect_input);
+			t3.setBorder(incorrectInput);
 		}
 
 	}

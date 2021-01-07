@@ -33,9 +33,9 @@ public class HelpDialog extends JFrame implements DocumentListener {
 
 	private JTextField entry;
 	private JLabel text;
-	private JTextArea text_area;
+	private JTextArea textArea;
 	private JLabel status;
-	private JScrollPane scroll_pane;
+	private JScrollPane scrollPane;
 	
 	
 	final static Color HILIT_COLOR = Color.LIGHT_GRAY;
@@ -54,16 +54,16 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		entry = new JTextField();
 		text = new JLabel();
-		text_area = new JTextArea();
+		textArea = new JTextArea();
 		status = new JLabel();
 		
-		text_area.setColumns(20);
-		text_area.setLineWrap(true);
-		text_area.setRows(5);
-		text_area.setWrapStyleWord(true);
-		text_area.setEditable(false);
+		textArea.setColumns(20);
+		textArea.setLineWrap(true);
+		textArea.setRows(5);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
 		
-		scroll_pane = new JScrollPane(text_area);
+		scrollPane = new JScrollPane(textArea);
 		
 		text.setText("Pretraži tekst:");
 		
@@ -77,7 +77,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		h1.addContainerGap();
 		
-		h2.addComponent(scroll_pane, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE);
+		h2.addComponent(scrollPane, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE);
 		h2.addComponent(status, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE);
 		
 		SequentialGroup h3 = layout.createSequentialGroup();
@@ -102,7 +102,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		v1.addGroup(v2);
 		v1.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
-		v1.addComponent(scroll_pane, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE);
+		v1.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE);
 		v1.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
 		v1.addComponent(status);
 		v1.addContainerGap();
@@ -115,7 +115,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		//RAD SA TXT FAJLOM
 		
-	    File initialFile = new File("docs"+File.separator+"help.txt");
+	    File initialFile = new File("res"+File.separator+"help.txt");
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);
@@ -124,7 +124,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		}
 		
         try {
-            text_area.read(new InputStreamReader(in, "UTF-8"), null);
+            textArea.read(new InputStreamReader(in, "UTF-8"), null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		hilit = new DefaultHighlighter();
 		painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-		text_area.setHighlighter(hilit);
+		textArea.setHighlighter(hilit);
 		
 		entryBg = entry.getBackground();
 		entry.getDocument().addDocumentListener(this);
@@ -155,13 +155,13 @@ public class HelpDialog extends JFrame implements DocumentListener {
 			return;
 		}
 
-		String content = text_area.getText().toUpperCase();
+		String content = textArea.getText().toUpperCase();
 		int index = content.indexOf(s, 0);
 		if (index >= 0) { // match found
 			try {
 				int end = index + s.length();
 				hilit.addHighlight(index, end, painter);
-				text_area.setCaretPosition(end);
+				textArea.setCaretPosition(end);
 				entry.setBackground(entryBg);
 				message("'" + s + "' pronađen. Pritisni ESC da završiš pretragu.");
 			} catch (BadLocationException e) {

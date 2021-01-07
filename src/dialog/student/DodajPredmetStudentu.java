@@ -37,10 +37,10 @@ public class DodajPredmetStudentu extends JDialog {
 			this.setResizable(false);
 			this.setSize(300, 375);	// X, Y
 					
-			Border padding_form = BorderFactory.createEmptyBorder(25, 25, 25, 25); // North, West, South, East
+			Border paddingForm = BorderFactory.createEmptyBorder(25, 25, 25, 25); // North, West, South, East
 					
 			JPanel panel = new JPanel();
-			panel.setBorder(padding_form);
+			panel.setBorder(paddingForm);
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 			JPanel buttons = new JPanel();

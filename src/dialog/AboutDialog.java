@@ -26,34 +26,34 @@ public class AboutDialog extends JFrame {
 	 */
 	private static final long serialVersionUID = 2728055401775841791L;
 
-	private JTextArea text_area;
-	private JScrollPane scroll_pane;
+	private JTextArea textArea;
+	private JScrollPane scrollPane;
 	
 	public AboutDialog() {
 	
 		this.setTitle("About");
 		this.setResizable(false);
 		
-		text_area = new JTextArea();
+		textArea = new JTextArea();
 
-		text_area.setColumns(40);
-		text_area.setLineWrap(true);
-		text_area.setRows(20);
-		text_area.setWrapStyleWord(true);
-		text_area.setEditable(false);
-		scroll_pane = new JScrollPane(text_area);
+		textArea.setColumns(40);
+		textArea.setLineWrap(true);
+		textArea.setRows(20);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		scrollPane = new JScrollPane(textArea);
 		
 		JPanel contentPanel = new JPanel();
 		Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
 		contentPanel.setBorder(padding);
 		this.setContentPane(contentPanel);
-		contentPanel.add(scroll_pane);
+		contentPanel.add(scrollPane);
 		this.setSize(450, 250);
 		
 		pack();
 		
 		//Inicijalizacija komponenti gotova
-	    File initialFile = new File("docs" + File.separator + "about.txt");
+	    File initialFile = new File("res" + File.separator + "about.txt");
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);
@@ -62,7 +62,7 @@ public class AboutDialog extends JFrame {
 		}
 		
         try {
-            text_area.read(new InputStreamReader(in, "UTF-8"), null);
+            textArea.read(new InputStreamReader(in, "UTF-8"), null);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -26,18 +26,18 @@ public class MainMenu extends JMenuBar {
 		JMenu edit = new JMenu("Edit");
 		JMenu help = new JMenu("Help");
 		
-		AddNewAction add_m = new AddNewAction();
-		CloseAppAction close_m = new CloseAppAction();
+		AddNewAction addM = new AddNewAction();
+		CloseAppAction closeM = new CloseAppAction();
 		
-		EditAction edit_m = new EditAction();
-		DeleteAction delete_m = new DeleteAction();
+		EditAction editM = new EditAction();
+		DeleteAction deleteM = new DeleteAction();
 			
-		HelpAction help_m = new HelpAction();
-		AboutAction about_m = new AboutAction();
+		HelpAction helpM = new HelpAction();
+		AboutAction aboutM = new AboutAction();
 		
-		add_m.setName();
-		edit_m.setName();
-		delete_m.setName();
+		addM.setName();
+		editM.setName();
+		deleteM.setName();
 		
 		//Mnemonici
 		file.setMnemonic(KeyEvent.VK_F);
@@ -46,17 +46,17 @@ public class MainMenu extends JMenuBar {
 
 
 		//Dodavanje elemenata
-		file.add(add_m);	
+		file.add(addM);	
 		file.addSeparator();
-		file.add(close_m);
+		file.add(closeM);
 		
-		edit.add(edit_m);
+		edit.add(editM);
 		edit.addSeparator();
-		edit.add(delete_m);
+		edit.add(deleteM);
 		
-		help.add(help_m);
+		help.add(helpM);
 		help.addSeparator();
-		help.add(about_m);
+		help.add(aboutM);
 		
 		add(file);
 		add(edit);

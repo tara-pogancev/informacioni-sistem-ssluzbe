@@ -55,10 +55,10 @@ public class TabbedPane extends JTabbedPane {
 	public int getSellectedTableRow() {
 		
 		 TabbedPane temp =  MainFrame.getTabbedPane();
-		 int current_tab = temp.getSelectedIndex();
+		 int currentTab = temp.getSelectedIndex();
 		 int idx = 0;
 		 
-		 switch (current_tab) {
+		 switch (currentTab) {
 		 case 0: 	idx = studTable.getSelectedRow();
 		 			break;
 		 case 1:	idx = profTable.getSelectedRow();

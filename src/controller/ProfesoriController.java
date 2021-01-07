@@ -1,12 +1,13 @@
 // #dodavanje_profesora
 // #dodavane_predmeta_profesoru
 // #izmena_profesora
-//#brisanje_profesora
+// #brisanje_profesora
 // #profesor_predaje_predmete
 // #sortiranje_profesora
-//Reference:
-//Projekat JTableMVCSimple
-//Projekat MVCExample
+// #uklanjanje_predmeta_sa_profesora
+// Reference:
+// Projekat JTableMVCSimple
+// Projekat MVCExample
 
 package controller;
 
@@ -77,9 +78,9 @@ public class ProfesoriController {
 
 	}
 
-	public void ukloniPredmet(String brojLicneKarte, String sifraPredmeta) {
+	public void ukloniPredmet(String id, String p) {
 
-		BazaProfesora.getInstance().ukloniPredmet(brojLicneKarte, sifraPredmeta);
+		BazaProfesora.getInstance().ukloniPredmet(id, p);
 
 		MainFrame.getTabbedPane().azurirajProfesora();
 

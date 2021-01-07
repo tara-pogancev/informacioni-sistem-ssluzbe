@@ -47,12 +47,12 @@ public class EditAction extends AbstractAction {
 		// System.out.println("Action: Edit");
 
 		TabbedPane temp = MainFrame.getTabbedPane();
-		int current_tab = temp.getSelectedIndex();
+		int currentTab = temp.getSelectedIndex();
 
 		// Provera da je bilo koji red izabran
-		int sellected_row = temp.getSellectedTableRow();
-		if (sellected_row != -1)
-			switch (current_tab) {
+		int sellectedRow = temp.getSellectedTableRow();
+		if (sellectedRow != -1)
+			switch (currentTab) {
 			case 0:
 				new IzmenaStudenta(temp.getStudentIdx()).setVisible(true);
 				break;

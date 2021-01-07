@@ -42,13 +42,13 @@ public class DeleteAction extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 
 		TabbedPane temp = MainFrame.getTabbedPane();
-		int current_tab = temp.getSelectedIndex();
+		int currentTab = temp.getSelectedIndex();
 
 		// Provera da je bilo koji red izabran
-		int sellected_row = MainFrame.getTabbedPane().getSellectedTableRow();
+		int sellectedRow = MainFrame.getTabbedPane().getSellectedTableRow();
 
-		if (sellected_row != -1)
-			switch (current_tab) {
+		if (sellectedRow != -1)
+			switch (currentTab) {
 			case 0:
 				StudentController.getInstance().izbrisiStudenta(temp.getStudentIdx());
 				break;

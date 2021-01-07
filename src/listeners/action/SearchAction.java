@@ -39,8 +39,8 @@ public class SearchAction extends AbstractAction {
 		
 		TabbedPane temp = MainFrame.getTabbedPane();
 		
-		int current_tab = temp.getSelectedIndex();
-		switch (current_tab) {
+		int currentTab = temp.getSelectedIndex();
+		switch (currentTab) {
 		case 0: 
 			//PRETRAGA STUDENATA
 			

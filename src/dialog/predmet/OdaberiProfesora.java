@@ -34,10 +34,10 @@ public class OdaberiProfesora extends JDialog{
 		this.setResizable(false);
 		this.setSize(300, 375);	// X, Y
 				
-		Border padding_form = BorderFactory.createEmptyBorder(25, 25, 25, 25); // North, West, South, East
+		Border paddingForm = BorderFactory.createEmptyBorder(25, 25, 25, 25); // North, West, South, East
 				
 		JPanel panel = new JPanel();
-		panel.setBorder(padding_form);
+		panel.setBorder(paddingForm);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	
 		JPanel buttons = new JPanel();
@@ -65,7 +65,7 @@ public class OdaberiProfesora extends JDialog{
 			int idx = list.getSelectedIndex();
 			
 			Profesor temp = new Profesor(profesori.get(idx));
-			BazaPredmeta.getInstance().setTemp_profesor(temp);
+			BazaPredmeta.getInstance().setTempProfesor(temp);
 			
 			this.dispose();
 			
@@ -73,7 +73,7 @@ public class OdaberiProfesora extends JDialog{
 		
 		decline.addActionListener( e -> {
 			
-			BazaPredmeta.getInstance().setTemp_profesor(null);
+			BazaPredmeta.getInstance().setTempProfesor(null);
 			this.dispose();
 			
 		});

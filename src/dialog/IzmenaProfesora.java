@@ -5,7 +5,6 @@ package dialog;
 
 import javax.swing.JDialog;
 
-import controller.ProfesoriController;
 import dialog.profesor.ProfesorTabbedPane;
 import gui.MainFrame;
 import model.BazaProfesora;
@@ -20,8 +19,6 @@ public class IzmenaProfesora extends JDialog {
 
 	
 	public IzmenaProfesora(String blc) {
-		
-		ProfesoriController.getInstance().initPredmet(blc);
 		
 		this.setTitle("Izmena profesora");
 		this.setResizable(false);

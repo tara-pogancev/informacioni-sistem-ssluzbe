@@ -43,9 +43,9 @@ public class AddNewAction extends AbstractAction {
  
 		 //TabbedPane temp = new TabbedPane();
 		 TabbedPane temp =  MainFrame.getTabbedPane();
-		 int current_tab = temp.getSelectedIndex();
+		 int currentTab = temp.getSelectedIndex();
 		 
-		 switch (current_tab) {
+		 switch (currentTab) {
 		 case 0: 	new DodavanjeStudenta().setVisible(true);
 		 			break;
 		 case 1:	new DodavanjeProfesora().setVisible(true);

@@ -13,9 +13,9 @@ import javax.swing.table.TableRowSorter;
 
 public class StudentFilter extends TableRowSorter<AbstractTableModelStudenti>{
 	
-	private String idx_filter = "";
-	private String ime_filter = "";
-	private String prz_filter = "";
+	private String idxFilter = "";
+	private String imeFilter = "";
+	private String przFilter = "";
 		
 	private AbstractTableModelStudenti atmStudenti = new AbstractTableModelStudenti();
 	
@@ -25,11 +25,11 @@ public class StudentFilter extends TableRowSorter<AbstractTableModelStudenti>{
 		String[] filters = s.split(" ");
 		
 		if (filters.length >= 1)
-			prz_filter = filters[0].toUpperCase();	
+			przFilter = filters[0].toUpperCase();	
 		if (filters.length >= 2)
-			ime_filter = filters[1].toUpperCase();
+			imeFilter = filters[1].toUpperCase();
 		if (filters.length >= 3)
-			idx_filter = filters[2].toUpperCase();
+			idxFilter = filters[2].toUpperCase();
 		
 		RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
 	        public boolean include(Entry<?, ?> entry) {
@@ -48,7 +48,7 @@ public class StudentFilter extends TableRowSorter<AbstractTableModelStudenti>{
 		
 		if (prezime.isEmpty()) 
 			return true;
-		else return (prezime.contains(prz_filter));
+		else return (prezime.contains(przFilter));
 	
 		
 	}
@@ -57,7 +57,7 @@ public class StudentFilter extends TableRowSorter<AbstractTableModelStudenti>{
 		
 		if (ime.isEmpty()) 
 			return true;
-		else return (ime.contains(ime_filter));
+		else return (ime.contains(imeFilter));
 		
 	}
 	
@@ -65,7 +65,7 @@ public class StudentFilter extends TableRowSorter<AbstractTableModelStudenti>{
 		
 		if (idx.isEmpty()) 
 			return true;
-		else return (idx.contains(idx_filter));
+		else return (idx.contains(idxFilter));
 		
 	}
 	

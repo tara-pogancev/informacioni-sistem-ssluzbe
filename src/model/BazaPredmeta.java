@@ -49,24 +49,6 @@ public class BazaPredmeta {
 
 	}
 
-//	private void inicijalizacijaPredmeta() {
-//
-//		this.predmeti = new ArrayList<Predmet>();
-//
-//		// privremeni profesori i studenti
-//		List<Profesor> profesori = BazaProfesora.getInstance().getProfesori();
-//		List<Student> nisuPolozili = new ArrayList<Student>();
-//		List<Student> polozili = new ArrayList<Student>();
-//
-//		predmeti.add(new Predmet("MA2", "Matematička analiza 2", Semestar.ZIMSKI, 2, profesori.get(0), 9, polozili,
-//				nisuPolozili));
-//		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesori.get(1), 6, polozili, nisuPolozili));
-//		predmeti.add(new Predmet("F1", "Fizika", Semestar.LETNJI, 1, null, 9, polozili, nisuPolozili));
-//		predmeti.add(new Predmet("PR1", "Objektno programiranje", Semestar.ZIMSKI, 2, profesori.get(0), 8, polozili,
-//				nisuPolozili));
-//		predmeti.add(new Predmet("E225", "Operativni sistemi", Semestar.LETNJI, 2, null, 8, polozili, nisuPolozili));
-//	}
-
 	public List<Predmet> getPredmeti() {
 		return predmeti;
 	}
@@ -162,11 +144,11 @@ public class BazaPredmeta {
 
 	}
 
-	public Profesor getTemp_profesor() {
+	public Profesor getTempProfesor() {
 		return tempProfesor;
 	}
 
-	public void setTemp_profesor(Profesor tempProfesor) {
+	public void setTempProfesor(Profesor tempProfesor) {
 		this.tempProfesor = tempProfesor;
 	}
 

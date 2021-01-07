@@ -40,20 +40,20 @@ public class DodavanjePredmeta extends JDialog {
 		this.setResizable(false);
 		this.setSize(450, 320); // X, Y
 
-		Border padding_form = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
-		Border padding_buttons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
+		Border paddingForm = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
+		Border paddingButtons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
 
 		final Color ERROR_COLOR = new Color(237, 121, 121);
-		Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
+		Border incorrectInput = BorderFactory.createLineBorder(ERROR_COLOR, 2);
 
 		// Unos forme
 		JPanel content = new JPanel();
 		content.setLayout(new GridLayout(5, 2, 5, 10)); // row, col, hgap, vgap
-		content.setBorder(padding_form);
+		content.setBorder(paddingForm);
 
 		// Potrebni nizovi
 		String[] semestar = { "Zimski", "Letnji" };
-		String[] god_stud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
+		String[] godStud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
 
 		// ELEMENTI FORME
 		JLabel l1 = new JLabel("Šifra*");
@@ -72,7 +72,7 @@ public class DodavanjePredmeta extends JDialog {
 		JComboBox<String> t4 = new JComboBox<String>(semestar);
 
 		JLabel l5 = new JLabel("Godina studija*");
-		JComboBox<String> t5 = new JComboBox<String>(god_stud);
+		JComboBox<String> t5 = new JComboBox<String>(godStud);
 
 		// Dodavanje komponenti forme
 		content.add(l1);
@@ -122,19 +122,19 @@ public class DodavanjePredmeta extends JDialog {
 				if (check1 || t1.getText().isEmpty()) {
 					t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t1.setBorder(incorrect_input);
+					t1.setBorder(incorrectInput);
 				}
 
 				if (check2 || t2.getText().isEmpty()) {
 					t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t2.setBorder(incorrect_input);
+					t2.setBorder(incorrectInput);
 				}
 
 				if (check3 || t3.getText().isEmpty()) {
 					t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t3.setBorder(incorrect_input);
+					t3.setBorder(incorrectInput);
 				}
 
 			}
@@ -183,7 +183,7 @@ public class DodavanjePredmeta extends JDialog {
 		buttons.add(accept);
 		buttons.add(Box.createHorizontalStrut(10));
 		buttons.add(decline);
-		buttons.setBorder(padding_buttons);
+		buttons.setBorder(paddingButtons);
 
 		this.add(content, BorderLayout.CENTER);
 		this.add(buttons, BorderLayout.SOUTH);

@@ -54,19 +54,19 @@ public class DodavanjeStudenta extends JDialog {
 		this.setResizable(false);
 		this.setSize(450, 500); // X, Y
 
-		Border padding_form = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
-		Border padding_buttons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
+		Border paddingForm = BorderFactory.createEmptyBorder(25, 50, 10, 50); // North, West, South, East
+		Border paddingButtons = BorderFactory.createEmptyBorder(20, 10, 15, 20);
 
 		final Color ERROR_COLOR = new Color(237, 121, 121);
-		Border incorrect_input = BorderFactory.createLineBorder(ERROR_COLOR, 2);
+		Border incorrectInput = BorderFactory.createLineBorder(ERROR_COLOR, 2);
 		// Unos forme
 		JPanel content = new JPanel();
 		content.setLayout(new GridLayout(10, 2, 5, 10)); // row, col, hgap, vgap
-		content.setBorder(padding_form);
+		content.setBorder(paddingForm);
 
 		// Potrebni nizovi
 		String[] finansiranje = { "Budžet", "Samofinansiranje" };
-		String[] god_stud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
+		String[] godStud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
 
 		// ELEMENTI FORME
 		JLabel l1 = new JLabel("Ime*");
@@ -103,7 +103,7 @@ public class DodavanjeStudenta extends JDialog {
 		t8.setToolTipText("e.g. 2020");
 
 		JLabel l9 = new JLabel("Trenutna godina studija*");
-		JComboBox<String> t9 = new JComboBox<String>(god_stud);
+		JComboBox<String> t9 = new JComboBox<String>(godStud);
 
 		JLabel l10 = new JLabel("Način finansiranja*");
 		JComboBox<String> t10 = new JComboBox<String>(finansiranje);
@@ -183,43 +183,43 @@ public class DodavanjeStudenta extends JDialog {
 				if (check1 || t1.getText().isEmpty()) {
 					t1.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t1.setBorder(incorrect_input);
+					t1.setBorder(incorrectInput);
 				}
 
 				if (check2 || t2.getText().isEmpty()) {
 					t2.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t2.setBorder(incorrect_input);
+					t2.setBorder(incorrectInput);
 				}
 
 				if (check3 || t3.getText().isEmpty()) {
 					t3.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t3.setBorder(incorrect_input);
+					t3.setBorder(incorrectInput);
 				}
 
 				if (check5 || t5.getText().isEmpty()) {
 					t5.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t5.setBorder(incorrect_input);
+					t5.setBorder(incorrectInput);
 				}
 
 				if (check6 || t6.getText().isEmpty()) {
 					t6.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t6.setBorder(incorrect_input);
+					t6.setBorder(incorrectInput);
 				}
 
 				if (check7 || t7.getText().isEmpty()) {
 					t7.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t7.setBorder(incorrect_input);
+					t7.setBorder(incorrectInput);
 				}
 
 				if (check8 || t8.getText().isEmpty()) {
 					t8.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
 				} else {
-					t8.setBorder(incorrect_input);
+					t8.setBorder(incorrectInput);
 				}
 
 
@@ -244,22 +244,22 @@ public class DodavanjeStudenta extends JDialog {
 
 		accept.addActionListener(e -> {
 
-			int godina_upisa_st = Integer.parseInt(t8.getText());
+			int godinaUpisaSt = Integer.parseInt(t8.getText());
 
-			int trenutna_godina = t9.getSelectedIndex() + 1;
+			int trenutnaGodina = t9.getSelectedIndex() + 1;
 
-			Status status_st = Status.B;
+			Status statusSt = Status.B;
 			if (t10.getSelectedIndex() == 1)
-				status_st = Status.S;
+				statusSt = Status.S;
 
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date datumRodjenja = null;
-			boolean rodjenje_bool = true;
+			boolean rodjenjeBool = true;
 			try {
 				datumRodjenja = dateFormat.parse(t3.getText());
 				if (datumRodjenja.compareTo(dateFormat.parse("1/1/2004")) > 0
 						|| datumRodjenja.compareTo(dateFormat.parse("31/12/1900")) < 0) {
-					rodjenje_bool = false;
+					rodjenjeBool = false;
 				}
 
 			} catch (ParseException ex) {
@@ -267,17 +267,17 @@ public class DodavanjeStudenta extends JDialog {
 			}
 
 			Student s = new Student(t2.getText(), t1.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText(),
-					t7.getText(), godina_upisa_st, trenutna_godina, status_st);
+					t7.getText(), godinaUpisaSt, trenutnaGodina, statusSt);
 
 			if (!BazaStudenata.getInstance().isUnique(t7.getText())) {
 				JOptionPane.showMessageDialog(this, "Student sa ovim brojem indeksa je već u sistemu!");
 			}
 
-			else if (godina_upisa_st < 2000 || godina_upisa_st > 2025) {
+			else if (godinaUpisaSt < 2000 || godinaUpisaSt > 2025) {
 				JOptionPane.showMessageDialog(this, "Godina upisa nije validna!");
 			}
 
-			else if (!rodjenje_bool) {
+			else if (!rodjenjeBool) {
 				JOptionPane.showMessageDialog(this, "Datum rođenja nije validan!");
 			}
 			
@@ -293,7 +293,7 @@ public class DodavanjeStudenta extends JDialog {
 		buttons.add(accept);
 		buttons.add(Box.createHorizontalStrut(10));
 		buttons.add(decline);
-		buttons.setBorder(padding_buttons);
+		buttons.setBorder(paddingButtons);
 
 		this.add(content, BorderLayout.CENTER);
 		this.add(buttons, BorderLayout.SOUTH);
