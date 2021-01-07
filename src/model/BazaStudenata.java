@@ -5,6 +5,7 @@
 // #prikaz_polozenih_ispita
 // #prikaz_nepolozenih_ispita
 // #deserijalizacija
+// #uklanjanje_predmeta_sa_studenta
 //
 // Reference: Projekat JTableMVCSimple
 
@@ -165,6 +166,30 @@ public class BazaStudenata {
 		}
 	}
 
+	public void ukloniPredmet(String student, String p) {
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa().equals(student)) {
+
+				// if (s.getNepolozeniIspiti().remove(p)) System.out.println("obrisano");
+				int i = 0;
+
+				for (Predmet nepolozen : s.getNepolozeniIspiti()) {
+
+					if (nepolozen.getSifraPredmeta().equals(p)) {
+						s.getNepolozeniIspiti().remove(i);
+						return;
+					}
+
+					i++;
+
+				}
+			}
+		}
+	}
+
+	
+	
+	
 	// Dodavanje inicijalnih ocena radi implementacije ponistavanja ocene
 	public void initOcene(String idx) {
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
@@ -266,4 +291,6 @@ public class BazaStudenata {
 
 		}
 	}
+
+
 }

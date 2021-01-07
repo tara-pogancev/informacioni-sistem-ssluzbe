@@ -4,6 +4,7 @@
 //#sortiranje_studenata
 //#ponistavanje_ocene
 //#prikaz_nepolozenih_ispita
+//#uklanjanje_predmeta_sa_studenta
 //Reference: Projekat JTableMVCSimple
 
 package controller;
@@ -62,6 +63,13 @@ public class StudentController {
 		
 		MainFrame.getTabbedPane().azurirajS();
 		
+	}
+	
+	public void ukloniPredmet(String student, String p) {
+		
+		BazaStudenata.getInstance().ukloniPredmet(student, p);
+		
+		MainFrame.getTabbedPane().azurirajS();
 	}
 	
 	public void dodajPredmet(String student, Predmet p) {

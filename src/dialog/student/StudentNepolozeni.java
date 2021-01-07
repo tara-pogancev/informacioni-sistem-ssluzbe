@@ -1,4 +1,5 @@
 // #prikaz_nepolozenih_ispita
+// #uklanjanje_predmeta_sa_studenta
 // #dodavanje_predmeta_studentu
 
 package dialog.student;
@@ -9,11 +10,13 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import controller.StudentController;
 import model.Student;
 import view.AbstractTableModelNepolozeniIspiti;
 
@@ -40,7 +43,7 @@ public class StudentNepolozeni extends JPanel {
 		
 		JButton dodaj = new JButton("Dodaj");
 		dodaj.setPreferredSize(new Dimension(90,25));
-		JButton obrisi = new JButton("Obriši");
+		JButton obrisi = new JButton("Ukloni");
 		obrisi.setPreferredSize(new Dimension(90,25));
 		JButton polaganje = new JButton("Polaganje");
 		polaganje.setPreferredSize(new Dimension(90,25));
@@ -67,6 +70,27 @@ public class StudentNepolozeni extends JPanel {
 			new DodajPredmetStudentu(s.getBrojIndeksa()).setVisible(true);
 			azurirajPrikaz();
 			
+		});
+		
+		obrisi.addActionListener( e-> {
+			
+			if (nepolozeniIspiti.getSelectedRow() != -1) {
+				
+				Object[] choices = {"Da", "Ne"};
+				Object defaultChoice = choices[0];
+				
+				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da uklonite predmet?", "Uklanjanje predmeta",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
+				if (id == JOptionPane.YES_OPTION) {
+					
+					String idPredmeta = (String) nepolozeniIspiti.getValueAt(nepolozeniIspiti.getSelectedRow(), 0);
+					StudentController.getInstance().ukloniPredmet(s.getBrojIndeksa(), idPredmeta);
+
+					azurirajPrikaz();
+					
+				}
+				
+			}
 		});
 		
 				
