@@ -108,7 +108,4 @@ public class MainFrame extends JFrame {
 	public static TabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
-	
-	
-
 }
