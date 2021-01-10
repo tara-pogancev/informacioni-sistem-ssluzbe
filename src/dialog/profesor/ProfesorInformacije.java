@@ -43,7 +43,6 @@ public class ProfesorInformacije extends JPanel {
 
 	public ProfesorInformacije(Profesor p) {
 
-		//String stariBlc = p.getBrojLicneKarte();
 		bezIzmena = new Profesor(p);
 
 		JPanel fields = new JPanel();
@@ -60,7 +59,7 @@ public class ProfesorInformacije extends JPanel {
 
 		JLabel datProf = new JLabel("Datum rođenja*");
 		JTextField unosDat = new JTextField(p.getDatumRodjenjaString());
-		unosDat.setToolTipText("Primer: 13/05/1999");
+		unosDat.setToolTipText("Primer: 13.05.1993.");
 
 		JLabel adrProf = new JLabel("Adresa stanovanja*");
 		JTextField unosAdr = new JTextField(p.getAdresaStanovanja());
@@ -68,7 +67,7 @@ public class ProfesorInformacije extends JPanel {
 
 		JLabel telProf = new JLabel("Kontakt telefon*");
 		JTextField unosTel = new JTextField(p.getKontaktTelefon());
-		unosTel.setToolTipText("Primer: +381659684596");
+		unosTel.setToolTipText("Primer: 021/324-312");
 
 		JLabel emailProf = new JLabel("E-mail*");
 		JTextField unosEmail = new JTextField(p.getEmailAdresa());
@@ -76,7 +75,7 @@ public class ProfesorInformacije extends JPanel {
 
 		JLabel adrKanc = new JLabel("Adresa kancelarije*");
 		JTextField unosAdrK = new JTextField(p.getAdresaKancelarije());
-		unosAdrK.setToolTipText("Primer: GraniÄarska 20, Novi Sad");
+		unosAdrK.setToolTipText("Primer: Graničarska 20, Novi Sad");
 
 		JLabel blcProf = new JLabel("Broj lične karte*");
 		JTextField unosBlc = new JTextField(p.getBrojLicneKarte());
@@ -282,7 +281,7 @@ public class ProfesorInformacije extends JPanel {
 				break;
 			}
 
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 
 			Date datumRodjenja = null;
 			boolean ispravanDatum = true;
@@ -291,7 +290,7 @@ public class ProfesorInformacije extends JPanel {
 
 				datumRodjenja = dateFormat.parse(unosDat.getText());
 
-				if (datumRodjenja.compareTo(dateFormat.parse("01/01/2002")) > 0) {
+				if (datumRodjenja.compareTo(dateFormat.parse("01.01.2002.")) > 0) {
 
 					ispravanDatum = false;
 				}
@@ -403,10 +402,10 @@ public class ProfesorInformacije extends JPanel {
 		boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
 		boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
 		boolean proveraDat = Pattern.matches(
-				"(([0][1-9])|([1-2][0-9])|([3][01]))[/](([0][1-9])|([1][012]))[/]((19|2[0-9])[0-9]{2})",
+				"(([0][1-9])|([1-2][0-9])|([3][01]))[.](([0][1-9])|([1][012]))[.]((19|2[0-9])[0-9]{2}[.])",
 				unosDat.getText());
 		boolean proveraAdr = (unosAdr.getText() != "");
-		boolean proveraTel = Pattern.matches("[+]?[0-9]+", unosTel.getText());
+		boolean proveraTel = Pattern.matches("[+]?[0-9-/]+", unosTel.getText());
 		boolean proveraEmail = Pattern.matches(
 				"[a-z0-9.!#$%&’*+-/=?^_`{|}~]*[a-z0-9!#$%&’*+-/=?^_`{|}~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
 				unosEmail.getText());

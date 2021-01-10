@@ -68,7 +68,7 @@ public class DodavanjeProfesora extends JDialog {
 
 		JLabel datProf = new JLabel("Datum rođenja*");
 		JTextField unosDat = new JTextField();
-		unosDat.setToolTipText("Primer: 13.05.1999");
+		unosDat.setToolTipText("Primer: 13.05.1993.");
 		fields.add(datProf);
 		fields.add(unosDat);
 		
@@ -144,7 +144,7 @@ public class DodavanjeProfesora extends JDialog {
 				boolean proveraIme = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosIme.getText());
 				boolean proveraPrz = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž -]+", unosPrz.getText());
 				boolean proveraDat = Pattern.matches(
-						"(([0][1-9])|([1-2][0-9])|([3][01]))[.](([0][1-9])|([1][012]))[.]((19|2[0-9])[0-9]{2})",
+						"(([0][1-9])|([1-2][0-9])|([3][01]))[.](([0][1-9])|([1][012]))[.]((19|2[0-9])[0-9]{2}[.])",
 						unosDat.getText());
 				boolean proveraAdr = (unosAdr.getText() != "");
 				boolean proveraTel = Pattern.matches("[+]?[0-9-/]+", unosTel.getText());
@@ -300,7 +300,7 @@ public class DodavanjeProfesora extends JDialog {
 					break;
 				}
 				
-				DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+				DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 				
 				Date datumRodjenja = null;
 				boolean ispravanDatum = true;
@@ -309,7 +309,7 @@ public class DodavanjeProfesora extends JDialog {
 					
 					datumRodjenja = dateFormat.parse(unosDat.getText());
 					
-					if (datumRodjenja.compareTo(dateFormat.parse("01.01.2002")) > 0) {
+					if (datumRodjenja.compareTo(dateFormat.parse("01.01.2002.")) > 0) {
 
 						ispravanDatum= false;
 					}

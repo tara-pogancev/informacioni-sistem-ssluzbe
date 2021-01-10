@@ -47,7 +47,7 @@ public class Profesor implements Serializable {
 			String emailAdresa, String adresaKancelarije, String brojLicneKarte, Titula titula, Zvanje zvanje) {
 		super();
 
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		this.prezime = prezime;
 		this.ime = ime;
 		try {
@@ -72,7 +72,7 @@ public class Profesor implements Serializable {
 			List<Predmet> predmeti) {
 		super();
 
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		this.prezime = prezime;
 		this.ime = ime;
 		try {
@@ -94,7 +94,7 @@ public class Profesor implements Serializable {
 
 		super();
 
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		this.prezime = p.getPrezime();
 		this.ime = p.getIme();
 		try {
@@ -134,7 +134,7 @@ public class Profesor implements Serializable {
 
 	public String getDatumRodjenjaString() {
 
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		return dateFormat.format(datumRodjenja);
 	}
 
@@ -252,7 +252,7 @@ public class Profesor implements Serializable {
 	@Override
 	public String toString() {
 
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		System.out.println(ime + " " + prezime + " " + dateFormat.format(datumRodjenja) + " " + adresaStanovanja + " "
 				+ kontaktTelefon + " " + emailAdresa + " " + adresaKancelarije + " " + brojLicneKarte + " "
 				+ getTitula() + " " + getZvanje());
