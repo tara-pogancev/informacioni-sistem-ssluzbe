@@ -4,6 +4,7 @@
 // #ponistavanje_ocene
 // #dodavanje_profesora_na_predmet
 // #sortiranje_predmeta
+// #serijalizacija
 // #deserijalizacija
 //
 // Reference:

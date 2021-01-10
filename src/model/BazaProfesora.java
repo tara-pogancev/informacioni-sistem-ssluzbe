@@ -5,6 +5,7 @@
 // #profesor_predaje_predmete
 // #dodavanje_predmeta_profesoru
 // #sortiranje_profesora
+// #serijalizacija
 // #deserijalizacija
 // #uklanjanje_predmeta_sa_profesora
 //

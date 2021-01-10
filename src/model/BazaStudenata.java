@@ -4,6 +4,7 @@
 // #ponistavanje_ocene
 // #prikaz_polozenih_ispita
 // #prikaz_nepolozenih_ispita
+// #serijalizacija
 // #deserijalizacija
 // #uklanjanje_predmeta_sa_studenta
 //

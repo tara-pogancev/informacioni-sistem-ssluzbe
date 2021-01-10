@@ -1,4 +1,5 @@
 // #glavni_prozor
+// #serijalizacija
 package listeners.action;
 
 import java.awt.event.WindowEvent;
@@ -37,27 +38,37 @@ public class MyWindowListener implements WindowListener {
 		Object defaultChoice = opcije[0];
 
 		int izbor = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije?",
+				"Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 		if (izbor == JOptionPane.YES_OPTION) {
 
-			try {
-				
-				BazaStudenata.getInstance().saveDataStudent();
-				BazaProfesora.getInstance().saveDataProfesor();
-				BazaPredmeta.getInstance().saveDataPredmet();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			int serijalizacija = JOptionPane.showOptionDialog(MainFrame.getInstance(),
+					"Da li želite da sačuvate izmenjene podatke?", "Čuvanje podataka", JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
+			if (serijalizacija == JOptionPane.YES_OPTION) {
+				try {
+
+					BazaStudenata.getInstance().saveDataStudent();
+					BazaProfesora.getInstance().saveDataProfesor();
+					BazaPredmeta.getInstance().saveDataPredmet();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Podaci su uspešno sačuvani!");
+			}
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		} else {
+
+		} else
+
+		{
 
 			frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		}
 
+		}
 	}
 
 	@Override
