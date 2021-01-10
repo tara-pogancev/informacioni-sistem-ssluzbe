@@ -80,7 +80,7 @@ public class DodavanjeStudenta extends JDialog {
 
 		JLabel l3 = new JLabel("Datum rođenja*");
 		JTextField t3 = new JTextField();
-		t3.setToolTipText("e.g. 01/01/1996");
+		t3.setToolTipText("e.g. 01.01.1996.");
 
 		JLabel l4 = new JLabel("Adresa stanovanja*");
 		JTextField t4 = new JTextField();
@@ -88,7 +88,7 @@ public class DodavanjeStudenta extends JDialog {
 
 		JLabel l5 = new JLabel("Broj telefona*");
 		JTextField t5 = new JTextField();
-		t5.setToolTipText("0621231231");
+		t5.setToolTipText("021/555-333");
 
 		JLabel l6 = new JLabel("E-mail adresa*");
 		JTextField t6 = new JTextField();
@@ -96,7 +96,7 @@ public class DodavanjeStudenta extends JDialog {
 
 		JLabel l7 = new JLabel("Broj indeksa*");
 		JTextField t7 = new JTextField();
-		t7.setToolTipText("e.g. ra-100-2020");
+		t7.setToolTipText("e.g. RA 100/2020");
 
 		JLabel l8 = new JLabel("Godina upisa");
 		JTextField t8 = new JTextField();
@@ -153,15 +153,15 @@ public class DodavanjeStudenta extends JDialog {
 			public void keyReleased(KeyEvent arg0) {
 				boolean check1 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t1.getText());
 				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
-				boolean check3 = Pattern.matches("[0-9]{1,2}(/)[0-9]{1,2}(/)[0-9]{4,4}", t3.getText());
+				boolean check3 = Pattern.matches("[0-9]{2,2}(.)[0-9]{2,2}(.)[0-9]{4,4}(.)", t3.getText());
 
 				boolean check4 = (!t4.getText().isEmpty());
-				boolean check5 = Pattern.matches("[+]?[0-9]+", t5.getText());
+				boolean check5 = Pattern.matches("[0-9]{3,3}(/)[0-9]{3,4}(-)[0-9]{3,4}", t5.getText());
 				boolean check6 = Pattern.matches("[a-z0-9.+-/_~]*[a-z0-9.+-/_~][@][a-z]+[.][a-z]+([a-z.]+[a-z])?",
 						t6.getText());
 				// boolean check7 = (Pattern.matches("[A-Za-z]+[-/]?[0-9]+([-/]?[A-Za-z0-9])*",
 				// t7.getText())); //Vrlo generican unos (wip)
-				boolean check7 = (Pattern.matches("[a-z]{2,2}[-][0-9]{1,3}[-][0-9]{4,4}", t7.getText())); // Unos iz
+				boolean check7 = (Pattern.matches("[A-Z]{2,2}( )[0-9]{1,3}[/][0-9]{4,4}", t7.getText())); // Unos iz
 																											// specifikacije
 
 				/*
@@ -252,13 +252,13 @@ public class DodavanjeStudenta extends JDialog {
 			if (t10.getSelectedIndex() == 1)
 				statusSt = Status.S;
 
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 			Date datumRodjenja = null;
 			boolean rodjenjeBool = true;
 			try {
 				datumRodjenja = dateFormat.parse(t3.getText());
-				if (datumRodjenja.compareTo(dateFormat.parse("1/1/2004")) > 0
-						|| datumRodjenja.compareTo(dateFormat.parse("31/12/1900")) < 0) {
+				if (datumRodjenja.compareTo(dateFormat.parse("1.1.2004.")) > 0
+						|| datumRodjenja.compareTo(dateFormat.parse("31.12.1900.")) < 0) {
 					rodjenjeBool = false;
 				}
 

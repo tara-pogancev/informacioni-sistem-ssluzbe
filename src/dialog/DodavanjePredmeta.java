@@ -58,7 +58,7 @@ public class DodavanjePredmeta extends JDialog {
 		// ELEMENTI FORME
 		JLabel l1 = new JLabel("Šifra*");
 		JTextField t1 = new JTextField();
-		t1.setToolTipText("e.g. E223A");
+		t1.setToolTipText("e.g. p12");
 
 		JLabel l2 = new JLabel("Naziv*");
 		JTextField t2 = new JTextField();
@@ -107,7 +107,7 @@ public class DodavanjePredmeta extends JDialog {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
+				boolean check1 = Pattern.matches("[a-z0-9]{1,8}", t1.getText());
 				boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
 				boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
 

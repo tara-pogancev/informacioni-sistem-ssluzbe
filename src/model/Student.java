@@ -58,7 +58,7 @@ public class Student implements Serializable {
 	}
 	
 	public String getDatumRodjenjaString() {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy."); 
 		return dateFormat.format(datumRodjenja);
 	}
 	
@@ -167,7 +167,7 @@ public class Student implements Serializable {
 		this.prezime = prezime;
 		this.ime = ime;
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
 			this.datumRodjenja = dateFormat.parse(datumRodjenja);
 		} catch (ParseException e) {
@@ -196,7 +196,7 @@ public class Student implements Serializable {
 		this.prezime = prezime;
 		this.ime = ime;
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
 			this.datumRodjenja = dateFormat.parse(datumRodjenja);
 		} catch (ParseException e) {
@@ -224,7 +224,7 @@ public class Student implements Serializable {
 		this.prezime = s2.getPrezime();
 		this.ime = s2.getIme();
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
 			this.datumRodjenja = dateFormat.parse(s2.getDatumRodjenjaString());
 		} catch (ParseException e) {

@@ -41,7 +41,7 @@ public class Ocena implements Serializable {
 		this.ocena = ocena;
 	}
 	public String getDatum() {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		return dateFormat.format(datum);
 	}
 	public void setDatum(Date datum) {
@@ -55,7 +55,7 @@ public class Ocena implements Serializable {
 		this.ocena = ocena;
 
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 		try {
 			this.datum = dateFormat.parse(datum2);
 		} catch (ParseException e) {

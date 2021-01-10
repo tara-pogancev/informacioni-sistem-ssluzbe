@@ -75,7 +75,7 @@ public class IzmenaPredmeta extends JDialog {
 		// ELEMENTI FORME
 		JLabel l1 = new JLabel("Šifra*");
 		JTextField t1 = new JTextField(p.getSifraPredmeta());
-		t1.setToolTipText("e.g. E223A");
+		t1.setToolTipText("e.g. p12");
 
 		JLabel l2 = new JLabel("Naziv*");
 		JTextField t2 = new JTextField(p.getNazivPredmeta());
@@ -317,7 +317,7 @@ public class IzmenaPredmeta extends JDialog {
 	private void validate(JTextField t1, JTextField t2, JTextField t3, JComboBox<String> t4, JComboBox<String> t5,
 			JTextField t6, JButton accept, Predmet p, String imepStaro) {
 
-		boolean check1 = Pattern.matches("[A-Z0-9.-]{1,8}", t1.getText());
+		boolean check1 = Pattern.matches("[a-z0-9]{1,8}", t1.getText());
 		boolean check2 = Pattern.matches("[A-ZČĆŽĐŠa-zšđčćž][0-9A-ZČĆŽĐŠa-zšđčćž -]+", t2.getText());
 		boolean check3 = Pattern.matches("[0-9]{1,2}", t3.getText());
 
