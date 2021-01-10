@@ -194,12 +194,14 @@ public class BazaProfesora {
 	}
 
 	public void dodajPredmet(String blc, String sifra) {
+		
+		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
 
 		for (Profesor p : profesori) {
 
 			if (p.getBrojLicneKarte().equals(blc)) {
 
-				for (Predmet prProf : p.getPredmeti()) {
+				for (Predmet prProf : predmeti) {
 
 					if (prProf.getSifraPredmeta().equals(sifra)) {
 
