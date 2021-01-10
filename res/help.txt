@@ -34,7 +34,7 @@ Izborom jedne od kolona, korisnici imaju priliku da za dat entitet vrše izmene,
 
 Dodavanje studenta realizuje se izborom taba sa studente, a potom pokretanjem akcije "New" pronađenom u meniju ili toolbaru.
 U otovrenom prozoru potrebno je popuniti prazna polja validnim podacima, nakon čega će dodavanje biti omogućeno. 
-Primer validnog unosa: Ana, Kraljić, 05/07/1996, Jugoslovenske armije 88, 064789789, ana@gmail.com, ra-32-2017, 2017
+Primer validnog unosa: Ana, Kraljić, 05.07.1996. , Jugoslovenske armije 88, 021/555-333, ana@gmail.com, RA 37/2018, 2017
 
 5. Izmena studenta
 
@@ -65,7 +65,7 @@ Brisanje profesora vrši se u kartici "Profesori", biranjem profesora, a potom k
 10. Dodavanje predmenta
 
 Dodavanje predmeta izvodi se u kartici "Predmeti", klikom na dugme "+" u toolbar-u, ili izborom ekvivalentne akcije "New" iz glavnog menija. Potom, potrebno je popuniti data polja, koja će se crveniti u slučaju pogrešno unetih vrednosti. Prelaskom miša preko polja za kucanje, prikazan je jedan od pravilnih unosa.
-Primer validnog unosa: E212, Matematička analiza 1, 9
+Primer validnog unosa: p12, Matematička analiza 1, 9
 
 11. Izmena predmeta
 
