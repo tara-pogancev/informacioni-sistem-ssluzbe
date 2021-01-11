@@ -104,7 +104,7 @@ public class StudentNepolozeni extends JPanel {
 				String idPredmeta = (String) nepolozeniIspiti.getValueAt(nepolozeniIspiti.getSelectedRow(), 0);
 				new UpisOcene(s.getBrojIndeksa(),idPredmeta).setVisible(true);
 				azurirajPrikaz();
-				new StudentPolozeni(s);//.azuriraj();
+				new StudentPolozeni(s).azuriraj();
 			}
 			
 			
