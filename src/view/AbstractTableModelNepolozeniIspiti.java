@@ -56,6 +56,18 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 		
 		return null;
 	}
+	
+	public Class<?> getColumnClass(int colIdx){
+		
+		if(colIdx == 2 || colIdx == 3) {
+			
+			return Integer.class;
+			
+		}else {
+			
+			return String.class;
+		}
+	}
 
 
 	@Override

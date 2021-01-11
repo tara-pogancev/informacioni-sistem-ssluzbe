@@ -16,28 +16,28 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = -3637639587431835078L;
-	
+
 	private List<Predmet> predmeti = new ArrayList<Predmet>();
-	private String[] kolone = {"Šifra","Naziv", "Godina studija", "Semestar"};
-	
+	private String[] kolone = { "Šifra", "Naziv", "Godina studija", "Semestar" };
+
 	public AbstractTableModelPredmetiProfesora(String blc) {
-		
+
 		predmeti = BazaProfesora.getInstance().nadjiBlc(blc).getPredmeti();
 	}
-	
+
 	public void dodajPredmet(String sifra) {
-		
+
 		Predmet p = BazaPredmeta.getInstance().findById(sifra);
-		
+
 		predmeti.add(p);
-		
+
 	}
-	
+
 	@Override
 	public String getColumnName(int columnIndex) {
 		return kolone[columnIndex];
 	}
-	
+
 	@Override
 	public int getColumnCount() {
 		return kolone.length;
@@ -51,8 +51,8 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Predmet p = predmeti.get(rowIndex);
-		
-		switch(columnIndex) {
+
+		switch (columnIndex) {
 		case 0:
 			return p.getSifraPredmeta();
 		case 1:
@@ -61,10 +61,21 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 			return p.getGodinaIzvodjenja();
 		case 3:
 			return p.getSemestar();
+		default:
+			return null;
 		}
-		
-		return null;
-		
+
 	}
 
+	public Class<?> getColumnClass(int colIdx){
+		
+		if(colIdx == 2) {
+			
+			return Integer.class;
+			
+		}else {
+			
+			return String.class;
+		}
+	}
 }
