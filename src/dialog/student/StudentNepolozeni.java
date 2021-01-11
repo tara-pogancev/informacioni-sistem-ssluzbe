@@ -93,6 +93,18 @@ public class StudentNepolozeni extends JPanel {
 			}
 		});
 		
+		polaganje.addActionListener(e -> {
+			
+			if (nepolozeniIspiti.getSelectedRow() != -1) {
+				
+				String idPredmeta = (String) nepolozeniIspiti.getValueAt(nepolozeniIspiti.getSelectedRow(), 0);
+				new UpisOcene(idPredmeta).setVisible(true);
+				azurirajPrikaz();
+			}
+			
+			
+		});
+		
 				
 		JScrollPane scrollPane = new JScrollPane(nepolozeniIspiti);
 		azurirajPrikaz();
