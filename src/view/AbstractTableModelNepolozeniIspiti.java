@@ -38,23 +38,22 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 	
 
 	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		Predmet p = predmeti.get(rowIndex);
+	public Object getValueAt(int rowIdx, int columnIdx) {
 		
-		switch(columnIndex) {
-		case 0:
-			return p.getSifraPredmeta();
-		case 1:
-			return p.getNazivPredmeta();
-		case 2:
-			return p.getESPB();
-		case 3:
-			return p.getGodinaIzvodjenja();
-		case 4:
-			return p.getSemestar();
+		return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
+		
+	}
+	
+	public Class<?> getColumnClass(int colIdx){
+		
+		if(colIdx == 2 || colIdx == 3) {
+			
+			return Integer.class;
+			
+		}else {
+			
+			return String.class;
 		}
-		
-		return null;
 	}
 
 
