@@ -3,10 +3,15 @@ package dialog.student;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -16,9 +21,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.StudentController;
 import model.BazaPredmeta;
 import model.Predmet;
 
@@ -29,11 +36,11 @@ public class UpisOcene extends JDialog {
 	 */
 	private static final long serialVersionUID = 5560296370134176923L;
 
-	public UpisOcene(String idPredmeta) {
+	public UpisOcene(String idx, String idPredmeta) {
 
 		this.setTitle("Unos ocene");
 		this.setResizable(false);
-		this.setSize(320, 305);
+		this.setSize(480, 305);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 20, 20));
@@ -58,10 +65,10 @@ public class UpisOcene extends JDialog {
 		fields.add(nazivTxt);
 
 		Integer[] izborOcena = { 6, 7, 8, 9, 10 };
-		JLabel ocena = new JLabel("Ocena*");
+		JLabel ocenaL = new JLabel("Ocena*");
 		JComboBox<Integer> unosOcena = new JComboBox<Integer>(izborOcena);
 		unosOcena.setSelectedIndex(0);
-		fields.add(ocena);
+		fields.add(ocenaL);
 		fields.add(unosOcena);
 
 		JLabel datum = new JLabel("Datum*");
@@ -101,12 +108,12 @@ public class UpisOcene extends JDialog {
 						"(([0][1-9])|([1-2][0-9])|([3][01]))[.](([0][1-9])|([1][012]))[.]((19|2[0-9])[0-9]{2}[.])",
 						unosDat.getText());
 
-				if(proveraDat) {
+				if (proveraDat) {
 					potvrdi.setEnabled(true);
-				}else {
+				} else {
 					potvrdi.setEnabled(false);
 				}
-				
+
 				if (proveraDat || unosDat.getText().isEmpty()) {
 					unosDat.setBackground(Color.WHITE);
 					unosDat.setForeground(Color.BLACK);
@@ -120,12 +127,60 @@ public class UpisOcene extends JDialog {
 			public void keyPressed(KeyEvent e) {
 			}
 		};
-		
+
 		unosDat.addKeyListener(provera);
-		
+
 		potvrdi.addActionListener(e -> {
+
+			Integer ocena = 6;
+
+			switch (unosOcena.getSelectedIndex()) {
+
+			case 1:
+				ocena = 7;
+				break;
+			case 2:
+				ocena = 8;
+				break;
+			case 3:
+				ocena = 9;
+				break;
+			case 4:
+				ocena = 10;
+				break;
+
+			}
 			
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
+
+			Date datumPolaganja = null;
+			boolean ispravanDatum = true;
+
+			try {
+
+				datumPolaganja = dateFormat.parse(unosDat.getText());
+
+				if (datumPolaganja.compareTo(dateFormat.parse("01.01.2015.")) < 0) {
+
+					ispravanDatum = false;
+				}
+
+			} catch (ParseException ex) {
+				ex.printStackTrace();
+			}
 			
+			if (!ispravanDatum) {
+
+				JOptionPane.showMessageDialog(null, "Datum polaganja nije validan!");
+
+			}else {
+				
+				StudentController.getInstance().upisiOcenu(idx, idPredmeta, ocena, unosDat.getText());
+			
+				JOptionPane.showMessageDialog(null, "Ocena uspešno upisana!");
+				this.dispose();
+			}
+
 		});
 
 		panel.add(fields, BorderLayout.CENTER);

@@ -7,7 +7,7 @@
 // #serijalizacija
 // #deserijalizacija
 // #uklanjanje_predmeta_sa_studenta
-//
+// #upis_ocene
 // Reference: Projekat JTableMVCSimple
 
 package model;
@@ -164,6 +164,28 @@ public class BazaStudenata {
 						return;
 					}
 				}
+		}
+	}
+	
+	public void upisOcene(String idx, String sifra, Integer ocena, String datum) {
+
+		for(Student s : studenti) {
+			
+			if(s.getBrojIndeksa().equals(idx)) {
+				
+				for(Predmet p : s.getNepolozeniIspiti()) {
+					
+					if(p.getSifraPredmeta().equals(sifra)) {
+						
+						s.getNepolozeniIspiti().remove(p);
+						s.getOcene().add(new Ocena(s,p,ocena,datum));
+						s.refreshProsek();
+						s.refreshEspb();
+						
+						return;
+					}
+				}
+			}
 		}
 	}
 

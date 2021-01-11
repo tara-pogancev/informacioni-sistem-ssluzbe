@@ -109,6 +109,7 @@ public class StudentPolozeni extends JPanel {
 					StudentController.getInstance().ponistiOcenu(idx, p);
 					
 					azuriraj();
+					new StudentNepolozeni(s).azurirajPrikaz();
 
 					String prUpdated = df.format(s.getProsek());
 					prosek.setText("Prosečna ocena:     " + prUpdated);
@@ -125,7 +126,7 @@ public class StudentPolozeni extends JPanel {
 		
 	}
 	
-	private void azuriraj() {
+	public void azuriraj() {
 		
 		AbstractTableModelOcene atmOcene = (AbstractTableModelOcene) polozeniPredmeti.getModel();
 		atmOcene.fireTableDataChanged();

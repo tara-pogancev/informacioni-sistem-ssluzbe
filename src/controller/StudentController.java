@@ -5,6 +5,7 @@
 //#ponistavanje_ocene
 //#prikaz_nepolozenih_ispita
 //#uklanjanje_predmeta_sa_studenta
+//#upis_ocene
 //Reference: Projekat JTableMVCSimple
 
 package controller;
@@ -78,6 +79,13 @@ public class StudentController {
 		
 		MainFrame.getTabbedPane().azurirajS();
 		
+	}
+	
+	public void upisiOcenu(String idx, String sifra, Integer ocena, String datum) {
+		
+		BazaStudenata.getInstance().upisOcene(idx, sifra, ocena, datum);
+		
+		MainFrame.getTabbedPane().azurirajS();
 	}
 	
 	

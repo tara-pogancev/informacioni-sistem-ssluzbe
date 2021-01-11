@@ -1,6 +1,7 @@
 // #prikaz_nepolozenih_ispita
 // #uklanjanje_predmeta_sa_studenta
 // #dodavanje_predmeta_studentu
+// #upis_ocene
 
 package dialog.student;
 
@@ -65,6 +66,8 @@ public class StudentNepolozeni extends JPanel {
 		nepolozeniIspiti.getTableHeader().setReorderingAllowed(false);
 		nepolozeniIspiti.getColumnModel().getColumn(1).setPreferredWidth(120);
 		
+		nepolozeniIspiti.getColumnModel().getColumn(1).setPreferredWidth(180);
+		
 		dodaj.addActionListener( e-> {
 			
 			new DodajPredmetStudentu(s.getBrojIndeksa()).setVisible(true);
@@ -88,6 +91,7 @@ public class StudentNepolozeni extends JPanel {
 
 					azurirajPrikaz();
 					
+					
 				}
 				
 			}
@@ -98,8 +102,9 @@ public class StudentNepolozeni extends JPanel {
 			if (nepolozeniIspiti.getSelectedRow() != -1) {
 				
 				String idPredmeta = (String) nepolozeniIspiti.getValueAt(nepolozeniIspiti.getSelectedRow(), 0);
-				new UpisOcene(idPredmeta).setVisible(true);
+				new UpisOcene(s.getBrojIndeksa(),idPredmeta).setVisible(true);
 				azurirajPrikaz();
+				new StudentPolozeni(s);//.azuriraj();
 			}
 			
 			
@@ -115,7 +120,7 @@ public class StudentNepolozeni extends JPanel {
 		
 	}
 
-	private void azurirajPrikaz() {
+	public void azurirajPrikaz() {
 
 		AbstractTableModelNepolozeniIspiti atmNepolozeni = (AbstractTableModelNepolozeniIspiti) nepolozeniIspiti.getModel();
 		atmNepolozeni.fireTableDataChanged();
