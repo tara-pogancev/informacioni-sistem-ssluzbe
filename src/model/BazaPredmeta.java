@@ -81,9 +81,9 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			return predmet.getESPB(); //Integer.toString(predmet.getESPB());
+			return predmet.getESPB();
 		case 3:
-			return predmet.getGodinaIzvodjenja(); //Integer.toString(predmet.getGodinaIzvodjenja());
+			return predmet.getGodinaIzvodjenja(); 
 		case 4:
 			return predmet.getSemestar();
 		default:
