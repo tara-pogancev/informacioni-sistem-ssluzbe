@@ -4,9 +4,13 @@
 
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.table.AbstractTableModel;
 
 import model.BazaPredmeta;
+import model.Predmet;
 
 public class AbstractTableModelPredmeti extends AbstractTableModel {
 
@@ -14,8 +18,12 @@ public class AbstractTableModelPredmeti extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8454002200965331257L;
+	
+	List<Predmet> predmeti = new ArrayList<Predmet>();
 
 	public AbstractTableModelPredmeti() {
+		
+		predmeti = BazaPredmeta.getInstance().getPredmeti();
 	}
 
 	@Override
@@ -36,7 +44,24 @@ public class AbstractTableModelPredmeti extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIdx, int columnIdx) {
 
-		return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
+		Predmet predmet = this.predmeti.get(rowIdx);
+
+		switch (columnIdx) {
+
+		case 0:
+			return predmet.getSifraPredmeta();
+		case 1:
+			return predmet.getNazivPredmeta();
+		case 2:
+			return predmet.getESPB();
+		case 3:
+			return predmet.getGodinaIzvodjenja(); 
+		case 4:
+			return predmet.getSemestar();
+		default:
+			return null;
+
+		}
 	}
 
 	public Class<?> getColumnClass(int colIdx) {

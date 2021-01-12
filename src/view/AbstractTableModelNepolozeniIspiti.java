@@ -40,7 +40,26 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int rowIdx, int columnIdx) {
 		
-		return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
+		//return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
+		
+		Predmet predmet = this.predmeti.get(rowIdx);
+
+		switch (columnIdx) {
+
+		case 0:
+			return predmet.getSifraPredmeta();
+		case 1:
+			return predmet.getNazivPredmeta();
+		case 2:
+			return predmet.getESPB();
+		case 3:
+			return predmet.getGodinaIzvodjenja(); 
+		case 4:
+			return predmet.getSemestar();
+		default:
+			return null;
+
+		}
 		
 	}
 	

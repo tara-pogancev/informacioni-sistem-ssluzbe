@@ -70,7 +70,7 @@ public class BazaPredmeta {
 		return this.predmeti.get(rowIndex);
 	}
 
-	public Object getValueAt(int row, int column) {
+	public String getValueAt(int row, int column) {
 
 		Predmet predmet = this.predmeti.get(row);
 
@@ -81,9 +81,9 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			return predmet.getESPB();
+			return Integer.toString(predmet.getESPB());
 		case 3:
-			return predmet.getGodinaIzvodjenja(); 
+			return Integer.toString(predmet.getGodinaIzvodjenja()); 
 		case 4:
 			return predmet.getSemestar();
 		default:
