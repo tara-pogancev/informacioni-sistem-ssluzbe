@@ -28,8 +28,8 @@ public class StudentNepolozeni extends JPanel {
 	 */
 	private static final long serialVersionUID = -3980379718494142906L;
 	
-	JTable nepolozeniIspiti = new JTable();
-	String idx;
+	static JTable nepolozeniIspiti = new JTable();
+	private String idx;
 
 	public StudentNepolozeni(Student s) {
 		
@@ -104,7 +104,7 @@ public class StudentNepolozeni extends JPanel {
 				String idPredmeta = (String) nepolozeniIspiti.getValueAt(nepolozeniIspiti.getSelectedRow(), 0);
 				new UpisOcene(s.getBrojIndeksa(),idPredmeta).setVisible(true);
 				azurirajPrikaz();
-				new StudentPolozeni(s).azuriraj();
+				StudentPolozeni.azuriraj();
 			}
 			
 			
@@ -120,11 +120,11 @@ public class StudentNepolozeni extends JPanel {
 		
 	}
 
-	public void azurirajPrikaz() {
+	public static void azurirajPrikaz() {
 
 		AbstractTableModelNepolozeniIspiti atmNepolozeni = (AbstractTableModelNepolozeniIspiti) nepolozeniIspiti.getModel();
 		atmNepolozeni.fireTableDataChanged();
-		validate();
+		//validate();
 		
 	}
 

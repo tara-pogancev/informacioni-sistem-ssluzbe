@@ -56,7 +56,7 @@ public class DodajPredmetStudentu extends JDialog {
 			List<Predmet> predmetiDostupni = new ArrayList<Predmet>();
 			DefaultListModel<String> model = new DefaultListModel<String>();
 			for(Predmet p : predmeti) {
-				String naziv = p.getNazivPredmeta();
+				String naziv = p.getSifraPredmeta() + " - " + p.getNazivPredmeta();
 				if (predmetOdgovara(p))	{			
 					model.addElement(naziv);
 					predmetiDostupni.add(p);

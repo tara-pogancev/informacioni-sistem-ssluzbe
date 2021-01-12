@@ -35,7 +35,7 @@ public class StudentPolozeni extends JPanel {
 	 */
 	private static final long serialVersionUID = -6876346602333553775L;
 
-	JTable polozeniPredmeti = new JTable();
+	static JTable polozeniPredmeti = new JTable();
 	private String idx;
 	
 	public StudentPolozeni(Student s) {
@@ -109,7 +109,7 @@ public class StudentPolozeni extends JPanel {
 					StudentController.getInstance().ponistiOcenu(idx, p);
 					
 					azuriraj();
-					new StudentNepolozeni(s).azurirajPrikaz();
+					StudentNepolozeni.azurirajPrikaz();
 
 					String prUpdated = df.format(s.getProsek());
 					prosek.setText("Prosečna ocena:     " + prUpdated);
@@ -126,11 +126,11 @@ public class StudentPolozeni extends JPanel {
 		
 	}
 	
-	public void azuriraj() {
+	public static void azuriraj() {
 		
 		AbstractTableModelOcene atmOcene = (AbstractTableModelOcene) polozeniPredmeti.getModel();
 		atmOcene.fireTableDataChanged();
-		validate();
+		//validate();
 	}
 	
 }
