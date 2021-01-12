@@ -24,6 +24,7 @@ import javax.swing.border.Border;
 
 import controller.StudentController;
 import model.BazaPredmeta;
+import model.BazaStudenata;
 import model.Predmet;
 import model.Student;
 import view.AbstractTableModelOcene;
@@ -36,11 +37,13 @@ public class StudentPolozeni extends JPanel {
 	private static final long serialVersionUID = -6876346602333553775L;
 
 	static JTable polozeniPredmeti = new JTable();
-	private String idx;
+	private static String idx;
+	static private JLabel prosek;
+	static private JLabel espb;
 	
 	public StudentPolozeni(Student s) {
-		
-		 idx = s.getBrojIndeksa();
+				
+		idx = s.getBrojIndeksa();
 
 		Border paddingPanel = BorderFactory.createEmptyBorder(30, 30, 10, 30); // North, West, South, East
 		Border paddingElements = BorderFactory.createEmptyBorder(0, 0, 15, 0); // North, West, South, East
@@ -50,8 +53,8 @@ public class StudentPolozeni extends JPanel {
 		JButton ponisti = new JButton("Poništi ocenu");
 		DecimalFormat df = new DecimalFormat("#.##");
 		String pr = df.format(s.getProsek());
-		JLabel prosek = new JLabel ("Prosečna ocena:     " + pr);
-		JLabel espb = new JLabel ("Ukupno ESPB:     " + s.getEspb());
+		prosek = new JLabel ("Prosečna ocena:     " + pr);
+		espb = new JLabel ("Ukupno ESPB:     " + s.getEspb());
 		
 		
 		//Tabela polozenih predmeta
@@ -130,6 +133,14 @@ public class StudentPolozeni extends JPanel {
 		
 		AbstractTableModelOcene atmOcene = (AbstractTableModelOcene) polozeniPredmeti.getModel();
 		atmOcene.fireTableDataChanged();
+		
+		Student s = BazaStudenata.getInstance().getByIdx(idx);
+		DecimalFormat df = new DecimalFormat("#.##");
+		
+		String prUpdated = df.format(s.getProsek());
+		prosek.setText("Prosečna ocena:     " + prUpdated);
+		espb.setText("Ukupno ESPB:     " + s.getEspb());
+		
 		//validate();
 	}
 	

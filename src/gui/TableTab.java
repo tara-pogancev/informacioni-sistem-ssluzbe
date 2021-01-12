@@ -9,6 +9,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
@@ -32,7 +33,7 @@ public class TableTab extends JTable {
 			this.setColumnSelectionAllowed(true);
 			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			this.setAutoCreateRowSorter(true);
-			this.getTableHeader().setReorderingAllowed(false);
+			this.getTableHeader().setReorderingAllowed(false);	
 			this.setModel(new AbstractTableModelStudenti());
 			break;
 
