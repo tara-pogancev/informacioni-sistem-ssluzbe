@@ -35,7 +35,7 @@ public class AddNewAction extends AbstractAction {
 	}
 	
 	public void setName() {
-		putValue(NAME, "New");
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("new"));
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
 import dialog.AboutDialog;
+import gui.MainFrame;
 
 public class AboutAction extends AbstractAction {
 
@@ -20,11 +21,30 @@ public class AboutAction extends AbstractAction {
 
 	public AboutAction() {
 		
-		putValue(NAME, "About");
-		putValue(SHORT_DESCRIPTION, "About Application");
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("about"));
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("abApp"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "information.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
-		putValue(MNEMONIC_KEY, KeyEvent.VK_A);
+		putValue(MNEMONIC_KEY, KeyEvent.VK_O);
+		
+	}
+	
+	public void updateName() {
+		
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("about"));
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("abApp"));
+		
+		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_A);
+
+			
+		} else {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_O);
+
+		}
+		
 		
 	}
 

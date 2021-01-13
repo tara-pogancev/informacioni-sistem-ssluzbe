@@ -58,7 +58,7 @@ public class MyWindowListener implements WindowListener {
 					e.printStackTrace();
 				}
 				
-				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Podaci su uspešno sačuvani!");
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), MainFrame.getInstance().resourceBundle.getString("sacuvani"));
 			}
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

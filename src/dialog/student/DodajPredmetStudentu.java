@@ -33,7 +33,7 @@ public class DodajPredmetStudentu extends JDialog {
 	private Student s;
 	
 	public DodajPredmetStudentu(String idx) {
-			this.setTitle("Dodavanje predmeta");
+			this.setTitle(MainFrame.getInstance().getResourceBundle().getString("dodavanjePredm"));
 			this.setResizable(false);
 			this.setSize(300, 375);	// X, Y
 					
@@ -44,8 +44,8 @@ public class DodajPredmetStudentu extends JDialog {
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 			JPanel buttons = new JPanel();
-			JButton accept = new JButton("Potvrdi");
-			JButton decline = new JButton("Odustani");
+			JButton accept = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonPrihvati"));
+			JButton decline = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonOdustani"));
 			buttons.add(accept);
 			buttons.add(decline);
 			

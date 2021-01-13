@@ -31,11 +31,30 @@ public class DeleteAction extends AbstractAction {
 		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().resourceBundle.getString("delete"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "trash-icon.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
-		putValue(MNEMONIC_KEY, KeyEvent.VK_D);
+		putValue(MNEMONIC_KEY, KeyEvent.VK_O);
 	}
 
 	public void setName() {
-		putValue(NAME, "Delete");
+		putValue(NAME, MainFrame.getInstance().resourceBundle.getString("delete"));
+	}
+	
+	public void updateName() {
+		
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("delete"));
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("delete"));
+		
+		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_D);
+
+			
+		} else {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_O);
+
+		}
+		
+		
 	}
 
 	@Override

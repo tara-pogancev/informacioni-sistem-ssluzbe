@@ -30,7 +30,7 @@ public class OdaberiProfesora extends JDialog{
 	private static final long serialVersionUID = 4747005924640984439L;
 
 	public OdaberiProfesora() {
-		this.setTitle("Odaberi profesora");
+		this.setTitle(MainFrame.getInstance().getResourceBundle().getString("odaberiProfesora"));
 		this.setResizable(false);
 		this.setSize(300, 375);	// X, Y
 				
@@ -41,8 +41,8 @@ public class OdaberiProfesora extends JDialog{
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	
 		JPanel buttons = new JPanel();
-		JButton accept = new JButton("Potvrdi");
-		JButton decline = new JButton("Odustani");
+		JButton accept = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonPrihvati"));
+		JButton decline = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonOdustani"));
 		buttons.add(accept);
 		buttons.add(decline);
 		

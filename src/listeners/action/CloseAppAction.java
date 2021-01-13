@@ -29,28 +29,46 @@ public class CloseAppAction extends AbstractAction {
 
 	public CloseAppAction() {
 
-		putValue(NAME, "Close");
-		putValue(SHORT_DESCRIPTION, "Close Application");
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("close"));
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("closeApp"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "delete.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
-		putValue(MNEMONIC_KEY, KeyEvent.VK_C);
+		putValue(MNEMONIC_KEY, KeyEvent.VK_Z);
 
 	}
 
+	public void setName() {
+		
+		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("close"));
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("closeApp"));
+		
+		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_C);
+
+			
+		} else {
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_Z);
+
+		}
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		Object[] opcije = { "Da", "Ne" };
+		Object[] opcije = {MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn")};
 		Object defaultChoice = opcije[0];
 
 		int izbor = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije",
+				MainFrame.getInstance().resourceBundle.getString("zatvaranjeApl"), MainFrame.getInstance().resourceBundle.getString("closeApp"),
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 		if (izbor == JOptionPane.YES_OPTION) {
 
 			int serijalizacija = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-					"Da li želite da sačuvate izmenjene podatke?", "Čuvanje podataka", JOptionPane.YES_NO_OPTION,
+					MainFrame.getInstance().resourceBundle.getString("cuvanjePod"), MainFrame.getInstance().resourceBundle.getString("cuvanje"), JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 			if (serijalizacija == JOptionPane.YES_OPTION) {
@@ -64,7 +82,7 @@ public class CloseAppAction extends AbstractAction {
 					e.printStackTrace();
 				}
 
-				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Podaci su uspešno sačuvani!");
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), MainFrame.getInstance().resourceBundle.getString("sacuvani"));
 			}
 
 			System.exit(0);

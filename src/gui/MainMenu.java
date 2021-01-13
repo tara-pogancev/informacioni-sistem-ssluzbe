@@ -14,7 +14,6 @@ import java.util.Locale;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
 import listeners.action.*;
 
@@ -30,6 +29,13 @@ public class MainMenu extends JMenuBar {
 		private JMenu file;
 		private JMenu edit;
 		private JMenu help;
+		
+		private AddNewAction addM;
+		private CloseAppAction closeM;
+		private EditAction editM;
+		private DeleteAction deleteM;
+		private HelpAction helpM;
+		private AboutAction aboutM;
 	
 	public MainMenu() {
 		
@@ -38,17 +44,15 @@ public class MainMenu extends JMenuBar {
 		edit = new JMenu(MainFrame.getInstance().getResourceBundle().getString("edit"));
 		help = new JMenu(MainFrame.getInstance().getResourceBundle().getString("help"));
 		
-		AddNewAction addM = new AddNewAction();
-		CloseAppAction closeM = new CloseAppAction();
+		addM = new AddNewAction();
+		closeM = new CloseAppAction();
 		
-		EditAction editM = new EditAction();
-		DeleteAction deleteM = new DeleteAction();
+		editM = new EditAction();
+		deleteM = new DeleteAction();
 			
-		HelpAction helpM = new HelpAction();
-		AboutAction aboutM = new AboutAction();
-		
-		JMenuItem jezikM = new JMenuItem(MainFrame.getInstance().getResourceBundle().getString("jezik"));
-		
+		helpM = new HelpAction();
+		aboutM = new AboutAction();
+				
 		addM.setName();
 		editM.setName();
 		deleteM.setName();
@@ -79,10 +83,7 @@ public class MainMenu extends JMenuBar {
 				
 			}
 		}); 	
-		
-		//jezikM.setMnemonic(KeyEvent.VK_L);
-		jezikM.add(mniSrpski);
-		jezikM.add(mniEngleski);
+
 		
 		//Mnemonici
 		file.setMnemonic(KeyEvent.VK_F);
@@ -120,6 +121,15 @@ public class MainMenu extends JMenuBar {
 		mniEngleski.setText(MainFrame.getInstance().getResourceBundle().getString("English"));
 		mniSrpski.setText(MainFrame.getInstance().getResourceBundle().getString("Serbian"));
 				
+		addM.setName();
+		closeM.setName();
+		editM.setName();
+		editM.updateName();
+		deleteM.setName();
+		deleteM.updateName();
+		helpM.updateName();
+		aboutM.updateName();
+		
 		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {
 			
 			file.setMnemonic(KeyEvent.VK_F);

@@ -32,6 +32,12 @@ public class SearchAction extends AbstractAction {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK));
 	}
 	
+	public void updateName() {
+		
+		putValue(SHORT_DESCRIPTION,MainFrame.getInstance().resourceBundle.getString("search"));
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		

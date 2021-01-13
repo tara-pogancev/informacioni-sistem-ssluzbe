@@ -23,8 +23,8 @@ public class StudentTabbedPane extends JTabbedPane{
 		JPanel polozeni = new StudentPolozeni(s);
 		JPanel nepolozeni = new StudentNepolozeni(s);
 		
-		this.add("Informacije", info);
-		this.add("Položeni", polozeni);
+		this.add(MainFrame.getInstance().getResourceBundle().getString("informacijeTab"), info);
+		this.add(MainFrame.getInstance().getResourceBundle().getString("polozeniTab"), polozeni);
 		this.add(MainFrame.getInstance().resourceBundle.getString("nepolozeniTab"), nepolozeni);
 		
 	}

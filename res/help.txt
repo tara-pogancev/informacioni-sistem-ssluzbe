@@ -2,33 +2,35 @@ Uputstvo za korišćenje aplikacije: Informacioni Sistem Studentske Službe
 
 1. Prečice na tastaturi
 
-	New: Ctrl + N
-	Close: Ctrl + C
-	Edit: Ctrl + E
-	Delete: Ctrl + D
-	Help: Alt + F1
-	About: Alt + A
-	Search: Ctrl + S
+	Novi: Ctrl + N
+	Zatvori: Ctrl + C
+	Uredi: Ctrl + E
+	Obriši: Ctrl + D
+	Pomoć: Alt + F1
+	O Aplikaciji: Alt + A
+	Pretraži: Ctrl + S
 	
 2. Mnemonici
 
-	File: Alt + N
-	    New: Alt + N
-	    Close: Alt + C
+	Fajl: Alt + F
+	    Novi: Alt + N
+	    Zatvori: Alt + Z
 		
-	Edit: Alt + E
-	    Edit: Alt + E
-	    Delete: Alt + D
+	Uredi: Alt + U
+	    Uredi: Alt + U
+	    Obriši: Alt + O
 		
-	Help: Alt + H
-	    Help: Alt + H
-	    About: Alt + A
+	Pomoć: Alt + P
+	    Pomoć: Alt + P
+	    O Aplikaciji: Alt + O
 		
 3. Pregled baze podataka
 
 Izborom jednog od tabova, prikazuje se sadržaj studenata, profesora i predmeta respektivno. Klikom na jedno od polja zaglavlja, aktivira se sortiranje po datoj koloni. Ponovnim klikom na isto zaglavlje, menja se redosled.
 
 Izborom jedne od kolona, korisnici imaju priliku da za dat entitet vrše izmene, ili ga obrišu korišćenjem potrebne akcije.
+
+Izmena jezika moguća je u okviru stavke glavnog menija "Pomoć", gde imate izbor promene jezika između srpskog i engleskog. Podrazumevano podešavanje po otvaranju aplikacije je srpski jezik.
 
 4. Dodavanje studenta
 

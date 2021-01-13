@@ -21,7 +21,7 @@ public class IzmenaStudenta extends JDialog {
 		
 	public IzmenaStudenta(String idx) {
 		
-		this.setTitle("Izmena studenta");
+		this.setTitle(MainFrame.getInstance().getResourceBundle().getString("izmenaPredm"));
 		this.setResizable(false);
 		this.setSize(700, 550); // X, Y
 		

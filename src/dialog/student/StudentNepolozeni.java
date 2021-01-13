@@ -131,7 +131,6 @@ public class StudentNepolozeni extends JPanel {
 
 		AbstractTableModelNepolozeniIspiti atmNepolozeni = (AbstractTableModelNepolozeniIspiti) nepolozeniIspiti.getModel();
 		atmNepolozeni.fireTableDataChanged();
-		//validate();
 		
 	}
 

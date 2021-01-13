@@ -23,6 +23,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 
 import controller.StudentController;
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.BazaStudenata;
 import model.Predmet;
@@ -50,11 +51,11 @@ public class StudentPolozeni extends JPanel {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		//Elementi
-		JButton ponisti = new JButton("Poništi ocenu");
+		JButton ponisti = new JButton(MainFrame.getInstance().getResourceBundle().getString("ponistiOcenu"));
 		DecimalFormat df = new DecimalFormat("#.##");
 		String pr = df.format(s.getProsek());
-		prosek = new JLabel ("Prosečna ocena:     " + pr);
-		espb = new JLabel ("Ukupno ESPB:     " + s.getEspb());
+		prosek = new JLabel (MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + pr);
+		espb = new JLabel (MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 		
 		
 		//Tabela polozenih predmeta
@@ -98,14 +99,15 @@ public class StudentPolozeni extends JPanel {
 			
 			if (polozeniPredmeti.getSelectedRow() > -1) {
 				
-				Object[] choices = {"Da", "Ne"};
+				Object[] choices = {MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn")};
 				Object defaultChoice = choices[0];
 				
 				String sifra = (String) polozeniPredmeti.getValueAt(polozeniPredmeti.getSelectedRow(), 0);
 				Predmet p = BazaPredmeta.getInstance().findById(sifra);
 			
 				
-				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da poništite ocenu ["+ sifra +"]?", "Poništavanje ocene",
+				int id = JOptionPane.showOptionDialog(this, MainFrame.getInstance().getResourceBundle().getString("ponistavanjeOceneUpit")+ sifra +"]?", 
+						MainFrame.getInstance().getResourceBundle().getString("ponistavanjeOcene"),
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 				if (id == JOptionPane.YES_OPTION) {
 
@@ -115,8 +117,8 @@ public class StudentPolozeni extends JPanel {
 					StudentNepolozeni.azurirajPrikaz();
 
 					String prUpdated = df.format(s.getProsek());
-					prosek.setText("Prosečna ocena:     " + prUpdated);
-					espb.setText("Ukupno ESPB:     " + s.getEspb());
+					prosek.setText(MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + prUpdated);
+					espb.setText(MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 					
 				}
 			}
@@ -138,10 +140,9 @@ public class StudentPolozeni extends JPanel {
 		DecimalFormat df = new DecimalFormat("#.##");
 		
 		String prUpdated = df.format(s.getProsek());
-		prosek.setText("Prosečna ocena:     " + prUpdated);
-		espb.setText("Ukupno ESPB:     " + s.getEspb());
+		prosek.setText(MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + prUpdated);
+		espb.setText(MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 		
-		//validate();
 	}
 	
 }

@@ -19,6 +19,8 @@ import javax.swing.*;
 
 import javax.swing.border.Border;
 
+import gui.MainFrame;
+
 public class AboutDialog extends JFrame {
 
 	/**
@@ -31,7 +33,7 @@ public class AboutDialog extends JFrame {
 	
 	public AboutDialog() {
 	
-		this.setTitle("About");
+		this.setTitle(MainFrame.getInstance().getResourceBundle().getString("about"));
 		this.setResizable(false);
 		
 		textArea = new JTextArea();
@@ -53,7 +55,7 @@ public class AboutDialog extends JFrame {
 		pack();
 		
 		//Inicijalizacija komponenti gotova
-	    File initialFile = new File("res" + File.separator + "about.txt");
+	    File initialFile = new File("res" + File.separator + MainFrame.getInstance().getResourceBundle().getString("aboutTxt"));
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);

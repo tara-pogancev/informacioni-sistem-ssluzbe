@@ -36,7 +36,7 @@ public class DodavanjePredmeta extends JDialog {
 	private static final long serialVersionUID = -2701902775235786713L;
 
 	public DodavanjePredmeta() {
-		this.setTitle("Dodavanje predmeta");
+		this.setTitle(MainFrame.getInstance().getResourceBundle().getString("dodavanjePredm"));
 		this.setResizable(false);
 		this.setSize(450, 320); // X, Y
 
@@ -52,26 +52,27 @@ public class DodavanjePredmeta extends JDialog {
 		content.setBorder(paddingForm);
 
 		// Potrebni nizovi
-		String[] semestar = { "Zimski", "Letnji" };
-		String[] godStud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
+		String[] semestar = { MainFrame.getInstance().getResourceBundle().getString("boxZimski"), MainFrame.getInstance().getResourceBundle().getString("boxLetnji") };
+		String[] godStud = {MainFrame.getInstance().getResourceBundle().getString("newBoxPrva"), MainFrame.getInstance().getResourceBundle().getString("newBoxDruga"), 
+				MainFrame.getInstance().getResourceBundle().getString("newBoxTreca"), MainFrame.getInstance().getResourceBundle().getString("newBoxCetvrta") };
 
 		// ELEMENTI FORME
-		JLabel l1 = new JLabel("Šifra*");
+		JLabel l1 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newSifra"));
 		JTextField t1 = new JTextField();
-		t1.setToolTipText("e.g. p12");
+		t1.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttSifra"));
 
-		JLabel l2 = new JLabel("Naziv*");
+		JLabel l2 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newNaziv"));
 		JTextField t2 = new JTextField();
-		t2.setToolTipText("e.g. Matematička analiza 2");
+		t2.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttNazivPredm"));
 
-		JLabel l3 = new JLabel("ESPB");
+		JLabel l3 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newESPB"));
 		JTextField t3 = new JTextField();
-		t3.setToolTipText("e.g. 6");
+		t3.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttESPB"));
 
-		JLabel l4 = new JLabel("Semestar*");
+		JLabel l4 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newSemestar"));
 		JComboBox<String> t4 = new JComboBox<String>(semestar);
 
-		JLabel l5 = new JLabel("Godina studija*");
+		JLabel l5 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newGodStud"));
 		JComboBox<String> t5 = new JComboBox<String>(godStud);
 
 		// Dodavanje komponenti forme
@@ -90,8 +91,8 @@ public class DodavanjePredmeta extends JDialog {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 
-		JButton accept = new JButton("Prihvati");
-		JButton decline = new JButton("Odustani");
+		JButton accept = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonPrihvati"));
+		JButton decline = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonOdustani"));
 
 		accept.setEnabled(false);
 		decline.addActionListener(e -> {
@@ -164,18 +165,18 @@ public class DodavanjePredmeta extends JDialog {
 			Predmet p = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText())) {
-				JOptionPane.showMessageDialog(this, "Predmet sa ovom šifrom je već u sistemu!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("predmPostoji"));
 			}
 
 			else if (espb < 1 || espb > 20) {
-				JOptionPane.showMessageDialog(this, "Broj ESPB bodova nije validan!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("ESPBNeValja"));
 			}
 
 			else {
 
 				PredmetiController.getInstance().dodajPredmet(p);
 				this.dispose();
-				JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("dodatPredmet"));
 			}
 
 		});

@@ -21,6 +21,8 @@ import java.io.InputStreamReader;
 import javax.swing.*;
 import javax.swing.text.*;
 
+import gui.MainFrame;
+
 import javax.swing.event.*;
 import javax.swing.GroupLayout.*;
 
@@ -49,7 +51,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 	public HelpDialog() {
 
 		//Frame basics
-		this.setTitle("Help");
+		this.setTitle(MainFrame.getInstance().getResourceBundle().getString("help"));
 		this.setResizable(false);
 		
 		entry = new JTextField();
@@ -65,7 +67,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		scrollPane = new JScrollPane(textArea);
 		
-		text.setText("Pretraži tekst:");
+		text.setText(MainFrame.getInstance().getResourceBundle().getString("pretraziTekst"));
 		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -115,7 +117,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 		
 		//RAD SA TXT FAJLOM
 		
-	    File initialFile = new File("res"+File.separator+"help.txt");
+	    File initialFile = new File("res" + File.separator + MainFrame.getInstance().getResourceBundle().getString("helpTxt"));
 	    InputStream in = null;
 		try {
 			in = new FileInputStream(initialFile);
@@ -151,7 +153,7 @@ public class HelpDialog extends JFrame implements DocumentListener {
 
 		String s = entry.getText().toUpperCase();
 		if (s.length() <= 0) {
-			message("Ništa za pretragu.");
+			message(MainFrame.getInstance().getResourceBundle().getString("nistaZaPretragu"));
 			return;
 		}
 
@@ -163,13 +165,13 @@ public class HelpDialog extends JFrame implements DocumentListener {
 				hilit.addHighlight(index, end, painter);
 				textArea.setCaretPosition(end);
 				entry.setBackground(entryBg);
-				message("'" + s + "' pronađen. Pritisni ESC da završiš pretragu.");
+				message("'" + s + MainFrame.getInstance().getResourceBundle().getString("pronadjen"));
 			} catch (BadLocationException e) {
 				e.printStackTrace();
 			}
 		} else {
 			entry.setBackground(ERROR_COLOR);
-			message("'" + s + "' nije pronađen. Pritisni ESC da započneš novu pretragu.");
+			message("'" + s + MainFrame.getInstance().getResourceBundle().getString("nijePronadjen"));
 		}
 
 	}

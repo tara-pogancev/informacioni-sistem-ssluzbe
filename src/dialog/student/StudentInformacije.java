@@ -26,6 +26,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 import controller.StudentController;
+import gui.MainFrame;
 import model.BazaStudenata;
 import model.Student;
 import model.Student.Status;
@@ -55,58 +56,55 @@ public class StudentInformacije extends JPanel {
 		staro = new Student(s);
 		
 		// Potrebni nizovi
-		String[] finansiranje = { "Budžet", "Samofinansiranje" };
-		String[] godStud = { "I (prva)", "II (druga)", "III (treća)", "IV (Četvrta)" };
+		String[] finansiranje = { MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet"), MainFrame.getInstance().getResourceBundle().getString("newBoxSamofinansiranje") };
+		String[] godStud = {MainFrame.getInstance().getResourceBundle().getString("newBoxPrva"), MainFrame.getInstance().getResourceBundle().getString("newBoxDruga"), 
+				MainFrame.getInstance().getResourceBundle().getString("newBoxTreca"), MainFrame.getInstance().getResourceBundle().getString("newBoxCetvrta") };
 
 		// ELEMENTI FORME
-		JLabel l1 = new JLabel("Ime*");
+		JLabel l1 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newIme"));
 		JTextField t1 = new JTextField(s.getIme());
 
-		t1.setToolTipText("e.g. Sofija");
+		t1.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttIme"));
 
-		JLabel l2 = new JLabel("Prezime*");
+		JLabel l2 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newPrezime"));
 		JTextField t2 = new JTextField(s.getPrezime());
-		t2.setToolTipText("e.g. Brkić");
+		t2.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttPrz"));
 
-		JLabel l3 = new JLabel("Datum rođenja*");
+		JLabel l3 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newDatumRodjenja"));
 		JTextField t3 = new JTextField(s.getDatumRodjenjaString());
-		t3.setToolTipText("e.g. 01.01.1996.");
+		t3.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttDatum"));
 
-		JLabel l4 = new JLabel("Adresa stanovanja*");
+		JLabel l4 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newAdresaStanovanja"));
 		JTextField t4 = new JTextField(s.getAdresaStanovanja());
-		t4.setToolTipText("e.g. Trifuna Dimića 14a");
+		t4.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttAdresaS"));
 
-		JLabel l5 = new JLabel("Broj telefona*");
+		JLabel l5 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newBrojTelefona"));
 		JTextField t5 = new JTextField(s.getKontaktTelefon());
-		t5.setToolTipText("021/333-555");
+		t5.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttBrojTel"));
 
-		JLabel l6 = new JLabel("E-mail adresa*");
+		JLabel l6 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newEmail"));
 		JTextField t6 = new JTextField(s.getEmailAdresa());
-		t6.setToolTipText("e.g. ime.prezime@gmail.com");
+		t6.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttEmail"));
 
-		JLabel l7 = new JLabel("Broj indeksa*");
+		JLabel l7 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newBrojInd"));
 		JTextField t7 = new JTextField(s.getBrojIndeksa());
-		t7.setToolTipText("e.g. RA 100/2020");
+		t7.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttBrIdx"));
 
-		JLabel l8 = new JLabel("Godina upisa");
+		JLabel l8 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newGodinaUpisa"));
 		JTextField t8 = new JTextField(Integer.toString(s.getGodinaUpisa()));
-		t8.setToolTipText("e.g. 2020");
+		t8.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("ttGodUp"));
 
-		JLabel l9 = new JLabel("Trenutna godina studija*");
+		JLabel l9 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newTrenutnaGodinaStudija"));
 		JComboBox<String> t9 = new JComboBox<String>(godStud);
 		t9.setSelectedIndex(s.getTrenutnaGodina()-1);
 
-		JLabel l10 = new JLabel("Način finansiranja*");
+		JLabel l10 = new JLabel(MainFrame.getInstance().getResourceBundle().getString("newNacinFinansiranja"));
 		JComboBox<String> t10 = new JComboBox<String>(finansiranje);
 
-		switch (s.getStatus()) {
-		case "Budžet":
+		if (s.getStatus().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet"))) 
 			t10.setSelectedIndex(0);
-			break;
-		case "Samofinansiranje":
+		else
 			t10.setSelectedIndex(1);
-			break;
-		}
 		
 		
 		initData(staro, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
@@ -137,14 +135,14 @@ public class StudentInformacije extends JPanel {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 
-		JButton accept = new JButton("Prihvati");
-		JButton decline = new JButton("Odustani");
+		JButton accept = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonPrihvati"));
+		JButton decline = new JButton(MainFrame.getInstance().getResourceBundle().getString("buttonOdustani"));
 		accept.setEnabled(false);
 
 		decline.addActionListener(e -> {
 			initData(staro, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 			validate(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, accept);
-			JOptionPane.showMessageDialog(this, "Poslednje izmene poništene!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("ponisteneIzmene"));
 		});
 
 		// KEY-LISTENERS
@@ -234,15 +232,15 @@ public class StudentInformacije extends JPanel {
 					t6.getText(), t7.getText(), godinaUpisaSt, trenutnaGodina, statusSt);
 
 			if (!BazaStudenata.getInstance().isUnique(t7.getText()) && !s.getBrojIndeksa().equals( t7.getText())) {
-				JOptionPane.showMessageDialog(this, "Student sa ovim brojem indeksa je već u sistemu!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("studentPostoji"));
 			}
 
 			else if (godinaUpisaSt < 2000 || godinaUpisaSt > 2025) {
-				JOptionPane.showMessageDialog(this, "Godina upisa nije validna!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("godUpisaNeValja"));
 			}
 
 			else if (!rodjenjeBool) {
-				JOptionPane.showMessageDialog(this, "Datum rođenja nije validan!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("datRodjNeValja"));
 			}
 
 			else {
@@ -251,7 +249,7 @@ public class StudentInformacije extends JPanel {
 				accept.setEnabled(false);
 				
 				StudentController.getInstance().izmeniStudenta(novo, s.getBrojIndeksa());
-				JOptionPane.showMessageDialog(this, "Student uspešno izmenjen!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("izmenjenStudent"));
 				
 			}
 
