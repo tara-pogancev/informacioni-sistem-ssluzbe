@@ -42,9 +42,9 @@ public class SearchAction extends AbstractAction {
 		int currentTab = temp.getSelectedIndex();
 		switch (currentTab) {
 		case 0: 
-			//PRETRAGA STUDENATA
 			
-			if (search != null && !search.equals("Search...")) {
+			//PRETRAGA STUDENATA
+			if (search != null && !search.equals(MainFrame.getInstance().getResourceBundle().getString("searchField"))) {
 				StudentFilter sorter = new StudentFilter(search);
 				MainFrame.getTabbedPane().setFilterS(sorter);
 			} else {
@@ -54,7 +54,7 @@ public class SearchAction extends AbstractAction {
 			break;
 		case 1:
 			
-			if (search != null && !search.equals(MainFrame.getInstance().resourceBundle.getString("searchField"))) {
+			if (search != null && !search.equals(MainFrame.getInstance().getResourceBundle().getString("searchField"))) {
 				PretragaProfesora pretragaProf = new PretragaProfesora(search);
 				MainFrame.getTabbedPane().setFilterProfesor(pretragaProf);
 			} else {
@@ -64,7 +64,7 @@ public class SearchAction extends AbstractAction {
 			break;
 		case 2: 
 			
-			if (search != null && !search.equals(MainFrame.getInstance().resourceBundle.getString("searchField"))) {
+			if (search != null && !search.equals(MainFrame.getInstance().getResourceBundle().getString("searchField"))) {
 				PretragaPredmeta pretragaPredm = new PretragaPredmeta(search);
 				MainFrame.getTabbedPane().setFilterPredmet(pretragaPredm);
 			} else {

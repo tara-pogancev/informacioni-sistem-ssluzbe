@@ -3,6 +3,7 @@
 //#prikaz_profesora
 // #pretraga_profesora
 // #pretraga_predmeta
+// #lokalizacija_srpski
 // Referenca: JTableMVCSimple
 // Projekat JTableMVCSAdvanced
 package gui;
@@ -41,6 +42,13 @@ public class TabbedPane extends JTabbedPane {
 		studTable = new TableTab(Entitet.STUDENTI);
 		JScrollPane scrollPaneStud = new JScrollPane(studTable);
 		this.add("Studenti", scrollPaneStud);
+		
+		studTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colIdx"));
+		studTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colName"));
+		studTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSurname"));
+		studTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colGodina"));
+		studTable.getColumnModel().getColumn(4).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colStatus"));
+		studTable.getColumnModel().getColumn(5).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colProsek"));
 		
 		profTable = new TableTab(Entitet.PROFESORI);
 		JScrollPane scrollPaneProf = new JScrollPane(profTable);
@@ -141,4 +149,27 @@ public class TabbedPane extends JTabbedPane {
 		
 		profTable.setRowSorter(sorter);
 	}
+	
+	public void tabbedPaneInit() {
+				
+		studTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colIdx"));
+		studTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colName"));
+		studTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSurname"));
+		studTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colGodina"));
+		studTable.getColumnModel().getColumn(4).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colStatus"));
+		studTable.getColumnModel().getColumn(5).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colProsek"));
+		
+		profTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colName"));
+		profTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSurname"));
+		profTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colTitula"));
+		profTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colZvanje"));
+		
+		predmTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSifraProj"));
+		predmTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colNazivProj"));
+		predmTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colESPB"));
+		predmTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colGodPredm"));
+		predmTable.getColumnModel().getColumn(4).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSemestar"));
+		
+	}
+	
 }

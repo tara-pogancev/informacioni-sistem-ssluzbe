@@ -1,5 +1,6 @@
 // #glavni_prozor
 // #lokalizacija_engleski
+// #lokalizacija_srpski
 // Reference:
 // Projekat Termin3
 // Projekat Dogadjaji
@@ -39,10 +40,9 @@ public class MainFrame extends JFrame {
 
 	private MainFrame() {
 
-		//Locale.setDefault(new Locale("sr", "RS"));
+		Locale.setDefault(new Locale("sr", "RS"));
 		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
 		
-		//initialise();
 	}
 
 	private void initialise() {
@@ -126,6 +126,13 @@ public class MainFrame extends JFrame {
 	public void changeLanguage() {
 
 		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		setTitle(resourceBundle.getString("sluzba"));
+		
+		menu.initMenu();
+		status.statusInit();
+		tabbedPane.tabbedPaneInit();		//TODO: samo prva kolona se promeni, ostale moraju da se refreshuju
+		validate();
+		
 		
 	}
 }

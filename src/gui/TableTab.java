@@ -22,6 +22,7 @@ import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
 import view.PoredjenjeSortiranjePredmeta;
+import view.PoredjenjeSortiranjeStudenata;
 
 public class TableTab extends JTable {
 
@@ -36,9 +37,14 @@ public class TableTab extends JTable {
 			this.setRowSelectionAllowed(true);
 			this.setColumnSelectionAllowed(true);
 			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			this.setAutoCreateRowSorter(true);
+			//this.setAutoCreateRowSorter(true);
 			this.getTableHeader().setReorderingAllowed(false);	
-			this.setModel(new AbstractTableModelStudenti());
+			AbstractTableModelStudenti atmStudenti = new AbstractTableModelStudenti();
+			this.setModel(atmStudenti);
+			TableRowSorter<AbstractTableModelStudenti> sorterStud = new TableRowSorter<AbstractTableModelStudenti>(atmStudenti);
+			PoredjenjeSortiranjeStudenata pss = new PoredjenjeSortiranjeStudenata();
+			sorterStud.setComparator(0, pss);
+			this.setRowSorter(sorterStud);
 			break;
 
 		case PROFESORI:

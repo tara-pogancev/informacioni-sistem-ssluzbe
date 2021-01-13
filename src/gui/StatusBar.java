@@ -27,11 +27,13 @@ public class StatusBar extends JPanel {
 	 */
 	private static final long serialVersionUID = 1696597433259221588L;
 
+	private JLabel name;
+	
 	public StatusBar() {
 
 		setBorder(BorderFactory.createCompoundBorder(new MatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY), new EmptyBorder(5, 10, 5, 10)));
 
-		JLabel name = new JLabel(" Studentska služba");
+		name = new JLabel(" " + MainFrame.getInstance().getResourceBundle().getString("sluzba"));
 
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss | dd/MM/yyyy");
 		Date time = new Date(System.currentTimeMillis());
@@ -66,6 +68,13 @@ public class StatusBar extends JPanel {
 		add(Box.createHorizontalGlue());	
 		add(currentTime);
 
+	}
+	
+	public void statusInit() {
+		
+		name.setText(" " + MainFrame.getInstance().getResourceBundle().getString("sluzba"));
+		
+		
 	}
 
 }
