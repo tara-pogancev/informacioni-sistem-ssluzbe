@@ -4,6 +4,8 @@
 // #sortiranje_predmeta
 // #sortiranje_profesora
 //#sortiranje_profesora
+//Reference:
+//https://docs.oracle.com/javase/7/docs/api/javax/swing/table/TableRowSorter.html
 
 package gui;
 
@@ -13,11 +15,13 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 import gui.TabbedPane.Entitet;
 import view.AbstractTableModelPredmeti;
 import view.AbstractTableModelProfesori;
 import view.AbstractTableModelStudenti;
+import view.PoredjenjeSortiranjePredmeta;
 
 public class TableTab extends JTable {
 
@@ -56,10 +60,14 @@ public class TableTab extends JTable {
 			this.setRowSelectionAllowed(true);
 			this.setColumnSelectionAllowed(true);
 			this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			this.setAutoCreateRowSorter(true);
+			//this.setAutoCreateRowSorter(true);
 			this.getTableHeader().setReorderingAllowed(false);
 			AbstractTableModelPredmeti atmPredmeti = new AbstractTableModelPredmeti();
 			this.setModel(atmPredmeti);
+			TableRowSorter<AbstractTableModelPredmeti> sorterPredm = new TableRowSorter<AbstractTableModelPredmeti>(atmPredmeti);
+			PoredjenjeSortiranjePredmeta psp = new PoredjenjeSortiranjePredmeta();
+			sorterPredm.setComparator(0, psp); //kolona za sifre
+			this.setRowSorter(sorterPredm);
 			break;
 
 		}
