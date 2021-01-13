@@ -37,12 +37,12 @@ public class StudentController {
 	
     public void izbrisiStudenta(String idx) {
 
-		Object[] choices = {"Da", "Ne"};
+		Object[] choices = {MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn")};
 		Object defaultChoice = choices[0];
 		
 		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da obrišete studenta [" + idx + "]?",
-				"Brisanje studenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
+				MainFrame.getInstance().getResourceBundle().getString("deleteStudentPoruka") + idx + "]?",
+				MainFrame.getInstance().getResourceBundle().getString("ukloniStudenta"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 
 		if (id == JOptionPane.YES_OPTION) {
 

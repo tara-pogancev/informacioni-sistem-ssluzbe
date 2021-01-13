@@ -252,11 +252,13 @@ public class IzmenaPredmeta extends JDialog {
 
 			int godina = t5.getSelectedIndex() + 1;
 
-			Semestar sem = Semestar.ZIMSKI;
+			Semestar sem1 = Semestar.ZIMSKI;
 			if (t4.getSelectedIndex() == 1)
-				sem = Semestar.LETNJI;
+				sem1 = Semestar.LETNJI;
 
-			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem, godina, noviProfesor, espb);
+			System.out.println(sem1);
+			
+			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem1, godina, noviProfesor, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText()) && !p.getSifraPredmeta().equals(t1.getText())) {
 				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("predmPostoji"));
@@ -269,20 +271,19 @@ public class IzmenaPredmeta extends JDialog {
 			else {
 
 				if (noviProfesor != null) {
-					ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
 					
-					if (p.getPredmetniProfesor() != null) {
+					if (!noviProfesor.getBrojLicneKarte().equals(p.getPredmetniProfesor().getBrojLicneKarte())) {
+						ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
 						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
 					}
+					
 				}
 				
 				if (noviProfesor == null && p.getPredmetniProfesor() != null) {
 
 						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
 
-				} 
-				
-			
+				} 			
 				
 				PredmetiController.getInstance().izmeniPredmet(novo, p.getSifraPredmeta());
 				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("izmenjenPredmet"));
@@ -330,7 +331,7 @@ public class IzmenaPredmeta extends JDialog {
 			Semestar sem = Semestar.ZIMSKI;
 			if (t4.getSelectedIndex() == 1)
 				sem = Semestar.LETNJI;
-
+		
 			Predmet temp = new Predmet(t1.getText(), t2.getText(), sem, godina, null, espb);
 			String imepNovo = t6.getText();
 

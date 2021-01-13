@@ -126,7 +126,7 @@ public class BazaPredmeta {
 				p.setESPB(promene.getESPB());
 				p.setNazivPredmeta(promene.getNazivPredmeta());
 				p.setGodinaIzvodjenja(promene.getGodinaIzvodjenja());
-				p.setSemestar(p.getSemestarE());
+				p.setSemestar(promene.getSemestarE());				
 				p.setSifraPredmeta(promene.getSifraPredmeta());
 
 				// TODO: Profesor

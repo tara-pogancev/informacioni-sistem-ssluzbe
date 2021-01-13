@@ -99,7 +99,7 @@ public class DodajPredmet extends JDialog {
 				int potvrda = JOptionPane.showOptionDialog(rootPane,
 						MainFrame.getInstance().resourceBundle.getString("dodajPredmetProf1")
 								+ dodat.getPredmetniProfesor().getIme() + " "
-								+ dodat.getPredmetniProfesor().getPrezime()
+								+ dodat.getPredmetniProfesor().getPrezime() + " " 
 								+ MainFrame.getInstance().resourceBundle.getString("dodajPredmetProf2")
 								+ dodat.getSifraPredmeta() + "\"?",
 						MainFrame.getInstance().resourceBundle.getString("dodavanjePredm"), JOptionPane.YES_NO_OPTION,

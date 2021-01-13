@@ -46,14 +46,14 @@ public class ProfesoriController {
 
 	public void izbrisiProfesora(String blc) {
 
-		Object[] choices = { "Da", "Ne" };
+		Object[] choices = {MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn")};
 		Object defaultChoice = choices[0];
 
 		Profesor p = BazaProfesora.getInstance().nadjiBlc(blc);
 
 		int id = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da obrišete profesora [" + p.getIme() + " " + p.getPrezime() + "]?",
-				"Brisanje profesora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices,
+				MainFrame.getInstance().getResourceBundle().getString("deleteProfesorPoruka") + p.getIme() + " " + p.getPrezime() + "]?",
+				MainFrame.getInstance().getResourceBundle().getString("obrisiProfesora"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices,
 				defaultChoice);
 
 		if (id == JOptionPane.YES_OPTION) {

@@ -131,6 +131,7 @@ public class MainFrame extends JFrame {
 		menu.initMenu();
 		status.statusInit();
 		tabbedPane.tabbedPaneInit();		//TODO: samo prva kolona se promeni, ostale moraju da se refreshuju
+		toolbar.toolbarInit();
 		validate();
 		
 		

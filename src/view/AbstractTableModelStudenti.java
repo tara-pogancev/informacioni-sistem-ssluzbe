@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import gui.MainFrame;
 import model.BazaStudenata;
 import model.Student;
 
@@ -50,7 +51,10 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 		case 3:
 			return st.getTrenutnaGodina();
 		case 4:
-			return st.getStatus();
+			if (st.getStatusEnum() == Student.Status.S) {
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxSamofinansiranje");
+			} else return MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet");
+
 		case 5:
 			return st.getProsek();
 	

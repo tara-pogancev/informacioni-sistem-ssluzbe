@@ -1,4 +1,5 @@
 // #Toolbar
+// #lokalizacija_srpski
 //
 // Reference:
 // https://stackoverflow.com/questions/16303916/how-to-make-jtextfield-text-disappear-when-tabbed-into-netbeans
@@ -143,5 +144,11 @@ public class Toolbar extends JToolBar {
 		return searchText.getText();
 	}
 	
+	public void toolbarInit() {
+		
+			//TODO: NAPRAVITI AKCIJE PRIVATNIM POLJIMA I POZVATI UPDATE NAME NA SVE
+		
+		
+	}
 	
 }

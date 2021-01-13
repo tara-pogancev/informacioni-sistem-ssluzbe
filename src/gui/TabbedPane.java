@@ -151,6 +151,10 @@ public class TabbedPane extends JTabbedPane {
 	}
 	
 	public void tabbedPaneInit() {
+		
+		setTitleAt(0, MainFrame.getInstance().getResourceBundle().getString("tabStudenti"));
+		setTitleAt(1, MainFrame.getInstance().getResourceBundle().getString("tabProfesori"));
+		setTitleAt(2, MainFrame.getInstance().getResourceBundle().getString("tabPredmeti"));
 				
 		studTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colIdx"));
 		studTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colName"));

@@ -54,7 +54,7 @@ public class StudentPolozeni extends JPanel {
 		JButton ponisti = new JButton(MainFrame.getInstance().getResourceBundle().getString("ponistiOcenu"));
 		DecimalFormat df = new DecimalFormat("#.##");
 		String pr = df.format(s.getProsek());
-		prosek = new JLabel (MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + pr);
+		prosek = new JLabel (MainFrame.getInstance().getResourceBundle().getString("prosecnaOcena") + "     " + pr);
 		espb = new JLabel (MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 		
 		
@@ -117,7 +117,7 @@ public class StudentPolozeni extends JPanel {
 					StudentNepolozeni.azurirajPrikaz();
 
 					String prUpdated = df.format(s.getProsek());
-					prosek.setText(MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + prUpdated);
+					prosek.setText(MainFrame.getInstance().getResourceBundle().getString("prosecnaOcena") + "     " + prUpdated);
 					espb.setText(MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 					
 				}
@@ -140,7 +140,7 @@ public class StudentPolozeni extends JPanel {
 		DecimalFormat df = new DecimalFormat("#.##");
 		
 		String prUpdated = df.format(s.getProsek());
-		prosek.setText(MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet") + "     " + prUpdated);
+		prosek.setText(MainFrame.getInstance().getResourceBundle().getString("prosecnaOcena") + "     " + prUpdated);
 		espb.setText(MainFrame.getInstance().getResourceBundle().getString("ukupnoESPB") + "     " + s.getEspb());
 		
 	}

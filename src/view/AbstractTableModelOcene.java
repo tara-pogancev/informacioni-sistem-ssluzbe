@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import gui.MainFrame;
 import model.BazaStudenata;
 import model.Ocena;
 
@@ -19,7 +20,8 @@ public class AbstractTableModelOcene extends AbstractTableModel{
 	private static final long serialVersionUID = 7087621529336960708L;
 	
 	private List<Ocena> ocene = new ArrayList<Ocena>();
-	private String[] columnNames = {"Šifra predmeta", "Naziv predmeta", "ESPB", "Ocena", "Datum"};
+	private String[] columnNames = {MainFrame.getInstance().getResourceBundle().getString("colSifraProj"), MainFrame.getInstance().getResourceBundle().getString("colNazivProj"), 
+			MainFrame.getInstance().getResourceBundle().getString("colESPB"), MainFrame.getInstance().getResourceBundle().getString("ocena"), MainFrame.getInstance().getResourceBundle().getString("polDatum")};
 	
 	public AbstractTableModelOcene (String idx) {
 		ocene = BazaStudenata.getInstance().getByIdx(idx).getOcene();
