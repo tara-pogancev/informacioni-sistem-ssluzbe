@@ -56,8 +56,12 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 			} else return MainFrame.getInstance().getResourceBundle().getString("newBoxBudzet");
 
 		case 5:
+			//double prosekD = st.getProsek();
+			//int prosekInt = (int)prosekD * 100;
+			//double newProsek = prosekInt / 100;
+			//return newProsek;
 			return st.getProsek();
-	
+			
 		default:
 			return null;
 
@@ -67,11 +71,15 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 	
 	public Class<?> getColumnClass(int colIdx) {
 
-		if (colIdx == 5 || colIdx == 3) {
+		if (colIdx == 3) {
 
 			return Integer.class;
 
-		} else {
+		} else if (colIdx == 5) {
+			
+			return Double.class;
+			
+		}	else {
 
 			return String.class;
 		}

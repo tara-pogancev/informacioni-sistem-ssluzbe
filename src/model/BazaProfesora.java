@@ -141,7 +141,7 @@ public class BazaProfesora {
 
 		for (Profesor p : profesori) {
 
-			if (p.getBrojLicneKarte() == blc) {
+			if (p.getBrojLicneKarte().equals(blc)) {
 
 				p.setPrezime(izmenjen.getPrezime());
 				p.setIme(izmenjen.getIme());
@@ -165,7 +165,7 @@ public class BazaProfesora {
 
 		for (Profesor p : profesori) {
 
-			if (p.getBrojLicneKarte() == blc) {
+			if (p.getBrojLicneKarte().equals(blc)) {
 				return p;
 			}
 		}
@@ -191,7 +191,7 @@ public class BazaProfesora {
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
 
 		for (Profesor p : profesori) {
-			if (p.getBrojLicneKarte() == brlk) {
+			if (p.getBrojLicneKarte().equals(brlk)) {
 
 				for (Predmet predmet : predmeti) {
 					if (predmet.getPredmetniProfesor() != null)
@@ -235,21 +235,21 @@ public class BazaProfesora {
 
 	public void dodajPredmet(String blc, String sifra) {
 
-		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
+		//List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
 
 		for (Profesor p : profesori) {
 
 			if (p.getBrojLicneKarte().equals(blc)) {
 
-				for (Predmet prProf : predmeti) {
+				//for (Predmet prProf : predmeti) {
 
-					if (prProf.getSifraPredmeta().equals(sifra)) {
+					//if (prProf.getSifraPredmeta().equals(sifra)) {
 
-						p.getPredmeti().add(prProf);
+						p.getPredmeti().add(BazaPredmeta.getInstance().findById(sifra));
 
 						return;
-					}
-				}
+					//}
+				//}
 			}
 		}
 	}
@@ -270,6 +270,8 @@ public class BazaProfesora {
 
 						return;
 					}
+					
+					i++;
 				}
 			}
 		}
@@ -287,6 +289,14 @@ public class BazaProfesora {
 			in.close();
 		}
 
+	}
+	
+	public Profesor getById(String id) {
+		for (Profesor p: profesori) {
+			if (p.getBrojLicneKarte().equals(id))
+				return p;
+		}
+		return null;
 	}
 
 }

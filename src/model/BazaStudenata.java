@@ -101,7 +101,7 @@ public class BazaStudenata {
 
 	public void izbrisiStudenta(String index) {
 		for (Student s : studenti) {
-			if (s.getBrojIndeksa() == index) {
+			if (s.getBrojIndeksa().equals(index)) {
 				studenti.remove(s);
 				break;
 			}
@@ -111,7 +111,7 @@ public class BazaStudenata {
 
 	public void izmeniStudenta(Student novo, String idx) {
 		for (Student s : studenti) {
-			if (s.getBrojIndeksa() == idx) {
+			if (s.getBrojIndeksa().equals(idx)) {
 
 				s.setIme(novo.getIme());
 				s.setPrezime(novo.getPrezime());

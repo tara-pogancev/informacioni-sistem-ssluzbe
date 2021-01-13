@@ -32,12 +32,12 @@ By selecting one of the columns, users have the opportunity to make changes to a
 
 In the main menu, "About" tab, you will have the option of switching between Serbian and English language, by sellecting one of the two. By default, upon opening the application, Serbian is sellected.
 
-4.Add student
+4. Add student
 
 Adding a student is done by selecting the student tab, and then launching the "New" action found in the menu or toolbar.In the open window, it is necessary to fill in the blank fields with valid data, after which the addition will be enabled. 
 Example of valid entry: Ana, Kraljic, 05.06.1996. , Jugoslovenske armije 88, 021 / 555-333, ana@gmail.com, RA 37/2018, 2017
 
-5.Edit student
+5. Edit student
 
 Modifying a student is done by selecting the student from the table, and then selecting the "Edit" option. In the newly opened window, in the "Information" tab, you can change any of the listed fields. If all entered fields are valid, by clicking on the "Accept" button the changes will be saved and updated in the table, and you have the option of further changes of the same student. Clicking the "Cancel" button will undo the unsaved changes.
 
@@ -45,15 +45,15 @@ In the abbreviation of the window for student changes "Passed", there is a list 
 
 The Tack for Failed Courses tab shows a list of courses that a student attends but has not yet passed. By clicking on the "Add" button, it is possible to add a valid item to the list. It can be removed with the "Remove" button. Passing the course is done by selecting the third button "Passing", where the user enters the grade, which is then transferred to the passed courses, updating the average and the student table.
 
-6.Delete student
+6. Delete student
 
 Deleting a student is done by selecting the student from the board by clicking on the desired row. Then, call the delete action via the toolbar, menu, mnemonic or accelerator (Ctrl + D), and confirm the deletion of the selected student in the dialog. To restore the data to the state before the changes, it is necessary to click the "Cancel" button, after which the user can further manage the changes of the same student.
 
-7.Add professor
+7. Add professor
 
 Adding a professor, analogous to adding a student, is done by selecting the "Professor" tab, and then by launching the "New" action, via the menu,toolbar, accelerator, or mnemonic. After entering valid information in the given fields, adding by clicking the button will be enabled.
 
-8.Edit professor
+8. Edit professor
 
 The professor is changed by clicking on the "Professors" tab, then by selecting the professor from the professor table by clicking on the row in which the professor for whom the changes are made is located. Then, call the edit action, or "Edit", in one of the above ways. The "Information" tab will display fields that contain current information about the professor. It is possible to change the values of all fields. By clicking the "Accept" button, the changes will be saved if all fields are validly filled. By pressing the "Cancel" button, all changes will be canceled.
 The "Subjects" tab shows the subjects that the professor teaches (if any). By clicking on the "Add subject" button, it is possible to select the subject that the professor will start teaching, while by selecting the subject from the table and pressing the "Remove subject" button, the professor stops teaching the selected subject, and the vacancy of the given subject is cleaned.
@@ -62,32 +62,32 @@ The "Subjects" tab shows the subjects that the professor teaches (if any). By cl
 
 Deleting a professor is done in the "Professors" tab, by selecting a professor and then clicking on the delete bucket icon, or by using a mnemonic / accelerator / menu item analogous to deleting a student or subject. After confirming the deletion of the professor, he will be removed from the database.
 
-10.Add subject
+10. Add subject
 
 Adding items is performed in the "Items" tab, by clicking on the "+" button in the toolbar, or by selecting the equivalent action "New" from the main menu. Then, it is necessary to fill in the given fields, which will turn red in case of incorrectly entered values. By hovering the mouse over the typing field, one of the correct entries is displayed.
 Example of valid input: p12, Mathematical Analysis 1, 9
 
-11.Edit subject
+11. Edit subject
 
 Changing the item is done from the "Items" tab, by selecting the "Edit" action. In the newly opened window, it is possible to make changes to the item, confirm them if they are valid, or cancel them by exiting the window or clicking the "Cancel" button.
 
 Changing the professor of the subject is done by clicking on the "+" button (to add), or "-" to delete the professor from the subject. If no professor is assigned to the subject, the user will have the option to choose from a list of all professors from the database. After the changes are made, the same it needs to be confirmed.
 
-12.Delete subject
+12. Delete subject
 
 Deleting items is done by clicking on the 'Items' tab, then selecting items from the item table by clicking on the desired row. Then, invoke the delete action using the button from the toolbar, menu, mnemonic or accelerator (Ctrl + D). Then confirm by selecting 'YES' in the delete confirmation dialog.
 
-13.Search students
+13. Search students
 
 Student search is performed within the selected "Students" tab. A minimum of one word and a maximum of three are required in the search box in the upper right corner of the main window. All others will be ignored. The first word refers to the surname, the second to the name, and the third to the index number; if the entered words are within their respective field, all students who meet the criteria will be written off.
 
 To cancel the entered filter, it is necessary to click on the search field again, in order to empty it, and then start the search again.
 
-14.Search professors
+14. Search professors
 
 The search for professors is performed within the selected tab "Professors". In the search field in the upper right corner of the main window, it is necessary to enter the full or partial name of the surname or surname and first name. Clicking on the magnifying glass next to the search field will show all professors whose last names and first names meet the search criteria.To cancel the entered filter, it is necessary to click on the search field again, in order to empty it, and then start the search again.
 
-15.Search subjects
+15. Search subjects
 
 The search for items is performed within the selected tab "Items". The full or partial name of the item must be entered in the search field in the upper right corner of the main window. Clicking on the magnifying glass next to the search box will display all items whose names meet the search criteria.To cancel the entered filter, it is necessary to click on the search field again, in order to empty it, and then start the search again.
 

@@ -256,7 +256,6 @@ public class IzmenaPredmeta extends JDialog {
 			if (t4.getSelectedIndex() == 1)
 				sem1 = Semestar.LETNJI;
 
-			System.out.println(sem1);
 			
 			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem1, godina, noviProfesor, espb);
 
@@ -270,20 +269,28 @@ public class IzmenaPredmeta extends JDialog {
 
 			else {
 
-				if (noviProfesor != null) {
+				if (noviProfesor != null && p.getPredmetniProfesor() != null) {	//1. zamena profesora, oba su postojala
 					
 					if (!noviProfesor.getBrojLicneKarte().equals(p.getPredmetniProfesor().getBrojLicneKarte())) {
 						ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
 						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
+					} else {	
+						
+						//ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
+						
 					}
 					
 				}
 				
-				if (noviProfesor == null && p.getPredmetniProfesor() != null) {
+				else if (noviProfesor == null && p.getPredmetniProfesor() != null) {	//samo stari profesor vise ne predaje
 
 						ProfesoriController.getInstance().ukloniPredmet(p.getPredmetniProfesor().getBrojLicneKarte(), p.getSifraPredmeta());
 
-				} 			
+				} else if (noviProfesor != null && p.getPredmetniProfesor() == null){	//samo novi predaje, stari nije bio
+					
+					ProfesoriController.getInstance().dodajPredmet(noviProfesor.getBrojLicneKarte(), novo.getSifraPredmeta());
+					
+				}
 				
 				PredmetiController.getInstance().izmeniPredmet(novo, p.getSifraPredmeta());
 				JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("izmenjenPredmet"));

@@ -329,7 +329,7 @@ public class ProfesorInformacije extends JPanel {
 				okBtn.setEnabled(false);
 
 				ProfesoriController.getInstance().izmeniProfesora(izmenjen, p.getBrojLicneKarte());
-				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("InfProfIzmena"));
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("izmenjenProfesor"));
 			}
 
 		});

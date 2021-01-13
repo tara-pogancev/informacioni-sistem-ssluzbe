@@ -158,7 +158,11 @@ public class BazaPredmeta {
 				p.setSifraPredmeta(promene.getSifraPredmeta());
 
 				// TODO: Profesor
-				p.setPredmetniProfesor(promene.getPredmetniProfesor());
+				//p.setPredmetniProfesor(promene.getPredmetniProfesor());
+				if (promene.getPredmetniProfesor() != null) {
+				p.setPredmetniProfesor(BazaProfesora.getInstance().getById(promene.getPredmetniProfesor().getBrojLicneKarte())); 
+				}
+				else p.setPredmetniProfesor(null);
 			}
 		}
 	}
