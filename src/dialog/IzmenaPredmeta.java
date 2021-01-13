@@ -256,7 +256,6 @@ public class IzmenaPredmeta extends JDialog {
 			if (t4.getSelectedIndex() == 1)
 				sem1 = Semestar.LETNJI;
 
-			
 			Predmet novo = new Predmet(t1.getText(), t2.getText(), sem1, godina, noviProfesor, espb);
 
 			if (!BazaPredmeta.getInstance().isUnique(t1.getText()) && !p.getSifraPredmeta().equals(t1.getText())) {

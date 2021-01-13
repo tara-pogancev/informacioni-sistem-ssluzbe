@@ -84,8 +84,7 @@ public class AbstractTableModelStudenti extends AbstractTableModel {
 			return String.class;
 		}
 	}
-	
-	
+		
 	
 	@Override
 	public String getColumnName(int column) {

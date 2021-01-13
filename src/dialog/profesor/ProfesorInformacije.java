@@ -42,6 +42,7 @@ public class ProfesorInformacije extends JPanel {
 
 	private Profesor bezIzmena = null;
 
+	
 	public ProfesorInformacije(Profesor p) {
 
 		bezIzmena = new Profesor(p);

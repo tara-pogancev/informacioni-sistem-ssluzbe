@@ -47,6 +47,7 @@ public class Toolbar extends JToolBar {
 	private SearchAction sr;
 	
 	
+	
 	public Toolbar() {
 
 		

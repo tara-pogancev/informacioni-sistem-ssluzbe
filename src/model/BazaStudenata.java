@@ -39,7 +39,6 @@ public class BazaStudenata {
 
 	private BazaStudenata() {
 		
-
 		this.studenti = new ArrayList<Student>();
 
 		this.kolone = new ArrayList<String>();

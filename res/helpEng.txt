@@ -60,7 +60,7 @@ The "Subjects" tab shows the subjects that the professor teaches (if any). By cl
 
 9. Delete professor
 
-Deleting a professor is done in the "Professors" tab, by selecting a professor and then clicking on the delete bucket icon, or by using a mnemonic / accelerator / menu item analogous to deleting a student or subject. After confirming the deletion of the professor, he will be removed from the database.
+Deleting a professor is done in the "Professors" tab, by selecting a professor and then clicking on the delete bucket icon, or by using a mnemonic / accelerator / menu item analogous to deleting a student or subject. After confirming the deletion of the professor, he will be removed from the database. 
 
 10. Add subject
 

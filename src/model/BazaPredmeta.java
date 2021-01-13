@@ -156,6 +156,8 @@ public class BazaPredmeta {
 				p.setGodinaIzvodjenja(promene.getGodinaIzvodjenja());
 				p.setSemestar(promene.getSemestarE());
 				p.setSifraPredmeta(promene.getSifraPredmeta());
+				
+				
 
 				// TODO: Profesor
 				//p.setPredmetniProfesor(promene.getPredmetniProfesor());
