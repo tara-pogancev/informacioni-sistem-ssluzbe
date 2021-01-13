@@ -121,7 +121,7 @@ public class BazaProfesora {
 			case profesorEmeritus:
 				return MainFrame.getInstance().getResourceBundle().getString("newBoxEmeritus");
 			default:
-				return MainFrame.getInstance().getResourceBundle().getString("newBoxIstrazivas");
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxIstrazivac");
 			}
 		case 4:
 			return profesor.getBrojLicneKarte();

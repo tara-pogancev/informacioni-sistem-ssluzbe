@@ -40,7 +40,7 @@ public class BazaPredmeta {
 	private List<String> kolone;
 
 	private BazaPredmeta() {
-		
+
 		this.predmeti = new ArrayList<Predmet>();
 
 		this.kolone = new ArrayList<String>();
@@ -85,7 +85,7 @@ public class BazaPredmeta {
 		case 2:
 			return Integer.toString(predmet.getESPB());
 		case 3:
-			return Integer.toString(predmet.getGodinaIzvodjenja()); 
+			return Integer.toString(predmet.getGodinaIzvodjenja());
 		case 4:
 			return predmet.getSemestar();
 		default:
@@ -99,6 +99,34 @@ public class BazaPredmeta {
 	}
 
 	public void izbrisiPredmet(String sifra) {
+
+		List<Profesor> profesori = BazaProfesora.getInstance().getProfesori();
+		List<Student> studenti = BazaStudenata.getInstance().getStudenti();
+
+		for (Profesor p : profesori) {
+
+			for (Predmet prProf : p.getPredmeti()) {
+
+				if (prProf.getSifraPredmeta().equals(sifra)) {
+
+					BazaProfesora.getInstance().ukloniPredmet(p.getBrojLicneKarte(), sifra);
+					break;
+				}
+			}
+
+		}
+
+		for (Student s : studenti) {
+
+			for (Predmet prStud : s.getNepolozeniIspiti()) {
+
+				if (prStud.getSifraPredmeta().equals(sifra)) {
+
+					BazaStudenata.getInstance().ukloniPredmet(s.getBrojIndeksa(), sifra);
+					break;
+				}
+			}
+		}
 
 		for (Predmet p : predmeti) {
 			if (p.getSifraPredmeta().equals(sifra)) {
@@ -126,7 +154,7 @@ public class BazaPredmeta {
 				p.setESPB(promene.getESPB());
 				p.setNazivPredmeta(promene.getNazivPredmeta());
 				p.setGodinaIzvodjenja(promene.getGodinaIzvodjenja());
-				p.setSemestar(promene.getSemestarE());				
+				p.setSemestar(promene.getSemestarE());
 				p.setSifraPredmeta(promene.getSifraPredmeta());
 
 				// TODO: Profesor
@@ -146,38 +174,36 @@ public class BazaPredmeta {
 		return null;
 
 	}
-	
-	public void ukloniNepolozenog(String idx, String sifra) {
-		
-		//Student s = BazaStudenata.getInstance().getByIdx(idx);
-		
-		for(Predmet p : predmeti) {
-			
-			if(p.getSifraPredmeta().equals(sifra)) {
-				
-				//p.getStudentiNisuPolozili().remove(s);
-			}
-			
-			
-		}
-		
-	}
 
-	public void dodajPolozenog(String idx, String sifra) {
-		
-		//Student s = BazaStudenata.getInstance().getByIdx(idx);
+	public void ukloniNepolozenog(String idx, String sifra) {
+
+		// Student s = BazaStudenata.getInstance().getByIdx(idx);
 
 		for (Predmet p : predmeti) {
 
 			if (p.getSifraPredmeta().equals(sifra)) {
 
-				//p.getStudentiPolozili().add(s);
+				// p.getStudentiNisuPolozili().remove(s);
 			}
 
 		}
-		
+
 	}
-	
+
+	public void dodajPolozenog(String idx, String sifra) {
+
+		// Student s = BazaStudenata.getInstance().getByIdx(idx);
+
+		for (Predmet p : predmeti) {
+
+			if (p.getSifraPredmeta().equals(sifra)) {
+
+				// p.getStudentiPolozili().add(s);
+			}
+
+		}
+
+	}
 
 	public Profesor getTempProfesor() {
 		return tempProfesor;
@@ -213,8 +239,7 @@ public class BazaPredmeta {
 			}
 		}
 	}
-	
-	
+
 	public void readDataPredmet(ObjectInputStream in) throws IOException, ClassNotFoundException {
 
 		Predmet p = null;
@@ -234,11 +259,11 @@ public class BazaPredmeta {
 
 			if (p.getSifraPredmeta().equals(sifra)) {
 
-			//	p.getStudentiNisuPolozili().add(BazaStudenata.getInstance().getByIdx(idx));
+				// p.getStudentiNisuPolozili().add(BazaStudenata.getInstance().getByIdx(idx));
 			}
 
 		}
-		
+
 	}
 
 	public void ukloniPolozenog(String idx, String sifra) {
@@ -247,13 +272,11 @@ public class BazaPredmeta {
 
 			if (p.getSifraPredmeta().equals(sifra)) {
 
-		//		p.getStudentiPolozili().remove(BazaStudenata.getInstance().getByIdx(idx));
+				// p.getStudentiPolozili().remove(BazaStudenata.getInstance().getByIdx(idx));
 			}
 
 		}
-		
+
 	}
-
-
 
 }
