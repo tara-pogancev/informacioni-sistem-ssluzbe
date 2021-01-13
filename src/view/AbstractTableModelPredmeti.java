@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.Predmet;
 
@@ -57,7 +58,16 @@ public class AbstractTableModelPredmeti extends AbstractTableModel {
 		case 3:
 			return predmet.getGodinaIzvodjenja(); 
 		case 4:
-			return predmet.getSemestar();
+			
+			if (predmet.getSemestarE() == Predmet.Semestar.LETNJI) {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxLetnji");
+			} else {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxZimski");
+
+			}
+			
 		default:
 			return null;
 

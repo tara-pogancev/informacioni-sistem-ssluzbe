@@ -20,7 +20,9 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 
 	private List<Predmet> predmeti = new ArrayList<Predmet>();
 	private String[] kolone = { MainFrame.getInstance().resourceBundle.getString("colSifraProj"),
-			MainFrame.getInstance().resourceBundle.getString("colNazivProj"), MainFrame.getInstance().resourceBundle.getString("colGodPredm"), MainFrame.getInstance().resourceBundle.getString("colSemestar") };
+			MainFrame.getInstance().resourceBundle.getString("colNazivProj"),
+			MainFrame.getInstance().resourceBundle.getString("colGodPredm"),
+			MainFrame.getInstance().resourceBundle.getString("colSemestar") };
 
 	public AbstractTableModelPredmetiProfesora(String blc) {
 
@@ -62,7 +64,14 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 		case 2:
 			return p.getGodinaIzvodjenja();
 		case 3:
-			return p.getSemestar();
+			if (p.getSemestarE() == Predmet.Semestar.LETNJI) {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxLetnji");
+			} else {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxZimski");
+
+			}
 		default:
 			return null;
 		}

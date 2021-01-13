@@ -55,4 +55,14 @@ public class AddNewAction extends AbstractAction {
 		 }
 	}
 
+	public void updateName() {
+
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("new"));
+		
+			
+			putValue(MNEMONIC_KEY, KeyEvent.VK_N);
+
+		
+	}
+
 }

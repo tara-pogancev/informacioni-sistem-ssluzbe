@@ -6,26 +6,25 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.BazaStudenata;
 import model.Predmet;
 
-
-public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
+public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 9107386218458096017L;
-	
+
 	private List<Predmet> predmeti = new ArrayList<Predmet>();
-	
+
 	public AbstractTableModelNepolozeniIspiti(String idx) {
-		
+
 		predmeti = BazaStudenata.getInstance().getByIdx(idx).getNepolozeniIspiti();
 	}
-	
-	
+
 	@Override
 	public int getColumnCount() {
 		return BazaPredmeta.getInstance().getColumnCount();
@@ -35,13 +34,12 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 	public String getColumnName(int column) {
 		return BazaPredmeta.getInstance().getColumnName(column);
 	}
-	
 
 	@Override
 	public Object getValueAt(int rowIdx, int columnIdx) {
-		
-		//return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
-		
+
+		// return BazaPredmeta.getInstance().getValueAt(rowIdx, columnIdx);
+
 		Predmet predmet = this.predmeti.get(rowIdx);
 
 		switch (columnIdx) {
@@ -53,28 +51,34 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 		case 2:
 			return predmet.getESPB();
 		case 3:
-			return predmet.getGodinaIzvodjenja(); 
+			return predmet.getGodinaIzvodjenja();
 		case 4:
-			return predmet.getSemestar();
+			if (predmet.getSemestarE() == Predmet.Semestar.LETNJI) {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxLetnji");
+			} else {
+
+				return MainFrame.getInstance().getResourceBundle().getString("boxZimski");
+
+			}
 		default:
 			return null;
 
 		}
-		
+
 	}
-	
-	public Class<?> getColumnClass(int colIdx){
-		
-		if(colIdx == 2 || colIdx == 3) {
-			
+
+	public Class<?> getColumnClass(int colIdx) {
+
+		if (colIdx == 2 || colIdx == 3) {
+
 			return Integer.class;
-			
-		}else {
-			
+
+		} else {
+
 			return String.class;
 		}
 	}
-
 
 	@Override
 	public int getRowCount() {

@@ -90,25 +90,24 @@ public class ProfesorInformacije extends JPanel {
 				MainFrame.getInstance().resourceBundle.getString("newBoxProf") };
 		JLabel titProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newTitula"));
 		JComboBox<String> titula = new JComboBox<>(titule);
-		switch (p.getTitula()) {
-		case "BSc":
+
+		if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxBSc"))) {
 			titula.setSelectedIndex(0);
-			break;
-		case "MSc":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxMSc"))) {
+			
 			titula.setSelectedIndex(1);
-			break;
-		case "mr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxMr"))) {
+			
 			titula.setSelectedIndex(2);
-			break;
-		case "dr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxDr"))) {
+			
 			titula.setSelectedIndex(3);
-			break;
-		case "prof. dr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxProfDr"))) {
+			
 			titula.setSelectedIndex(4);
-			break;
-		default:
+		}else {
+			
 			titula.setSelectedIndex(5);
-			break;
 		}
 
 		String[] zvanja = { MainFrame.getInstance().resourceBundle.getString("newBoxSaradnik"),
@@ -121,31 +120,31 @@ public class ProfesorInformacije extends JPanel {
 				MainFrame.getInstance().resourceBundle.getString("newBoxIstrazivac") };
 		JLabel zvanjeProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newZvanje"));
 		JComboBox<String> zvanje = new JComboBox<>(zvanja);
-		switch (p.getZvanje()) {
-		case "saradnik u nastavi":
+
+		if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxSaradnik"))) {
+			
 			zvanje.setSelectedIndex(0);
-			break;
-		case "asistent":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxAsistent"))) {
+			
 			zvanje.setSelectedIndex(1);
-			break;
-		case "asistent sa doktoratom":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxAsistentSaDoktoratom"))) {
+			
 			zvanje.setSelectedIndex(2);
-			break;
-		case "docent":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxDocent"))) {
+			
 			zvanje.setSelectedIndex(3);
-			break;
-		case "redovni profesor":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxRedovni"))) {
+			
 			zvanje.setSelectedIndex(4);
-			break;
-		case "vanredni profesor":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxVanredni"))) {
+			
 			zvanje.setSelectedIndex(5);
-			break;
-		case "profesor emeritius":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxEmeritus"))) {
+			
 			zvanje.setSelectedIndex(6);
-			break;
-		default:
+		}else {
+			
 			zvanje.setSelectedIndex(7);
-			break;
 		}
 		
 		inicijaliacija(bezIzmena, unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje);
@@ -358,52 +357,49 @@ public class ProfesorInformacije extends JPanel {
 		t7.setText(p.getAdresaKancelarije());
 		t8.setText(p.getBrojLicneKarte());
 
-		switch (p.getTitula()) {
-		case "BSc":
+		if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxBSc"))) {
 			t9.setSelectedIndex(0);
-			break;
-		case "MSc":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxMSc"))) {
+			
 			t9.setSelectedIndex(1);
-			break;
-		case "mr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxMr"))) {
+			
 			t9.setSelectedIndex(2);
-			break;
-		case "dr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxDr"))) {
+			
 			t9.setSelectedIndex(3);
-			break;
-		case "prof. dr":
+		}else if(p.getTitula().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxProfDr"))) {
+			
 			t9.setSelectedIndex(4);
-			break;
-		default:
+		}else {
+			
 			t9.setSelectedIndex(5);
-			break;
 		}
-
-		switch (p.getZvanje()) {
-		case "saradnik u nastavi":
+		
+		if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxSaradnik"))) {
+			
 			t10.setSelectedIndex(0);
-			break;
-		case "asistent":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxAsistent"))) {
+			
 			t10.setSelectedIndex(1);
-			break;
-		case "asistent sa doktoratom":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxAsistentSaDoktoratom"))) {
+			
 			t10.setSelectedIndex(2);
-			break;
-		case "docent":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxDocent"))) {
+			
 			t10.setSelectedIndex(3);
-			break;
-		case "redovni profesor":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxRedovni"))) {
+			
 			t10.setSelectedIndex(4);
-			break;
-		case "vanredni profesor":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxVanredni"))) {
+			
 			t10.setSelectedIndex(5);
-			break;
-		case "profesor emeritius":
+		}else if(p.getZvanje().equals(MainFrame.getInstance().getResourceBundle().getString("newBoxEmeritus"))) {
+			
 			t10.setSelectedIndex(6);
-			break;
-		default:
+		}else {
+			
 			t10.setSelectedIndex(7);
-			break;
 		}
 
 	}

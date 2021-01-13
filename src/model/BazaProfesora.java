@@ -41,7 +41,7 @@ public class BazaProfesora {
 	private List<String> kolone;
 
 	private BazaProfesora() {
-		
+
 		this.profesori = new ArrayList<Profesor>();
 
 		this.kolone = new ArrayList<String>();
@@ -83,9 +83,46 @@ public class BazaProfesora {
 		case 1:
 			return profesor.getPrezime();
 		case 2:
-			return profesor.getTitula();
+			switch (profesor.getTitulaE()) {
+
+			case BSc:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxBSc");
+
+			case MSc:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxMSc");
+
+			case mr:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxMr");
+
+			case dr:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxDr");
+
+			case profDr:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxProfDr");
+
+			default:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxProf");
+
+			}
 		case 3:
-			return profesor.getZvanje();
+			switch (profesor.getZvanjeE()) {
+			case saradnikUNastavi:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxSaradnik");
+			case asistent:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxAsistent");
+			case asistentSaDoktoratom:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxAsistentSaDoktoratom");
+			case docent:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxDocent");
+			case redovniProfesor:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxRedovni");
+			case vanredniProfesor:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxVanredni");
+			case profesorEmeritus:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxEmeritus");
+			default:
+				return MainFrame.getInstance().getResourceBundle().getString("newBoxIstrazivas");
+			}
 		case 4:
 			return profesor.getBrojLicneKarte();
 		default:
@@ -150,19 +187,19 @@ public class BazaProfesora {
 	}
 
 	public void izbrisiProfesora(String brlk) {
-		
+
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
-		
+
 		for (Profesor p : profesori) {
 			if (p.getBrojLicneKarte() == brlk) {
-				
+
 				for (Predmet predmet : predmeti) {
-				if (predmet.getPredmetniProfesor() != null)
-					if (predmet.getPredmetniProfesor().getBrojLicneKarte().equals(brlk)) {
-						predmet.setPredmetniProfesor(null);
-					}
+					if (predmet.getPredmetniProfesor() != null)
+						if (predmet.getPredmetniProfesor().getBrojLicneKarte().equals(brlk)) {
+							predmet.setPredmetniProfesor(null);
+						}
 				}
-				
+
 				profesori.remove(p);
 				break;
 			}
@@ -197,7 +234,7 @@ public class BazaProfesora {
 	}
 
 	public void dodajPredmet(String blc, String sifra) {
-		
+
 		List<Predmet> predmeti = BazaPredmeta.getInstance().getPredmeti();
 
 		for (Profesor p : profesori) {
@@ -224,7 +261,7 @@ public class BazaProfesora {
 			if (p.getBrojLicneKarte().equals(blc)) {
 
 				int i = 0;
-				
+
 				for (Predmet prProf : p.getPredmeti()) {
 
 					if (prProf.getSifraPredmeta().equals(sifra)) {
@@ -236,10 +273,9 @@ public class BazaProfesora {
 				}
 			}
 		}
-		
+
 	}
-	
-	
+
 	public void readDataProfesor(ObjectInputStream in) throws IOException, ClassNotFoundException {
 
 		Profesor p = null;
@@ -252,6 +288,5 @@ public class BazaProfesora {
 		}
 
 	}
-	
-	
+
 }

@@ -41,6 +41,11 @@ public class Toolbar extends JToolBar {
 
 	public static JTextField searchText;
 	
+	private AddNewAction ana;
+	private EditAction ea;
+	private DeleteAction da;
+	private SearchAction sr;
+	
 	
 	public Toolbar() {
 
@@ -52,10 +57,10 @@ public class Toolbar extends JToolBar {
 
 		// Akceleratori
 
-		AddNewAction ana = new AddNewAction();
-		EditAction ea = new EditAction();
-		DeleteAction da = new DeleteAction();
-		SearchAction sr = new SearchAction();
+		ana = new AddNewAction();
+		ea = new EditAction();
+		da = new DeleteAction();
+		sr = new SearchAction();
 
 		// Kreiranje dugmadi
 		JButton addNew = new JButton(ana);
@@ -147,7 +152,14 @@ public class Toolbar extends JToolBar {
 	
 	public void toolbarInit() {
 		
-			//TODO
+		searchText = new JTextField(MainFrame.getInstance().getResourceBundle().getString("searchField"), 15);
+		searchText.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
+		
+		ana.updateName();
+		ea.updateName();
+		da.updateName();
+		sr.updateName();
+	
 		
 		
 	}

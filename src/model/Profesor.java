@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import gui.MainFrame;
+
 public class Profesor implements Serializable {
 
 	/**
@@ -187,17 +189,17 @@ public class Profesor implements Serializable {
 		switch (titula) {
 
 		case BSc:
-			return "BSc";
+			return MainFrame.getInstance().getResourceBundle().getString("newBoxBSc");
 		case MSc:
-			return "MSc";
+			return  MainFrame.getInstance().getResourceBundle().getString("newBoxMSc");
 		case mr:
-			return "mr";
+			return MainFrame.getInstance().getResourceBundle().getString("newBoxMr");
 		case dr:
-			return "dr";
+			return MainFrame.getInstance().getResourceBundle().getString("newBoxDr");
 		case profDr:
-			return "prof. dr";
+			return MainFrame.getInstance().getResourceBundle().getString("newBoxProfDr");
 		default:
-			return "prof.";
+			return MainFrame.getInstance().getResourceBundle().getString("newBoxProf");
 
 		}
 	}
