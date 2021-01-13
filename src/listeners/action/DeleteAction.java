@@ -40,7 +40,6 @@ public class DeleteAction extends AbstractAction {
 	
 	public void updateName() {
 		
-		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("delete"));
 		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("delete"));
 		
 		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {

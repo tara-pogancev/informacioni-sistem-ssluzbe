@@ -41,7 +41,6 @@ public class EditAction extends AbstractAction {
 	
 	public void updateName() {
 		
-		putValue(NAME, MainFrame.getInstance().getResourceBundle().getString("edit"));
 		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().getResourceBundle().getString("edit"));
 		
 		if (MainFrame.getInstance().getResourceBundle().getString("English").equals("English")) {

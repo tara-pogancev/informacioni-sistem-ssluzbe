@@ -40,7 +40,8 @@ public class Toolbar extends JToolBar {
 	private static final long serialVersionUID = -5707394191276063225L;
 
 	public static JTextField searchText;
-
+	
+	
 	public Toolbar() {
 
 		
@@ -146,7 +147,7 @@ public class Toolbar extends JToolBar {
 	
 	public void toolbarInit() {
 		
-			//TODO: NAPRAVITI AKCIJE PRIVATNIM POLJIMA I POZVATI UPDATE NAME NA SVE
+			//TODO
 		
 		
 	}
