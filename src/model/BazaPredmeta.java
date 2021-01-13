@@ -149,14 +149,13 @@ public class BazaPredmeta {
 	
 	public void ukloniNepolozenog(String idx, String sifra) {
 		
-		Student s = BazaStudenata.getInstance().getByIdx(idx);
+		//Student s = BazaStudenata.getInstance().getByIdx(idx);
 		
 		for(Predmet p : predmeti) {
 			
 			if(p.getSifraPredmeta().equals(sifra)) {
 				
-				
-				p.getStudentiNisuPolozili().remove(s);
+				//p.getStudentiNisuPolozili().remove(s);
 			}
 			
 			
@@ -166,13 +165,13 @@ public class BazaPredmeta {
 
 	public void dodajPolozenog(String idx, String sifra) {
 		
-		Student s = BazaStudenata.getInstance().getByIdx(idx);
+		//Student s = BazaStudenata.getInstance().getByIdx(idx);
 
 		for (Predmet p : predmeti) {
 
 			if (p.getSifraPredmeta().equals(sifra)) {
 
-				p.getStudentiPolozili().add(s);
+				//p.getStudentiPolozili().add(s);
 			}
 
 		}
@@ -227,6 +226,32 @@ public class BazaPredmeta {
 			in.close();
 		}
 
+	}
+
+	public void dodajNepolozenog(String idx, String sifra) {
+
+		for (Predmet p : predmeti) {
+
+			if (p.getSifraPredmeta().equals(sifra)) {
+
+			//	p.getStudentiNisuPolozili().add(BazaStudenata.getInstance().getByIdx(idx));
+			}
+
+		}
+		
+	}
+
+	public void ukloniPolozenog(String idx, String sifra) {
+
+		for (Predmet p : predmeti) {
+
+			if (p.getSifraPredmeta().equals(sifra)) {
+
+		//		p.getStudentiPolozili().remove(BazaStudenata.getInstance().getByIdx(idx));
+			}
+
+		}
+		
 	}
 
 

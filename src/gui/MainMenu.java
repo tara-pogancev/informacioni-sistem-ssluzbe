@@ -122,6 +122,7 @@ public class MainMenu extends JMenuBar {
 		mniSrpski.setText(MainFrame.getInstance().getResourceBundle().getString("Serbian"));
 				
 		addM.setName();
+		addM.updateName();
 		closeM.setName();
 		editM.setName();
 		editM.updateName();

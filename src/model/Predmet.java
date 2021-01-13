@@ -144,5 +144,6 @@ public class Predmet implements Serializable {
 	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
+	
 
 }

@@ -22,6 +22,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BazaStudenata {
 
 	private static BazaStudenata instance = null;
@@ -160,6 +161,8 @@ public class BazaStudenata {
 						s.refreshProsek();
 						s.refreshEspb();
 						s.getNepolozeniIspiti().add(p);
+						//PredmetiController.getInstance().ukloniPolozenog(student, p.getSifraPredmeta());
+						//PredmetiController.getInstance().dodajNepolozenog(student, p.getSifraPredmeta());
 
 						return;
 					}
@@ -200,6 +203,7 @@ public class BazaStudenata {
 
 					if (nepolozen.getSifraPredmeta().equals(p)) {
 						s.getNepolozeniIspiti().remove(i);
+						//PredmetiController.getInstance().ukloniNepolozenog(student, p);
 						return;
 					}
 
@@ -265,6 +269,7 @@ public class BazaStudenata {
 		for (Student s : studenti) {
 			if (s.getBrojIndeksa().equals(student)) {
 				s.getNepolozeniIspiti().add(p);
+				//PredmetiController.getInstance().dodajNepolozenog(student, p.getSifraPredmeta());
 				return;
 			}
 
