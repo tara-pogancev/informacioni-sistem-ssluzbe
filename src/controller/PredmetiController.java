@@ -61,4 +61,16 @@ public class PredmetiController {
 
 	}
 
+	public void ukloniNepolozenog(String idx,String sifra) {
+		
+		BazaPredmeta.getInstance().ukloniNepolozenog(idx,sifra);
+		MainFrame.getTabbedPane().azurirajPredmet();
+	}
+	
+	public void dodajPolozenog(String idx, String sifra) {
+		
+		BazaPredmeta.getInstance().dodajPolozenog(idx,sifra);
+		MainFrame.getTabbedPane().azurirajPredmet();
+	}
+	
 }

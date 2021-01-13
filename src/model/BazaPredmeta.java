@@ -146,6 +146,39 @@ public class BazaPredmeta {
 		return null;
 
 	}
+	
+	public void ukloniNepolozenog(String idx, String sifra) {
+		
+		Student s = BazaStudenata.getInstance().getByIdx(idx);
+		
+		for(Predmet p : predmeti) {
+			
+			if(p.getSifraPredmeta().equals(sifra)) {
+				
+				
+				p.getStudentiNisuPolozili().remove(s);
+			}
+			
+			
+		}
+		
+	}
+
+	public void dodajPolozenog(String idx, String sifra) {
+		
+		Student s = BazaStudenata.getInstance().getByIdx(idx);
+
+		for (Predmet p : predmeti) {
+
+			if (p.getSifraPredmeta().equals(sifra)) {
+
+				p.getStudentiPolozili().add(s);
+			}
+
+		}
+		
+	}
+	
 
 	public Profesor getTempProfesor() {
 		return tempProfesor;
@@ -195,5 +228,7 @@ public class BazaPredmeta {
 		}
 
 	}
+
+
 
 }

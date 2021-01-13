@@ -90,7 +90,8 @@ public class Toolbar extends JToolBar {
 		search.setFocusPainted(false);
 
 		// Kreiranje tekstualnog polja za pretragu
-		searchText = new JTextField(MainFrame.getInstance().getResourceBundle().getString("searchField"), 15);
+		searchText = new JTextField(15);
+		searchText.setText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
 		searchText.setMaximumSize(new Dimension(20, 20));
 		searchText.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
 		searchText.setName("searchText");
@@ -152,7 +153,7 @@ public class Toolbar extends JToolBar {
 	
 	public void toolbarInit() {
 		
-		searchText = new JTextField(MainFrame.getInstance().getResourceBundle().getString("searchField"), 15);
+		searchText.setText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
 		searchText.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("searchField"));
 		
 		ana.updateName();

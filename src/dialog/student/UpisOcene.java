@@ -154,13 +154,15 @@ public class UpisOcene extends JDialog {
 			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
 
 			Date datumPolaganja = null;
+			Date trenutno = new Date(System.currentTimeMillis());
+			
 			boolean ispravanDatum = true;
 
 			try {
 
 				datumPolaganja = dateFormat.parse(unosDat.getText());
 
-				if (datumPolaganja.compareTo(dateFormat.parse("01.01.2015.")) < 0) {
+				if (datumPolaganja.compareTo(dateFormat.parse("01.01.2015.")) < 0 | datumPolaganja.compareTo(trenutno) > 0) {
 
 					ispravanDatum = false;
 				}
@@ -171,12 +173,12 @@ public class UpisOcene extends JDialog {
 			
 			if (!ispravanDatum) {
 
-				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("datumPolaganjaNeValja"));
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("datumPolagNeValja"));
 
 			}else {
 				
 				StudentController.getInstance().upisiOcenu(idx, idPredmeta, ocena, unosDat.getText());
-			
+
 				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("ocenaUpisana"));
 				this.dispose();
 			}
