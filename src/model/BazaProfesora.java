@@ -23,6 +23,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.MainFrame;
+
 public class BazaProfesora {
 
 	private static BazaProfesora instance = null;
@@ -43,10 +45,10 @@ public class BazaProfesora {
 		this.profesori = new ArrayList<Profesor>();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Ime");
-		this.kolone.add("Prezime");
-		this.kolone.add("Titula");
-		this.kolone.add("Zvanje");
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colName"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colSurname"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colTitula"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colZvanje"));
 		this.kolone.add("Blc");
 	}
 

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.ProfesoriController;
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Predmet;
@@ -33,7 +34,7 @@ public class DodajPredmet extends JDialog {
 
 	public DodajPredmet(String blc) {
 
-		this.setTitle("Dodaj predmet");
+		this.setTitle(MainFrame.getInstance().resourceBundle.getString("dodajPredmet"));
 		this.setResizable(false);
 		this.setSize(400, 400);
 
@@ -72,8 +73,9 @@ public class DodajPredmet extends JDialog {
 		BoxLayout box = new BoxLayout(buttons, BoxLayout.X_AXIS);
 		buttons.setLayout(box);
 
-		JButton potvrdi = new JButton("Potvrdi");
-		JButton odustani = new JButton("Odustani");
+		JButton potvrdi = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonPrihvati"));
+		JButton odustani = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonOdustani"));
+
 
 		buttons.add(Box.createHorizontalGlue());
 		buttons.add(potvrdi);
@@ -91,16 +93,17 @@ public class DodajPredmet extends JDialog {
 
 			if (dodat.getPredmetniProfesor() != null) {
 
-				Object[] izbor = { "Da", "Ne" };
+				Object[] izbor = { MainFrame.getInstance().resourceBundle.getString("yesBtn"),MainFrame.getInstance().resourceBundle.getString("noBtn")};
 				Object defaultChoice = izbor[0];
 
 				int potvrda = JOptionPane.showOptionDialog(rootPane,
-						"Na ovom predmetu već predaje profesor " + dodat.getPredmetniProfesor().getIme() + " "
+						MainFrame.getInstance().resourceBundle.getString("dodajPredmetProf1")
+								+ dodat.getPredmetniProfesor().getIme() + " "
 								+ dodat.getPredmetniProfesor().getPrezime()
-								+ ". Da li ste sigurni da želite da promenite profesora predmetu sa šifrom \""
+								+ MainFrame.getInstance().resourceBundle.getString("dodajPredmetProf2")
 								+ dodat.getSifraPredmeta() + "\"?",
-						"Dodavanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
-						defaultChoice);
+						MainFrame.getInstance().resourceBundle.getString("dodavanjePredm"), JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE, null, izbor, defaultChoice);
 
 				if (potvrda == JOptionPane.YES_OPTION) {
 
@@ -108,7 +111,7 @@ public class DodajPredmet extends JDialog {
 							dodat.getSifraPredmeta());
 					ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
 					BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
-					JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+					JOptionPane.showMessageDialog(this, MainFrame.getInstance().resourceBundle.getString("dodatPredmet"));
 					this.dispose();
 
 				}
@@ -116,11 +119,10 @@ public class DodajPredmet extends JDialog {
 
 				ProfesoriController.getInstance().dodajPredmet(blc, dodat.getSifraPredmeta());
 				BazaPredmeta.getInstance().findById(dodat.getSifraPredmeta()).setPredmetniProfesor(p);
-				JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+				JOptionPane.showMessageDialog(this, MainFrame.getInstance().resourceBundle.getString("dodatPredmet"));
 				this.dispose();
 			}
 
-			
 		});
 
 		odustani.addActionListener(e -> {

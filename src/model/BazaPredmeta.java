@@ -21,6 +21,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.MainFrame;
+
 public class BazaPredmeta {
 
 	private static BazaPredmeta instance = null;
@@ -42,11 +44,11 @@ public class BazaPredmeta {
 		this.predmeti = new ArrayList<Predmet>();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Šifra predmeta");
-		this.kolone.add("Naziv predmeta");
-		this.kolone.add("ESPB");
-		this.kolone.add("Godina studija");
-		this.kolone.add("Semestar");
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colSifraProj"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colNazivProj"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colESPB"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colGodPredm"));
+		this.kolone.add(MainFrame.getInstance().resourceBundle.getString("colSemestar"));
 
 	}
 

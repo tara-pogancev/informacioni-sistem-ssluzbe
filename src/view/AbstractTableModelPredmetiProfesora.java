@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.BazaProfesora;
 import model.Predmet;
@@ -18,7 +19,8 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 	private static final long serialVersionUID = -3637639587431835078L;
 
 	private List<Predmet> predmeti = new ArrayList<Predmet>();
-	private String[] kolone = { "Šifra", "Naziv", "Godina studija", "Semestar" };
+	private String[] kolone = { MainFrame.getInstance().resourceBundle.getString("colSifraProj"),
+			MainFrame.getInstance().resourceBundle.getString("colNazivProj"), MainFrame.getInstance().resourceBundle.getString("colGodPredm"), MainFrame.getInstance().resourceBundle.getString("colSemestar") };
 
 	public AbstractTableModelPredmetiProfesora(String blc) {
 
@@ -67,14 +69,14 @@ public class AbstractTableModelPredmetiProfesora extends AbstractTableModel {
 
 	}
 
-	public Class<?> getColumnClass(int colIdx){
-		
-		if(colIdx == 2) {
-			
+	public Class<?> getColumnClass(int colIdx) {
+
+		if (colIdx == 2) {
+
 			return Integer.class;
-			
-		}else {
-			
+
+		} else {
+
 			return String.class;
 		}
 	}

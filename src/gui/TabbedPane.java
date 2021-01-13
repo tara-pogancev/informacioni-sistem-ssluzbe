@@ -44,11 +44,22 @@ public class TabbedPane extends JTabbedPane {
 		
 		profTable = new TableTab(Entitet.PROFESORI);
 		JScrollPane scrollPaneProf = new JScrollPane(profTable);
-		this.add("Profesori", scrollPaneProf);
+		this.add(MainFrame.getInstance().resourceBundle.getString("tabProfesori"), scrollPaneProf);
+		
+		profTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colName"));
+		profTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSurname"));
+		profTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colTitula"));
+		profTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colZvanje"));
 
 		predmTable = new TableTab(Entitet.PREDMETI);
 		JScrollPane scrollPanePredm = new JScrollPane(predmTable);
-		this.add("Predmeti", scrollPanePredm);
+		this.add(MainFrame.getInstance().resourceBundle.getString("tabPredmeti"), scrollPanePredm);
+		
+		predmTable.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSifraProj"));
+		predmTable.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colNazivProj"));
+		predmTable.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colESPB"));
+		predmTable.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colGodPredm"));
+		predmTable.getColumnModel().getColumn(4).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSemestar"));
 
 	}
 

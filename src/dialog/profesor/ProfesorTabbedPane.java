@@ -6,6 +6,7 @@ package dialog.profesor;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import gui.MainFrame;
 import model.Profesor;
 
 public class ProfesorTabbedPane extends JTabbedPane {
@@ -23,8 +24,8 @@ public class ProfesorTabbedPane extends JTabbedPane {
 		profInfo = new ProfesorInformacije(p);
 		predmeti = new ProfesorPredmeti(p);
 
-		this.add("Informacije", profInfo);
-		this.add("Predmeti", predmeti);
+		this.add(MainFrame.getInstance().resourceBundle.getString("informacijeTab"), profInfo);
+		this.add(MainFrame.getInstance().resourceBundle.getString("tabPredmeti"), predmeti);
 
 	}
 

@@ -31,7 +31,7 @@ public class EditAction extends AbstractAction {
 
 //		putValue(NAME, "Edit");
 //		putValue(MNEMONIC_KEY, KeyEvent.VK_E);
-		putValue(SHORT_DESCRIPTION, "Edit");
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().resourceBundle.getString("edit"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "edit.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		putValue(MNEMONIC_KEY, KeyEvent.VK_E);

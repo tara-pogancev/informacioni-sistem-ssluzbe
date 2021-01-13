@@ -20,7 +20,7 @@ public class IzmenaProfesora extends JDialog {
 	
 	public IzmenaProfesora(String blc) {
 		
-		this.setTitle("Izmena profesora");
+		this.setTitle(MainFrame.getInstance().resourceBundle.getString("izmenaProf"));
 		this.setResizable(false);
 		this.setSize(650, 500);
 		

@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import controller.StudentController;
+import gui.MainFrame;
 import model.Student;
 import view.AbstractTableModelNepolozeniIspiti;
 
@@ -42,11 +43,11 @@ public class StudentNepolozeni extends JPanel {
 		BoxLayout box = new BoxLayout(buttons, BoxLayout.X_AXIS);
 		buttons.setLayout(box);
 		
-		JButton dodaj = new JButton("Dodaj");
+		JButton dodaj = new JButton(MainFrame.getInstance().resourceBundle.getString("btnDodaj"));
 		dodaj.setPreferredSize(new Dimension(90,25));
-		JButton obrisi = new JButton("Ukloni");
+		JButton obrisi = new JButton(MainFrame.getInstance().resourceBundle.getString("btnUkloni"));
 		obrisi.setPreferredSize(new Dimension(90,25));
-		JButton polaganje = new JButton("Polaganje");
+		JButton polaganje = new JButton(MainFrame.getInstance().resourceBundle.getString("btnPolaganje"));
 		polaganje.setPreferredSize(new Dimension(90,25));
 		
 		buttons.add(dodaj);
@@ -68,6 +69,12 @@ public class StudentNepolozeni extends JPanel {
 		
 		nepolozeniIspiti.getColumnModel().getColumn(1).setPreferredWidth(180);
 		
+		nepolozeniIspiti.getColumnModel().getColumn(0).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSifraProj"));
+		nepolozeniIspiti.getColumnModel().getColumn(1).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colNazivProj"));
+		nepolozeniIspiti.getColumnModel().getColumn(2).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colESPB"));
+		nepolozeniIspiti.getColumnModel().getColumn(3).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colGodPredm"));
+		nepolozeniIspiti.getColumnModel().getColumn(4).setHeaderValue(MainFrame.getInstance().resourceBundle.getString("colSemestar"));
+		
 		dodaj.addActionListener( e-> {
 			
 			new DodajPredmetStudentu(s.getBrojIndeksa()).setVisible(true);
@@ -79,10 +86,10 @@ public class StudentNepolozeni extends JPanel {
 			
 			if (nepolozeniIspiti.getSelectedRow() != -1) {
 				
-				Object[] choices = {"Da", "Ne"};
+				Object[] choices = {MainFrame.getInstance().resourceBundle.getString("yesBtn"),MainFrame.getInstance().resourceBundle.getString("noBtn")};
 				Object defaultChoice = choices[0];
 				
-				int id = JOptionPane.showOptionDialog(this, "Da li ste sigurni da želite da uklonite predmet?", "Uklanjanje predmeta",
+				int id = JOptionPane.showOptionDialog(this,MainFrame.getInstance().resourceBundle.getString("potvrdaUkloniPredm"), MainFrame.getInstance().resourceBundle.getString("ukloniPredmet"),
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, defaultChoice);
 				if (id == JOptionPane.YES_OPTION) {
 					

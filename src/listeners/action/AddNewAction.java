@@ -27,7 +27,7 @@ public class AddNewAction extends AbstractAction {
 
 //		putValue(NAME, "Name");
 //		putValue(MNEMONIC_KEY, KeyEvent.VK_N);
-		putValue(SHORT_DESCRIPTION, "New");
+		putValue(SHORT_DESCRIPTION, MainFrame.getInstance().resourceBundle.getString("new"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "add.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		putValue(MNEMONIC_KEY, KeyEvent.VK_N);

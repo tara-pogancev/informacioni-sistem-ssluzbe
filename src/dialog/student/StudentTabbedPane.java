@@ -7,6 +7,7 @@ package dialog.student;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import gui.MainFrame;
 import model.Student;
 
 public class StudentTabbedPane extends JTabbedPane{
@@ -24,7 +25,7 @@ public class StudentTabbedPane extends JTabbedPane{
 		
 		this.add("Informacije", info);
 		this.add("Položeni", polozeni);
-		this.add("Nepoloženi", nepolozeni);
+		this.add(MainFrame.getInstance().resourceBundle.getString("nepolozeniTab"), nepolozeni);
 		
 	}
 }

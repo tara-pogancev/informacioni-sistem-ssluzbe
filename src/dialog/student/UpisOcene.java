@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.StudentController;
+import gui.MainFrame;
 import model.BazaPredmeta;
 import model.Predmet;
 
@@ -37,7 +38,7 @@ public class UpisOcene extends JDialog {
 
 	public UpisOcene(String idx, String idPredmeta) {
 
-		this.setTitle("Unos ocene");
+		this.setTitle(MainFrame.getInstance().resourceBundle.getString("unosOcene"));
 		this.setResizable(false);
 		this.setSize(480, 305);
 
@@ -51,26 +52,26 @@ public class UpisOcene extends JDialog {
 
 		Predmet p = BazaPredmeta.getInstance().findById(idPredmeta);
 
-		JLabel sifraL = new JLabel("Šifra*");
+		JLabel sifraL = new JLabel(MainFrame.getInstance().resourceBundle.getString("newSifra"));
 		JTextField sifraTxt = new JTextField(p.getSifraPredmeta());
 		sifraTxt.setEditable(false);
 		fields.add(sifraL);
 		fields.add(sifraTxt);
 
-		JLabel naziv = new JLabel("Naziv*");
+		JLabel naziv = new JLabel(MainFrame.getInstance().resourceBundle.getString("newNaziv"));
 		JTextField nazivTxt = new JTextField(p.getNazivPredmeta());
 		nazivTxt.setEditable(false);
 		fields.add(naziv);
 		fields.add(nazivTxt);
 
 		Integer[] izborOcena = { 6, 7, 8, 9, 10 };
-		JLabel ocenaL = new JLabel("Ocena*");
+		JLabel ocenaL = new JLabel(MainFrame.getInstance().resourceBundle.getString("ocenaOb"));
 		JComboBox<Integer> unosOcena = new JComboBox<Integer>(izborOcena);
 		unosOcena.setSelectedIndex(0);
 		fields.add(ocenaL);
 		fields.add(unosOcena);
 
-		JLabel datum = new JLabel("Datum*");
+		JLabel datum = new JLabel(MainFrame.getInstance().resourceBundle.getString("datumOb"));
 		JTextField unosDat = new JTextField();
 		unosDat.setToolTipText("Primer: 13.05.2020.");
 		fields.add(datum);
@@ -79,8 +80,8 @@ public class UpisOcene extends JDialog {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 
-		JButton potvrdi = new JButton("Potvrdi");
-		JButton odustani = new JButton("Odustani");
+		JButton potvrdi = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonPrihvati"));
+		JButton odustani = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonOdustani"));
 
 		buttons.add(potvrdi);
 		buttons.add(Box.createHorizontalStrut(10));
@@ -170,13 +171,13 @@ public class UpisOcene extends JDialog {
 			
 			if (!ispravanDatum) {
 
-				JOptionPane.showMessageDialog(null, "Datum polaganja nije validan!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("datumPolaganjaNeValja"));
 
 			}else {
 				
 				StudentController.getInstance().upisiOcenu(idx, idPredmeta, ocena, unosDat.getText());
 			
-				JOptionPane.showMessageDialog(null, "Ocena uspešno upisana!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("ocenaUpisana"));
 				this.dispose();
 			}
 

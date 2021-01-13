@@ -1,12 +1,16 @@
 // #menu_bar
-
+//#lokalizacija_engleski
 // Reference:
 // Projekat Dogadjaji
 
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Locale;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
@@ -19,6 +23,8 @@ public class MainMenu extends JMenuBar {
 	 */
 	private static final long serialVersionUID = -4905765460781590696L;
 
+		JCheckBoxMenuItem mniEngleski;
+	
 	public MainMenu() {
 		
 		//Bazna konstrukcija
@@ -38,6 +44,19 @@ public class MainMenu extends JMenuBar {
 		addM.setName();
 		editM.setName();
 		deleteM.setName();
+		
+		
+		mniEngleski = new JCheckBoxMenuItem(MainFrame.getInstance().getResourceBundle().getString("English"));
+		
+		mniEngleski.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Locale.setDefault(new Locale("en", "US"));
+				MainFrame.getInstance().changeLanguage();
+				
+			}
+		});
 		
 		//Mnemonici
 		file.setMnemonic(KeyEvent.VK_F);

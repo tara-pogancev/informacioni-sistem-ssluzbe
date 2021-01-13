@@ -34,17 +34,17 @@ public class MyWindowListener implements WindowListener {
 
 		JFrame frame = (JFrame) arg0.getComponent();
 
-		Object[] opcije = { "Da", "Ne" };
+		Object[] opcije = {MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn")};
 		Object defaultChoice = opcije[0];
 
 		int izbor = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da zatvorite aplikaciju?", "Zatvaranje aplikacije",
+				MainFrame.getInstance().resourceBundle.getString("zatvaranjeApl"), MainFrame.getInstance().resourceBundle.getString("closeApp"),
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 		if (izbor == JOptionPane.YES_OPTION) {
 
 			int serijalizacija = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-					"Da li želite da sačuvate izmenjene podatke?", "Čuvanje podataka", JOptionPane.YES_NO_OPTION,
+					MainFrame.getInstance().resourceBundle.getString("cuvanjePod"), MainFrame.getInstance().resourceBundle.getString("cuvanje"), JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, opcije, defaultChoice);
 
 			if (serijalizacija == JOptionPane.YES_OPTION) {

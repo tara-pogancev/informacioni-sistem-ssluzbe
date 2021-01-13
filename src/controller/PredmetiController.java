@@ -31,12 +31,12 @@ public class PredmetiController {
 
 	public void izbrisiPredmet(String sifra) {
 
-		Object[] izbor = { "Da", "Ne" };
+		Object[] izbor = { MainFrame.getInstance().resourceBundle.getString("yesBtn"), MainFrame.getInstance().resourceBundle.getString("noBtn") };
 		Object defaultChoice = izbor[0];
 
 		int potvrda = JOptionPane.showOptionDialog(MainFrame.getInstance(),
-				"Da li ste sigurni da želite da obrišete predmet sa šifrom \"" + sifra + "\"?",
-				"Brisanje predmeta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
+				MainFrame.getInstance().resourceBundle.getString("deletePredmetPoruka")  + sifra + "\"?",
+				MainFrame.getInstance().resourceBundle.getString("ukloniPredmet"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, izbor,
 				defaultChoice);
 
 		if (potvrda == JOptionPane.YES_OPTION) {

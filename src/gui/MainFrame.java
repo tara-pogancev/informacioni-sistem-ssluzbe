@@ -1,4 +1,5 @@
 // #glavni_prozor
+// #lokalizacija_engleski
 // Reference:
 // Projekat Termin3
 // Projekat Dogadjaji
@@ -7,6 +8,8 @@ package gui;
 
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -27,6 +30,8 @@ public class MainFrame extends JFrame {
 	private MainMenu menu;
 	private StatusBar status;
 	
+	public ResourceBundle resourceBundle;
+	
 	private static TabbedPane tabbedPane;
 
 	// Singleton pattern
@@ -34,7 +39,10 @@ public class MainFrame extends JFrame {
 
 	private MainFrame() {
 
-		initialise();
+		//Locale.setDefault(new Locale("sr", "RS"));
+		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		
+		//initialise();
 	}
 
 	private void initialise() {
@@ -53,7 +61,7 @@ public class MainFrame extends JFrame {
 		this.setIconImage(img.getImage());
 
 		setSize(windowWidth, windowHeight);
-		setTitle("Studentska služba");
+		setTitle(MainFrame.getInstance().resourceBundle.getString("sluzba"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// centriranje
 		setLocationRelativeTo(null);
@@ -74,6 +82,7 @@ public class MainFrame extends JFrame {
 		if (instance == null) {
 
 			instance = new MainFrame();
+			instance.initialise();
 		}
 		return instance;
 	}
@@ -107,5 +116,16 @@ public class MainFrame extends JFrame {
 
 	public static TabbedPane getTabbedPane() {
 		return tabbedPane;
+	}
+	
+	public ResourceBundle getResourceBundle() {
+		
+		return resourceBundle;
+	}
+
+	public void changeLanguage() {
+
+		resourceBundle = ResourceBundle.getBundle("MessageResources.MessageResources", Locale.getDefault());
+		
 	}
 }

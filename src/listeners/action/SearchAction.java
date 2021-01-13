@@ -27,7 +27,7 @@ public class SearchAction extends AbstractAction {
 	private static final long serialVersionUID = 5832550447814405219L;
 
 	public SearchAction() {
-		putValue(SHORT_DESCRIPTION, "Search");
+		putValue(SHORT_DESCRIPTION,MainFrame.getInstance().resourceBundle.getString("search"));
 		putValue(SMALL_ICON, new ImageIcon("images" + File.separator + "search-icon2.png"));
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK));
 	}
@@ -54,7 +54,7 @@ public class SearchAction extends AbstractAction {
 			break;
 		case 1:
 			
-			if (search != null && !search.equals("Search...")) {
+			if (search != null && !search.equals(MainFrame.getInstance().resourceBundle.getString("searchField"))) {
 				PretragaProfesora pretragaProf = new PretragaProfesora(search);
 				MainFrame.getTabbedPane().setFilterProfesor(pretragaProf);
 			} else {
@@ -64,7 +64,7 @@ public class SearchAction extends AbstractAction {
 			break;
 		case 2: 
 			
-			if (search != null && !search.equals("Search...")) {
+			if (search != null && !search.equals(MainFrame.getInstance().resourceBundle.getString("searchField"))) {
 				PretragaPredmeta pretragaPredm = new PretragaPredmeta(search);
 				MainFrame.getTabbedPane().setFilterPredmet(pretragaPredm);
 			} else {

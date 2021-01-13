@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesoriController;
+import gui.MainFrame;
 import model.BazaProfesora;
 import model.Profesor;
 import model.Profesor.Titula;
@@ -49,40 +50,45 @@ public class ProfesorInformacije extends JPanel {
 		fields.setLayout(new GridLayout(10, 2, 5, 10)); // hgap,vgap
 		fields.setBorder(BorderFactory.createEmptyBorder(30, 90, 10, 90));
 
-		JLabel imeProf = new JLabel("Ime*");
+		JLabel imeProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newIme"));
 		JTextField unosIme = new JTextField(p.getIme());
-		unosIme.setToolTipText("Primer: Marko");
+		unosIme.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttIme"));
 
-		JLabel przProf = new JLabel("Prezime*");
+		JLabel przProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newPrezime"));
 		JTextField unosPrz = new JTextField(p.getPrezime());
-		unosPrz.setToolTipText("Primer: Marković");
+		unosPrz.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttPrz"));
 
-		JLabel datProf = new JLabel("Datum rođenja*");
+		JLabel datProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newDatumRodjenja"));
 		JTextField unosDat = new JTextField(p.getDatumRodjenjaString());
-		unosDat.setToolTipText("Primer: 13.05.1993.");
+		unosDat.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttDatum"));
 
-		JLabel adrProf = new JLabel("Adresa stanovanja*");
+		JLabel adrProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newAdresaStanovanja"));
 		JTextField unosAdr = new JTextField(p.getAdresaStanovanja());
-		unosAdr.setToolTipText("Primer: Maršala Tita 43, Bačka Topola");
+		unosAdr.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttAdresaS"));
 
-		JLabel telProf = new JLabel("Kontakt telefon*");
+		JLabel telProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newBrojTelefona"));
 		JTextField unosTel = new JTextField(p.getKontaktTelefon());
-		unosTel.setToolTipText("Primer: 021/324-312");
+		unosTel.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttBrojTel"));
 
-		JLabel emailProf = new JLabel("E-mail*");
+		JLabel emailProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newEmail"));
 		JTextField unosEmail = new JTextField(p.getEmailAdresa());
-		unosEmail.setToolTipText("Primer: marko.markovic@uns.ac.rs");
+		unosEmail.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttEmail"));
 
-		JLabel adrKanc = new JLabel("Adresa kancelarije*");
+		JLabel adrKanc = new JLabel(MainFrame.getInstance().resourceBundle.getString("newAdresaKancelarije"));
 		JTextField unosAdrK = new JTextField(p.getAdresaKancelarije());
-		unosAdrK.setToolTipText("Primer: Graničarska 20, Novi Sad");
-
-		JLabel blcProf = new JLabel("Broj lične karte*");
+		unosAdrK.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttAdresaK"));
+		
+		JLabel blcProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newBrojLicne"));
 		JTextField unosBlc = new JTextField(p.getBrojLicneKarte());
-		unosBlc.setToolTipText("Primer: 996582369");
+		unosBlc.setToolTipText(MainFrame.getInstance().resourceBundle.getString("ttLicna"));
 
-		String[] titule = { "BSc", "MSc", "mr", "dr", "prof. dr", "prof." };
-		JLabel titProf = new JLabel("Titula*");
+		String[] titule = { MainFrame.getInstance().resourceBundle.getString("newBoxBSc"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxMSc"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxMr"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxDr"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxProfDr"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxProf") };
+		JLabel titProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newTitula"));
 		JComboBox<String> titula = new JComboBox<>(titule);
 		switch (p.getTitula()) {
 		case "BSc":
@@ -105,9 +111,15 @@ public class ProfesorInformacije extends JPanel {
 			break;
 		}
 
-		String[] zvanja = { "saradnik u nastavi", "asistent", "asistent sa doktoratom", "docent", "redovni profesor",
-				"vanredni profesor", "profesor emeritus", "istrazivac pripravnik" };
-		JLabel zvanjeProf = new JLabel("Zvanje*");
+		String[] zvanja = { MainFrame.getInstance().resourceBundle.getString("newBoxSaradnik"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxAsistent"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxAsistentSaDoktoratom"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxDocent"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxRedovni"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxVanredni"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxEmeritus"),
+				MainFrame.getInstance().resourceBundle.getString("newBoxIstrazivac") };
+		JLabel zvanjeProf = new JLabel(MainFrame.getInstance().resourceBundle.getString("newZvanje"));
 		JComboBox<String> zvanje = new JComboBox<>(zvanja);
 		switch (p.getZvanje()) {
 		case "saradnik u nastavi":
@@ -162,8 +174,9 @@ public class ProfesorInformacije extends JPanel {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 
-		JButton okBtn = new JButton("Potvrdi");
-		JButton cancelBtn = new JButton("Odustani");
+		JButton okBtn = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonPrihvati"));
+		JButton cancelBtn = new JButton(MainFrame.getInstance().resourceBundle.getString("buttonOdustani"));
+
 
 		okBtn.setEnabled(false);
 
@@ -171,7 +184,7 @@ public class ProfesorInformacije extends JPanel {
 
 			inicijaliacija(bezIzmena, unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje);
 			validacija(unosIme, unosPrz,unosDat,unosAdr,unosTel,unosEmail,unosAdrK,unosBlc,titula,zvanje, okBtn);
-			JOptionPane.showMessageDialog(this, "Poslednje izmene poništene!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().resourceBundle.getString("ponisteneIzmene"));
 
 		});
 
@@ -306,10 +319,10 @@ public class ProfesorInformacije extends JPanel {
 			boolean postoji = BazaProfesora.getInstance().proveraJedinstvenostiBlc(unosBlc.getText());
 
 			if (postoji && !p.getBrojLicneKarte().equals(unosBlc.getText())) {
-				JOptionPane.showMessageDialog(null, "Profesor sa ovim brojem lične karte je već u sistemu!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("profPostoji"));
 			} else if (!ispravanDatum) {
 
-				JOptionPane.showMessageDialog(null, "Datum rođenja nije validan!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("datRodjNeValja"));
 
 			} else {
 
@@ -317,7 +330,7 @@ public class ProfesorInformacije extends JPanel {
 				okBtn.setEnabled(false);
 
 				ProfesoriController.getInstance().izmeniProfesora(izmenjen, p.getBrojLicneKarte());
-				JOptionPane.showMessageDialog(null, "Informacije o profesoru uspešno izmenjene!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().resourceBundle.getString("InfProfIzmena"));
 			}
 
 		});
