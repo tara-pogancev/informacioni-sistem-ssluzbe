@@ -19,6 +19,8 @@ Korišćena verzija za **_Java Development Kit_** (_JDK_): 1,8
 
 Korišćena verzija za **_Eclipse_**: 2020-09 (4.17.0)
 
+Urađen dodatni zadatak: **LOKALIZACIJA** _(student 1 i student 2)_
+
 ```java
 System.out.println("Hello World!");
 ```
